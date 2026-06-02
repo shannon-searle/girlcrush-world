@@ -15,7 +15,7 @@
    11. Start Bar
    12. About Me
    13. Cursor Heart Trail
-   14. Mobile (≤ 768px)
+   14. e (≤ 768px)
    ============================================================ */
 
 
@@ -222,12 +222,13 @@ html, body {
 /* ── 8. Popups — Individual ── */
 
 #welcome-popup {
-    top: 25%;
-    left: 35%;
-    width: 30vw;
-    height: 20vh;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25vw;
+    height: fit-content;
     min-height: 150px;
-    min-width: 500px;
+    min-width: 300px;
     margin-top: 0;
 }
 
@@ -498,13 +499,16 @@ html, body {
 }
 
 /* Welcome message */
-.popup-message {
-    padding: 20px 20px;
+.welcome-content p {
     color: rgb(56, 42, 70);
-    font-family: "Press Start 2P", system-ui;
-    font-weight: 200;
-    font-size: 10px;
-    line-height: 2;
+    font-family: "Quicksand", sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.welcome-content {
+    padding: 20px 20px;
 }
 
 
@@ -1028,6 +1032,11 @@ html, body {
    14. Mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
+    html, body {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: auto;
+    }
 
     body {
         padding: 3dvh 4vw;
@@ -1093,6 +1102,7 @@ html, body {
         min-width: 0;
         max-width: 100%;
     }
+
 
     #avatar-popup {
         position: relative;
@@ -1167,7 +1177,7 @@ html, body {
         height: 40px;
     }
 
-    .popup-message {
+    .welcome-content {
         font-size: 8px;
         padding: 10px;
     }
