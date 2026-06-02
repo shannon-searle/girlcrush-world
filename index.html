@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shannon Searle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Rubik+Beastly&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body class="page-index">
+    <canvas id="stars"></canvas>
+    <div class="page-container">
+        <!-- long way through -->
+        <section id="section1">
+            <a class="title" onclick="next('section1', 'section2', true)">girlcrush222</a>
+        </section>
+
+        <section id="section2" style="display:none;">
+            <div class="waiting-room-img">
+
+            </div>
+            <p>welcome to the waiting room<br>girlcrush world is just through the portal<br>are you brave enough to step inside?<br>decide now!</p>
+            <button class="button" onclick="next('section2', 'section3')">begin</button>
+        </section>
+
+        <section id="section3" style="display:none;">
+            <div class="waiting-room-img">
+                
+            </div>
+            <p>the portal pulls you in and your stomach drops<br>through the chaos, a voice.<br>
+                it's the princess! she needs your help<br>what will you do?</p>
+            <button class="button" onclick="next('section3', 'section4')">venture further</button>
+        </section>
+
+        <section id="section4" style="display:none;">
+            <div class="waiting-room-img">
+                
+            </div>
+            <p>you fall further into the unknown<br>the edges of your vision darken and you surrender to the fall<br>until there is only the soft shimmer of distant stars</p>
+            <button class="button" onclick="next('section4', 'section5')">faint</button>
+        </section>
+
+        <section id="section5" style="display:none;">
+            <div class="waiting-room-img">
+                
+            </div>
+            <p>you feel strange<br>are losing control...<br>or gaining it?</p>
+            <button class="button" onclick="next('section5', 'section6')">surrender to the power</button>
+        </section>
+
+        <section id="section6" style="display:none;">
+            <div class="waiting-room-img">
+                
+            </div>
+            <p>you wake up in a daze and find yourself somewhere strange and otherworldly<br>could this be... girlcrush world?</p>
+            <button class="button" onclick="goToBase()"">explore</button>
+        </section>
+
+        <!-- short way -->
+        <div class = "backdoor">
+            <button class = "skip" onclick="goToBase()">
+            <img class="img-default" src="images/door.png" />
+            <img class="img-hover" src="images/door-open.png" />
+            </button>
+            <p>back door</p>
+        </div>
+    </div>
+    <script>
+        // password 
+        /*if (!sessionStorage.getItem('verified')) {
+            window.location.replace('password.html');
+        }*/
+        // buttons next 
+        function next(hideId, showId, skipFade = false) {
+            if (skipFade != true) {
+                document.body.style.transition = 'opacity 1s ease';
+                document.body.style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById(hideId).style.display = 'none';
+                    document.getElementById(showId).style.display = 'flex';
+                    setTimeout(() => {
+                        document.body.style.opacity = '1';
+                    }, 50);
+                }, 1000);
+            } else {
+                document.getElementById(hideId).style.display = 'none';
+                document.getElementById(showId).style.display = 'flex';
+            }
+        }
+
+        function goToBase() {
+            document.body.style.transition = 'background-color 0.3s ease, opacity 0.5s ease';
+            document.body.style.backgroundColor = '#ffffff';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.replace('base.html?from=index');
+            }, 1000);
+        }
+
+        // back button reset page 
+
+        history.pushState({ page: 'index' }, '', location.href);
+        window.addEventListener('popstate', function(e) {
+            window.location.replace('index.html');
+        });
+
+        // stars
+
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        const stars = Array.from({ length: 150 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2,
+            speed: Math.random() * 0.2 + 0.05,            
+            opacity: Math.random(),
+            direction: Math.random() > 0.5 ? 1 : -1
+        }));
+
+        function drawStar(x, y, size, opacity) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.beginPath();
+            for (let i = 0; i < 5; i++) {
+                ctx.lineTo(
+                    Math.cos((18 + i * 72) * Math.PI / 180) * size,
+                    -Math.sin((18 + i * 72) * Math.PI / 180) * size
+                );
+                ctx.lineTo(
+                    Math.cos((54 + i * 72) * Math.PI / 180) * size * 0.4,
+                    -Math.sin((54 + i * 72) * Math.PI / 180) * size * 0.4
+                );
+            }
+            ctx.closePath();
+            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+                star.opacity += 0.02 * star.direction;
+                if (star.opacity >= 1 || star.opacity <= 0) star.direction *= -1;
+                star.y -= star.speed;
+                if (star.y <0) star.y = canvas.height;
+                
+                drawStar(star.x, star.y, star.size * 5, star.opacity);
+
+                
+            });
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+
+    </script>
+
+        <!-- <script>
+            // video fade in fade out loop
+            const video = document.querySelector('video');
+            video.removeAttribute('loop');
+
+            function update() {
+                if (video.readyState >=2 && video.duration) {
+                    const timeLeft = video.duration - video.currentTime;
+
+                    if (video.currentTime < 1) {
+                        // fade in
+                        video.style.opacity = video.currentTime / 1;
+                    } else if (timeLeft < 2) {
+                        // fade out
+                        video.style.opacity = timeLeft / 2;
+                    } else {
+                        video.style.opacity = '1';
+
+                    }
+
+                    if (timeLeft < 0.05) {
+                        video.style.opacity = '0';
+                        video.currentTime = 0;
+                        video.play();
+                    }
+                }
+                requestAnimationFrame(update);
+            }
+
+            video.addEventListener('canplay', function() {
+                video.play();
+                requestAnimationFrame(update);
+            }, {once: true});
+
+            // turn toni red after click
+            document.querySelector('.title').addEventListener('click', function(e) {
+                if (this.style.color === 'red') {
+                    this.style.color = '#f8abf3';
+                } else {
+                    this.style.color = 'red';
+                }
+            });
+        </script> -->
+
+</body>
+</html>

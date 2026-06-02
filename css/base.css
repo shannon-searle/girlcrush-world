@@ -1,0 +1,1174 @@
+
+
+/* ============================================================
+   TABLE OF CONTENTS
+   1. Reset
+   2. Body & Background
+   3. Decorative Elements (orb, glow, sparkles, dividers)
+   4. Animations
+   5. Site Title
+   6. Icon Tray
+   7. Popups — Base
+   8. Popups — Individual
+   9. Popup Chrome (titlebar, window, close button, message)
+   10. Avatar Editor
+   11. Start Bar
+   12. About Me
+   13. Cursor Heart Trail
+   14. Mobile (≤ 768px)
+   ============================================================ */
+
+
+/* ── 1. Reset ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('../images/cursors/cursor.cur'), auto;
+}
+
+
+/* ── 2. Body & Background ── */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5vh 5vw;
+    position: relative;
+    overflow-y: auto;
+    background:
+        url('../images/scrib3.png'),
+        url('../images/websitebackground2.jpg'),
+        linear-gradient(
+            160deg,
+            #fce4ec 0%,    /* blush pink */
+            #e8eaf6 30%,   /* lavender */
+            #e0f7fa 55%,   /* icy blue */
+            #f3e5f5 80%,   /* soft purple */
+            #fce4ec 100%
+        );
+    background-repeat: repeat, no-repeat;
+    background-size: 90vw, cover;
+    background-position: center, center;
+}
+
+html, body {
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* ── 3. Decorative Elements ── */
+
+/* Glowing orb */
+/* .orb {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; height: 400px;
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,0.2) 0%,
+        rgba(220,200,255,0.4) 40%,
+        transparent 80%
+    );
+    box-shadow:
+        0 0 40px 20px rgba(200,220,255,0.2),
+        0 0 80px 30px rgba(180,200,255,0.1);
+    border-radius: 50%;
+    z-index: 1;
+} */
+
+/* Bottom glow (sea reflection) */
+.bottom-glow {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 100px;
+    background: radial-gradient(
+        ellipse at center bottom,
+        rgba(180,230,200,0.6) 10%,
+        rgba(200,180,255,0.3) 40%,
+        transparent 100%
+    );
+    filter: blur(20px);
+    z-index: 1;
+}
+
+
+/* ── 4. Animations ── */
+
+@keyframes shake {
+    0%   { transform: translate(0, 0); }
+    10%  { transform: translate(-4px, 1px); }
+    20%  { transform: translate(2px, -3px); }
+    30%  { transform: translate(-1px, 4px); }
+    40%  { transform: translate(4px, -1px); }
+    50%  { transform: translate(-3px, 3px); }
+    60%  { transform: translate(1px, -4px); }
+    70%  { transform: translate(-4px, 2px); }
+    80%  { transform: translate(3px, 1px); }
+    90%  { transform: translate(-2px, -4px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes heart-fade {
+    0%   { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+
+/* ── 5. Site Title ── */
+
+.site-title {
+    font-size: clamp(2rem, 7vh, 6rem);
+    font-family: "Rubik Beastly", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: #eae4fb;
+    text-decoration: none;
+    align-self: center;
+    text-shadow: 0 0 10px #e166a0, 0 0 20px #e166a0, 0 0 40px #e166a0;
+    animation: shake 5.5s infinite;
+    margin-bottom: 5vh;
+    z-index: 100;
+    cursor: pointer;
+    text-align: center;
+}
+
+.site-title:hover  { animation: shake 0.1s infinite; }
+.site-title:active { color: rgb(121, 0, 88); }
+
+
+/* ── 6. Icon Tray ── */
+
+.icon-tray {
+    display: grid;
+    grid-template-columns: repeat(2, 70px);
+    gap: 20px;
+    z-index: 1;
+    position: fixed;
+    top: 25px;
+    left: 25px;
+}
+
+.icon:hover {
+    transform: scale(1.05);
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 8px;
+    text-align: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.icon button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+}
+
+.icon button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%),
+                linear-gradient(to right,  transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-composite: intersect;
+
+}
+
+.icon p {
+    color: rgb(100, 80, 120);
+    word-break: keep-all;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.icon span {
+    font-size: 40px;
+    cursor: pointer;
+}
+
+
+/* ── 7. Popups — Base ── */
+
+.popup {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    z-index: 2;
+}
+
+.popup.open {
+    display: flex;
+}
+
+
+/* ── 8. Popups — Individual ── */
+
+#welcome-popup {
+    top: 25%;
+    left: 35%;
+    width: 30vw;
+    height: 20vh;
+    min-height: 150px;
+    min-width: 500px;
+    margin-top: 0;
+}
+
+#avatar-popup {
+    top: 12%;
+    right: 5%;
+    width: 20vw;
+    height: 47vw;
+}
+
+#piano-popup {
+    top: 15%;
+    left: 15%;
+    width: 50vw;
+    height: auto;
+    min-height: 50px;
+    min-width: 150px;
+}
+
+#note-from-shan-popup {
+    top: 18%;
+    left: 45%;
+    width: 30vw;
+    height: auto;
+    z-index: 10;
+}
+
+#webmaster-popup {
+    top: 16%;
+    left: auto;
+    width: 800px;
+    height: 680px;
+    min-height: 50px;
+    min-width: 150px;
+    
+}
+
+#my-music-popup {
+    top: 40%;
+    left: 25%;
+    width: 20vw;
+    height: 20vh;
+    min-height: 150px;
+    min-width: 150px;
+    margin-top: 0;
+}
+
+#about-me-popup {
+    bottom: 50px;
+    left: 0;
+    width: 500px;
+    height: 420px;
+    z-index: 5000;
+}
+
+#image-gallery-popup {
+    top: 30%;
+    left: 55%;
+    width: 600px;
+    height: 600px; 
+    min-height: 150px;
+    min-width: 150px;
+}
+
+
+/* ── 9. Popup Chrome ── */
+
+/* Titlebar */
+.popup-titlebar {
+    background: #ffe0f0;
+    color: #d966a0;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-size: 12px;
+    padding: 8px 15px;
+    cursor: grab;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.popup-titlebar:active { cursor: grabbing; }
+
+#about-me-popup .popup-titlebar{
+    color: rgb(203, 232, 192);
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    cursor: grab;
+}
+
+#piano-popup .popup-titlebar{
+    background: rgb(0, 0, 0);
+    color: #ffffff;
+}
+
+/* Close button */
+.popup-close {
+    display: block;
+    margin: 0;
+    width: 30px;
+    height: 25px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    border-top: 2px solid rgba(255, 255, 255, 0.9);
+    border-left: 2px solid rgba(255, 255, 255, 0.9);
+    border-right: 2px solid rgba(0, 0, 0, 0.25);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+    font-family: "Press Start 2P", system-ui;
+    background: inherit;
+    color: inherit;
+    border-radius: 8px;
+}
+
+.button-bar .popup-close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    font-size: 10px;
+    color: rgb(255, 255, 255);
+}
+
+
+
+.popup-close:hover {
+    color: #ff3399;
+    background: #ffc0de;
+}
+
+.popup-window {
+    border-radius: 10px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Popup windows */
+#welcome-popup .popup-window {
+    background: #e0f7fa;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+}
+
+#avatar-popup .popup-window {
+    background: #e8e8e8;
+
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #9a9a9a;
+    border-bottom: 2px solid #9a9a9a;
+}
+
+#avatar-popup .popup-titlebar {
+    background: #d6d6d6;
+    color: #4f4f4f;
+}
+
+#piano-popup .popup-window {
+    background: url("../images/piano/background2.png") center / cover no-repeat, 
+        none;
+
+    display: flex;
+    flex-direction: column;
+    padding-top: 250px;
+    padding-left: 250px;
+    padding-right: 200px;
+    padding-bottom: 100px;
+    margin: 0;
+    gap: 0;
+}
+
+#webmaster-popup .popup-window {
+    background: url("../shan/background.jpeg") no-repeat center / cover;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+    flex: 1;
+    font-family: 'Nunito', sans-serif;
+    height: 100%;
+}
+
+#image-gallery-popup .popup-window {
+    background: none;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+    flex: 1;
+}
+
+#my-music-popup .popup-window {
+    background: rgba(220,200,255);
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+#about-me-popup .popup-window {
+    background: linear-gradient(160deg, #fff9fd 0%, #fef0ff 100%);
+    /* background: url("../video-game.jpeg") bottom / cover; */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #f7b8d8;
+    border-bottom: 2px solid #f7b8d8;
+    box-shadow:
+        0 8px 32px rgba(247, 150, 200, 0.25),
+        0 2px 8px rgba(200, 150, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Popup images */
+#about-me-popup img {
+    width: 60%;
+    height: auto;
+    display: block;
+    flex-shrink: 0;
+    padding: 16px;
+    box-sizing: border-box;
+    object-fit: cover;
+    object-position: top;
+    filter: drop-shadow(8px 8px 0px rgba(217, 102, 160, 0.5));
+    border-radius: 30px;
+}
+
+#note-from-shan-popup img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+#image-gallery-popup img {
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    display: block;
+    -webkit-user-drag: none;
+}
+
+/* Welcome message */
+.popup-message {
+    padding: 20px 20px;
+    color: rgb(56, 42, 70);
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-size: 10px;
+    line-height: 2;
+}
+
+
+/* ── 10. Avatar Editor ── */
+
+.avatar-editor {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap-reverse;
+    padding-top: 10px;
+    position: relative;
+}
+
+.avatar-canvas {
+    position: relative;
+    width: 15vw;
+    height: 15vw;
+    max-width: 400px;
+    margin: 0 auto;
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+.avatar-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.avatar-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+    padding: 0.5vw;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.avatar-controls button {
+    background: #e8e8e8;
+
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #9a9a9a;
+    border-bottom: 2px solid #9a9a9a;
+
+    cursor: pointer;
+    padding: 0;
+}
+
+.avatar-controls button:active {
+    border-top: 2px solid #9a9a9a;
+    border-left: 2px solid #9a9a9a;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+.avatar-controls button img {
+    width: clamp(10px, 30px, 60px);
+    height: clamp(10px, 30px, 60px);
+    display: block;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5vw;
+}
+
+.control-label {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 8px;
+    color: #4f4f4f;
+    width: 100%;
+}
+
+
+/* ── 11. Start Bar ── */
+
+.start-bar {
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    /* background: rgb(203, 232, 192, 0.7); */
+    /* background: linear-gradient(160deg, #fff9fd 0%, #fef0ff 100%); */
+    background: linear-gradient(
+        180deg,
+        #e0f7fa 0%,
+        #bdd9dc 100%
+    );
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 5000;
+    border: none;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 -2px 6px rgba(0, 0, 0, 0.10);
+}
+
+.start-bar #start-button {
+    background: #ffe0f0;
+    color: #d966a0;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 8px 10px;
+    border-radius: 14px;
+    box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 2px 0 rgba(0,0,0,0.1);
+    transition: 0.2s;
+}
+
+#start-button:hover {
+    color: #fcf6f9;
+    background: #d966a0;
+    transform: translateY(-2px) scale(1.04);
+}
+
+#start-button.open {
+    color: #fcf6f9;
+    background: #d966a0;
+}
+
+.button-bar {
+    box-shadow: inset 0 2px 4px rgba(203, 232, 192, 0.4);
+
+    background: #d2d1f7;
+    color: rgb(100, 80, 120);
+    font-family: "Press Start 2P", system-ui;
+    font-size: 8px;
+
+    padding: 10px;
+    margin: 8px 10px;
+    border-radius: 14px;
+
+    cursor: pointer;
+    display: none;
+    box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 2px 0 rgba(0,0,0,0.1);
+}
+
+.button-bar.open {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* ── 12. About Me ── */
+
+.about-me-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    justify-content: space-around;
+}
+
+.about-me-container2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
+.questions-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 12px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    line-height: 1.9;
+    background: rgba(255, 220, 240);
+    border-radius: 14px;
+    border: 1.5px solid #f7cfe4;
+    filter: drop-shadow(8px 8px 0px rgba(217, 102, 160, 0.35));
+}
+
+.questions-container.description {
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-style: italic;
+    color: #7a4060;
+    gap: 0;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #c966a0;
+    font-weight: 700;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #7a4060;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.likes-dis {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.likes-dis button {
+    flex: 1;
+    padding: 5px;
+    border-radius: 999px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.likes-dis button:first-child {
+    background: #ff9ec8;
+    color: white;
+    border: 2px solid #f7b8d8;
+    box-shadow: 0 3px 12px rgba(255, 110, 172, 0.5);
+}
+
+.likes-dis button:last-child {
+    background: #d8b8ff;
+    color: white;
+    border: 2px solid #d8b8ff;
+    box-shadow: 0 3px 12px rgba(184, 148, 245, 0.5);
+}
+
+.likes-dis button:hover {
+    transform: translateY(-2px) scale(1.04);
+}
+
+
+#likes-popup {
+        position: fixed;
+        bottom: 30%;
+        left: 30%;
+        width: 180px;
+        height:200px;
+        margin-top: 10px;
+        min-height: 0;
+        min-width: 0;
+        max-width: 100%;
+        font-family: 'Nunito', sans-serif;
+        z-index: 5001;
+}
+
+#dislikes-popup {
+        position: fixed;
+        width: 180px;
+        height:200px;
+        bottom: 8%;
+        left: 30%;
+        margin-top: 10px;
+        min-height: 0;
+        min-width: 0;
+        max-width: 100%;
+        font-family: 'Nunito', sans-serif;
+        z-index: 5001;
+}
+
+#likes-popup .popup-window, #dislikes-popup .popup-window {
+    background:  rgb(203, 232, 192);;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    flex: 1;
+    min-height: 0;
+    overflow-y: scroll;
+}
+
+#likes-popup .popup-window::-webkit-scrollbar,
+#dislikes-popup .popup-window::-webkit-scrollbar {
+    width: 8px;
+    background: #f8dce8;    /* makes the track always visible */
+}
+
+#likes-popup .popup-window::-webkit-scrollbar-thumb,
+#dislikes-popup .popup-window::-webkit-scrollbar-thumb {
+    background: #ff9ec8;
+    border-radius: 999px;
+}
+
+#likes-popup .popup-titlebar, #dislikes-popup .popup-titlebar {
+    color: rgb(255, 255, 255);
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+    padding: 5px 10px;
+    cursor: grab;
+}
+
+
+/* image-gallery */
+
+.image-gallery-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center; 
+    flex: 1;
+}
+
+.image-gallery-container button {
+    background: rgb(255, 250, 245);
+    border: none;
+    border-radius: 6px;
+    padding: 20px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px;
+    color: pink;
+    transition: transform 0.2s ease;
+}
+
+.image-gallery-container button:active {
+    background: rgb(249, 227, 232);
+    transform: scale(0.95);
+}
+
+
+/* blinkies */
+
+.blinkies {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30vw;
+    position: fixed;
+    bottom: 70px;
+    right: 18%;
+    gap: 17px;
+    z-index: 1;
+}
+
+.blinkies img {
+    width: 8vw;
+    height: auto;
+}
+
+/* ── 13. Cursor Heart Trail ── */
+
+.cursor-heart {
+    position: absolute;
+    font-size: 16px;
+    color: #e166a0;
+    pointer-events: none;
+    z-index: 9999;
+    animation: heart-fade 1s ease forwards;
+}
+
+.likes, .dislikes {
+    padding: 10px;
+    gap:10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* stars */
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* webmaster */
+
+#webmaster-popup img {
+    width: 200px;
+    height: auto;
+    display: block;
+}
+
+.webmaster-container button {
+    transition: transform 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.webmaster-container button:hover {
+    transform: scale(1.05);
+}
+
+.webmaster-container {
+    padding: 30px;
+    font-family: 'Nunito', sans-serif;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.shan-likes, .shan-dislikes {
+    background: rgba(188, 242, 242, 0.75);
+    height: auto;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px pink, 0px 0px 20px hotpink;
+}
+
+.webmaster-name {
+    background: rgba(183, 255, 255, 0.5);
+    height: auto;
+    width: fit-content;
+    padding: 10px;
+    margin-left: 40px;
+    border-radius: 15px;
+    box-shadow: 2px 1px 2px hotpink, -2px -1px 2px hotpink, -40px 1px 2px pink;
+}
+
+
+/* Piano */
+
+.piano-play {
+    position: relative;
+}
+
+.piano-play img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: auto;
+}
+
+.key {
+  position: absolute;
+  bottom: 3.5%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+  transform-origin: top; /* 👈 anchor at the top */
+  transition: transform 0.05s ease;
+}
+
+.key.pressed {
+  transform: scaleY(1.02); /* stretches downward */
+  background: rgb(249, 222, 234);
+}
+
+.black-key {
+    position: absolute;
+    top: 18%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    background: rgb(0, 0, 0);
+    transform-origin: top; /* 👈 anchor at the top */
+    transition: transform 0.05s ease; 
+}
+
+.black-key.pressed {
+  transform: scale(1.005) translateY(3px);
+  background: rgb(98, 0, 43);
+}
+
+/* epic gifs */
+#epicGif1 {
+    position: fixed;
+    bottom: 10%;
+    left: 40%;
+    height: 15%;
+    width: auto;
+}
+
+#epicGif3 {
+    position: fixed;
+    top: 8%;
+    left: 18%;
+    height: 10%;
+    width: auto;
+}
+
+#epic-gifs-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 0;             /* sits behind UI */
+    pointer-events: none;   /* doesn’t block clicks */
+}
+
+
+
+
+
+
+/* ============================================================
+   14. Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+    body {
+        padding: 3dvh 4vw;
+        background:
+            url('../images/mobile.png'),
+            linear-gradient(
+                160deg,
+                #fce4ec 0%,
+                #e8eaf6 30%,
+                #e0f7fa 55%,
+                #f3e5f5 80%,
+                #fce4ec 100%
+            );
+        background-repeat: repeat, no-repeat;
+        background-size: 100vw, cover;
+        background-position: center top, center;
+        background-attachment: scroll, scroll;
+    }
+
+    .site-title {
+        font-size: clamp(1.5rem, 10vw, 8rem);
+        word-break: break-word;
+        padding: 0 4vw;
+        margin-top: 2px;
+    }
+
+    .icon-tray {
+        z-index: 2;
+        left: 10%;
+        top: 15%;
+    }
+
+    .icon {
+        width: 45px;
+        font-size: 6px;
+        z-index: 2;
+    }
+
+    .icon p {
+        word-break: keep-all;
+        font-size: 8px;
+    }
+
+    .icon button {
+        width: 45px;
+        height: 45px;
+        background: transparent;
+        display: block;
+    }
+
+    .icon span {
+        font-size: 28px;
+    }
+
+    #welcome-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+        min-height: 0;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    #avatar-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    #piano-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    #my-music-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    #image-gallery-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .popup.open {
+        position: relative;
+        z-index: 1000;
+    }
+
+    .avatar-editor {
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 100%;
+    }
+
+    .avatar-canvas {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .avatar-controls {
+        flex-direction: column;
+        gap: 6px;
+        padding: 20px;
+        overflow-y: auto;
+        max-height: none;
+        width: 100%;
+    }
+
+    .control-group {
+        gap: 10px;
+        width: 100%;
+    }
+
+    .avatar-controls button img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .popup-message {
+        font-size: 8px;
+        padding: 10px;
+    }
+}

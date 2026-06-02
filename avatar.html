@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shannon Searle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Rubik+Beastly&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/avatar.css" />
+</head>
+<body class="page-base">
+
+    <a class="title" href="index.html">girlcrushworld</a>
+
+    <!-- desktop  -->
+    <div class="desktop">
+        <!-- desktop icon — shows when window is closed -->
+        <div class="desktop-icon">
+            <button onclick="window.location.href='base.html'">
+                <span>🖥</span>
+            </button>
+            <p>my computer</p>
+        </div>
+
+        <div class="avatar-icon">
+            <button onclick="window.location.href='avatar.html'">
+                <img src="images/pixel-avatar-button.png" alt="pixel avatar" />
+            </button>
+            <p>pixel avatar</p>
+        </div>
+    </div>
+
+    <!-- main window -->
+    <div class="window-container">
+        <button class="my-close">✕</button>
+
+        <!-- tabs -->
+        <div class="tab-container">
+            <nav class="tabs">
+                <a href="base.html" class="tab">Desktop</a>
+                <a href="#" class="tab">Art</a>
+                <a href="#" class="tab">Games</a>
+                <a href="#" class="tab">Music</a>
+                <a href="avatar.html" class="tab active">pixel avatar</a>
+                <a href="#" class="tab">blahh blahhh blahhhh</a>
+            </nav>
+        </div>
+
+        <!-- tab content -->
+        <div class="window">
+
+            <div class="main-panel">
+                <p>Dress me up!</p>
+            </div>
+
+            <!-- avatar and controls -->
+            <div class="avatar-wrapper">
+
+                <!-- customisation controls -->
+                <div class="controls">
+
+                    <!-- body -->
+                    <div class="body-controls">
+                        <p class="control-label">Body</p>
+                        <button onclick="changeLayer('layer-body', 'images/pixel-avatar/body-default.png')">
+                            <img src="images/pixel-avatar/body-default.png" alt="body 1" />
+                        </button>
+                        <button onclick="changeLayer('layer-body', 'images/pixel-avatar/body2.png')">
+                            <img src="images/pixel-avatar/body2.png" alt="body 2" />
+                        </button>
+                    </div>
+
+                    <!-- eyes -->
+                    <div class="eyes-controls">
+                        <p class="control-label">Eyes</p>
+                        <button onclick="changeLayer('layer-eyes', 'images/pixel-avatar/eyes-dark-blue.png')">
+                            <img src="images/pixel-avatar-thumb/eyes-dark-blue.png" alt="dark blue eyes" />
+                        </button>
+                        <button onclick="changeLayer('layer-eyes', 'images/pixel-avatar/eyes-red.png')">
+                            <img src="images/pixel-avatar-thumb/eyes-red.png" alt="red eyes" />
+                        </button>
+                        <button onclick="changeLayer('layer-eyes', 'images/pixel-avatar/eyes-brown.png')">
+                            <img src="images/pixel-avatar-thumb/eyes-brown.png" alt="brown eyes" />
+                        </button>
+                    </div>
+
+                    <!-- blush -->
+                    <div class="blush-controls">
+                        <p class="control-label">Blush</p>
+                        <button onclick="changeLayer('layer-blush', 'images/pixel-avatar/blush.png')">
+                            <img src="images/pixel-avatar-thumb/blush.png" alt="blush 1" />
+                        </button>
+                        <button onclick="changeLayer('layer-blush', 'images/pixel-avatar/blush2.png')">
+                            <img src="images/pixel-avatar-thumb/blush2.png" alt="blush 2" />
+                        </button>
+                    </div>
+
+                    <!-- hair -->
+                    <div class="hair-controls">
+                        <p class="control-label">Hair</p>
+                        <button onclick="changeLayer('layer-hair', 'images/pixel-avatar/red-hair-short.png')">
+                            <img src="images/pixel-avatar-thumb/red-hair-short.png" alt="short red hair" />
+                        </button>
+                        <button onclick="changeLayer('layer-hair', 'images/pixel-avatar/black-long-hair.png')">
+                            <img src="images/pixel-avatar-thumb/black-long-hair.png" alt="black long hair" />
+                        </button>
+                        <button onclick="changeLayer('layer-hair', 'images/pixel-avatar/brown-short-hair.png')">
+                            <img src="images/pixel-avatar-thumb/brown-short-hair.png" alt="brown short hair" />
+                        </button>
+                        <button onclick="changeLayer('layer-hair', 'images/pixel-avatar/toni-hair.png')">
+                            <img src="images/pixel-avatar-thumb/toni-hair.png" alt="toni1" />
+                        </button>
+                        <button onclick="changeLayer('layer-hair', 'images/pixel-avatar/toni-hair2.png')">
+                            <img src="images/pixel-avatar-thumb/toni-hair2.png" alt="toni2" />
+                        </button>
+                    </div>
+
+                    <!-- tops -->
+                    <div class="top-controls">
+                        <p class="control-label">Tops</p>
+                        <button onclick="changeLayer('layer-top', 'images/pixel-avatar/black-top-graphic.png')">
+                            <img src="images/pixel-avatar-thumb/black-top-graphic.png" alt="black graphic tee" />
+                        </button>
+                        <button onclick="changeLayer('layer-top', 'images/pixel-avatar/orange-tank.png')">
+                            <img src="images/pixel-avatar-thumb/orange-tank.png" alt="orange tank" />
+                        </button>
+                        <button onclick="changeLayer('layer-top', 'images/pixel-avatar/red-bra.png')">
+                            <img src="images/pixel-avatar-thumb/red-bra.png" alt="red bra" />
+                        </button>
+                        <button onclick="changeLayer('layer-top', 'images/pixel-avatar/pink-tee.png')">
+                            <img src="images/pixel-avatar-thumb/pink-tee.png" alt="pink tee" />
+                        </button>
+                    </div>
+
+                    <!-- bottoms -->
+                    <div class="bottom-controls">
+                        <p class="control-label">Bottoms</p>
+                        <button onclick="changeLayer('layer-bottoms', 'images/pixel-avatar/purple-pants.png')">
+                            <img src="images/pixel-avatar-thumb/purple-pants.png" alt="purple pants" />
+                        </button>
+                        <button onclick="changeLayer('layer-bottoms', 'images/pixel-avatar/purple-skirt.png')">
+                            <img src="images/pixel-avatar-thumb/purple-skirt.png" alt="purple skirt" />
+                        </button>
+                        <button onclick="changeLayer('layer-bottoms', 'images/pixel-avatar/grey-pants.png')">
+                            <img src="images/pixel-avatar-thumb/grey-pants.png" alt="grey pants" />
+                        </button>
+                        <button onclick="changeLayer('layer-bottoms', 'images/pixel-avatar/blue-shorts.png')">
+                            <img src="images/pixel-avatar-thumb/blue-shorts.png" alt="blue shorts" />
+                        </button>
+                    </div>
+
+                    <!-- shoes -->
+                    <div class="shoes-controls">
+                        <p class="control-label">Shoes</p>
+                        <button onclick="changeLayer('layer-shoes', 'images/pixel-avatar/shoes-black-basic.png')">
+                            <img src="images/pixel-avatar-thumb/shoes-black-basic.png" alt="black shoes" />
+                        </button>
+                        <button onclick="changeLayer('layer-shoes', 'images/pixel-avatar/brown-boots.png')">
+                            <img src="images/pixel-avatar-thumb/brown-boots.png" alt="brown boots" />
+                        </button>
+                        <button onclick="changeLayer('layer-shoes', 'images/pixel-avatar/blush-slides.png')">
+                            <img src="images/pixel-avatar-thumb/blush-slides.png" alt="blush-slides" />
+                        </button>
+                    </div>
+
+                    <!-- background -->
+                    <div class="background-controls">
+                        <p class="control-label">Background</p>
+                        <button onclick="changeLayer('layer-background', 'images/pixel-avatar/background-blue.png')">
+                            <img src="images/pixel-avatar/background-blue.png" alt="blue blackground" />
+                        </button>
+                        <button onclick="changeLayer('layer-background', 'images/pixel-avatar/background-pink.png')">
+                            <img src="images/pixel-avatar/background-pink.png" alt="pink blackground" />
+                        </button>
+                        <button onclick="changeLayer('layer-background', 'images/pixel-avatar/background-landscape.png')">
+                            <img src="images/pixel-avatar/background-landscape.png" alt="landscape blackground" />
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- avatar layers -->
+                <div class="avatar-container">
+                    <img src="images/pixel-avatar/background-landscape.png" class="avatar-layer" id="layer-background" />
+                    <img src="images/pixel-avatar/body-default.png" class="avatar-layer" id="layer-body" />
+                    <img src="images/pixel-avatar/blush.png" class="avatar-layer" id="layer-blush" />
+                    <img src="images/pixel-avatar/eyes-dark-blue.png" class="avatar-layer" id="layer-eyes" />
+                    <img src="images/pixel-avatar/mouth-default.png" class="avatar-layer" id="layer-mouth" />
+                    <img src="images/pixel-avatar/purple-pants.png" class="avatar-layer" id="layer-bottoms" />
+                    <img src="images/pixel-avatar/shoes-black-basic.png" class="avatar-layer" id="layer-shoes" />
+                    <img src="images/pixel-avatar/black-top-graphic.png" class="avatar-layer" id="layer-top" />
+                    <img src="images/pixel-avatar/red-hair-short.png" class="avatar-layer" id="layer-hair" />
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // heart trail
+        let count = 0;
+        document.addEventListener('mousemove', function(e) {
+            count++;
+            if (count % 5 !== 0) return;
+            const spark = document.createElement('div');
+            spark.className = 'spark';
+            spark.innerHTML = '♡';
+            spark.style.left = e.pageX + 'px';
+            spark.style.top = e.pageY + 'px';
+            document.body.appendChild(spark);
+            setTimeout(() => spark.remove(), 1000);
+        });
+
+        // layer swap
+        function changeLayer(layerId, newSrc) {
+            document.getElementById(layerId).src = newSrc;
+        }
+
+        // close window
+        const mainPanel = document.querySelector('.window-container');
+        const icon = document.getElementById('reopen-icon');
+
+        document.querySelector('.my-close').addEventListener('click', function() {
+            mainPanel.style.display = 'none';
+            icon.style.display = 'flex';
+        });
+
+    </script>
+
+</body>
+</html>

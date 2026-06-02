@@ -1,0 +1,362 @@
+/* ── Reset ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('/images/cursor.cur'), auto;
+}
+
+/* ── Body ── */
+body {
+    background-size: 300% 300%;
+    display: flex;
+    min-height: 100vh;
+    background:
+    linear-gradient(
+        160deg,
+        #e1e4f6 20%,
+        #e0f7fa 50%,
+        #e1e4f6 80%
+    );
+    
+    
+}
+
+/* ── Page container ── */
+.page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+}
+
+/* ── Sections ── */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3vh;
+    text-align: center;
+    padding: 2vh 2vw;
+}
+
+/* ── Title ── */
+.title {
+    font-family: "Rubik Beastly", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(2.5rem, 20vh, 8rem);
+    color: #e1e4f6;
+    text-decoration: none;
+    text-shadow: 0 0 10px #e166a0, 0 0 20px #e166a0, 0 0 40px #e166a0;
+    cursor: pointer;
+}
+
+#section1 .title { animation: shake 5.5s infinite; }
+#section1 .title:hover { animation: shake 0.1s infinite; }
+#section1 .title:active { color: rgb(121, 0, 88); }
+
+@keyframes shake {
+    0%   { transform: translate(0, 0); }
+    10%  { transform: translate(-4px, 1px); }
+    20%  { transform: translate(2px, -3px); }
+    30%  { transform: translate(-1px, 4px); }
+    40%  { transform: translate(4px, -1px); }
+    50%  { transform: translate(-3px, 3px); }
+    60%  { transform: translate(1px, -4px); }
+    70%  { transform: translate(-4px, 2px); }
+    80%  { transform: translate(3px, 1px); }
+    90%  { transform: translate(-2px, -4px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* ── Text ── */
+p {
+    color: #000000;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-size: 10px;
+    padding: 16px;
+    max-width: 40vw;
+    line-height: 2.5;
+    text-align: center;
+}
+
+/* ── Buttons ── */
+.button {
+    background: transparent;
+    color: #000000;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-size: 12px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.15), -1px 2px 3px rgba(0,0,0,0.15), 1px -1px 4px rgba(0,0,0,0.15);
+    border-radius: 5px;
+}
+
+.button:hover {
+    background: #e166a0;
+    color: #231111;
+}
+
+/* ── Video ── */
+video {
+    width: 45vw;
+    max-width: 800px;
+    margin-top: -10vh;
+}
+
+a { outline: none; }
+
+/* ── Stars ── */
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* waiting-room-img */
+.waiting-room-img {
+    background: rgba(26, 25, 25, 0.5);
+    width: 550px;
+    height: 650px;
+    border-radius: 10%;
+
+    /* animation: flickerShadowWhite 0.5s infinite steps(1, end); */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 80px rgb(0,0,0);
+}
+
+.waiting-room-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+
+    background-size: 2px 2px;
+}
+
+@keyframes flickerShadowBlack {
+    0% {
+        box-shadow:
+            inset 1px 0 42px rgba(0,0,0,0.10),
+            inset -1px 0 42px rgba(0,0,0,0.10),
+            inset 0 1px 42px rgba(0,0,0,0.10),
+            inset 0 -1px 42px rgba(0,0,0,0.10);
+    }
+
+    18% {
+        box-shadow:
+            inset 2px 0 48px rgba(0,0,0,0.12),
+            inset -2px 0 46px rgba(0,0,0,0.11),
+            inset 0 2px 46px rgba(0,0,0,0.11),
+            inset 0 -1px 52px rgba(0,0,0,0.10);
+    }
+
+    42% {
+        box-shadow:
+            inset 1px 0 55px rgba(0,0,0,0.14),
+            inset -2px 0 58px rgba(0,0,0,0.13),
+            inset 0 2px 55px rgba(0,0,0,0.13),
+            inset 0 -2px 58px rgba(0,0,0,0.11);
+    }
+
+    63% {
+        box-shadow:
+            inset 2px 0 46px rgba(0,0,0,0.11),
+            inset -1px 0 50px rgba(0,0,0,0.12),
+            inset 0 1px 48px rgba(0,0,0,0.11),
+            inset 0 -2px 50px rgba(0,0,0,0.10);
+    }
+
+    100% {
+        box-shadow:
+            inset 1px 0 42px rgba(0,0,0,0.10),
+            inset -1px 0 42px rgba(0,0,0,0.10),
+            inset 0 1px 42px rgba(0,0,0,0.10),
+            inset 0 -1px 42px rgba(0,0,0,0.10);
+    }
+}
+
+@keyframes flickerShadowWhite {
+    0% {
+        box-shadow:
+            /* outside dark depth */
+            0 10px 25px rgba(0,0,0,0.18),
+            0 2px 8px rgba(0,0,0,0.12),
+
+            /* inside white glow */
+            inset 1px 0 42px rgba(255,255,255,0.50),
+            inset -1px 0 42px rgba(255,255,255,0.50),
+            inset 0 1px 42px rgba(255,255,255,0.50),
+            inset 0 -1px 42px rgba(255,255,255,0.50);
+    }
+
+    18% {
+        box-shadow:
+            0 12px 30px rgba(0,0,0,0.22),
+            0 3px 10px rgba(0,0,0,0.14),
+
+            inset 2px 0 48px rgba(255,255,255,0.52),
+            inset -2px 0 46px rgba(255,255,255,0.51),
+            inset 0 2px 46px rgba(255,255,255,0.51),
+            inset 0 -1px 52px rgba(255,255,255,0.50);
+    }
+
+    42% {
+        box-shadow:
+            0 14px 35px rgba(0,0,0,0.26),
+            0 4px 12px rgba(0,0,0,0.16),
+
+            inset 1px 0 55px rgba(255,255,255,0.54),
+            inset -2px 0 58px rgba(255,255,255,0.53),
+            inset 0 2px 55px rgba(255,255,255,0.53),
+            inset 0 -2px 58px rgba(255,255,255,0.51);
+    }
+
+    63% {
+        box-shadow:
+            0 12px 30px rgba(0,0,0,0.22),
+            0 3px 10px rgba(0,0,0,0.14),
+
+            inset 2px 0 46px rgba(255,255,255,0.51),
+            inset -1px 0 50px rgba(255,255,255,0.52),
+            inset 0 1px 48px rgba(255,255,255,0.51),
+            inset 0 -2px 50px rgba(255,255,255,0.50);
+    }
+
+    100% {
+        box-shadow:
+            0 10px 25px rgba(0,0,0,0.18),
+            0 2px 8px rgba(0,0,0,0.12),
+
+            inset 1px 0 42px rgba(255,255,255,0.50),
+            inset -1px 0 42px rgba(255,255,255,0.50),
+            inset 0 1px 42px rgba(255,255,255,0.50),
+            inset 0 -1px 42px rgba(255,255,255,0.50);
+    }
+}
+
+/* ── Backdoor ── */
+.backdoor {
+    position: fixed;
+    right: 3%;
+    bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.backdoor p {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-size: 8px;
+    margin: 0;
+    padding: 1px;
+    max-width: none;
+    line-height: 1;
+}
+
+.skip {
+    background: none;
+    border: none;
+}
+
+.skip img {
+    width: 35px;
+    height: 40px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.skip .img-hover { display: none; }
+.skip:hover .img-default { display: none; }
+.skip:hover .img-hover { display: block; }
+
+.skip:hover img {
+    transform: scale(1.05) translateY(-3px);
+    filter: drop-shadow(0 0 6px #e166a0) drop-shadow(0 0 12px #e166a0) drop-shadow(0 0 24px #e166a0);
+    cursor: pointer;
+}
+
+/* ────────────────────────────────
+   MOBILE (≤ 768px)
+──────────────────────────────── */
+@media (max-width: 768px) {
+
+    .title {
+        font-size: clamp(1.5rem, 8vw, 4rem);
+        word-break: break-word;
+        padding: 0 4vw;
+    }
+
+    .page-container {
+        min-height: 100dvh;
+        align-items: stretch;
+    }
+
+    #section1 {
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    section {
+        padding: 4vh 6vw;
+        gap: 2vh;
+        min-height: 100dvh;
+        justify-content: center;
+    }
+
+    p {
+        max-width: 85vw;
+        font-size: 8px;
+        padding: 10px;
+    }
+
+    video {
+        width: 90vw;
+        margin-top: 0;
+    }
+
+    .button {
+        font-size: 10px;
+        padding: 10px 16px;
+    }
+
+    .backdoor {
+        right: 2%;
+        bottom: 2%;
+    }
+
+    .skip img {
+        width: 25px;
+        height: 30px;
+    }
+
+    .backdoor p {
+        font-size: 6px;
+    }
+
+    body {
+        min-height: 100dvh;
+
+    }
+}
