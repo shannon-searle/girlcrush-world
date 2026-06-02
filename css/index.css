@@ -129,11 +129,11 @@ a { outline: none; }
 /* waiting-room-img */
 .waiting-room-img {
     background: rgba(26, 25, 25, 0.5);
-    width: 550px;
-    height: 650px;
-    border-radius: 10%;
 
-    /* animation: flickerShadowWhite 0.5s infinite steps(1, end); */
+    width: clamp(250px, 40vw, 550px);
+    height: clamp(300px, 65vh, 650px);
+
+    border-radius: 10%;
     position: relative;
     overflow: hidden;
     box-shadow: 0 0 80px rgb(0,0,0);
