@@ -360,3 +360,81 @@ a { outline: none; }
 
     }
 }
+
+@media (max-width: 768px) {
+
+    /* ── prevent horizontal scroll issues ── */
+    body {
+        overflow-x: hidden;
+    }
+
+    .page-container {
+        min-height: 100dvh;
+        align-items: center;
+        justify-content: center;
+        padding: 2vh 4vw;
+    }
+
+    section {
+        width: 100%;
+        min-height: 100dvh;
+        padding: 3vh 5vw;
+        gap: 2vh;
+    }
+
+    /* ── Title scaling ── */
+    .title {
+        font-size: clamp(1.8rem, 10vw, 4rem);
+        text-align: center;
+        line-height: 1.1;
+    }
+
+    /* ── Text readability fix ── */
+    p {
+        max-width: 90vw;
+        font-size: 8px;
+        line-height: 2;
+        padding: 12px;
+    }
+
+    /* ── Waiting room scaling (IMPORTANT) ── */
+    .waiting-room-img {
+        width: 85vw;
+        height: 55vh;
+        max-height: 420px;
+        border-radius: 12%;
+    }
+
+    /* ── Video scaling ── */
+    video {
+        width: 90vw;
+        margin-top: 0;
+    }
+
+    /* ── Button improvements ── */
+    .button {
+        font-size: 10px;
+        padding: 10px 14px;
+    }
+
+    /* ── Backdoor positioning ── */
+    .backdoor {
+        right: 3%;
+        bottom: 2%;
+        transform: scale(0.9);
+    }
+
+    .skip img {
+        width: 28px;
+        height: 34px;
+    }
+
+    .backdoor p {
+        font-size: 6px;
+    }
+
+    /* ── Fix star canvas layering ── */
+    #stars {
+        opacity: 0.9;
+    }
+}
