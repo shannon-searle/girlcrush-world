@@ -253,8 +253,8 @@ html, body {
 #about-me-popup {
     bottom: 50px;
     left: 0;
-    width: clamp(320px, 35vw, 500px);
-    height: clamp(340px, 45vh, 420px);
+    width: clamp(300px, 20vw, 90vw);
+    height: auto;
     z-index: 5000;
 }
 
@@ -436,8 +436,8 @@ html, body {
 
 /* Popup images */
 #about-me-popup img {
-    width: 60%;
-    height: auto;
+    width: auto;
+    height: 100px;
     display: block;
     flex-shrink: 0;
     padding: 16px;
@@ -679,23 +679,29 @@ html, body {
 .about-me-container2 {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
+    gap: clamp(10px, 2vw, 20px);
+    padding: clamp(10px, 2vw, 20px);
+    width: 60%;
 }
 
 .questions-container {
     display: flex;
     flex-direction: row;
-    gap: 30px;
-    padding: 12px 14px;
+
+    gap: clamp(2px, 10px, 12px);          /* smaller range */
+    padding: clamp(6px, 10px, 10px);    /* tighter padding */
+
     font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    line-height: 1.9;
+    font-size: clamp(8px, 0.9vw, 12px);  /* shrinks more */
+    line-height: 1.4;                    /* slightly tighter */
+
     background: rgba(255, 220, 240);
-    border-radius: 14px;
+    border-radius: clamp(8px, 1vw, 14px);
     border: 1.5px solid #f7cfe4;
-    filter: drop-shadow(8px 8px 0px rgba(217, 102, 160, 0.35));
+
+    filter: drop-shadow(6px 6px 0px rgba(217, 102, 160, 0.3));
+
+    max-width: 100%;
 }
 
 .questions-container.description {
@@ -707,27 +713,23 @@ html, body {
 }
 
 .questions {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     color: #c966a0;
     font-weight: 700;
+    text-wrap: nowrap;
 }
 
 .answers {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: flex-start;
     color: #7a4060;
     font-weight: 600;
     margin-left: 10px;
 }
 
+
 .likes-dis {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: clamp(5px, 10px, 10px);
 }
 
 .likes-dis button {
