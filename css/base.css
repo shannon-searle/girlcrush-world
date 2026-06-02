@@ -222,9 +222,8 @@ html, body {
 /* ── 8. Popups — Individual ── */
 
 #welcome-popup {
-    top: 42%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 22%;
+    left: 22%;
     width: 25vw;
     height: fit-content;
     min-height: 150px;
@@ -496,6 +495,40 @@ html, body {
     height: auto;
     display: block;
     -webkit-user-drag: none;
+}
+
+/* sticky note */
+.sticky-note-thankyou p {
+    color: rgb(56, 42, 70);
+    font-family: "Quicksand", sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.sticky-note-thankyou img {
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    width: 80px;
+    height: 80px;
+    padding: 0;
+}
+
+.sticky-note-thankyou {
+    background: rgba(255, 220, 240);
+    /* soft paper shadow */
+    box-shadow:
+        2px 4px 10px rgba(0,0,0,0.2);
+    
+    /* slight tilt */
+    transform: rotate(-2deg);
+    padding: 15px 15px 5px 30px;
+    width: 260px;
+    height: auto;
+    bottom: -30%;
+    right: -30%;
+    position: absolute;
 }
 
 /* Welcome message */
