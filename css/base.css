@@ -1056,7 +1056,14 @@ html, body {
     pointer-events: none;   /* doesn’t block clicks */
 }
 
-
+.princess-of-the-inside {
+    position: fixed;
+    top: 20%;
+    right: 30%;
+    width: 300px;
+    height: auto;
+    z-index: 0;
+}
 
 
 
