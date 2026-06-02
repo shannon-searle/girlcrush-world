@@ -1,5 +1,3 @@
-
-
 /* ============================================================
    TABLE OF CONTENTS
    1. Reset
@@ -15,7 +13,7 @@
    11. Start Bar
    12. About Me
    13. Cursor Heart Trail
-   14. e (≤ 768px)
+   14. Mobile (≤ 768px)
    ============================================================ */
 
 
@@ -42,10 +40,10 @@ body {
         url('../images/websitebackground2.jpg'),
         linear-gradient(
             160deg,
-            #fce4ec 0%,    /* blush pink */
-            #e8eaf6 30%,   /* lavender */
-            #e0f7fa 55%,   /* icy blue */
-            #f3e5f5 80%,   /* soft purple */
+            #fce4ec 0%,
+            #e8eaf6 30%,
+            #e0f7fa 55%,
+            #f3e5f5 80%,
             #fce4ec 100%
         );
     background-repeat: repeat, no-repeat;
@@ -60,28 +58,9 @@ html, body {
     -ms-user-select: none;
 }
 
+
 /* ── 3. Decorative Elements ── */
 
-/* Glowing orb */
-/* .orb {
-    position: absolute;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px; height: 400px;
-    background: radial-gradient(
-        circle,
-        rgba(255,255,255,0.2) 0%,
-        rgba(220,200,255,0.4) 40%,
-        transparent 80%
-    );
-    box-shadow:
-        0 0 40px 20px rgba(200,220,255,0.2),
-        0 0 80px 30px rgba(180,200,255,0.1);
-    border-radius: 50%;
-    z-index: 1;
-} */
-
-/* Bottom glow (sea reflection) */
 .bottom-glow {
     position: absolute;
     bottom: 10%;
@@ -125,7 +104,7 @@ html, body {
 /* ── 5. Site Title ── */
 
 .site-title {
-    font-size: clamp(2rem, 7vh, 6rem);
+    font-size: clamp(1.5rem, 7vh, 6rem);
     font-family: "Rubik Beastly", system-ui;
     font-weight: 400;
     font-style: normal;
@@ -190,7 +169,6 @@ html, body {
     mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%),
                 linear-gradient(to right,  transparent 0%, black 5%, black 95%, transparent 100%);
     mask-composite: intersect;
-
 }
 
 .icon p {
@@ -212,6 +190,9 @@ html, body {
     flex-direction: column;
     position: fixed;
     z-index: 2;
+    /* Never allow a popup to exceed the viewport */
+    max-width: min(95vw, 100%);
+    max-height: min(92vh, 100%);
 }
 
 .popup.open {
@@ -222,74 +203,66 @@ html, body {
 /* ── 8. Popups — Individual ── */
 
 #welcome-popup {
-    top: 22%;
-    left: 22%;
-    width: 25vw;
+    top: min(22%, 85vh);
+    left: min(22%, 80vw);
+    width: clamp(280px, 25vw, 420px);
     height: fit-content;
     min-height: 150px;
-    min-width: 300px;
-    margin-top: 0;
 }
 
 #avatar-popup {
-    top: 12%;
+    top: 5%;
     right: 5%;
-    width: 20vw;
-    height: 47vw;
+    width: clamp(180px, 20vw, 320px);
+    /* height scales with width via aspect-ratio; fallback clamp */
+    height: auto;
+    max-height: 90vh;
 }
 
 #piano-popup {
-    top: 15%;
-    left: 15%;
-    width: 50vw;
+    top: min(15%, 80vh);
+    left: min(15%, 75vw);
+    width: clamp(300px, 50vw, 800px);
     height: auto;
     min-height: 50px;
-    min-width: 150px;
 }
 
 #note-from-shan-popup {
-    top: 18%;
-    left: 45%;
-    width: 30vw;
+    top: min(18%, 80vh);
+    left: min(45%, 75vw);
+    width: clamp(240px, 30vw, 500px);
     height: auto;
     z-index: 10;
 }
 
 #webmaster-popup {
-    top: 16%;
-    left: auto;
-    width: 800px;
-    height: 680px;
-    min-height: 50px;
-    min-width: 150px;
-    
+    top: min(15%, 80vh);
+    left: min(5%, 60vw);
+    width: 50vw;
+    height: 70vh;
 }
 
 #my-music-popup {
-    top: 40%;
-    left: 25%;
-    width: 20vw;
-    height: 20vh;
-    min-height: 150px;
-    min-width: 150px;
+    top: min(40%, 80vh);
+    left: min(25%, 75vw);
+    width: clamp(200px, 20vw, 360px);
+    height: clamp(150px, 20vh, 280px);
     margin-top: 0;
 }
 
 #about-me-popup {
     bottom: 50px;
     left: 0;
-    width: 500px;
-    height: 420px;
+    width: clamp(320px, 35vw, 500px);
+    height: clamp(340px, 45vh, 420px);
     z-index: 5000;
 }
 
 #image-gallery-popup {
-    top: 30%;
-    left: 55%;
-    width: 600px;
-    height: 600px; 
-    min-height: 150px;
-    min-width: 150px;
+    top: min(30%, 65vh);
+    left: min(35%, 70vw);
+    width: clamp(280px, 50vw, 1000px);
+    height: clamp(280px, 40vw, 600px);
 }
 
 
@@ -314,7 +287,7 @@ html, body {
 
 .popup-titlebar:active { cursor: grabbing; }
 
-#about-me-popup .popup-titlebar{
+#about-me-popup .popup-titlebar {
     color: rgb(203, 232, 192);
     font-family: 'Nunito', sans-serif;
     font-size: 13px;
@@ -324,7 +297,7 @@ html, body {
     cursor: grab;
 }
 
-#piano-popup .popup-titlebar{
+#piano-popup .popup-titlebar {
     background: rgb(0, 0, 0);
     color: #ffffff;
 }
@@ -359,8 +332,6 @@ html, body {
     color: rgb(255, 255, 255);
 }
 
-
-
 .popup-close:hover {
     color: #ff3399;
     background: #ffc0de;
@@ -385,7 +356,6 @@ html, body {
 
 #avatar-popup .popup-window {
     background: #e8e8e8;
-
     border-top: 2px solid #ffffff;
     border-left: 2px solid #ffffff;
     border-right: 2px solid #9a9a9a;
@@ -398,15 +368,11 @@ html, body {
 }
 
 #piano-popup .popup-window {
-    background: url("../images/piano/background2.png") center / cover no-repeat, 
-        none;
-
+    background: url("../images/piano/background2.png") center / cover no-repeat;
     display: flex;
     flex-direction: column;
-    padding-top: 250px;
-    padding-left: 250px;
-    padding-right: 200px;
-    padding-bottom: 100px;
+    /* responsive padding instead of fixed px */
+    padding: 20% 18% 10%;
     margin: 0;
     gap: 0;
 }
@@ -425,6 +391,8 @@ html, body {
     flex: 1;
     font-family: 'Nunito', sans-serif;
     height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #image-gallery-popup .popup-window {
@@ -454,7 +422,6 @@ html, body {
 
 #about-me-popup .popup-window {
     background: linear-gradient(160deg, #fff9fd 0%, #fef0ff 100%);
-    /* background: url("../video-game.jpeg") bottom / cover; */
     border-top: 2px solid #ffffff;
     border-left: 2px solid #ffffff;
     border-right: 2px solid #f7b8d8;
@@ -465,6 +432,7 @@ html, body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow-y: auto;
 }
 
 /* Popup images */
@@ -518,11 +486,7 @@ html, body {
 
 .sticky-note-thankyou {
     background: rgba(255, 220, 240);
-    /* soft paper shadow */
-    box-shadow:
-        2px 4px 10px rgba(0,0,0,0.2);
-    
-    /* slight tilt */
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
     transform: rotate(-2deg);
     padding: 15px 15px 5px 30px;
     width: 260px;
@@ -559,9 +523,8 @@ html, body {
 
 .avatar-canvas {
     position: relative;
-    width: 15vw;
-    height: 15vw;
-    max-width: 400px;
+    width: clamp(100px, 15vw, 260px);
+    height: clamp(100px, 15vw, 260px);
     margin: 0 auto;
     border-top: 2px solid #808080;
     border-left: 2px solid #808080;
@@ -588,12 +551,10 @@ html, body {
 
 .avatar-controls button {
     background: #e8e8e8;
-
     border-top: 2px solid #ffffff;
     border-left: 2px solid #ffffff;
     border-right: 2px solid #9a9a9a;
     border-bottom: 2px solid #9a9a9a;
-
     cursor: pointer;
     padding: 0;
 }
@@ -633,8 +594,6 @@ html, body {
     width: 100vw;
     height: 50px;
     display: flex;
-    /* background: rgb(203, 232, 192, 0.7); */
-    /* background: linear-gradient(160deg, #fff9fd 0%, #fef0ff 100%); */
     background: linear-gradient(
         180deg,
         #e0f7fa 0%,
@@ -662,9 +621,10 @@ html, body {
     margin: 8px 10px;
     border-radius: 14px;
     box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.6),
-    0 2px 0 rgba(0,0,0,0.1);
+        inset 0 1px 0 rgba(255,255,255,0.6),
+        0 2px 0 rgba(0,0,0,0.1);
     transition: 0.2s;
+    white-space: nowrap;
 }
 
 #start-button:hover {
@@ -680,21 +640,22 @@ html, body {
 
 .button-bar {
     box-shadow: inset 0 2px 4px rgba(203, 232, 192, 0.4);
-
     background: #d2d1f7;
     color: rgb(100, 80, 120);
     font-family: "Press Start 2P", system-ui;
-    font-size: 8px;
-
+    font-size: clamp(6px, 0.7vw, 8px);
     padding: 10px;
     margin: 8px 10px;
     border-radius: 14px;
-
     cursor: pointer;
     display: none;
     box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.6),
-    0 2px 0 rgba(0,0,0,0.1);
+        inset 0 1px 0 rgba(255,255,255,0.6),
+        0 2px 0 rgba(0,0,0,0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20vw;
 }
 
 .button-bar.open {
@@ -800,37 +761,36 @@ html, body {
     transform: translateY(-2px) scale(1.04);
 }
 
-
 #likes-popup {
-        position: fixed;
-        bottom: 30%;
-        left: 30%;
-        width: 180px;
-        height:200px;
-        margin-top: 10px;
-        min-height: 0;
-        min-width: 0;
-        max-width: 100%;
-        font-family: 'Nunito', sans-serif;
-        z-index: 5001;
+    position: fixed;
+    bottom: 30%;
+    left: 30%;
+    width: clamp(140px, 14vw, 180px);
+    height: clamp(160px, 18vh, 200px);
+    margin-top: 10px;
+    min-height: 0;
+    min-width: 0;
+    max-width: 90vw;
+    font-family: 'Nunito', sans-serif;
+    z-index: 5001;
 }
 
 #dislikes-popup {
-        position: fixed;
-        width: 180px;
-        height:200px;
-        bottom: 8%;
-        left: 30%;
-        margin-top: 10px;
-        min-height: 0;
-        min-width: 0;
-        max-width: 100%;
-        font-family: 'Nunito', sans-serif;
-        z-index: 5001;
+    position: fixed;
+    width: clamp(140px, 14vw, 180px);
+    height: clamp(160px, 18vh, 200px);
+    bottom: 8%;
+    left: 30%;
+    margin-top: 10px;
+    min-height: 0;
+    min-width: 0;
+    max-width: 90vw;
+    font-family: 'Nunito', sans-serif;
+    z-index: 5001;
 }
 
 #likes-popup .popup-window, #dislikes-popup .popup-window {
-    background:  rgb(203, 232, 192);;
+    background: rgb(203, 232, 192);
     border-top: 2px solid #ffffff;
     border-left: 2px solid #ffffff;
     border-right: 2px solid #808080;
@@ -843,7 +803,7 @@ html, body {
 #likes-popup .popup-window::-webkit-scrollbar,
 #dislikes-popup .popup-window::-webkit-scrollbar {
     width: 8px;
-    background: #f8dce8;    /* makes the track always visible */
+    background: #f8dce8;
 }
 
 #likes-popup .popup-window::-webkit-scrollbar-thumb,
@@ -868,7 +828,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
     flex: 1;
 }
 
@@ -895,7 +855,7 @@ html, body {
 .blinkies {
     display: flex;
     flex-wrap: wrap;
-    width: 30vw;
+    width: clamp(160px, 30vw, 480px);
     position: fixed;
     bottom: 70px;
     right: 18%;
@@ -904,9 +864,10 @@ html, body {
 }
 
 .blinkies img {
-    width: 8vw;
+    width: clamp(60px, 8vw, 130px);
     height: auto;
 }
+
 
 /* ── 13. Cursor Heart Trail ── */
 
@@ -921,7 +882,7 @@ html, body {
 
 .likes, .dislikes {
     padding: 10px;
-    gap:10px;
+    gap: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -940,7 +901,7 @@ html, body {
 /* webmaster */
 
 #webmaster-popup img {
-    width: 200px;
+    width: clamp(100px, 20vh, 200px);
     height: auto;
     display: block;
 }
@@ -958,7 +919,7 @@ html, body {
 }
 
 .webmaster-container {
-    padding: 30px;
+    padding: clamp(2px, 2vh, 30px);
     font-family: 'Nunito', sans-serif;
     gap: 20px;
     display: flex;
@@ -967,14 +928,21 @@ html, body {
     height: 100%;
 }
 
+.webmaster-container p {
+    color: rgb(0, 0, 0);
+    font-size: clamp(8px, 1.5vh, 14px);
+    line-height: 1.6;
+}
+
 .shan-likes, .shan-dislikes {
     background: rgba(188, 242, 242, 0.75);
     height: auto;
     width: fit-content;
-    padding: 20px;
+    padding: clamp(8px, 1vh, 20px);
     border-radius: 20px;
     box-shadow: 0px 4px 8px pink, 0px 0px 20px hotpink;
 }
+
 
 .webmaster-name {
     background: rgba(183, 255, 255, 0.5);
@@ -994,27 +962,27 @@ html, body {
 }
 
 .piano-play img {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%; 
-  height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
 }
 
 .key {
-  position: absolute;
-  bottom: 3.5%;
-  height: 100%;
-  border: none;
-  cursor: pointer;
-  background: rgb(255, 255, 255);
-  transform-origin: top; /* 👈 anchor at the top */
-  transition: transform 0.05s ease;
+    position: absolute;
+    bottom: 3.5%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    transform-origin: top;
+    transition: transform 0.05s ease;
 }
 
 .key.pressed {
-  transform: scaleY(1.02); /* stretches downward */
-  background: rgb(249, 222, 234);
+    transform: scaleY(1.02);
+    background: rgb(249, 222, 234);
 }
 
 .black-key {
@@ -1024,13 +992,13 @@ html, body {
     border: none;
     cursor: pointer;
     background: rgb(0, 0, 0);
-    transform-origin: top; /* 👈 anchor at the top */
-    transition: transform 0.05s ease; 
+    transform-origin: top;
+    transition: transform 0.05s ease;
 }
 
 .black-key.pressed {
-  transform: scale(1.005) translateY(3px);
-  background: rgb(98, 0, 43);
+    transform: scale(1.005) translateY(3px);
+    background: rgb(98, 0, 43);
 }
 
 /* epic gifs */
@@ -1053,24 +1021,62 @@ html, body {
 #epic-gifs-popup {
     position: fixed;
     inset: 0;
-    z-index: 0;             /* sits behind UI */
-    pointer-events: none;   /* doesn’t block clicks */
+    z-index: 0;
+    pointer-events: none;
 }
 
 .princess-of-the-inside {
     position: fixed;
     top: 20%;
     right: 25%;
-    width: 300px;
+    width: clamp(160px, 20vw, 300px);
     height: auto;
     z-index: 0;
 }
 
 
+/* ============================================================
+   Mid-size screens (13"–14" laptops, small desktop windows)
+   ~900px–1200px — clamp() handles most of this automatically,
+   but these tweaks ensure nothing overflows or overlaps.
+   ============================================================ */
+@media (max-width: 1100px) {
+
+    /* Re-anchor popups that could run off the right/bottom edge */
+    #webmaster-popup {
+        left: min(8%, 50vw);
+        top: min(12%, 75vh);
+    }
+
+    #image-gallery-popup {
+        left: min(48%, 55vw);
+        top: min(25%, 60vh);
+    }
+
+    #note-from-shan-popup {
+        left: min(40%, 65vw);
+    }
+
+    #avatar-popup {
+        top: 5%;
+        right: 5%;
+    }
+
+    /* Blinkies can crowd the taskbar on smaller screens */
+    .blinkies {
+        right: 10%;
+        bottom: 65px;
+    }
+
+    /* Piano padding needs room to breathe */
+    #piano-popup .popup-window {
+        padding: 18% 15% 8%;
+    }
+}
 
 
 /* ============================================================
-   14. Mobile (≤ 768px)
+   Mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
     html, body {
@@ -1132,55 +1138,21 @@ html, body {
         font-size: 28px;
     }
 
-    #welcome-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: 100%;
-        height: auto;
-        margin-top: 10px;
-        min-height: 0;
-        min-width: 0;
-        max-width: 100%;
-    }
-
-
-    #avatar-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        transform: none;
-        width: 100%;
-        height: auto;
-        margin-top: 10px;
-    }
-
-    #piano-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: 100%;
-        height: auto;
-        margin-top: 10px;
-    }
-
-    #my-music-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: 100%;
-        height: auto;
-        margin-top: 10px;
-    }
-
+    #welcome-popup,
+    #avatar-popup,
+    #piano-popup,
+    #my-music-popup,
     #image-gallery-popup {
         position: relative;
         top: auto;
         left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
         width: 100%;
         height: auto;
         margin-top: 10px;
+        max-width: 100%;
     }
 
     .popup.open {
@@ -1222,4 +1194,37 @@ html, body {
         font-size: 8px;
         padding: 10px;
     }
+
+    #piano-popup .popup-window {
+        padding: 30% 12% 12%;
+    }
+
+    .blinkies {
+        display: none;
+    }
+
+    .princess-of-the-inside {
+        display: none;
+    }
+
+    #about-me-popup {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .sticky-note-thankyou {
+    background: rgba(255, 220, 240);
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+    transform: rotate(-2deg);
+    padding: 15px 15px 5px 30px;
+    width: 260px;
+    height: auto;
+    bottom: -35%;
+    right: 0;
+    position: absolute;
+}
 }
