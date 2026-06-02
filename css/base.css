@@ -390,7 +390,7 @@ html, body {
     flex: 1;
     font-family: 'Nunito', sans-serif;
     height: 100%;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
 }
 
