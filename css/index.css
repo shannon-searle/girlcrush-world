@@ -47,14 +47,19 @@ section {
 
 /* ── Title ── */
 .title {
-    font-family: "Rubik Beastly", system-ui;
-    font-weight: 400;
-    font-style: normal;
-    font-size: clamp(2.5rem, 20vh, 8rem);
-    color: #e1e4f6;
-    text-decoration: none;
-    text-shadow: 0 0 10px #e166a0, 0 0 20px #e166a0, 0 0 40px #e166a0;
+    /* font-family: "Rubik Beastly", system-ui; */
+    /* font-weight: 400; */
+    /* font-style: normal; */
+    /* font-size: clamp(2.5rem, 20vh, 8rem); */
+    /* color: #e1e4f6; */
+    /* text-decoration: none; */
+    /* text-shadow: 0 0 10px #e166a0, 0 0 20px #e166a0, 0 0 40px #e166a0; */
     cursor: pointer;
+}
+
+.title{
+    width: 50vw;
+    height: auto;
 }
 
 #section1 .title { animation: shake 5.5s infinite; }

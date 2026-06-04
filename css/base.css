@@ -104,19 +104,24 @@ html, body {
 /* ── 5. Site Title ── */
 
 .site-title {
-    font-size: clamp(1.5rem, 7vh, 6rem);
+    /* font-size: clamp(1.5rem, 7vh, 6rem);
     font-family: "Rubik Beastly", system-ui;
     font-weight: 400;
     font-style: normal;
     color: #eae4fb;
-    text-decoration: none;
+    text-decoration: none; */
     align-self: center;
-    text-shadow: 0 0 10px #e166a0, 0 0 20px #e166a0, 0 0 40px #e166a0;
-    animation: shake 5.5s infinite;
+    /* text-shadow: 0 0 10px #e166a0, 0 0 20px #e166a0, 0 0 40px #e166a0; */
+    /* animation: shake 5.5s infinite; */
     margin-bottom: 5vh;
     z-index: 100;
     cursor: pointer;
     text-align: center;
+}
+
+.site-title{
+    width: 30vw;
+    height: auto;
 }
 
 .site-title:hover  { animation: shake 0.1s infinite; }
