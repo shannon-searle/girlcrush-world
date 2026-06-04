@@ -309,6 +309,8 @@ a { outline: none; }
         font-size: clamp(1.5rem, 8vw, 4rem);
         word-break: break-word;
         padding: 0 4vw;
+        width: 90vw;
+        height: auto;
     }
 
     .page-container {
