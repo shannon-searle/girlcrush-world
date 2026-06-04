@@ -1053,7 +1053,7 @@ html, body {
     position: fixed;
     top: 20%;
     right: 25%;
-    width: clamp(160px, 20vw, 300px);
+    width: clamp(160px, 30vw, 300px);
     height: auto;
     z-index: 0;
 }
