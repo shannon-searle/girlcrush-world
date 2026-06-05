@@ -594,9 +594,17 @@
             setTimeout(() => key.classList.remove("pressed"), 200);
         }
 
-        document.addEventListener("pointerdown", async (e) => {
-            await Tone.start();
-            isPointerDown = true;
+
+        document.querySelectorAll(".key, .black-key").forEach(key => {
+            key.addEventListener("pointerdown", (e) => {
+                isPointerDown = true; // set it here, not on document
+                Tone.start().then(() => {
+                    if (e.pointerId !== undefined) {
+                        try { key.releasePointerCapture(e.pointerId); } catch (_) {}
+                    }
+                    playKey(key);
+                });
+            });
         });
 
         document.addEventListener("pointerup", () => {
@@ -610,16 +618,6 @@
             if (!el) return;
             const key = el.closest(".key, .black-key");
             playKey(key);
-        });
-
-       document.querySelectorAll(".key, .black-key").forEach(key => {
-            key.addEventListener("pointerdown", async (e) => {
-                await Tone.start(); // must be inside the gesture handler on iOS
-                if (e.pointerId !== undefined) {
-                    try { key.releasePointerCapture(e.pointerId); } catch (_) {}
-                }
-                playKey(key);
-            });
         });
 
 
