@@ -132,7 +132,7 @@ html, body {
     transform: translateY(-1px) scale(1.01);
     filter: drop-shadow(0 0 12px rgba(224, 247, 250, 0.5));
 }
-.site-title:active { color: rgb(121, 0, 88); }
+/* .site-title:active { color: rgb(121, 0, 88); } */
 
 
 /* ── 6. Icon Tray ── */

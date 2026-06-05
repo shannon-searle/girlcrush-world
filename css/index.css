@@ -59,11 +59,22 @@ section {
 .title{
     width: 50vw;
     height: auto;
+    filter:
+        drop-shadow(0 0 5px #e166a0)
+        drop-shadow(0 0 15px #e166a0)
+        drop-shadow(0 0 30px #e166a0);
+    transition: transform 1s ease;
 }
 
-#section1 .title { animation: shake 5.5s infinite; }
-#section1 .title:hover { animation: shake 0.1s infinite; }
-#section1 .title:active { color: rgb(121, 0, 88); }
+#section1 { animation: shake 5.5s infinite; }
+
+
+#section1 .title:hover {
+    transform:
+        translateY(-8px)
+        scale(1.03);
+}
+
 
 @keyframes shake {
     0%   { transform: translate(0, 0); }
