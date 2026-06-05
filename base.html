@@ -571,6 +571,7 @@
         /* ------------------------------------------
            piano
         ------------------------------------------ */
+        
         const piano = new Tone.Sampler({
             urls: {
                 C4: "C4.mp3",
@@ -611,9 +612,9 @@
             playKey(key);
         });
 
-        document.querySelectorAll(".key, .black-key").forEach(key => {
-            key.addEventListener("pointerdown", (e) => {
-                // Release capture so pointermove fires on document, not just this element
+       document.querySelectorAll(".key, .black-key").forEach(key => {
+        key.addEventListener("pointerdown", (e) => {
+            console.log("key touched:", key.dataset.note);
                 if (e.pointerId !== undefined) {
                     try { key.releasePointerCapture(e.pointerId); } catch (_) {}
                 }
