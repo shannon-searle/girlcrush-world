@@ -1185,8 +1185,7 @@ html, body {
     #welcome-popup,
     #avatar-popup,
     #piano-popup,
-    #my-music-popup,
-    #webmaster-popup {
+    #my-music-popup{
         position: relative;
         top: auto;
         left: auto;
@@ -1199,6 +1198,21 @@ html, body {
         max-width: 100%;
         max-height: none;
         
+    }
+
+    #webmaster-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+        width: 50%;
+        height: auto;
+        margin-top: 10px;
+        max-width: 100%;
+        max-height: none;
+
     }
 
     #image-gallery-popup img {
@@ -1327,6 +1341,22 @@ html, body {
         flex-direction: column;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+
+    #webmaster-popup img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .webmaster-name {
+        background: rgba(183, 255, 255, 0.5);
+        height: auto;
+        width: fit-content;
+        padding: 10px;
+        margin-left: 40px;
+        border-radius: 15px;
+        box-shadow: 2px 1px 2px hotpink, -2px -1px 2px hotpink, -40px 1px 2px pink;
     }
 
     .field-border {
