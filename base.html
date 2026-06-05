@@ -613,8 +613,8 @@
         });
 
        document.querySelectorAll(".key, .black-key").forEach(key => {
-        key.addEventListener("pointerdown", (e) => {
-            console.log("key touched:", key.dataset.note);
+            key.addEventListener("pointerdown", async (e) => {
+                await Tone.start(); // must be inside the gesture handler on iOS
                 if (e.pointerId !== undefined) {
                     try { key.releasePointerCapture(e.pointerId); } catch (_) {}
                 }
