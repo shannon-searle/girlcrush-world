@@ -595,8 +595,11 @@
         document.addEventListener("touchstart", async () => {
                 await Tone.start();
                 isMouseDown = true;
-                console.log("start test");
             });
+
+        key.addEventListener("touchstart", () => {
+            console.log("touchstart");
+        });
 
         document.addEventListener("touchend", () => {
             isMouseDown = false;
