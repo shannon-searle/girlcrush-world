@@ -32,7 +32,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 5vh 5vw;
+    padding: 3vh 3vw;
     position: relative;
     overflow-y: auto;
     background:
@@ -113,14 +113,14 @@ html, body {
     align-self: center;
     /* text-shadow: 0 0 10px #e166a0, 0 0 20px #e166a0, 0 0 40px #e166a0; */
     /* animation: shake 5.5s infinite; */
-    margin-bottom: 5vh;
+    /* margin-bottom: 5vh; */
     z-index: 100;
     cursor: pointer;
     text-align: center;
 }
 
 .site-title{
-    width: 30vw;
+    width: 26vw;
     height: auto;
 }
 
@@ -1115,7 +1115,7 @@ html, body {
     }
 
     body {
-        padding: 3dvh 4vw;
+        padding: 2dvh 2vw;
         background:
             url('../images/mobile.png'),
             linear-gradient(
