@@ -11,14 +11,13 @@ body {
     background-size: 300% 300%;
     display: flex;
     min-height: 100vh;
-    background:
-    linear-gradient(
-        160deg,
-        #e1e4f6 20%,
-        #e0f7fa 50%,
-        #e1e4f6 80%
-    );
-    
+    background: radial-gradient(
+    ellipse at center,
+    #e0f7fa 0%,
+    #e0f7fa 35%,
+    #e8eaf6 100%
+);
+        
     
 }
 
