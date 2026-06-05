@@ -1299,4 +1299,10 @@ html, body {
         position: absolute;
     }   
 
+
+    .field-border {
+        height: 30vh;
+    }
+
+
 }
