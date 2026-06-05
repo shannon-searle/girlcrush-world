@@ -1236,9 +1236,15 @@ html, body {
     #piano-popup .popup-window {
         padding: 30% 12% 12%;
     }
-
     .blinkies {
-        display: none;
+        width: 150px;
+        right: 10%;
+        bottom: 50%;
+        gap: 3px;
+    }
+
+    .blinkies img {
+        width: 60px;
     }
 
     .princess-of-the-inside {
