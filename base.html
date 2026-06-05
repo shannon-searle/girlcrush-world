@@ -581,18 +581,52 @@
             baseUrl: "https://tonejs.github.io/audio/salamander/"
         }).toDestination();
 
-        let isMouseDown = false;
+        let isPointerDown = false;
 
-        document.addEventListener("mousedown", async () => {
+        document.addEventListener("pointerdown", async () => {
             await Tone.start();
-            isMouseDown = true;
+            isPointerDown = true;
         });
 
-        document.addEventListener("mouseup", () => {
-            isMouseDown = false;
+        document.addEventListener("pointerup", () => {
+            isPointerDown = false;
         });
 
-        document.addEventListener("touchstart", async () => {
+
+        // keys 
+        document.querySelectorAll(".key, .black-key").forEach(key => {
+
+            // click/tap normal 
+            key.addEventListener("pointerdown", () => {
+                const note = key.dataset.note;
+                piano.triggerAttackRelease(note, "4n");
+                key.classList.add("pressed");
+
+                setTimeout(() => {
+                    key.classList.remove("pressed");
+                }, 200);
+            });
+
+            // drag/swipe keys
+            key.addEventListener("pointerenter", () => {
+                if (!isPointerDown) return;
+
+                const note = key.dataset.note;
+                piano.triggerAttackRelease(note, "4n");
+
+                key.classList.add("pressed");
+
+                setTimeout(() => {
+                    key.classList.remove("pressed");
+                }, 200);
+            });
+
+        });
+    
+
+
+
+        /* --------------------------- document.addEventListener("touchstart", async () => {
                 await Tone.start();
                 isMouseDown = true;
             });
@@ -602,58 +636,7 @@
         });
 
         document.addEventListener("touchend", () => {
-            isMouseDown = false;
-        });
-
-        // keys 
-        document.querySelectorAll(".key, .black-key").forEach(key => {
-
-            // click normal 
-            key.addEventListener("mousedown", () => {
-                const note = key.dataset.note;
-                piano.triggerAttackRelease(note, "4n");
-                key.classList.add("pressed");
-
-                setTimeout(() => {
-                    key.classList.remove("pressed");
-                }, 200);
-            });
-
-            // drag keys
-            key.addEventListener("mouseenter", () => {
-                if (!isMouseDown) return;
-
-                const note = key.dataset.note;
-                piano.triggerAttackRelease(note, "4n");
-
-                key.classList.add("pressed");
-
-                setTimeout(() => {
-                    key.classList.remove("pressed");
-                }, 200);
-            });
-
-            //mobile support: touch events
-            key.addEventListener("touchstart", (e) => {
-                e.preventDefault();
-                console.log("key pressed");
-
-                const note = key.dataset.note;
-                piano.triggerAttackRelease(note, "4n");
-
-                key.classList.add("pressed");
-
-                setTimeout(() => {
-                    key.classList.remove("pressed");
-                }, 200);
-            });
-        });
-
-        
-
-
-
-        /* ------------------------------------------
+            isMous---------------
            Cursor heart trail
         ------------------------------------------ */
         let trailCount = 0;

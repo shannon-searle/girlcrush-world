@@ -1365,5 +1365,8 @@ html, body {
         height: 30vh;
     }
 
+    .key, .black-key {
+        touch-action: none;
+    }
 
 }
