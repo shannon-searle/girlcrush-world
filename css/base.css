@@ -1186,7 +1186,8 @@ html, body {
     #avatar-popup,
     #piano-popup,
     #my-music-popup,
-    #image-gallery-popup {
+    #image-gallery-popup, 
+    #webmaster-popup {
         position: relative;
         top: auto;
         left: auto;
@@ -1299,6 +1300,12 @@ html, body {
         position: absolute;
     }   
 
+    #webmaster-popup .popup-window {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 
     .field-border {
         height: 30vh;
