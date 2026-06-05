@@ -632,6 +632,7 @@
             //mobile support: touch events
             key.addEventListener("touchstart", (e) => {
                 e.preventDefault();
+                console.log("key pressed");
 
                 const note = key.dataset.note;
                 piano.triggerAttackRelease(note, "4n");
