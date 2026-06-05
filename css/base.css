@@ -124,7 +124,14 @@ html, body {
     height: auto;
 }
 
-.site-title:hover  { animation: shake 0.1s infinite; }
+.site-title {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.site-title:hover {
+    transform: translateY(-1px) scale(1.01);
+    filter: drop-shadow(0 0 12px rgba(224, 247, 250, 0.5));
+}
 .site-title:active { color: rgb(121, 0, 88); }
 
 
