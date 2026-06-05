@@ -1120,7 +1120,7 @@ html, body {
     html, body {
         overflow-y: auto;
         overflow-x: hidden;
-        height: auto;
+        height: 105%;
     }
 
     body {
