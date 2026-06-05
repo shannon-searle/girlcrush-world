@@ -602,7 +602,7 @@ html, body {
 .chat-container {
   right: 0;
   bottom: 45px;
-  position: absolute;
+  position: fixed;
   z-index: 1;
 }
 
@@ -1288,14 +1288,15 @@ html, body {
     }
 
     .sticky-note-thankyou {
-    background: rgba(255, 220, 240);
-    box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
-    transform: rotate(-2deg);
-    padding: 15px 15px 5px 30px;
-    width: 260px;
-    height: auto;
-    bottom: -35%;
-    right: 0;
-    position: absolute;
-}
+        background: rgba(255, 220, 240);
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+        transform: rotate(-2deg);
+        padding: 15px 15px 5px 30px;
+        width: 260px;
+        height: auto;
+        bottom: -35%;
+        right: 0;
+        position: absolute;
+    }   
+
 }
