@@ -217,7 +217,7 @@ html, body {
 #welcome-popup {
     top: min(22%, 85vh);
     left: min(22%, 80vw);
-    width: clamp(280px, 25vw, 420px);
+    width: clamp(350px, 25vw, 420px);
     height: fit-content;
     min-height: 150px;
 }
