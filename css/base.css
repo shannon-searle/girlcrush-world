@@ -977,6 +977,7 @@ html, body {
     padding: clamp(8px, 1vh, 20px);
     border-radius: 20px;
     box-shadow: 0px 4px 8px pink, 0px 0px 20px hotpink;
+    text-align: center;
 }
 
 
