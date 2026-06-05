@@ -134,6 +134,9 @@ html, body {
 }
 /* .site-title:active { color: rgb(121, 0, 88); } */
 
+.key, .black-key {
+    touch-action: none;
+}
 
 /* ── 6. Icon Tray ── */
 
@@ -1363,10 +1366,6 @@ html, body {
 
     .field-border {
         height: 30vh;
-    }
-
-    .key, .black-key {
-        touch-action: none;
     }
 
 }

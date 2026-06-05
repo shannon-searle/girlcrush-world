@@ -582,8 +582,16 @@
         }).toDestination();
 
         let isPointerDown = false;
-                // track active key to avoid re-triggering same note
         let activeKey = null;
+
+        function playKey(key) {
+            if (!key || key === activeKey) return;
+            activeKey = key;
+            const note = key.dataset.note;
+            piano.triggerAttackRelease(note, "4n");
+            key.classList.add("pressed");
+            setTimeout(() => key.classList.remove("pressed"), 200);
+        }
 
         document.addEventListener("pointerdown", async (e) => {
             await Tone.start();
@@ -597,30 +605,21 @@
 
         document.addEventListener("pointermove", (e) => {
             if (!isPointerDown) return;
-
             const el = document.elementFromPoint(e.clientX, e.clientY);
             if (!el) return;
-
             const key = el.closest(".key, .black-key");
-            if (!key || key === activeKey) return;
-
-            activeKey = key;
-            const note = key.dataset.note;
-            piano.triggerAttackRelease(note, "4n");
-            key.classList.add("pressed");
-            setTimeout(() => key.classList.remove("pressed"), 200);
+            playKey(key);
         });
 
         document.querySelectorAll(".key, .black-key").forEach(key => {
             key.addEventListener("pointerdown", (e) => {
-                const note = key.dataset.note;
-                piano.triggerAttackRelease(note, "4n");
-                activeKey = key;
-                key.classList.add("pressed");
-                setTimeout(() => key.classList.remove("pressed"), 200);
+                // Release capture so pointermove fires on document, not just this element
+                if (e.pointerId !== undefined) {
+                    try { key.releasePointerCapture(e.pointerId); } catch (_) {}
+                }
+                playKey(key);
             });
         });
-    
 
 
 
