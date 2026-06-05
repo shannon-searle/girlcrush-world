@@ -1195,9 +1195,11 @@ html, body {
         bottom: auto;
         transform: none;
         width: 100%;
-        height: auto;
+        height: fit-content;
         margin-top: 10px;
         max-width: 100%;
+        max-height: none;
+        
     }
 
     .popup.open {
@@ -1209,7 +1211,9 @@ html, body {
         flex-direction: column-reverse;
         align-items: center;
         width: 100%;
+
     }
+
 
     .avatar-canvas {
         width: 50vw;
