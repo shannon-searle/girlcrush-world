@@ -1340,7 +1340,7 @@ html, body {
     }
 
     .sticky-note-thankyou {
-        /* background: rgba(255, 220, 240);
+        background: rgba(255, 220, 240);
         box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
         transform: rotate(-2deg);
         padding: 15px 15px 5px 30px;
@@ -1348,8 +1348,7 @@ html, body {
         height: auto;
         bottom: -35%;
         right: 0;
-        position: absolute; */
-        display: none;
+        position: absolute;
     }   
 
     #webmaster-popup .popup-window {
