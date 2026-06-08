@@ -607,12 +607,13 @@
             });
         });
 
-        document.addEventListener("pointerup", () => {
+        const pianoEl = document.getElementById("piano-popup");
+        pianoEl.addEventListener("pointerup", () => {
             isPointerDown = false;
             activeKey = null;
         });
 
-        document.addEventListener("pointermove", (e) => {
+        pianoEl.addEventListener("pointermove", (e) => {
             if (!isPointerDown) return;
             const el = document.elementFromPoint(e.clientX, e.clientY);
             if (!el) return;
