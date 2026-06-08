@@ -1126,6 +1126,18 @@ html, body {
         height: 105%;
     }
 
+    .button-bar {
+        display: none;
+    }
+
+    .button-bar.open {
+        display: none;
+    }
+
+    .chat-container {
+        display: none;
+    }
+
     body {
         padding: 10px 10px 50px 10px;
         background:
