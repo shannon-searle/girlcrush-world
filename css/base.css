@@ -1123,7 +1123,7 @@ html, body {
     html, body {
         overflow-y: auto;
         overflow-x: hidden;
-        height: 105%;
+        height: fit-content;
     }
 
     .button-bar {
