@@ -12,7 +12,9 @@ body {
     min-height: 100vh;
 }
 
-html {
+html,
+body {
+    min-height: 100%;
     background: radial-gradient(
         ellipse at center,
         #e0f7fa 0%,
@@ -323,73 +325,9 @@ a { outline: none; }
    MOBILE (≤ 768px)
 ──────────────────────────────── */
 @media (max-width: 768px) {
-    .title {
-        font-size: clamp(1.5rem, 8vw, 4rem);
-        word-break: break-word;
-        padding: 0 4vw;
-        width: 90vw;
-        height: auto;
-    }
-
-    .page-container {
-        min-height: 100dvh;
-        align-items: stretch;
-    }
-
-    #section1 {
-        min-height: 100dvh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    section {
-        padding: 4vh 6vw;
-        gap: 2vh;
-        min-height: 100dvh;
-        justify-content: center;
-    }
-
-    p {
-        max-width: 85vw;
-        font-size: 8px;
-        padding: 10px;
-    }
-
-    video {
-        width: 90vw;
-        margin-top: 0;
-    }
-
-    .button {
-        font-size: 10px;
-        padding: 10px 16px;
-    }
-
-    .backdoor {
-        right: 2%;
-        bottom: 2%;
-    }
-
-    .skip img {
-        width: 25px;
-        height: 30px;
-    }
-
-    .backdoor p {
-        font-size: 6px;
-    }
-
+    /* Layout */
     body {
         min-height: 100dvh;
-
-    }
-}
-
-@media (max-width: 768px) {
-
-    /* ── prevent horizontal scroll issues ── */
-    body {
         overflow-x: hidden;
     }
 
@@ -403,18 +341,31 @@ a { outline: none; }
     section {
         width: 100%;
         min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 3vh 5vw;
         gap: 2vh;
     }
 
-    /* ── Title scaling ── */
+    #section1 {
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Typography */
     .title {
         font-size: clamp(1.8rem, 10vw, 4rem);
         text-align: center;
         line-height: 1.1;
+        word-break: break-word;
+        padding: 0 4vw;
+        width: 90vw;
+        height: auto;
     }
 
-    /* ── Text readability fix ── */
     p {
         max-width: 90vw;
         font-size: 8px;
@@ -422,7 +373,12 @@ a { outline: none; }
         padding: 12px;
     }
 
-    /* ── Waiting room scaling (IMPORTANT) ── */
+    /* Media */
+    video {
+        width: 90vw;
+        margin-top: 0;
+    }
+
     .waiting-room-img {
         width: 85vw;
         height: 55vh;
@@ -430,23 +386,21 @@ a { outline: none; }
         border-radius: 12%;
     }
 
-    /* ── Video scaling ── */
-    video {
-        width: 90vw;
-        margin-top: 0;
-    }
-
-    /* ── Button improvements ── */
+    /* Buttons */
     .button {
         font-size: 10px;
         padding: 10px 14px;
     }
 
-    /* ── Backdoor positioning ── */
+    /* Backdoor */
     .backdoor {
         right: 3%;
         bottom: 2%;
         transform: scale(0.9);
+    }
+
+    .backdoor p {
+        font-size: 6px;
     }
 
     .skip img {
@@ -454,11 +408,7 @@ a { outline: none; }
         height: 34px;
     }
 
-    .backdoor p {
-        font-size: 6px;
-    }
-
-    /* ── Fix star canvas layering ── */
+    /* Effects */
     #stars {
         opacity: 0.9;
     }
