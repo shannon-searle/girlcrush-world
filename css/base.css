@@ -1123,7 +1123,7 @@ html, body {
         padding: 10px 10px 50px 10px;
         background:
             url('../images/mobile.png'),
-            url('../images/websiteBackgroundMobile.png'),
+            url('../images/websiteBackgroundMobile2.png'),
             linear-gradient(
                 160deg,
                 #fce4ec 0%,
@@ -1133,7 +1133,7 @@ html, body {
                 #fce4ec 100%
             );
         background-repeat: repeat,  no-repeat, no-repeat;
-        background-size: 100vw, auto 100vh, cover;
+        background-size: 100vw, 120vw auto, cover;
         background-position: center top, right top, center;
         background-attachment: scroll, scroll;
         
