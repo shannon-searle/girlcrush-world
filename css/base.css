@@ -555,10 +555,16 @@ html, body {
 }
 
 .avatar-controls button:active {
+    background: #d6d6d6;
     border-top: 2px solid #9a9a9a;
     border-left: 2px solid #9a9a9a;
     border-right: 2px solid #ffffff;
     border-bottom: 2px solid #ffffff;
+}
+
+.avatar-controls button:hover {
+    transform: translateY(-1px) scale(1.01);
+    background: #d6d6d6;
 }
 
 .avatar-controls button img {
@@ -768,6 +774,7 @@ html, body {
 
 .likes-dis button:hover {
     transform: translateY(-2px) scale(1.04);
+    background: #ab8dd0;
 }
 
 #likes-popup {
