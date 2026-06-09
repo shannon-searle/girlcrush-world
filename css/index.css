@@ -22,7 +22,12 @@ body {
 }
 
 html {
-    background: #e8eaf6;
+    background: radial-gradient(
+        ellipse at center,
+        #e0f7fa 0%,
+        #e0f7fa 35%,
+        #e8eaf6 100%
+    );
 }
 
 html, body {
