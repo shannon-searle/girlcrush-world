@@ -284,7 +284,6 @@ html, body {
 .popup-titlebar:active { cursor: grabbing; }
 
 #about-me-popup .popup-titlebar {
-    color: rgb(203, 232, 192);
     font-family: 'Nunito', sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -431,17 +430,18 @@ html, body {
 }
 
 /* Popup images */
-#about-me-popup img {
-    width: auto;
-    height: 100px;
-    display: block;
-    flex-shrink: 0;
-    padding: 16px;
-    box-sizing: border-box;
-    object-fit: cover;
-    object-position: top;
+.toni-img-container img {
     filter: drop-shadow(8px 8px 0px rgba(217, 102, 160, 0.5));
-    border-radius: 30px;
+    width: 100%;
+    height: auto;
+    
+}
+
+.toni-img-container {
+    padding: clamp(10px, 2vw, 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #note-from-shan-popup img {
@@ -689,8 +689,7 @@ html, body {
 
 .about-me-container {
     display: flex;
-    flex-direction: row;
-    flex: 1;
+    flex-direction: row; 
     min-height: 0;
     overflow: hidden;
     justify-content: space-around;
@@ -701,7 +700,6 @@ html, body {
     flex-direction: column;
     gap: clamp(10px, 2vw, 20px);
     padding: clamp(10px, 2vw, 20px);
-    width: 60%;
 }
 
 .questions-container {
@@ -784,7 +782,7 @@ html, body {
 #likes-popup {
     position: fixed;
     bottom: 30%;
-    left: 21%;
+    left: 31%;
     width: clamp(140px, 14vw, 180px);
     height: clamp(160px, 20vh, 200px);
     margin-top: 10px;
@@ -800,7 +798,7 @@ html, body {
     width: clamp(140px, 14vw, 180px);
     height: clamp(160px, 20vh, 200px);
     bottom: 8%;
-    left: 25%;
+    left: 35%;
     margin-top: 10px;
     min-height: 0;
     min-width: 0;
