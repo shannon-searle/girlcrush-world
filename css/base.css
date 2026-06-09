@@ -1067,7 +1067,7 @@ html, body {
 
 
 .princess-of-the-inside {
-    position: fixed;
+    position: absolute;
     top: 20%;
     right: 25%;
     width: clamp(160px, 30vw, 300px);
@@ -1306,10 +1306,6 @@ html, body {
         width: 60px;
     }
 
-    .princess-of-the-inside {
-        display: none;
-    }
-
     #epicGif1 {
         position: absolute;
         top: 35%;
@@ -1376,6 +1372,12 @@ html, body {
 
     .field-border {
         height: 30vh;
+    }
+
+    .princess-of-the-inside {
+        top: auto;
+        bottom: 8%;
+        right: 5%;
     }
 
 }
