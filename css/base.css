@@ -95,7 +95,7 @@ html, body {
     /* text-shadow: 0 0 10px #e166a0, 0 0 20px #e166a0, 0 0 40px #e166a0; */
     /* animation: shake 5.5s infinite; */
     /* margin-bottom: 5vh; */
-    z-index: 100;
+    z-index: 1;
     cursor: pointer;
     text-align: center;
 }
@@ -271,7 +271,7 @@ html, body {
     font-family: "Press Start 2P", system-ui;
     font-weight: 200;
     font-size: 12px;
-    padding: 8px 15px;
+    padding: 5px 15px;
     cursor: grab;
     user-select: none;
     display: flex;
@@ -302,8 +302,8 @@ html, body {
 .popup-close {
     display: block;
     margin: 0;
-    width: 30px;
-    height: 25px;
+    width: 35px;
+    height: 30px;
     padding: 0;
     border: none;
     cursor: pointer;
@@ -784,9 +784,9 @@ html, body {
 #likes-popup {
     position: fixed;
     bottom: 30%;
-    left: 30%;
+    left: 21%;
     width: clamp(140px, 14vw, 180px);
-    height: clamp(160px, 18vh, 200px);
+    height: clamp(160px, 20vh, 200px);
     margin-top: 10px;
     min-height: 0;
     min-width: 0;
@@ -798,9 +798,9 @@ html, body {
 #dislikes-popup {
     position: fixed;
     width: clamp(140px, 14vw, 180px);
-    height: clamp(160px, 18vh, 200px);
+    height: clamp(160px, 20vh, 200px);
     bottom: 8%;
-    left: 30%;
+    left: 25%;
     margin-top: 10px;
     min-height: 0;
     min-width: 0;
