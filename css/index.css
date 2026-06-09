@@ -12,14 +12,26 @@ body {
     display: flex;
     min-height: 100vh;
     background: radial-gradient(
-    ellipse at center,
-    #e0f7fa 0%,
-    #e0f7fa 35%,
-    #e8eaf6 100%
-);
-        
-    
+        ellipse at center,
+        #e0f7fa 0%,
+        #e0f7fa 35%,
+        #e8eaf6 100%
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+html {
+    background: #e8eaf6;
+}
+
+html, body {
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 
 /* ── Page container ── */
 .page-container {
