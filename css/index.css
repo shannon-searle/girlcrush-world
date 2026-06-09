@@ -22,12 +22,7 @@ body {
 }
 
 html {
-    background: radial-gradient(
-        ellipse at center,
-        #e0f7fa 0%,
-        #e0f7fa 35%,
-        #e8eaf6 100%
-    );
+    background: #e8eaf6;
 }
 
 html, body {
@@ -333,7 +328,15 @@ a { outline: none; }
    MOBILE (≤ 768px)
 ──────────────────────────────── */
 @media (max-width: 768px) {
-
+    body {
+        background: radial-gradient(
+            ellipse at center,
+            #e0f7fa 0%,
+            #e0f7fa 25%,
+            #e8eaf6 90%
+            #e8eaf6 100%
+        );
+    }
     .title {
         font-size: clamp(1.5rem, 8vw, 4rem);
         word-break: break-word;
