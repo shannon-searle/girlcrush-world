@@ -1123,6 +1123,7 @@ html, body {
     html, body {
         overflow-y: auto;
         overflow-x: hidden;
+        touch-action: manipulation;
     }
 
     .button-bar {
