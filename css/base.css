@@ -698,7 +698,7 @@ html, body {
 .about-me-container2 {
     display: flex;
     flex-direction: column;
-    gap: clamp(10px, 2vw, 20px);
+    gap: clamp(15px, 2vw, 20px);
     padding: clamp(15px, 2vw, 20px);
 }
 
@@ -758,18 +758,12 @@ html, body {
     transition: all 0.2s ease;
 }
 
-.likes-dis button:first-child {
-    background: #ff9ec8;
-    color: white;
-    border: 2px solid #f7b8d8;
-    box-shadow: 0 3px 12px rgba(255, 110, 172, 0.5);
-}
-
-.likes-dis button:last-child {
+.likes-dis button {
     background: #d8b8ff;
     color: white;
-    border: 2px solid #d8b8ff;
-    box-shadow: 0 3px 12px rgba(184, 148, 245, 0.5);
+    border: none;
+    box-shadow: 0 3px 12px #d8b8ff;
+    
 }
 
 .likes-dis button:hover {
