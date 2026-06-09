@@ -438,7 +438,7 @@ html, body {
 }
 
 .toni-img-container {
-    padding: clamp(10px, 2vw, 20px);
+    /* padding: clamp(10px, 2vw, 20px); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -831,7 +831,6 @@ html, body {
 }
 
 #likes-popup .popup-titlebar, #dislikes-popup .popup-titlebar {
-    color: rgb(255, 255, 255);
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
     font-weight: 100;
