@@ -252,6 +252,7 @@ html, body {
     width: clamp(300px, 20vw, 90vw);
     height: auto;
     z-index: 5000;
+    font-family: 'Nunito', sans-serif;
 }
 
 #image-gallery-popup {
@@ -284,7 +285,6 @@ html, body {
 .popup-titlebar:active { cursor: grabbing; }
 
 #about-me-popup .popup-titlebar {
-    font-family: 'Nunito', sans-serif;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 0.5px;
@@ -383,7 +383,7 @@ html, body {
     margin: 0;
     gap: 0;
     flex: 1;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Quicksand", sans-serif;
     height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -709,7 +709,6 @@ html, body {
     gap: clamp(2px, 10px, 12px);          /* smaller range */
     padding: clamp(6px, 10px, 10px);    /* tighter padding */
 
-    font-family: 'Nunito', sans-serif;
     font-size: clamp(8px, 0.9vw, 12px);  /* shrinks more */
     line-height: 1.4;                    /* slightly tighter */
 
@@ -723,7 +722,6 @@ html, body {
 }
 
 .questions-container.description {
-    font-family: 'Nunito', sans-serif;
     font-size: 10px;
     font-style: italic;
     color: #7a4060;
@@ -754,7 +752,6 @@ html, body {
     flex: 1;
     padding: 5px;
     border-radius: 999px;
-    font-family: 'Nunito', sans-serif;
     font-size: 11px;
     font-weight: 800;
     cursor: pointer;
@@ -789,7 +786,7 @@ html, body {
     min-height: 0;
     min-width: 0;
     max-width: 90vw;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Quicksand", sans-serif;
     z-index: 5001;
 }
 
@@ -803,7 +800,7 @@ html, body {
     min-height: 0;
     min-width: 0;
     max-width: 90vw;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Quicksand", sans-serif;
     z-index: 5001;
 }
 
@@ -831,7 +828,7 @@ html, body {
 }
 
 #likes-popup .popup-titlebar, #dislikes-popup .popup-titlebar {
-    font-family: 'Nunito', sans-serif;
+    font-family: "Quicksand", sans-serif;
     font-size: 16px;
     font-weight: 100;
     padding: 5px 10px;
@@ -937,7 +934,7 @@ html, body {
 
 .webmaster-container {
     padding: clamp(2px, 2vh, 30px);
-    font-family: 'Nunito', sans-serif;
+    font-family: "Quicksand", sans-serif;
     gap: 20px;
     display: flex;
     flex-direction: column;
@@ -969,7 +966,7 @@ html, body {
     padding: 10px;
     margin-left: 40px;
     border-radius: 15px;
-    box-shadow: 2px 1px 2px hotpink, -2px -1px 2px hotpink, -40px 1px 2px pink;
+    box-shadow: 2px 1px 2px hotpink, -2px -1px 2px hotpink, -2px 1px 2px pink;
 }
 
 
