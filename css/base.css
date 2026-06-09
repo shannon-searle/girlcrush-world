@@ -699,7 +699,7 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: clamp(10px, 2vw, 20px);
-    padding: clamp(10px, 2vw, 20px);
+    padding: clamp(15px, 2vw, 20px);
 }
 
 .questions-container {
@@ -738,7 +738,7 @@ html, body {
     align-items: flex-start;
     color: #7a4060;
     font-weight: 600;
-    margin-left: 10px;
+    text-wrap: nowrap;
 }
 
 
