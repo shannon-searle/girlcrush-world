@@ -69,9 +69,9 @@ html, body {
     width: 60%;
     height: 100px;
     background: radial-gradient(
-        ellipse at center bottom,
-        rgba(180,230,200,0.6) 10%,
-        rgba(200,180,255,0.3) 40%,
+        ellipse at center,
+        rgba(180, 230, 200, 0.6) 0%,
+        rgba(200, 180, 255, 0.3) 50%,
         transparent 100%
     );
     filter: blur(20px);
@@ -1308,7 +1308,7 @@ html, body {
     .blinkies {
         width: 150px;
         right: 10%;
-        bottom: 50%;
+        bottom: 45%;
         gap: 3px;
         position: absolute;
     }
@@ -1319,8 +1319,8 @@ html, body {
 
     #epicGif1 {
         position: absolute;
-        top: 35%;
-        left: 85%;
+        top: 55%;
+        left: 90%;
         height: 5%;
         width: auto;
     }
@@ -1328,7 +1328,7 @@ html, body {
     #epicGif3 {
         position: absolute;
         top: 25%;
-        left: 70%;
+        left: 50%;
         height: 8%;
         width: auto;
     }
