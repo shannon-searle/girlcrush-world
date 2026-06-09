@@ -1142,7 +1142,7 @@ html, body {
         padding: 10px 10px 50px 10px;
         background:
             url('../images/mobile.png'),
-            url('../images/websitebackground2.jpg'),
+            url('../images/websiteBackgroundMobile.png'),
             linear-gradient(
                 160deg,
                 #fce4ec 0%,
