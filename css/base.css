@@ -59,25 +59,6 @@ html, body {
 }
 
 
-/* ── 3. Decorative Elements ── */
-
-.bottom-glow {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 100px;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(180, 230, 200, 0.6) 0%,
-        rgba(200, 180, 255, 0.3) 50%,
-        transparent 100%
-    );
-    filter: blur(20px);
-    z-index: 1;
-}
-
 
 /* ── 4. Animations ── */
 
