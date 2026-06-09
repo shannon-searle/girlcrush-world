@@ -1217,11 +1217,11 @@ html, body {
     }
 
     #likes-popup {
-        bottom: 100px;
+        bottom: 300px;
         left: 10%;
     }
     #dislikes-popup {
-        bottom: 300px;
+        bottom: 100px;
         left: 10%;
     }
 
