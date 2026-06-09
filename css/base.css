@@ -258,7 +258,7 @@ html, body {
 #image-gallery-popup {
     top: min(30%, 65vh);
     left: min(35%, 70vw);
-    width: clamp(280px, 50vw, 1000px);
+    width: clamp(280px, 40vw, 1000px);
     height: clamp(280px, 40vw, 600px);
 }
 
