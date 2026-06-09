@@ -48,7 +48,7 @@ body {
         );
     background-repeat: repeat, no-repeat;
     background-size: 90vw, cover;
-    background-position: center, center;
+    background-position: center, right top;
 }
 
 html, body {
@@ -1142,6 +1142,7 @@ html, body {
         padding: 10px 10px 50px 10px;
         background:
             url('../images/mobile.png'),
+            url('../images/websitebackground2.jpg'),
             linear-gradient(
                 160deg,
                 #fce4ec 0%,
@@ -1150,10 +1151,11 @@ html, body {
                 #f3e5f5 80%,
                 #fce4ec 100%
             );
-        background-repeat: repeat, no-repeat;
-        background-size: 100vw, cover;
-        background-position: center top, center;
+        background-repeat: repeat,  no-repeat, no-repeat;
+        background-size: 100vw, auto 100vh, cover;
+        background-position: center top, right top, center;
         background-attachment: scroll, scroll;
+        
     }
 
     .site-title {
