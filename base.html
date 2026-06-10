@@ -548,6 +548,12 @@
     ============================================== -->
     <script src="https://unpkg.com/tone@latest/build/Tone.js"></script>
     <script>
+        // if mobile open chatbox
+        if (window.innerWidth > 768) {
+            document.getElementById('chatbox-popup').classList.add('open');
+        }
+
+
         /* ------------------------------------------
            piano
         ------------------------------------------ */
