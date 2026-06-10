@@ -177,7 +177,7 @@
 #welcome-popup .popup-window { background: #e0f7fa;}
 
 #cloud-jumper-popup .popup-window { 
-    background: rgb(203, 232, 192);
+    background: black;
     display: flex;
     flex-direction: column;
     padding: 0;
