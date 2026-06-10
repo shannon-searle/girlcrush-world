@@ -682,6 +682,16 @@
                     }
                 }
 
+                if (popupId === 'about-me-popup') {
+                    const popup = document.getElementById(popupId);
+                    if (popup.classList.contains('open')) {
+                        closePopup('about-me-popup');
+                        closePopup('likes-popup');
+                        closePopup('dislikes-popup');
+                        return;
+                    }
+                }
+
                 openPopup(popupId);
                 if (startmenuId) {
                     openStartMenu(startmenuId);
