@@ -13,10 +13,10 @@
 }
 
 .cloud-jumper-game {
-    background: rgb(203, 232, 192);;
+    background: rgb(203, 232, 192);
     position: relative;
-    width: 550px;
-    height: 300px;
+    width: min(550px, 90vw);   /* caps at 550px, shrinks on small screens */
+    height: min(500px, 70vw);  /* keeps roughly the same aspect ratio */
     padding: 10px;
     border-radius: 10px;
     overflow: hidden;
@@ -34,4 +34,17 @@
     bottom: 100px;
     width: auto;
     height: 80px;
+}
+
+/* ============================================================
+   Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    #cloud-jumper {
+        position: absolute;
+        left: 20px;
+        bottom: 100px;
+        width: auto;
+        height: 80px;
+    }
 }

@@ -323,7 +323,8 @@
     #welcome-popup,
     #avatar-popup,
     #piano-popup,
-    #my-music-popup{
+    #my-music-popup,
+    #cloud-jumper-popup{
         position: relative;
         top: auto;
         left: auto;
