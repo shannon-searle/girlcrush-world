@@ -256,7 +256,8 @@ html, body {
     #epicGif1 {
         position: absolute;
         top: 55%;
-        left: 90%;
+        right: 10%;
+        left: auto;
         height: 5%;
         width: auto;
     }
