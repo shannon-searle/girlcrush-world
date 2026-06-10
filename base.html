@@ -11,6 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Rubik+Beastly&family=Rubik+Glitch&family=Press+Start+2P&family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/popups.css" />
+    <link rel="stylesheet" href="css/webmaster.css" />
+    <link rel="stylesheet" href="css/avatar.css" />
+    <link rel="stylesheet" href="css/welcome.css" />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/image-gallery.css" />
+    <link rel="stylesheet" href="css/piano.css" />
+    <link rel="stylesheet" href="css/start-bar.css" />
     <link rel="preload" as="image" href="./shan/background.webp">
     <link rel="preload" as="image" href="./images/piano/background2.png">
 </head>
@@ -221,7 +230,7 @@
     ============================================== -->
 
     <!-- Welcome popup -->
-    <div id="welcome-popup" class="popup open">
+    <div id="welcome-popup" class="popup open window-classic">
         <div class="popup-window">
             <div class="popup-titlebar">
                 <span>Welcome to my website!</span>
@@ -293,7 +302,7 @@
     </div>
 
     <!-- My Music popup -->
-    <div id="my-music-popup" class="popup">
+    <div id="my-music-popup" class="popup window-classic">
         <div class="popup-window">
             <div class="popup-titlebar">
                 <span>my music!</span>
@@ -303,7 +312,7 @@
     </div>
 
     <!-- Avatar dress-up popup -->
-    <div id="avatar-popup" class="popup">
+    <div id="avatar-popup" class="popup window-classic">
         <div class="popup-window">
             <div class="popup-titlebar">
                 <span>Dress me up!</span>
@@ -385,7 +394,7 @@
     </div>
 
     <!-- image-gallery popup -->
-    <div id="image-gallery-popup" class="popup">
+    <div id="image-gallery-popup" class="popup window-classic">
         <div class="popup-window">
             <div class="popup-titlebar">
                 <span>image-gallery!</span>
@@ -441,7 +450,7 @@
     </div>
 
     <!-- Webmaster popup -->
-    <div id="webmaster-popup" class="popup">
+    <div id="webmaster-popup" class="popup window-classic">
         <div class="popup-window">
             <div class="popup-titlebar">
                 <span>webmaster</span>
@@ -540,6 +549,13 @@
                 <!-- <img src="blinkies/blinkiesCafe-BZ.gif"/>
                 <img src="blinkies/blinkiesCafe-lU.gif"/> -->
             </div>
+        </div>
+    </div>
+
+    <!-- cloud jumper mini game popup-->
+    <div id="cloud-jumper-popup" class="popup open">
+        <div class="popup-window">
+            <p>cloud jumper mini game coming soon!</p>
         </div>
     </div>
 
@@ -735,7 +751,7 @@
             const btn = document.getElementById(id);
             if (!btn.classList.contains('open')) {
                 btn.classList.add('open');
-                document.querySelector('.start-bar').appendChild(btn);
+                document.querySelector('.start-bar').insertBefore(btn, chatButton);
             }
 
         }

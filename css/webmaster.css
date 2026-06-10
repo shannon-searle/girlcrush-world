@@ -1,0 +1,88 @@
+/* webmaster */
+
+#webmaster-popup img {
+    width: clamp(100px, 20vh, 200px);
+    height: auto;
+    display: block;
+}
+
+.webmaster-container button {
+    transition: transform 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.webmaster-container button:hover {
+    transform: scale(1.05);
+}
+
+.webmaster-container {
+    padding: clamp(2px, 2vh, 30px);
+    font-family: "Quicksand", sans-serif;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.webmaster-container p {
+    color: rgb(0, 0, 0);
+    font-size: clamp(8px, 1.5vh, 14px);
+    line-height: 1.6;
+}
+
+.shan-likes, .shan-dislikes {
+    background: rgba(188, 242, 242, 0.75);
+    height: auto;
+    width: fit-content;
+    padding: clamp(8px, 1vh, 20px);
+    border-radius: 20px;
+    box-shadow: 2px 1px 2px hotpink, -2px -1px 2px hotpink, -2px 1px 2px pink;
+    text-align: center;
+}
+
+
+.webmaster-name {
+    background: rgba(183, 255, 255, 0.5);
+    height: auto;
+    width: fit-content;
+    padding: 10px;
+    margin-left: 40px;
+    border-radius: 15px;
+    box-shadow: 2px 1px 2px hotpink, -2px -1px 2px hotpink, -2px 1px 2px pink;
+}
+
+#note-from-shan-popup img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.likes, .dislikes {
+    padding: 10px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+     #webmaster-popup img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .webmaster-name {
+        background: rgba(183, 255, 255, 0.5);
+        height: auto;
+        width: fit-content;
+        padding: 10px;
+        margin-left: 40px;
+        border-radius: 15px;
+    }
+}

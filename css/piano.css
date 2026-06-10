@@ -1,0 +1,49 @@
+
+/* Piano */
+.key, .black-key {
+    touch-action: none;
+}
+
+.piano-play {
+    position: relative;
+}
+
+.piano-play img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.key {
+    position: absolute;
+    bottom: 3.5%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    transform-origin: top;
+    transition: transform 0.05s ease;
+}
+
+.key.pressed {
+    transform: scaleY(1.02);
+    background: rgb(249, 222, 234);
+}
+
+.black-key {
+    position: absolute;
+    top: 18%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    background: rgb(0, 0, 0);
+    transform-origin: top;
+    transition: transform 0.05s ease;
+}
+
+.black-key.pressed {
+    transform: scale(1.005) translateY(3px);
+    background: rgb(98, 0, 43);
+}

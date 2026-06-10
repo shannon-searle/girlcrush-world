@@ -1,0 +1,62 @@
+
+/* sticky note */
+.sticky-note-thankyou p {
+    color: rgb(56, 42, 70);
+    font-family: "Quicksand", sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.sticky-note-thankyou img {
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    width: 80px;
+    height: 80px;
+    padding: 0;
+}
+
+.sticky-note-thankyou {
+    background: rgba(255, 220, 240);
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+    transform: rotate(-2deg);
+    padding: 15px 15px 5px 30px;
+    width: 260px;
+    height: auto;
+    bottom: -30%;
+    right: -30%;
+    position: absolute;
+}
+
+/* Welcome message */
+.welcome-content p {
+    color: rgb(56, 42, 70);
+    font-family: "Quicksand", sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.welcome-content {
+    padding: 20px 20px;
+}
+
+@media (max-width: 768px) {
+    .welcome-content {
+        font-size: 8px;
+        padding: 10px;
+    }
+    
+    .sticky-note-thankyou {
+        background: rgba(255, 220, 240);
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+        transform: rotate(-2deg);
+        padding: 15px 15px 5px 30px;
+        width: 260px;
+        height: auto;
+        bottom: -35%;
+        right: 3px;
+        position: absolute;
+    }   
+}

@@ -1,0 +1,386 @@
+/* ── Popups — Base ── */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 2;
+}
+
+.popup.open {
+    display: flex;
+}
+
+
+/* ── Popups — Individual ── */
+#welcome-popup {
+    top: min(22%, 85vh);
+    left: min(22%, 80vw);
+    width: clamp(350px, 25vw, 420px);
+    height: fit-content;
+    min-height: 150px;
+    margin-bottom: 35%;
+}
+
+#avatar-popup {
+    top: 5%;
+    right: 5%;
+    width: clamp(180px, 20vw, 320px);
+    height: auto;
+    max-height: 90vh;
+}
+
+#piano-popup {
+    top: min(15%, 80vh);
+    left: min(15%, 75vw);
+    width: clamp(300px, 50vw, 800px);
+    height: auto;
+    min-height: 50px;
+}
+
+#note-from-shan-popup {
+    top: min(18%, 80vh);
+    left: min(45%, 75vw);
+    width: clamp(240px, 30vw, 500px);
+    height: auto;
+    z-index: 10;
+}
+
+#webmaster-popup {
+    top: min(15%, 80vh);
+    left: min(5%, 60vw);
+    width: 50vw;
+    height: 70vh;
+}
+
+#my-music-popup {
+    top: min(40%, 80vh);
+    left: min(25%, 75vw);
+    width: clamp(200px, 20vw, 360px);
+    height: clamp(150px, 20vh, 280px);
+    margin-top: 0;
+}
+
+#about-me-popup {
+    bottom: 50px;
+    left: 0;
+    width: clamp(300px, 20vw, 90vw);
+    height: auto;
+    z-index: 5000;
+    font-family: 'Nunito', sans-serif;
+}
+
+#image-gallery-popup {
+    top: min(30%, 65vh);
+    left: min(35%, 70vw);
+    width: clamp(280px, 40vw, 1000px);
+    height: clamp(280px, 40vw, 600px);
+}
+
+/* ── Popup Titlebar ── */
+.popup-titlebar {
+    background: #ffe0f0;
+    color: #d966a0;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-size: 12px;
+    padding: 5px 15px;
+    cursor: grab;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+    line-height: 1.6;
+}
+
+.popup-titlebar:active { cursor: grabbing; }
+
+
+/* ── Popup Titlebar - Individual Styles ── */
+#about-me-popup .popup-titlebar {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    cursor: grab;
+}
+
+#piano-popup .popup-titlebar {
+    background: rgb(0, 0, 0);
+    color: #ffffff;
+}
+
+#avatar-popup .popup-titlebar {
+    background: #d6d6d6;
+    color: #4f4f4f;
+}
+
+/* Close button */
+.popup-close {
+    display: block;
+    margin: 0;
+    width: 35px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    border-top: 2px solid rgba(255, 255, 255, 0.9);
+    border-left: 2px solid rgba(255, 255, 255, 0.9);
+    border-right: 2px solid rgba(0, 0, 0, 0.25);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+    font-family: "Press Start 2P", system-ui;
+    background: inherit;
+    color: inherit;
+    border-radius: 8px;
+}
+
+/* Close button on button bar */
+.button-bar .popup-close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    font-size: 10px;
+    color: rgb(255, 255, 255);
+}
+
+.popup-close:hover {
+    color: #ff3399;
+    background: #ffc0de;
+}
+
+/* ── Popup Window ── */
+.popup-window {
+    border-radius: 10px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.window-classic {
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+}
+
+
+/* ── Popup Windows Individual ── */
+#welcome-popup .popup-window { background: #e0f7fa;}
+
+#avatar-popup .popup-window { background: #e8e8e8; }
+
+#piano-popup .popup-window {
+    background: url("../images/piano/background2.png") center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    padding: 20% 18% 10%;
+    margin: 0;
+    gap: 0;
+}
+
+#webmaster-popup .popup-window {
+    background: url("../shan/background.webp") no-repeat center / cover;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+    flex: 1;
+    font-family: "Quicksand", sans-serif;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#image-gallery-popup .popup-window {
+    background: rgba(203, 232, 192, 0.5);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+    flex: 1;
+}
+
+#my-music-popup .popup-window {
+    background: rgba(220,200,255);
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+#about-me-popup .popup-window {
+    background: linear-gradient(160deg, #fff9fd 0%, #fef0ff 100%);
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #f7b8d8;
+    border-bottom: 2px solid #f7b8d8;
+    box-shadow:
+        0 8px 32px rgba(247, 150, 200, 0.25),
+        0 2px 8px rgba(200, 150, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#chatbox-popup {
+  right: 0;
+  bottom: 50px;
+  position: fixed;
+  z-index: 1;
+}
+
+/* ── Likes/Dislikes Popups MAKE THIS BETTER── */
+
+#likes-popup {
+    position: fixed;
+    bottom: 30%;
+    left: 31%;
+    width: clamp(140px, 14vw, 180px);
+    height: clamp(160px, 20vh, 200px);
+    margin-top: 10px;
+    min-height: 0;
+    min-width: 0;
+    max-width: 90vw;
+    font-family: 'Nunito', sans-serif;
+    z-index: 5001;
+}
+
+#dislikes-popup {
+    position: fixed;
+    width: clamp(140px, 14vw, 180px);
+    height: clamp(160px, 20vh, 200px);
+    bottom: 8%;
+    left: 35%;
+    margin-top: 10px;
+    min-height: 0;
+    min-width: 0;
+    max-width: 90vw;
+    font-family: 'Nunito', sans-serif;
+    z-index: 5001;
+}
+
+
+#likes-popup .popup-window, #dislikes-popup .popup-window {
+    background: rgb(203, 232, 192);
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    flex: 1;
+    min-height: 0;
+    overflow-y: scroll;
+}
+
+#likes-popup .popup-window::-webkit-scrollbar,
+#dislikes-popup .popup-window::-webkit-scrollbar {
+    width: 8px;
+    background: #f8dce8;
+}
+
+#likes-popup .popup-window::-webkit-scrollbar-thumb,
+#dislikes-popup .popup-window::-webkit-scrollbar-thumb {
+    background: #ff9ec8;
+    border-radius: 999px;
+}
+
+#likes-popup .popup-titlebar, #dislikes-popup .popup-titlebar {
+    font-size: 16px;
+    font-weight: 100;
+    padding: 5px 10px;
+    cursor: grab;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* ============================================================
+   Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    .popup.open {
+        z-index: 1000;
+    }
+
+    #welcome-popup,
+    #avatar-popup,
+    #piano-popup,
+    #my-music-popup{
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+        width: 100%;
+        height: fit-content;
+        margin-top: 10px;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    #chatbox-popup{
+        position: fixed;
+        left: 0;
+        bottom: 50px;
+        width: 100%;
+        height: 100%;
+        margin-top: 10px;
+        max-width: 100%;
+        max-height: none;
+        z-index: 5010;
+    }
+
+    #likes-popup {
+        bottom: 300px;
+        left: 10%;
+    }
+    #dislikes-popup {
+        bottom: 100px;
+        left: 10%;
+    }
+
+    #webmaster-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+        width: 50%;
+        height: auto;
+        margin-top: 10px;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    #image-gallery-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+        width: 100%;
+        height: 400px;
+        margin-top: 10px;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    #epic-gifs-popup {
+        position: absolute;
+    }
+
+    #piano-popup .popup-window {
+        padding: 30% 12% 12%;
+    }
+
+    #webmaster-popup .popup-window {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}

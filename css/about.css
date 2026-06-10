@@ -1,0 +1,102 @@
+
+/* ── 12. About Me ── */
+
+.about-me-container {
+    display: flex;
+    flex-direction: row; 
+    min-height: 0;
+    overflow: hidden;
+    justify-content: space-around;
+}
+
+.about-me-container2 {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 2vw, 20px);
+    padding: clamp(15px, 2vw, 20px);
+}
+
+.questions-container {
+    display: flex;
+    flex-direction: row;
+
+    gap: clamp(2px, 10px, 12px);          /* smaller range */
+    padding: clamp(6px, 10px, 10px);    /* tighter padding */
+
+    font-size: clamp(8px, 0.9vw, 12px);  /* shrinks more */
+    line-height: 1.4;                    /* slightly tighter */
+
+    background: rgba(255, 220, 240);
+    border-radius: clamp(8px, 1vw, 14px);
+    border: 1.5px solid #f7cfe4;
+
+    filter: drop-shadow(6px 6px 0px rgba(217, 102, 160, 0.3));
+
+    max-width: 100%;
+}
+
+.questions-container.description {
+    font-size: 10px;
+    font-style: italic;
+    color: #7a4060;
+    gap: 0;
+}
+
+.questions {
+    color: #c966a0;
+    font-weight: 700;
+    text-wrap: nowrap;
+}
+
+.answers {
+    align-items: flex-start;
+    color: #7a4060;
+    font-weight: 600;
+    text-wrap: nowrap;
+}
+
+
+.likes-dis {
+    display: flex;
+    flex-direction: row;
+    gap: clamp(5px, 10px, 10px);
+}
+
+.likes-dis button {
+    flex: 1;
+    padding: 5px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.likes-dis button {
+    background: #d8b8ff;
+    color: white;
+    border: none;
+    box-shadow: 0 3px 12px #d8b8ff;
+    
+}
+
+.likes-dis button:hover {
+    transform: translateY(-2px) scale(1.04);
+    background: #ab8dd0;
+}
+
+
+/* Popup images */
+.toni-img-container img {
+    filter: drop-shadow(8px 8px 0px rgba(217, 102, 160, 0.5));
+    width: 100%;
+    height: auto;
+    
+}
+
+.toni-img-container {
+    /* padding: clamp(10px, 2vw, 20px); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
