@@ -24,18 +24,6 @@
         <img class="site-title" src="images/metalic-title.png" alt="Site Title">
     </a>
 
-    <!-- =============================================
-         chat box
-    ============================================== -->
-    <div class="chat-container">
-        <iframe class="field-border" src="https://www3.cbox.ws/box/?boxid=3555719&boxtag=M8wtC1" 
-            allowtransparency="yes" 
-            allow="autoplay" 
-            marginheight="0" 
-            marginwidth="0" 
-            scrolling="auto">
-        </iframe>	
-    </div>
 
     <!-- =============================================
          BLINKIES
@@ -167,7 +155,7 @@
          START BAR (bottom taskbar)
     ============================================== -->
     <div class="start-bar">
-        <button id="start-button" onclick="openPopup('about-me-popup')">start</button>
+        <button id="start-button" data-popup="about-me-popup">start</button>
 
         <div class="button-bar open" id="welcome-button">
             <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
@@ -206,8 +194,25 @@
             <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
             <p>image-gallery</p>
         </div>
+        <!-- chat box icon -->
+        <button id="chatbox-button" data-popup="chatbox-popup">
+            <img src="images/chat-box.png" alt="chatbox" />
+        </button>
+
     </div>
 
+    <!-- =============================================
+         chat box
+    ============================================== -->
+    <div id="chatbox-popup" class="popup">
+        <iframe class="field-border" src="https://www3.cbox.ws/box/?boxid=3555719&boxtag=M8wtC1" 
+            allowtransparency="yes" 
+            allow="autoplay" 
+            marginheight="0" 
+            marginwidth="0" 
+            scrolling="auto">
+        </iframe>	
+    </div>
 
     <!-- =============================================
          POPUPS
@@ -654,6 +659,14 @@
             button.addEventListener('click', function() {
                 const popupId = this.dataset.popup;
                 const startmenuId = this.dataset.startmenu;
+
+                if (popupId === 'chatbox-popup') {
+                    const popup = document.getElementById(popupId);
+                    if (popup.classList.contains('open')) {
+                        closePopup(popupId);
+                        return;
+                    }
+                }
 
                 openPopup(popupId);
                 openStartMenu(startmenuId);
