@@ -387,10 +387,6 @@
         max-height: none;
     }
 
-    #epic-gifs-popup {
-        position: absolute;
-    }
-
     #piano-popup .popup-window {
         padding: 30% 12% 12%;
     }
@@ -400,5 +396,9 @@
         flex-direction: column;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+
+    #decor-popup {
+        position: fixed;
     }
 }
