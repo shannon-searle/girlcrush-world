@@ -15,24 +15,23 @@
 .cloud-jumper-game {
     background: rgb(203, 232, 192);;
     position: relative;
-    width: 100%;
+    width: 550px;
     height: 300px;
     padding: 10px;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .cloud {
     position: absolute;
-    right:0;
-    bottom: 60px;
-    width: 50px;
+    width: 80px;
     height: 50px;
 }
 
-.cloud-jumper {
+#cloud-jumper {
     position: absolute;
     left: 150px;
     bottom: 100px;
-    width: 80px;
+    width: auto;
     height: 80px;
 }
