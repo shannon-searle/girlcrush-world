@@ -686,10 +686,6 @@ html, body {
     filter: drop-shadow(0 0 12px rgba(217, 102, 160));
 }
 
-#chatbox-button:active {
-    transform: translateY(-2px) scale(1.04);
-}
-
 #chatbox-button.open {
     transform: translateY(-2px) scale(1.04);
     filter: drop-shadow(0 0 12px rgba(217, 102, 160));

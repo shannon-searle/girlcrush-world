@@ -550,7 +550,7 @@
     <script>
         // if mobile open chatbox
         if (window.innerWidth > 768) {
-            document.getElementById('chatbox-popup').classList.add('open');
+            openPopup('chatbox-popup');
         }
 
 
@@ -672,6 +672,8 @@
                 const popupId = this.dataset.popup;
                 const startmenuId = this.dataset.startmenu;
 
+                if (!popupId) return;
+
                 if (popupId === 'chatbox-popup') {
                     const popup = document.getElementById(popupId);
                     if (popup.classList.contains('open')) {
@@ -681,7 +683,9 @@
                 }
 
                 openPopup(popupId);
-                openStartMenu(startmenuId);
+                if (startmenuId) {
+                    openStartMenu(startmenuId);
+                }
             });
         });
 
@@ -691,6 +695,8 @@
                 const popupId  = this.dataset.close;
                 const menuId   = this.dataset.closemenu;
                 const alsoClose = this.dataset.closeAlso;
+
+                if (!popupId) return;
 
                 closePopup(popupId);
                 if (menuId)    closeStartMenu(menuId);
