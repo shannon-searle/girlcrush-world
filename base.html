@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/image-gallery.css" />
     <link rel="stylesheet" href="css/piano.css" />
     <link rel="stylesheet" href="css/start-bar.css" />
+    <link rel="stylesheet" href="css/cloud-jumper.css" />
     <link rel="preload" as="image" href="./shan/background.webp">
     <link rel="preload" as="image" href="./images/piano/background2.png">
 </head>
@@ -116,10 +117,10 @@
         </div>
 
         <div class="icon">
-            <button data-coming-soon>
-                <span>🎮</span>
+            <button data-popup="cloud-jumper-popup" data-startmenu="cloud-jumper-button">
+                <span>☁️</span>
             </button>
-            <p>mini games</p>
+            <p>cloud jumper</p>
         </div>
 
         <div class="icon">
@@ -199,6 +200,13 @@
             <p>webmaster</p>
         </div>
 
+        <div class="button-bar" id="cloud-jumper-button">
+            <button class="popup-close"
+                    data-close="cloud-jumper-popup"
+                    data-closemenu="cloud-jumper-button">✕</button>
+            <p>cloud jumper</p>
+        </div>
+
         <div class="button-bar" id="image-gallery-button">
             <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
             <p>image-gallery</p>
@@ -230,8 +238,8 @@
     ============================================== -->
 
     <!-- Welcome popup -->
-    <div id="welcome-popup" class="popup open window-classic">
-        <div class="popup-window">
+    <div id="welcome-popup" class="popup open">
+        <div class="popup-window window-classic">
             <div class="popup-titlebar">
                 <span>Welcome to my website!</span>
                 <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
@@ -302,8 +310,8 @@
     </div>
 
     <!-- My Music popup -->
-    <div id="my-music-popup" class="popup window-classic">
-        <div class="popup-window">
+    <div id="my-music-popup" class="popup">
+        <div class="popup-window window-classic">
             <div class="popup-titlebar">
                 <span>my music!</span>
                 <button class="popup-close" data-close="my-music-popup" data-closemenu="my-music-button">✕</button>
@@ -312,8 +320,8 @@
     </div>
 
     <!-- Avatar dress-up popup -->
-    <div id="avatar-popup" class="popup window-classic">
-        <div class="popup-window">
+    <div id="avatar-popup" class="popup">
+        <div class="popup-window window-classic">
             <div class="popup-titlebar">
                 <span>Dress me up!</span>
                 <button class="popup-close" data-close="avatar-popup" data-closemenu="pixel-avatar-button">✕</button>
@@ -394,8 +402,8 @@
     </div>
 
     <!-- image-gallery popup -->
-    <div id="image-gallery-popup" class="popup window-classic">
-        <div class="popup-window">
+    <div id="image-gallery-popup" class="popup">
+        <div class="popup-window window-classic">
             <div class="popup-titlebar">
                 <span>image-gallery!</span>
                 <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
@@ -450,8 +458,8 @@
     </div>
 
     <!-- Webmaster popup -->
-    <div id="webmaster-popup" class="popup window-classic">
-        <div class="popup-window">
+    <div id="webmaster-popup" class="popup">
+        <div class="popup-window window-classic">
             <div class="popup-titlebar">
                 <span>webmaster</span>
                 <button class="popup-close" data-close="webmaster-popup" data-closemenu="webmaster-button" data-close-also="note-from-shan-popup">✕</button>
@@ -554,8 +562,14 @@
 
     <!-- cloud jumper mini game popup-->
     <div id="cloud-jumper-popup" class="popup open">
-        <div class="popup-window">
-            <p>cloud jumper mini game coming soon!</p>
+        <div class="popup-window window-classic">
+            <div class="popup-titlebar">
+                <span>cloud jumper</span>
+                <button class="popup-close" data-close="cloud-jumper-popup" data-closemenu="cloud-jumper-button">✕</button>
+            </div>
+            <div class="cloud-jumper-game"> 
+                <p>a sexxidude production</p>
+            </div>
         </div>
     </div>
 
@@ -806,6 +820,7 @@
         makeDraggable(document.getElementById('dislikes-popup'));
         makeDraggable(document.getElementById('image-gallery-popup'));
         makeDraggable(document.getElementById('my-music-popup'));
+        makeDraggable(document.getElementById('cloud-jumper-popup'));
 
 
 

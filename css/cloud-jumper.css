@@ -1,0 +1,11 @@
+.cloud-jumper-game {
+    background: black;
+    color: #ffffff;
+    margin: 20px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+}
