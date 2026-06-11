@@ -1,5 +1,5 @@
 
-// if mobile open chatbox
+// if not mobile open chatbox
 if (window.innerWidth > 768) {
     openPopup('chatbox-popup');
 }

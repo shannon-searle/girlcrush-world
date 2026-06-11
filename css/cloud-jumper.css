@@ -14,6 +14,7 @@
 
 .cloud-jumper-game {
     background: rgb(203, 232, 192);
+    color: #000000;
     position: relative;
     width: min(500px, 90vw);   /* caps at 550px, shrinks on small screens */
     height: min(400px, 70vw);  /* keeps roughly the same aspect ratio */
@@ -36,7 +37,7 @@
     height: 80px;
 }
 
-.cloud-jumper-game p, .cloud-jumper-game button {
+#game-over, #play-again {
     display: none;
 }
         

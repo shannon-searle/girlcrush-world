@@ -1,6 +1,7 @@
 const player = document.getElementById('cloud-jumper');
 const game = document.querySelector('.cloud-jumper-game');
 const gameOverText = document.getElementById('game-over');
+const instructions = document.getElementById('instructions');
 const playAgain = document.getElementById('play-again');
 const clouds = [];
 
@@ -23,7 +24,11 @@ let gameOver = false;
 const playerWidth = player.offsetWidth;             // reads from DOM directly
 const margin = playerWidth * 0.2;
 
-const playerLeft = 150;
+let playerLeft = 150;
+// if mobile open chatbox
+if (window.innerWidth <= 768) {
+    playerLeft = 20;
+}
 const playerCenterX = playerLeft + playerWidth / 2;
 
 const cloudSpeed = 1;
@@ -34,6 +39,10 @@ const maxGap = (cloudWidth + edgeToEdgeGap) * 0.7;
 
 const scaler = 0.1
 
+// desktop
+let cloudStartingX = playerLeft;
+
+
 for (let i = 0; i < 6; i++) {
     const el = document.createElement('img');
     el.src = "./images/cloud.png"; // your image
@@ -42,7 +51,7 @@ for (let i = 0; i < 6; i++) {
     game.appendChild(el);
 
     clouds.push({
-        x: 250 + i * (maxGap) * 1.5,
+        x: cloudStartingX + i * (maxGap) * 1.5,
         y: 50,
         el
     });
@@ -129,10 +138,10 @@ function update() {
 
         // Game over if player falls off screen
         if (playerY < 0) {
-            console.log("game over");
             gameOver = true;
             gameOverText.style.display = "block";
             playAgain.style.display = "block";
+            instructions.style.display = 'none';
         }
     }
 
@@ -142,7 +151,7 @@ function update() {
 // desktop keyboard events
 document.addEventListener('keydown', (event) => {
     if (event.repeat) return;
-    if (event.code === 'Space' && !isJumping) {
+    if (event.code === 'Space') {
         gameStarted = true;
         charging = true;
         isJumping = true;
@@ -176,7 +185,7 @@ game.addEventListener('touchend', (event) => {
     charging = false;
 });
 
-playAgain.addEventListener('click', () => {
+playAgain.addEventListener('pointerdown', () => {
     reset();
 });
 
@@ -189,15 +198,15 @@ function reset() {
     charging = false;
     onPlatform = false;
     activePlatform = null;
-    gameOver = false;
 
     // reset UI
     gameOverText.style.display = 'none';
     playAgain.style.display = 'none';
+    instructions.style.display = 'block';
 
     // reset cloud positions
     clouds.forEach((c, i) => {
-        c.x = 250 + i * (maxGap) * 1.5,
+        c.x = cloudStartingX + i * (maxGap) * 1.5,
         c.y = 50;
         c.el.style.left = c.x + 'px';
         c.el.style.bottom = c.y + 'px';
@@ -206,6 +215,7 @@ function reset() {
 
     // reset player position
     player.style.bottom = playerY + 'px';
+    gameOver = false;
 }
 
 update();
