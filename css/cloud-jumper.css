@@ -47,4 +47,9 @@
         width: auto;
         height: 80px;
     }
+
+    .cloud-jumper-game {
+        width: min(500px, 90vw);   /* caps at 550px, shrinks on small screens */
+        height: min(650px, 80vw);  /* keeps roughly the same aspect ratio */
+    }
 }

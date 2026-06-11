@@ -78,8 +78,8 @@
 #cloud-jumper-popup {
     top: min(30%, 65vh);
     left: min(35%, 70vw);
-    width: clamp(280px, 40vw, 1000px);
-    height: clamp(280px, 40vw, 600px);
+    width: clamp(480px, 40vw, 1000px);
+    height: clamp(480px, 40vw, 600px);
 }
 
 /* ── Popup Titlebar ── */
@@ -401,4 +401,5 @@
     #decor-popup {
         position: fixed;
     }
+
 }
