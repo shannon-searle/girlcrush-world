@@ -122,6 +122,7 @@ function update() {
     requestAnimationFrame(update);
 }
 
+// desktop keyboard events
 document.addEventListener('keydown', (event) => {
     if (event.repeat) return;
     if (event.code === 'Space' && !isJumping) {
@@ -138,6 +139,24 @@ document.addEventListener('keyup', (event) => {
     if (event.code === 'Space') {
         charging = false;
     }
+});
+
+// mobile touch events
+game.addEventListener('touchstart', (event) => {
+    event.preventDefault();  // stops the page scrolling while playing
+    if (!isJumping) {
+        gameStarted = true;
+        charging = true;
+        isJumping = true;
+        onPlatform = false;
+        activePlatform = null;
+        velocityY = jumpPower;
+    }
+});
+
+game.addEventListener('touchend', (event) => {
+    event.preventDefault();
+    charging = false;
 });
 
 update();
