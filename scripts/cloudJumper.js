@@ -20,8 +20,18 @@ let activePlatform = null;
 let gameOver = false;
 
 
+const playerWidth = player.offsetWidth;             // reads from DOM directly
+const margin = playerWidth * 0.2;
 
-const maxGap = (2 * maxPower / gravity) * 1.5;
+const playerLeft = 150;
+const playerCenterX = playerLeft + playerWidth / 2;
+
+const cloudSpeed = 1;
+const cloudWidth = 80;
+const maxTimeInAir = (2 * maxPower) / gravity;
+const edgeToEdgeGap = (cloudSpeed * maxTimeInAir) + margin;
+const maxGap = (cloudWidth + edgeToEdgeGap) * 0.7;
+
 const scaler = 0.1
 
 for (let i = 0; i < 6; i++) {
@@ -92,7 +102,6 @@ function update() {
             const cloudRect = c.el.getBoundingClientRect();
 
             const playerCenterX = playerRect.left + playerRect.width / 2;
-            const margin = playerRect.width * 0.2;
 
             const horizontalOverlap =
                 playerCenterX > cloudRect.left - margin &&
