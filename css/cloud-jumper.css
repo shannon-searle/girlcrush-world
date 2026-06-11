@@ -23,6 +23,14 @@
     overflow: hidden;
 }
 
+
+.cloud-jumper-controls {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 20px;
+}
+
 .cloud {
     position: absolute;
     width: 80px;
