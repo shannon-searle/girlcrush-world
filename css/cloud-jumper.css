@@ -15,8 +15,8 @@
 .cloud-jumper-game {
     background: rgb(203, 232, 192);
     position: relative;
-    width: min(550px, 90vw);   /* caps at 550px, shrinks on small screens */
-    height: min(500px, 70vw);  /* keeps roughly the same aspect ratio */
+    width: min(500px, 90vw);   /* caps at 550px, shrinks on small screens */
+    height: min(400px, 70vw);  /* keeps roughly the same aspect ratio */
     padding: 10px;
     border-radius: 10px;
     overflow: hidden;

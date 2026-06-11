@@ -19,6 +19,7 @@ let gameOver = false;
 
 
 const maxGap = (2 * maxPower / gravity) * 1.5; 
+const scaler = 0.1
 
 for (let i = 0; i < 5; i++) {
     const el = document.createElement('img');
