@@ -1,5 +1,7 @@
 const player = document.getElementById('cloud-jumper');
 const game = document.querySelector('.cloud-jumper-game');
+const gameOverText = document.getElementById('game-over');
+const playAgain = document.getElementById('play-again');
 const clouds = [];
 
 let playerY = 100;
@@ -18,10 +20,11 @@ let activePlatform = null;
 let gameOver = false;
 
 
-const maxGap = (2 * maxPower / gravity) * 1.5; 
+
+const maxGap = (2 * maxPower / gravity) * 1.5;
 const scaler = 0.1
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 6; i++) {
     const el = document.createElement('img');
     el.src = "./images/cloud.png"; // your image
     el.classList.add('cloud');
@@ -29,7 +32,7 @@ for (let i = 0; i < 5; i++) {
     game.appendChild(el);
 
     clouds.push({
-        x: i === 0 ? 300 : i === 1 ? 600 : game.clientWidth + i * (maxGap),
+        x: 250 + i * (maxGap) * 1.5,
         y: 50,
         el
     });
@@ -69,7 +72,7 @@ function update() {
 
         // Move clouds
         clouds.forEach(c => {
-            c.x -= 2;
+            c.x -= 1;
 
             if (c.x < -100) {
                 c.x = game.clientWidth + Math.random() * maxGap;
@@ -88,14 +91,17 @@ function update() {
             const playerRect = player.getBoundingClientRect();
             const cloudRect = c.el.getBoundingClientRect();
 
+            const playerCenterX = playerRect.left + playerRect.width / 2;
+            const margin = playerRect.width * 0.2;
+
             const horizontalOverlap =
-                playerRect.left < cloudRect.right &&
-                playerRect.right > cloudRect.left;
+                playerCenterX > cloudRect.left - margin &&
+                playerCenterX < cloudRect.right + margin;
 
             const landingOnTop =
                 playerRect.bottom >= cloudRect.top &&
                 playerRect.bottom <= cloudRect.bottom &&
-                velocityY <= 0; // only snap when falling or neutral
+                velocityY <= 0;
 
             if (horizontalOverlap && landingOnTop) {
                 landed = true;
@@ -107,8 +113,7 @@ function update() {
             onPlatform = true;
             velocityY = 0;
             isJumping = false;
-        } else if (!landed && onPlatform && velocityY <= 0) {
-            // Walked off the edge of a cloud — start falling
+        } else {
             onPlatform = false;
             activePlatform = null;
         }
@@ -117,6 +122,8 @@ function update() {
         if (playerY < 0) {
             console.log("game over");
             gameOver = true;
+            gameOverText.style.display = "block";
+            playAgain.style.display = "block";
         }
     }
 
@@ -159,5 +166,37 @@ game.addEventListener('touchend', (event) => {
     event.preventDefault();
     charging = false;
 });
+
+playAgain.addEventListener('click', () => {
+    reset();
+});
+
+function reset() {
+    // reset state
+    playerY = 100;
+    velocityY = 0;
+    gameStarted = false;
+    isJumping = false;
+    charging = false;
+    onPlatform = false;
+    activePlatform = null;
+    gameOver = false;
+
+    // reset UI
+    gameOverText.style.display = 'none';
+    playAgain.style.display = 'none';
+
+    // reset cloud positions
+    clouds.forEach((c, i) => {
+        c.x = 250 + i * (maxGap) * 1.5,
+        c.y = 50;
+        c.el.style.left = c.x + 'px';
+        c.el.style.bottom = c.y + 'px';
+    });
+
+
+    // reset player position
+    player.style.bottom = playerY + 'px';
+}
 
 update();
