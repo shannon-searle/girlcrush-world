@@ -1,7 +1,8 @@
 const player = document.getElementById('cloud-jumper');
 const game = document.querySelector('.cloud-jumper-game');
 const gameOverText = document.getElementById('game-over');
-const instructions = document.getElementById('instructions');
+const desktopInstructions = document.getElementById('desktop-instructions');
+const mobileInstructions = document.getElementById('mobile-instructions');
 const playAgain = document.getElementById('play-again');
 const clouds = [];
 
@@ -20,6 +21,8 @@ let activePlatform = null;
 
 let gameOver = false;
 
+let mobile = false;
+
 
 const playerWidth = player.offsetWidth;             // reads from DOM directly
 const margin = playerWidth * 0.2;
@@ -28,6 +31,7 @@ let playerLeft = 150;
 // if mobile open chatbox
 if (window.innerWidth <= 768) {
     playerLeft = 20;
+    mobile = true;
 }
 const playerCenterX = playerLeft + playerWidth / 2;
 
@@ -141,7 +145,8 @@ function update() {
             gameOver = true;
             gameOverText.style.display = "block";
             playAgain.style.display = "block";
-            instructions.style.display = 'none';
+            if (mobile) {mobileInstructions.style.display = 'none';}
+            else {desktopInstructions.style.display = 'none';}
         }
     }
 
@@ -202,7 +207,8 @@ function reset() {
     // reset UI
     gameOverText.style.display = 'none';
     playAgain.style.display = 'none';
-    instructions.style.display = 'block';
+    if (mobile) {mobileInstructions.style.display = 'block';}
+    else {desktopInstructions.style.display = 'block';}
 
     // reset cloud positions
     clouds.forEach((c, i) => {
