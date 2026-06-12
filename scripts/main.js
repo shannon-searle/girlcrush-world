@@ -184,6 +184,7 @@ document.querySelectorAll('[data-gif]').forEach(button => {
 ------------------------------------------ */
 function openStartMenu(id) {
     const btn = document.getElementById(id);
+    const chatButton = document.getElementById('chatbox-button');
     if (!btn.classList.contains('open')) {
         btn.classList.add('open');
         document.querySelector('.start-bar').insertBefore(btn, chatButton);
