@@ -4,6 +4,7 @@
 // ============================================================
 const player = document.getElementById('cloud-jumper');
 const game = document.querySelector('.cloud-jumper-game');
+const scoreDisplay = document.getElementById('score-display');
 const gameOverText = document.getElementById('game-over');
 const desktopInstructions = document.getElementById('desktop-instructions');
 const mobileInstructions = document.getElementById('mobile-instructions');
@@ -35,6 +36,7 @@ const state = {
     activePlatform: null,
     gameOver: false,
     initialized: false,
+    score: 0
 };
 
 // ============================================================
@@ -45,7 +47,8 @@ const layout = {
     playerLeft: 150,
     playerWidth: 0,
     maxGap: 0,
-    gameWidth: 0,
+    safetyMargin: 0.9,
+    gameWidth: 0
 };
 // if mobile player starts at 20px left
 if (layout.mobile) { layout.playerLeft = 20;}
@@ -86,7 +89,7 @@ function update() {
             c.x -= config.cloudSpeed;
             // reset if off window
             if (c.x < -config.cloudWidth) {
-                c.x = layout.gameWidth + (Math.random() * layout.maxGap);
+                c.x = layout.gameWidth + (Math.random() * layout.maxGap * layout.safetyMargin);
                 c.y = 50;
             }
             c.el.style.left = c.x + 'px';
@@ -129,6 +132,11 @@ function update() {
             state.gameOver = true;
             showGameInstructions(state.gameOver);
         }
+
+        // update score 
+        state.score += config.cloudSpeed * 0.1;   // tune the multiplier
+        scoreDisplay.textContent = Math.floor(state.score) + 'm';
+
     }
 
     requestAnimationFrame(update);
@@ -189,6 +197,12 @@ function reset() {
     state.onPlatform = false;
     state.activePlatform = null;
     state.gameOver = false;
+    state.score = 0;
+
+    // update score 
+    scoreDisplay.textContent = Math.floor(state.score) + 'm';
+
+
 
     // reset UI
     showGameInstructions(state.gameOver)

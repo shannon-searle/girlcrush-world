@@ -49,6 +49,18 @@
     display: none;
 }
         
+#score-display {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    user-select: none;       /* stops accidental text selection on tap */
+    pointer-events: none;    /* taps pass through to the game */
+}
 
 /* ============================================================
    Mobile (≤ 768px)
