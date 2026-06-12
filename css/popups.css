@@ -80,7 +80,7 @@
     top: min(20%, 65vh);
     left: min(35%, 70vw);
     width: clamp(480px, 40vw, 1000px);
-    height: clamp(480px, 40vw, 600px);
+    height: clamp(550px, 40vw, 600px);
 }
 
 /* ── Popup Titlebar ── */
@@ -337,6 +337,7 @@
         max-width: 100%;
         max-height: none;
     }
+    
 
     #chatbox-popup{
         position: fixed;
