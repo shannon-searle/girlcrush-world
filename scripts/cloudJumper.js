@@ -172,11 +172,7 @@ function initGame() {
 
 // create initial clouds
 function createClouds(startX, gap, Y) {
-    let number = 8;
-    if (layout.mobile) {
-        number = 6;
-    }
-    for (let i = 0; i < number; i++) {
+    for (let i = 0; i < 8; i++) {
         const el = document.createElement('img');
         el.src = "./images/cloud.png"; // your image
         el.classList.add('cloud');
