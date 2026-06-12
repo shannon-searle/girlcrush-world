@@ -20,6 +20,7 @@ const config = {
     jumpPower: 8,
     cloudSpeed: 1,
     cloudWidth: 80,
+    cloudY: 50,
     startPlayerY: 100
 }; // maybe change cloudWidth ? not hardcoded
 
@@ -47,7 +48,6 @@ const layout = {
     playerLeft: 150,
     playerWidth: 0,
     maxGap: 0,
-    safetyMargin: 0.9,
     gameWidth: 0
 };
 // if mobile player starts at 20px left
@@ -85,16 +85,24 @@ function update() {
         player.style.bottom = state.playerY + 'px';
 
         // Move clouds
+
+        // right edge of the furthest-right cloud — the anchor for new spawns
+        let rightEdge = Math.max(...clouds.map(o => o.x)) + config.cloudWidth;
+    
         clouds.forEach(c => {
             c.x -= config.cloudSpeed;
-            // reset if off window
+    
+            // recycle when fully off the left edge
             if (c.x < -config.cloudWidth) {
-                c.x = layout.gameWidth + (Math.random() * layout.maxGap * layout.safetyMargin);
-                c.y = 50;
+                const gap = Math.random() * layout.maxGap;   // edge-to-edge gap
+                c.x = rightEdge + gap;
+                rightEdge = c.x + config.cloudWidth;         // chain the next spawn
+                c.y = config.cloudY;
             }
             c.el.style.left = c.x + 'px';
             c.el.style.bottom = c.y + 'px';
         });
+
 
         // Collision detection
         let landed = false;
@@ -158,6 +166,8 @@ function initGame() {
     const maxTimeInAir = (2 * config.maxPower) / config.gravity;
     const edgeToEdgeGap = config.cloudSpeed * maxTimeInAir;
     layout.maxGap = (layout.cloudWidth + edgeToEdgeGap) * 0.7;
+
+    
 }
 
 // create initial clouds
@@ -255,7 +265,7 @@ function showGameInstructions(isGameOver) {
 // desktop keyboard events
 document.addEventListener('keydown', (event) => {
     if (event.repeat) return;
-    if (event.code === 'Space') {
+    if (event.code === 'Space' && !state.isJumping) {
         if (state.initialized == false) {
             initGame();
         }
@@ -304,7 +314,7 @@ playAgain.addEventListener('pointerdown', () => {
 // ============================================================
 // Boot
 // ============================================================
-createClouds(layout.playerLeft, 80, 50);
+createClouds(layout.playerLeft, config.cloudWidth, config.cloudY);
 update();
 
 
