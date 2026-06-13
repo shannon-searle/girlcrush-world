@@ -34,28 +34,38 @@
             <div class="waiting-room-content">
                 <img src="./images/waiting_room1.png">
                 <img id="portal" src="./images/portal2.png">
-                <p>welcome to the waiting room<br>girlcrush world is just through the portal<br>are you brave enough to step inside?<br>decide now!</p>
+                <p>you have made it to the waiting room!<br>you may now begin your journey into the girlcrush digital realm<br>
+                    enter through the portal, if you dare</p>
             </div>
-            <button class="button" onclick="next('section2', 'section3', 'black')">begin</button>
+            <div class="game-options">
+                <button class="button" onclick="next('section2', 'section7', 'black')">retreat</button>
+                <button class="button" onclick="next('section2', 'section3', 'black')">begin</button>
+            </div>
         </section>
 
         <section id="section3" style="display:none;">
             <div class="waiting-room-content">
                 <img src="./images/waiting_room1.png">
                 <div class="background"></div>
-                 <p>the portal pulls you in and your stomach drops<br>through the chaos, a voice.<br>
-                it's the princess! she needs your help<br>what will you do?</p>
+                 <p>you step inside the portal<br>a wave of nausea hits the pit of your stomach and you hear a muffled voice cry out in the distance<br>
+                it’s the princess. she needs your help!<br>what will you do?</p>
             </div>
-            <button class="button" onclick="next('section3', 'section4')">venture further</button>
+            <div class="game-options">
+                <button class="button" onclick="next('section3', 'section7', 'black')">retreat</button>
+                <button class="button" onclick="next('section3', 'section4')">venture further</button>
+            </div>
         </section>
 
         <section id="section4" style="display:none;">
             <div class="waiting-room-content">
                 <img src="./images/waiting_room1.png">
                 <div class="background"></div>
-                <p>you fall further into the unknown<br>the edges of your vision darken and you surrender to the fall<br>until there is only the soft shimmer of distant stars</p>
+                <p>you freefall into the unknown<br>the edges of your vision sink into darkness<br>as you slip further and further away from reality</p>
             </div>
-            <button class="button" onclick="next('section4', 'section5')">faint</button>
+            <div class="game-options">
+                <button class="button" onclick="next('section4', 'section7', 'black')">retreat</button>
+                <button class="button" onclick="next('section4', 'section5')">faint</button>
+            </div>
         </section>
 
         <section id="section5" style="display:none;">
@@ -63,15 +73,29 @@
                 <img src="./images/waiting_room1.png">
                 <p>you feel strange<br>are losing control...<br>or gaining it?</p>
             </div>
-            <button class="button" onclick="next('section5', 'section6')">surrender to the power</button>
+            <div class="game-options">
+                <button class="button" onclick="next('section5', 'section7', 'black')">retreat</button>               
+                <button class="button" onclick="next('section5', 'section6')">surrender to the power</button>
+            </div>
         </section>
 
         <section id="section6" style="display:none;">
             <div class="waiting-room-content">
                 <img src="./images/waiting_room1.png">
-                <p>you wake up in a daze and find yourself somewhere strange and otherworldly<br>could this be... girlcrush world?</p>
+                <p>you wake up in a daze and feel yourself somewhere, otherworldly?<br>could it be… the girlcrush digital realm?</p>
             </div>
-            <button class="button" onclick="goToBase()">explore</button>
+            <button class="button" onclick="goToBase()">explore!</button>
+        </section>
+        <!-- you died -->
+        <section id="section7" style="display:none;">
+            <p>you died!</p>
+            <p><b>score</b>: not good</p>
+            <p><em>unknown</em> user tried to run away from the girlcrush digital realm and was crushed by the queen of the darkland</p>
+            <div class="game-options">
+                <button class="button"onclick="next('section7', 'section2')">respawn</button>
+                <button class="button" onclick="next('section7', 'section1')">title screen</button>
+            </div>
+            <img src="./images/you-died2.jpg">
         </section>
 
     </div>
