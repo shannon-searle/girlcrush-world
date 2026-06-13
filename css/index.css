@@ -91,13 +91,16 @@ section {
         drop-shadow(0 0 5px #e166a0)
         drop-shadow(0 0 15px #e166a0)
         drop-shadow(0 0 30px #e166a0);
-    transition: transform 1s ease;
 }
 
 .title { animation: shake 5.5s infinite; }
 
 
-#section1 .title:hover {
+#title-container {
+    transition: transform 1s ease;
+}
+
+#title-container:hover {
     transform:
         translateY(-8px)
         scale(1.03);
