@@ -328,6 +328,7 @@ a { outline: none; }
         justify-content: center;
         padding: 3vh 5vw;
         gap: 2vh;
+        font-size: 10px;
     }
 
     #section1 {
@@ -339,10 +340,6 @@ a { outline: none; }
 
     /* Typography */
     .title {
-        font-size: clamp(1.8rem, 10vw, 4rem);
-        text-align: center;
-        line-height: 1.1;
-        word-break: break-word;
         padding: 0 4vw;
         width: 90vw;
         height: auto;
@@ -359,8 +356,13 @@ a { outline: none; }
     }
 
     .waiting-room-content img {
-        width: 85vw;
-        height: 40vh;
+        width: 90vw;
+        height: 50vh;
+    }
+
+    .waiting-room-content p {
+        font-size: 8px;
+        line-height: 1.8;
     }
 
     #portal {
@@ -375,6 +377,7 @@ a { outline: none; }
     /* Buttons */
     .button {
         font-size: 10px;
+        line-height: 1.5;
         padding: 10px 14px;
     }
 
