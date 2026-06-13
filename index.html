@@ -117,12 +117,19 @@
         }
 
         function goToBase() {
-            document.documentElement.style.background = "white";
-            document.body.style.transition = 'background-color 0.3s ease, opacity 0.5s ease';
-            document.body.style.backgroundColor = '#ffffff';
-            document.body.style.opacity = '0';
+            const body = document.body;
+
+            body.style.transition = "opacity 1s ease";
+
+            // ensure visible first (prevents Safari skipping animation)
+            body.style.opacity = "1";
+
+            requestAnimationFrame(() => {
+                body.style.opacity = "0";
+            });
+
             setTimeout(() => {
-                window.location.replace('base.html?from=index');
+                window.location.replace("base.html?from=index");
             }, 1000);
         }
 

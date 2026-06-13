@@ -4,6 +4,12 @@ if (window.innerWidth > 768) {
     openPopup('chatbox-popup');
 }
 
+// fade into base
+window.addEventListener("load", () => {
+    requestAnimationFrame(() => {
+        document.body.style.opacity = "1";
+    });
+});
 
 /* ------------------------------------------
     piano

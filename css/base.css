@@ -30,6 +30,8 @@ body {
     background-repeat: repeat, no-repeat;
     background-size: 90vw, cover;
     background-position: center, right top;
+    opacity: 0;
+    transition: opacity 2s ease;
 }
 
 html, body {
