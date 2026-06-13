@@ -184,6 +184,7 @@ a { outline: none; }
     box-shadow: 0 0 80px #563d48;
     justify-content: center; /* horizontal */
     margin: 30px;
+    margin-top: 0;
 }
 
 .waiting-room-content p{
