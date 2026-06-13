@@ -3,6 +3,7 @@
 // ============================================================
 const game = document.querySelector('.cloud-jumper-game');
 const gameContainer = document.querySelector('.cloud-jumper-container');
+const closeBtn = document.getElementById('cloud-jumper-close')
 const scoreDisplay = document.getElementById('score-display');
 const gameOverText = document.getElementById('game-over');
 const desktopInstructions = document.getElementById('desktop-instructions');
@@ -304,6 +305,7 @@ function reset() {
     });
 }
 
+
 // ============================================================
 // UI helpers
 // ============================================================
@@ -373,6 +375,13 @@ playAgain.addEventListener('pointerdown', (event) => {
     event.stopPropagation();
     reset();
 });
+
+// event listener for close button 
+closeBtn.addEventListener('pointerdown', (event) => {
+    event.stopPropagation();
+    reset();
+});
+
 
 // ============================================================
 // Boot
