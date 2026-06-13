@@ -11,41 +11,52 @@
     <link rel="stylesheet" href="css/index.css" />
 </head>
 <body class="page-index">
+    <div id="bg"></div>
     <canvas id="stars"></canvas>
     <div class="page-container">
         <!-- long way through -->
         <section id="section1">
             <!-- <a class="title" onclick="next('section1', 'section2', true)">girlcrush222</a> -->
-             <img class="title" onclick="next('section1', 'section2', true)" src="images/metalic-title.png">
+             <img class="title" onclick="next('section1', 'section2', 'black')" src="images/metalic-title.png">
+             <!-- short way -->
+            <div class = "backdoor" id="skip">
+                <button class = "skip" onclick="goToBase()">
+                <img class="img-default" src="images/door.png" />
+                <img class="img-hover" src="images/door-open.png" />
+                </button>
+                <p>back door</p>
+            </div>
         </section>
 
         <section id="section2" style="display:none;">
-            <div class="waiting-room-img">
-
+            <div class="waiting-room-content">
+                <img src="./images/waiting_room1.png">
+                <img id="portal" src="./images/portal2.png">
+                <div class="background"></div>
+                <p>welcome to the waiting room<br>girlcrush world is just through the portal<br>are you brave enough to step inside?<br>decide now!</p>
             </div>
-            <p>welcome to the waiting room<br>girlcrush world is just through the portal<br>are you brave enough to step inside?<br>decide now!</p>
-            <button class="button" onclick="next('section2', 'section3')">begin</button>
+            <button class="button" onclick="next('section2', 'section3', 'black')">begin</button>
         </section>
 
         <section id="section3" style="display:none;">
-            <div class="waiting-room-img">
-                
+            <div class="waiting-room-content">
+                <div class="background"></div>
             </div>
-            <p>the portal pulls you in and your stomach drops<br>through the chaos, a voice.<br>
+             <p>the portal pulls you in and your stomach drops<br>through the chaos, a voice.<br>
                 it's the princess! she needs your help<br>what will you do?</p>
             <button class="button" onclick="next('section3', 'section4')">venture further</button>
         </section>
 
         <section id="section4" style="display:none;">
-            <div class="waiting-room-img">
-                
+            <div class="waiting-room-content">
+                <div class="background"></div>
             </div>
             <p>you fall further into the unknown<br>the edges of your vision darken and you surrender to the fall<br>until there is only the soft shimmer of distant stars</p>
             <button class="button" onclick="next('section4', 'section5')">faint</button>
         </section>
 
         <section id="section5" style="display:none;">
-            <div class="waiting-room-img">
+            <div class="waiting-room-content">
                 
             </div>
             <p>you feel strange<br>are losing control...<br>or gaining it?</p>
@@ -53,46 +64,63 @@
         </section>
 
         <section id="section6" style="display:none;">
-            <div class="waiting-room-img">
+            <div class="waiting-room-content">
                 
             </div>
             <p>you wake up in a daze and find yourself somewhere strange and otherworldly<br>could this be... girlcrush world?</p>
             <button class="button" onclick="goToBase()"">explore</button>
         </section>
 
-        <!-- short way -->
-        <div class = "backdoor">
-            <button class = "skip" onclick="goToBase()">
-            <img class="img-default" src="images/door.png" />
-            <img class="img-hover" src="images/door-open.png" />
-            </button>
-            <p>back door</p>
-        </div>
     </div>
     <script>
-        // password 
-        /*if (!sessionStorage.getItem('verified')) {
-            window.location.replace('password.html');
-        }*/
         // buttons next 
-        function next(hideId, showId, skipFade = false) {
-            if (skipFade != true) {
-                document.body.style.transition = 'opacity 1s ease';
-                document.body.style.opacity = '0';
+        function next(hideId, showId, newBg, skipFade = false) {
+            const bg = document.getElementById("bg");
+
+            // set new background first (hidden via fade)
+            if (newBg) {
+                bg.style.opacity = "0";
+            }
+
+            if (!skipFade) {
+                document.body.style.transition = "opacity 1s ease";
+                document.body.style.opacity = "0";
+
                 setTimeout(() => {
-                    document.getElementById(hideId).style.display = 'none';
-                    document.getElementById(showId).style.display = 'flex';
-                    setTimeout(() => {
-                        document.body.style.opacity = '1';
-                    }, 50);
+
+                    // swap screens
+                    document.getElementById(hideId).style.display = "none";
+                    document.getElementById(showId).style.display = "flex";
+
+                    // change background AFTER fade out
+                    if (newBg) {
+                        bg.style.background = newBg;
+
+                        setTimeout(() => {
+                            bg.style.opacity = "1";
+                        }, 50);
+                        document.documentElement.style.background = "black";
+
+                    }
+
+                    document.body.style.opacity = "1";
+
                 }, 1000);
+
             } else {
-                document.getElementById(hideId).style.display = 'none';
-                document.getElementById(showId).style.display = 'flex';
+
+                document.getElementById(hideId).style.display = "none";
+                document.getElementById(showId).style.display = "flex";
+
+                if (newBg) {
+                    bg.style.background = newBg;
+                    bg.style.opacity = "1";
+                }
             }
         }
 
         function goToBase() {
+            document.documentElement.style.background = "white";
             document.body.style.transition = 'background-color 0.3s ease, opacity 0.5s ease';
             document.body.style.backgroundColor = '#ffffff';
             document.body.style.opacity = '0';
@@ -124,7 +152,7 @@
         const stars = Array.from({ length: 150 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            size: Math.random() * 2,
+            size: Math.random() * 1.5,
             speed: Math.random() * 0.2 + 0.05,            
             opacity: Math.random(),
             direction: Math.random() > 0.5 ? 1 : -1
