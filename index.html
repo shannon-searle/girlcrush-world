@@ -118,6 +118,18 @@
 
         function goToBase() {
             const body = document.body;
+            const bg = document.getElementById("bg");
+            // set new background first (hidden via fade)
+            bg.style.opacity = "0";
+            setTimeout(() => {
+                bg.style.background = '#fce4ec';
+                // 3. force repaint then fade back in
+                requestAnimationFrame(() => {
+                    bg.style.opacity = "1";
+                    document.body.style.opacity = "1";
+                });
+
+            }, 1000);
 
             body.style.transition = "opacity 1s ease";
 

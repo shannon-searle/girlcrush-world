@@ -358,18 +358,19 @@ document.addEventListener('keyup', (event) => {
 });
 
 // mobile touch events
-gameContainer.addEventListener('touchstart', (event) => {
+gameContainer.addEventListener('pointerdown', (event) => {
     event.preventDefault();  // stops the page scrolling while playing
     beginJump();
 });
 
-gameContainer.addEventListener('touchend', (event) => {
+gameContainer.addEventListener('pointerup', (event) => {
     event.preventDefault();
     player.stopCharging();
 });
 
 // event listener for play again button
-playAgain.addEventListener('pointerdown', () => {
+playAgain.addEventListener('pointerdown', (event) => {
+    event.stopPropagation();
     reset();
 });
 
