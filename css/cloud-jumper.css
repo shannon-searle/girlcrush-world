@@ -45,6 +45,14 @@
     width: auto;
     height: 80px;
 }
+.cloud, #cloud-jumper {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    -webkit-touch-callout: none; /* disables iOS long-press menu */
+    -webkit-user-drag: none;
+}
 
 #game-over, #play-again, #mobile-instructions{
     display: none;
