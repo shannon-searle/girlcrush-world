@@ -34,7 +34,6 @@
             <div class="waiting-room-content">
                 <img src="./images/waiting_room1.png">
                 <img id="portal" src="./images/portal2.png">
-                <div class="background"></div>
                 <p>welcome to the waiting room<br>girlcrush world is just through the portal<br>are you brave enough to step inside?<br>decide now!</p>
             </div>
             <button class="button" onclick="next('section2', 'section3', 'black')">begin</button>
@@ -42,41 +41,45 @@
 
         <section id="section3" style="display:none;">
             <div class="waiting-room-content">
+                <img src="./images/waiting_room1.png">
                 <div class="background"></div>
-            </div>
-             <p>the portal pulls you in and your stomach drops<br>through the chaos, a voice.<br>
+                 <p>the portal pulls you in and your stomach drops<br>through the chaos, a voice.<br>
                 it's the princess! she needs your help<br>what will you do?</p>
+            </div>
             <button class="button" onclick="next('section3', 'section4')">venture further</button>
         </section>
 
         <section id="section4" style="display:none;">
             <div class="waiting-room-content">
+                <img src="./images/waiting_room1.png">
                 <div class="background"></div>
+                <p>you fall further into the unknown<br>the edges of your vision darken and you surrender to the fall<br>until there is only the soft shimmer of distant stars</p>
             </div>
-            <p>you fall further into the unknown<br>the edges of your vision darken and you surrender to the fall<br>until there is only the soft shimmer of distant stars</p>
             <button class="button" onclick="next('section4', 'section5')">faint</button>
         </section>
 
         <section id="section5" style="display:none;">
             <div class="waiting-room-content">
-                
+                <img src="./images/waiting_room1.png">
+                <p>you feel strange<br>are losing control...<br>or gaining it?</p>
             </div>
-            <p>you feel strange<br>are losing control...<br>or gaining it?</p>
             <button class="button" onclick="next('section5', 'section6')">surrender to the power</button>
         </section>
 
         <section id="section6" style="display:none;">
             <div class="waiting-room-content">
-                
+                <img src="./images/waiting_room1.png">
+                <p>you wake up in a daze and find yourself somewhere strange and otherworldly<br>could this be... girlcrush world?</p>
             </div>
-            <p>you wake up in a daze and find yourself somewhere strange and otherworldly<br>could this be... girlcrush world?</p>
-            <button class="button" onclick="goToBase()"">explore</button>
+            <button class="button" onclick="goToBase()">explore</button>
         </section>
 
     </div>
     <script>
+        // change html 
+                        //document.documentElement.style.background = "black";
         // buttons next 
-        function next(hideId, showId, newBg, skipFade = false) {
+        function next(hideId, showId, newBg) {
             const bg = document.getElementById("bg");
 
             // set new background first (hidden via fade)
@@ -84,41 +87,33 @@
                 bg.style.opacity = "0";
             }
 
-            if (!skipFade) {
-                document.body.style.transition = "opacity 1s ease";
-                document.body.style.opacity = "0";
+            document.body.style.transition = "opacity 1s ease";
+            document.body.style.opacity = "0";
 
-                setTimeout(() => {
+            setTimeout(() => {
 
-                    // swap screens
-                    document.getElementById(hideId).style.display = "none";
-                    document.getElementById(showId).style.display = "flex";
-
-                    // change background AFTER fade out
-                    if (newBg) {
-                        bg.style.background = newBg;
-
-                        setTimeout(() => {
-                            bg.style.opacity = "1";
-                        }, 50);
-                        document.documentElement.style.background = "black";
-
-                    }
-
-                    document.body.style.opacity = "1";
-
-                }, 1000);
-
-            } else {
-
+                // 1. swap UI
                 document.getElementById(hideId).style.display = "none";
                 document.getElementById(showId).style.display = "flex";
 
+                // 2. change background FIRST (while hidden)
                 if (newBg) {
                     bg.style.background = newBg;
-                    bg.style.opacity = "1";
                 }
-            }
+
+                // 3. force repaint then fade back in
+                requestAnimationFrame(() => {
+                    bg.style.opacity = "1";
+                    document.body.style.opacity = "1";
+                });
+
+            }, 1000);
+            setTimeout(() => {
+                document.documentElement.style.background = "black";
+            }, 1600);
+
+            
+            
         }
 
         function goToBase() {
@@ -130,13 +125,6 @@
                 window.location.replace('base.html?from=index');
             }, 1000);
         }
-
-        // back button reset page 
-
-        history.pushState({ page: 'index' }, '', location.href);
-        window.addEventListener('popstate', function(e) {
-            window.location.replace('index.html');
-        });
 
         // stars
 

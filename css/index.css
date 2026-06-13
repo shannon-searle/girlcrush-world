@@ -91,6 +91,8 @@ section {
         drop-shadow(0 0 5px #e166a0)
         drop-shadow(0 0 15px #e166a0)
         drop-shadow(0 0 30px #e166a0);
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .title { animation: shake 5.5s infinite; }
