@@ -401,6 +401,9 @@
     }
 
     #decor-popup {
-        position: fixed;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: clamp(700px, 90vh, 1000px);
     }
 }

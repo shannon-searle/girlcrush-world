@@ -11,8 +11,6 @@ const desktopInstructions = document.getElementById('desktop-instructions');
 const mobileInstructions = document.getElementById('mobile-instructions');
 const playAgain = document.getElementById('play-again');
 
-// kjnnjcdsfjdsnfhs      remove duplicate variables between config and state and commit with adding my own images and editing format. change positon of game instructions and also add a section to diappear when playing 
-
 // ============================================================
 // Config — every "magic number" lives here, tweak in one place
 // ============================================================
