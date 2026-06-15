@@ -2,6 +2,7 @@
 // DOM references (non-game-object UI)
 // ============================================================
 const game = document.querySelector('.cloud-jumper-game');
+const cloudJumper = document.getElementById('cloud-jumper');
 const gameContainer = document.querySelector('.cloud-jumper-container');
 const closeBtn = document.getElementById('cloud-jumper-close')
 const scoreDisplay = document.getElementById('score-display');
@@ -9,6 +10,8 @@ const gameOverText = document.getElementById('game-over');
 const desktopInstructions = document.getElementById('desktop-instructions');
 const mobileInstructions = document.getElementById('mobile-instructions');
 const playAgain = document.getElementById('play-again');
+
+// kjnnjcdsfjdsnfhs      remove duplicate variables between config and state and commit with adding my own images and editing format. change positon of game instructions and also add a section to diappear when playing 
 
 // ============================================================
 // Config — every "magic number" lives here, tweak in one place
@@ -19,10 +22,12 @@ const config = {
     chargeRate: 0.5,
     jumpPower: 8,
     cloudSpeed: 1.5,
-    cloudWidth: 80,
+    cloudWidth: 90,
+    cloudHeight: 50,             
     cloudY: 50,
-    startPlayerY: 100
-}; // maybe change cloudWidth ? not hardcoded
+    startPlayerY: 100,
+    playerWidth: 57
+}; 
 
 // ============================================================
 // Game-level state — things that belong to the game, not the player
@@ -39,15 +44,17 @@ const state = {
 // ============================================================
 const layout = {
     mobile: window.innerWidth <= 768,
-    playerLeft: 150,
-    playerWidth: 0,
-    cloudWidth: config.cloudWidth,   // fallback until measured
-    cloudHeight: 40,                 // fallback until measured
+    playerLeft: 162,
+    centerX: 200.5,
     maxGap: 0,
-    gameWidth: 0
+    gameWidth: 0,
+    cloudStart: 70
 };
-// if mobile player starts at 20px left
-if (layout.mobile) { layout.playerLeft = 20; }
+
+// if mobile player starts change layout
+if (layout.mobile) { layout.playerLeft = 32; }
+if (layout.mobile) { layout.cloudStart = 10; }
+if (layout.mobile) { layout.centerX = 58.5; }
 
 // ============================================================
 // Player class — position, velocity, and jump state
@@ -95,7 +102,7 @@ class Player {
             this.y += this.velocityY * dt;
         } else if (this.activePlatform) {
             // Ride the active platform's Y position
-            this.y = this.activePlatform.y + layout.cloudHeight;
+            this.y = this.activePlatform.y + config.cloudHeight;
         }
     }
 
@@ -103,14 +110,13 @@ class Player {
     // swept check so fast falls can't tunnel through clouds
     checkLanding(clouds) {
         let landed = false;
-        const centerX = layout.playerLeft + layout.playerWidth / 2;
 
         clouds.forEach(c => {
-            const cloudTop = c.y + layout.cloudHeight;
+            const cloudTop = c.y + config.cloudHeight;
 
             const horizontalOverlap =
-                centerX > c.x &&
-                centerX < c.x + layout.cloudWidth;
+                layout.centerX > c.x &&
+                layout.centerX < c.x + config.cloudWidth;
 
             // did the player's feet cross this cloud's top surface
             // at any point during this frame, while falling?
@@ -177,7 +183,10 @@ class Cloud {
 
     // place this cloud back into the chain past the rightmost cloud
     respawn(rightEdge) {
-        const gap = Math.random() * layout.maxGap;   // edge-to-edge gap
+        let gap = Math.random() * layout.maxGap;   // edge-to-edge gap
+        if (gap < 10) {
+            gap = 0;
+        }
         this.x = rightEdge + gap;
         this.y = config.cloudY;
         return this.x + config.cloudWidth;           // new right edge for chaining
@@ -210,6 +219,13 @@ function update(timestamp) {
     // dt = elapsed time, normalized so dt === 1 at exactly 60fps
     let dt = (timestamp - lastTime) / (1000 / 60);
     lastTime = timestamp;
+
+    // update player img
+    if (player.isJumping) {
+        cloudJumper.src = "./images/cloud-jumper-in-air.png";
+    } else {
+        cloudJumper.src = "./images/cloud-jumper2.png";
+    }
 
     // clamp: after a tab-switch or lag spike, don't teleport the player
     dt = Math.min(dt, 3);
@@ -246,7 +262,7 @@ function update(timestamp) {
         // Game over if player falls off screen
         if (player.y < 0) {
             state.gameOver = true;
-            showGameInstructions(state.gameOver);
+            showGameInstructions();
         }
 
         // update score
@@ -266,14 +282,11 @@ function initGame() {
     if (state.initialized) return;
     state.initialized = true;
 
-    layout.playerWidth = player.el.offsetWidth;
-    layout.cloudWidth = clouds[0]?.el.offsetWidth || layout.cloudWidth;
-    layout.cloudHeight = clouds[0]?.el.offsetHeight || layout.cloudHeight;
     layout.gameWidth = game.clientWidth;
 
     const maxTimeInAir = (2 * config.maxPower) / config.gravity;
     const edgeToEdgeGap = config.cloudSpeed * maxTimeInAir;
-    layout.maxGap = (layout.cloudWidth + edgeToEdgeGap) * 0.7;
+    layout.maxGap = (config.cloudWidth + edgeToEdgeGap) * 0.7;
 }
 
 // create initial clouds
@@ -297,11 +310,11 @@ function reset() {
     scoreDisplay.textContent = Math.floor(state.score) + 'm';
 
     // reset UI
-    showGameInstructions(state.gameOver);
+    showGameInstructions();
 
     // reset cloud positions
     clouds.forEach((c, i) => {
-        c.setPosition(layout.playerLeft + (i * 80), 50);
+        c.setPosition(layout.cloudStart + (i * config.cloudWidth), config.cloudHeight);
     });
 }
 
@@ -309,10 +322,20 @@ function reset() {
 // ============================================================
 // UI helpers
 // ============================================================
-function showGameInstructions(isGameOver) {
-    if (isGameOver) {
+function showGameInstructions() {
+    if (state.gameOver) {
         gameOverText.style.display = "block";
         playAgain.style.display = "block";
+        if (layout.mobile) {
+            mobileInstructions.style.display = 'none';
+        }
+        else {
+            desktopInstructions.style.display = 'none';
+        }
+    }
+    else if (state.gameStarted) {
+        gameOverText.style.display = "none";
+        playAgain.style.display = "none";
         if (layout.mobile) {
             mobileInstructions.style.display = 'none';
         }
@@ -343,6 +366,7 @@ function beginJump() {
     initGame();              // no-op after the first call
     state.gameStarted = true;
     player.startJump();
+    showGameInstructions();
 }
 
 // desktop keyboard events
@@ -386,5 +410,5 @@ closeBtn.addEventListener('pointerdown', (event) => {
 // ============================================================
 // Boot
 // ============================================================
-createClouds(layout.playerLeft, config.cloudWidth, config.cloudY);
+createClouds(layout.cloudStart, config.cloudWidth, config.cloudY);
 requestAnimationFrame(update);

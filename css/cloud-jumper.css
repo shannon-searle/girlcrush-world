@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
@@ -16,8 +16,8 @@
     background: rgb(203, 232, 192);
     color: #000000;
     position: relative;
-    width: min(500px, 90vw);   /* caps at 550px, shrinks on small screens */
-    height: min(400px, 70vw);  /* keeps roughly the same aspect ratio */
+    width: min(550px, 90vw);   /* caps at 550px, shrinks on small screens */
+    height: 435px;  /* keeps roughly the same aspect ratio */
     padding: 10px;
     border-radius: 10px;
     overflow: hidden;
@@ -27,14 +27,26 @@
 .cloud-jumper-controls {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-    height: 20px;
-    margin: 10px;
+    height: 50%;
+    font-size: 10px;
+    color: #345b3a;
+    font-family: "Press Start 2P", system-ui;
+    transition: 0.5s;
+}
+
+#game-over, #play-again, #mobile-instructions{
+    display: none;
+}
+
+#game-over {
+    font-size: 30px;
 }
 
 .cloud {
     position: absolute;
-    width: 80px;
+    width: 90px;
     height: 50px;
 }
 
@@ -43,7 +55,7 @@
     left: 150px;
     bottom: 100px;
     width: auto;
-    height: 80px;
+    height: 120px;
 }
 .cloud, #cloud-jumper {
     user-select: none;
@@ -52,10 +64,6 @@
 
     -webkit-touch-callout: none; /* disables iOS long-press menu */
     -webkit-user-drag: none;
-}
-
-#game-over, #play-again, #mobile-instructions{
-    display: none;
 }
         
 #score-display {
@@ -105,8 +113,6 @@
         position: absolute;
         left: 20px;
         bottom: 100px;
-        width: auto;
-        height: 80px;
     }
 
     #mobile-instructions {
@@ -119,6 +125,9 @@
 
     .cloud-jumper-game {
         width: min(500px, 90vw);   /* caps at 550px, shrinks on small screens */
-        height: min(650px, 80vw);  /* keeps roughly the same aspect ratio */
+    }
+
+    .cloud-jumper-controls {
+        margin: 0;
     }
 }

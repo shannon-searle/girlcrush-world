@@ -79,8 +79,9 @@
 #cloud-jumper-popup {
     top: min(20%, 65vh);
     left: min(35%, 70vw);
-    width: clamp(480px, 40vw, 1000px);
-    height: clamp(550px, 40vw, 600px);
+    width: fit-content;
+    height: clamp(550px, 40vw, 650px);
+
 }
 
 /* ── Popup Titlebar ── */
@@ -324,7 +325,7 @@
     #avatar-popup,
     #piano-popup,
     #my-music-popup,
-    #cloud-jumper-popup{
+    #cloud-jumper-popup {
         position: relative;
         top: auto;
         left: auto;
@@ -402,5 +403,4 @@
     #decor-popup {
         position: fixed;
     }
-
 }
