@@ -188,7 +188,7 @@ class Cloud {
     }
 
     move(dt) {
-        this.x -= config.cloudSpeed * dt;
+        this.x -= config.cloudSpeed * state.speedRamp * dt;
     }
 
     isOffScreen() {
@@ -199,7 +199,7 @@ class Cloud {
     respawn(rightEdge) {
         let gap = Math.random() * layout.maxGap * state.gapRamp;   // edge-to-edge gap
         if (gap < state.gapRoundDown) {
-            gap = -0.5;
+            gap = -2;
         }
         this.x = rightEdge + gap;
         this.y = config.cloudY;
@@ -280,12 +280,13 @@ function update(timestamp) {
         }
 
         // update score
-        state.score += config.cloudSpeed * 0.1 * dt;   // tune the multiplier
+        state.score += config.cloudSpeed * state.speedRamp * 0.1 * dt;   // tune the multiplier
         scoreDisplay.textContent = Math.floor(state.score) + 'm';
         
         // update difficulty 
         state.difficulty += 0.01 * dt;
         increaseDifficulty();
+        calculateMaxGap();
     }
 
     requestAnimationFrame(update);
@@ -295,11 +296,20 @@ function update(timestamp) {
 function increaseDifficulty() {
     // state.speedRamp += 0.0005;
     state.gapRamp = Math.min(1, 0.5 + (state.difficulty * 0.01));
-
-    if (state.gapRoundDown >= 15) {
-        state.gapRoundDown = Math.max(15, 30 - (state.difficulty * 0.1));
+    if (state.gapRoundDown >= 25) {
+        state.gapRoundDown = Math.max(15, 50 - (state.difficulty * 0.1));
     }
+    
+    state.speedRamp = 1 + (state.difficulty * 0.03);
 }
+
+// calculate max gap
+function calculateMaxGap() {
+    const maxTimeInAir = (2 * config.maxPower) / config.gravity;
+    const edgeToEdgeGap = config.cloudSpeed * state.speedRamp * maxTimeInAir;
+    layout.maxGap = config.cloudWidth + edgeToEdgeGap; //                         change max gap to state
+}
+
 
 // ============================================================
 // Reset and Init Functions
@@ -312,9 +322,7 @@ function initGame() {
 
     layout.gameWidth = game.clientWidth;
 
-    const maxTimeInAir = (2 * config.maxPower) / config.gravity;
-    const edgeToEdgeGap = config.cloudSpeed * maxTimeInAir;
-    layout.maxGap = (config.cloudWidth + edgeToEdgeGap) * 0.7;
+    calculateMaxGap();
 }
 
 // create initial clouds
@@ -330,6 +338,10 @@ function reset() {
     state.gameStarted = false;
     state.gameOver = false;
     state.score = 0;
+    state.difficulty =  0;
+    state.gapRoundDown = 50;
+    state.gapRamp = 0.5;
+    state.speedRamp = 1;
 
     // reset player
     player.reset();
