@@ -51,3 +51,18 @@
     transform: scale(1.005) translateY(3px);
     background: rgb(98, 0, 43);
 }
+
+#piano-popup .popup-titlebar span {
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    #piano-popup .popup-titlebar span {
+        font-size: 12px;
+        font-family: 'Courier New', Courier, monospace;
+        color: white;
+    }
+
+}
