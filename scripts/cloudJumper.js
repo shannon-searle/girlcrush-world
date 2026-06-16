@@ -399,7 +399,7 @@ playAgain.addEventListener('pointerdown', (event) => {
 });
 
 // event listener for close button 
-closeBtn.addEventListener('pointerdown', (event) => {
+closeBtn.addEventListener('pointerdown', (event) => { // note bug with this - if player is in the air it doesnt reset 
     event.stopPropagation();
     reset();
 });

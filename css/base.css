@@ -4,6 +4,18 @@
     padding: 0;
     box-sizing: border-box;
     cursor: url('../images/cursors/cursor.cur'), auto;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    -webkit-touch-callout: none; /* disables iOS long-press menu */
+    -webkit-user-drag: none;
+}
+
+p, span, div {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 

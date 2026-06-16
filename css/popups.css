@@ -334,11 +334,10 @@
         transform: none;
         width: 100%;
         height: fit-content;
-        margin-top: 10px;
         max-width: 100%;
         max-height: none;
     }
-    
+
 
     #chatbox-popup{
         position: fixed;
