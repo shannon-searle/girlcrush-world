@@ -21,7 +21,7 @@
     color: #000000;
     position: relative;
     width: min(550px, 90vw);   /* caps at 550px, shrinks on small screens */
-    height: 435px;  /* keeps roughly the same aspect ratio */
+    height: 415px;  
     padding: 10px;
     border-radius: 10px;
     overflow: hidden;
@@ -57,7 +57,7 @@
 #cloud-jumper {
     position: absolute;
     left: 150px;
-    bottom: 100px;
+    bottom: 80px;
     width: auto;
     height: 120px;
 }
@@ -108,7 +108,6 @@
     #cloud-jumper {
         position: absolute;
         left: 20px;
-        bottom: 100px;
     }
 
     #mobile-instructions {

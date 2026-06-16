@@ -22,8 +22,8 @@ const config = {
     cloudSpeed: 1.5,
     cloudWidth: 90,
     cloudHeight: 50,             
-    cloudY: 50,
-    startPlayerY: 100,
+    cloudY: 30,
+    startPlayerY: 80,
     playerWidth: 57
 }; 
 
@@ -323,7 +323,7 @@ function reset() {
 
     // reset cloud positions
     clouds.forEach((c, i) => {
-        c.setPosition(layout.cloudStart + (i * config.cloudWidth), config.cloudHeight);
+        c.setPosition(layout.cloudStart + (i * config.cloudWidth), config.cloudY);
     });
 }
 
