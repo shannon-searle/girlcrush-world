@@ -38,7 +38,7 @@
 }
 
 #note-from-shan-popup {
-    top: min(18%, 80vh);
+    top: min(20%, 80vh);
     left: min(45%, 75vw);
     width: clamp(240px, 30vw, 500px);
     height: auto;
@@ -405,4 +405,13 @@
         left: 0;
         height: clamp(700px, 90vh, 1000px);
     }
+
+    #note-from-shan-popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 300px;
+        width: 50%;
+    }
+    
 }
