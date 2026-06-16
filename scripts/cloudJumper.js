@@ -24,7 +24,8 @@ const config = {
     cloudHeight: 50,             
     cloudY: 30,
     startPlayerY: 80,
-    playerWidth: 57
+    playerWidth: 57,
+    numClouds: 8
 }; 
 
 // ============================================================
@@ -34,7 +35,11 @@ const state = {
     gameStarted: false,
     gameOver: false,
     initialized: false,
-    score: 0
+    score: 0,
+    difficulty: 0, 
+    gapRoundDown: 30, // the closer this is to 10 which is the minimum the more gaps you will see between clouds i.e harder
+    gapRamp: 0.5, // scaler closer this gets to 1 the longer the max gap will be
+    speedRamp: 1 // want this to increase and get faster 
 };
 
 // ============================================================
@@ -192,9 +197,9 @@ class Cloud {
 
     // place this cloud back into the chain past the rightmost cloud
     respawn(rightEdge) {
-        let gap = Math.random() * layout.maxGap;   // edge-to-edge gap
-        if (gap < 10) {
-            gap = 0;
+        let gap = Math.random() * layout.maxGap * state.gapRamp;   // edge-to-edge gap
+        if (gap < state.gapRoundDown) {
+            gap = -0.5;
         }
         this.x = rightEdge + gap;
         this.y = config.cloudY;
@@ -277,9 +282,23 @@ function update(timestamp) {
         // update score
         state.score += config.cloudSpeed * 0.1 * dt;   // tune the multiplier
         scoreDisplay.textContent = Math.floor(state.score) + 'm';
+        
+        // update difficulty 
+        state.difficulty += 0.01 * dt;
+        increaseDifficulty();
     }
 
     requestAnimationFrame(update);
+}
+
+// increase game difficulty 
+function increaseDifficulty() {
+    // state.speedRamp += 0.0005;
+    state.gapRamp = Math.min(1, 0.5 + (state.difficulty * 0.01));
+
+    if (state.gapRoundDown >= 15) {
+        state.gapRoundDown = Math.max(15, 30 - (state.difficulty * 0.1));
+    }
 }
 
 // ============================================================
@@ -300,7 +319,7 @@ function initGame() {
 
 // create initial clouds
 function createClouds(startX, gap, Y) {
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < config.numClouds; i++) {
         clouds.push(new Cloud(startX + (i * gap), Y));
     }
 }
