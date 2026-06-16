@@ -13,7 +13,11 @@
 }
 
 .cloud-jumper-game {
-    background: rgb(203, 232, 192);
+    background: linear-gradient(
+        rgb(203, 232, 192) 80%,
+        rgb(237, 244, 234) 100%
+    );
+    /* background: rgb(203, 232, 192); */
     color: #000000;
     position: relative;
     width: min(550px, 90vw);   /* caps at 550px, shrinks on small screens */

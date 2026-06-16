@@ -160,15 +160,26 @@ class Player {
 // Cloud class — one platform, owns its element and position
 // ============================================================
 class Cloud {
+    static images = [
+        "./images/cloud1.png",
+        "./images/cloud1.png",
+        "./images/cloud2.png"
+    ];
+
     constructor(x, y) {
         this.el = document.createElement('img');
-        this.el.src = "./images/cloud.png"; // your image
+        this.el.src = this.randomiseCloud();
         this.el.classList.add('cloud');
         game.appendChild(this.el);
 
         this.x = x;
         this.y = y;
         this.render();
+    }
+
+    // randomises the cloud img
+    randomiseCloud() {
+        return Cloud.images[Math.floor(Math.random() * Cloud.images.length)];
     }
 
     move(dt) {
