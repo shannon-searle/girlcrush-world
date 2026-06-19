@@ -76,6 +76,14 @@
     height: clamp(280px, 40vw, 600px);
 }
 
+#virtual-angel-popup {
+    position: fixed;
+    bottom: 50px;
+    left: 20vw;
+    width: fit-content;
+    height: clamp(300px, 60vh, 800px);
+}
+
 #cloud-jumper-popup {
     top: min(20%, 65vh);
     left: min(35%, 70vw);
@@ -99,6 +107,7 @@
     justify-content: space-between;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
     line-height: 1.6;
+    width: 100%;
 }
 
 .popup-titlebar:active { cursor: grabbing; }
@@ -112,6 +121,7 @@
     text-shadow: 0 1px 4px rgba(0,0,0,0.15);
     cursor: grab;
 }
+
 
 #piano-popup .popup-titlebar {
     background: rgb(0, 0, 0);
@@ -166,6 +176,9 @@
     min-height: 0;
     overflow-y: hidden;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .window-classic {
@@ -220,6 +233,14 @@
     margin: 0;
     gap: 0;
     flex: 1;
+}
+
+#virtual-angel-popup .popup-window {
+    background: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
 }
 
 #my-music-popup .popup-window {

@@ -286,7 +286,7 @@ function update(timestamp) {
         // update difficulty 
         state.difficulty += 0.01 * dt;
         increaseDifficulty();
-        calculateMaxGap();
+
     }
 
     requestAnimationFrame(update);
@@ -294,20 +294,20 @@ function update(timestamp) {
 
 // increase game difficulty 
 function increaseDifficulty() {
-    // state.speedRamp += 0.0005;
     state.gapRamp = Math.min(1, 0.5 + (state.difficulty * 0.01));
+
     if (state.gapRoundDown >= 25) {
         state.gapRoundDown = Math.max(15, 50 - (state.difficulty * 0.1));
     }
     
-    state.speedRamp = 1 + (state.difficulty * 0.03);
+    state.speedRamp = 1 + (state.difficulty * 0.04);
 }
 
 // calculate max gap
 function calculateMaxGap() {
     const maxTimeInAir = (2 * config.maxPower) / config.gravity;
     const edgeToEdgeGap = config.cloudSpeed * state.speedRamp * maxTimeInAir;
-    layout.maxGap = config.cloudWidth + edgeToEdgeGap; //                         change max gap to state
+    layout.maxGap = config.cloudWidth + edgeToEdgeGap;
 }
 
 

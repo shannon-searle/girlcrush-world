@@ -26,6 +26,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     height: 100%;
+    width: 100%;
 }
 
 .webmaster-container p {

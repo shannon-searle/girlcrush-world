@@ -96,9 +96,9 @@ section {
     width: 50vw;
     height: auto;
     filter:
-        drop-shadow(0 0 5px #e166a0)
-        drop-shadow(0 0 15px #e166a0)
-        drop-shadow(0 0 30px #e166a0);
+        drop-shadow(0 0 5px #eda7be)
+        drop-shadow(0 0 15px #eda7be)
+        drop-shadow(0 0 30px #eda7be);
     user-select: none;
     -webkit-user-drag: none;
 }

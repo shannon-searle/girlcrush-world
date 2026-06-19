@@ -288,6 +288,8 @@ makeDraggable(document.getElementById('dislikes-popup'));
 makeDraggable(document.getElementById('image-gallery-popup'));
 makeDraggable(document.getElementById('my-music-popup'));
 makeDraggable(document.getElementById('cloud-jumper-popup'));
+makeDraggable(document.getElementById('virtual-angel-popup'));
+makeDraggable(document.getElementById('webmaster-popup'));
 
 
 
