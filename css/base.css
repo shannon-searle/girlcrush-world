@@ -29,8 +29,8 @@ body {
     position: relative;
     overflow-y: auto;
     background:
-        url('../images/scrib3.png'),
-        url('../images/websitebackground2.jpg'),
+        url('../images/background/scrib3.png'),
+        url('../images/background/websitebackground2.jpg'),
         linear-gradient(
             160deg,
             #fce4ec 0%,
@@ -215,8 +215,8 @@ html, body {
     body {
         padding: 10px 10px 50px 10px;
         background:
-            url('../images/mobile.png'),
-            url('../images/websiteBackgroundMobile2.png'),
+            url('../images/background/mobile.png'),
+            url('../images/background/websiteBackgroundMobile2.png'),
             linear-gradient(
                 160deg,
                 #fce4ec 0%,

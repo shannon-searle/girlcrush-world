@@ -166,9 +166,9 @@ class Player {
 // ============================================================
 class Cloud {
     static images = [
-        "./images/cloud1.png",
-        "./images/cloud1.png",
-        "./images/cloud2.png"
+        "./images/cloud-jumper/cloud1.png",
+        "./images/cloud-jumper/cloud1.png",
+        "./images/cloud-jumper/cloud2.png"
     ];
 
     constructor(x, y) {
@@ -236,9 +236,9 @@ function update(timestamp) {
 
     // update player img
     if (player.isJumping) {
-        cloudJumper.src = "./images/cloud-jumper-in-air.png";
+        cloudJumper.src = "./images/cloud-jumper/cloud-jumper-in-air.png";
     } else {
-        cloudJumper.src = "./images/cloud-jumper2.png";
+        cloudJumper.src = "./images/cloud-jumper/cloud-jumper2.png";
     }
 
     // clamp: after a tab-switch or lag spike, don't teleport the player
