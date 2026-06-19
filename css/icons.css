@@ -7,7 +7,7 @@
     grid-template-rows: repeat(auto-fill, 70px);
     grid-auto-columns: 70px;
 
-    gap: 20px;
+    gap: 35px;
 
     height: 100vh;
     width: fit-content;
