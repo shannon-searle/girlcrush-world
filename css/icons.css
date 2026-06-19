@@ -2,12 +2,22 @@
 /* ── 6. Icon Tray ── */
 .icon-tray {
     display: grid;
-    grid-template-columns: repeat(2, 70px);
+    grid-auto-flow: column;
+
+    grid-template-rows: repeat(auto-fill, 70px);
+    grid-auto-columns: 70px;
+
     gap: 20px;
-    z-index: 1;
+
+    height: 100vh;
+    width: fit-content;
+
     position: fixed;
     top: 25px;
     left: 25px;
+
+    padding-bottom: 100px;
+
 }
 
 .icon:hover {
