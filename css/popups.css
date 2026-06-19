@@ -81,7 +81,7 @@
     bottom: 100px;
     left: 12vw;
     width: fit-content;
-    height: clamp(300px, 60vh, 800px);
+    height: clamp(300px, 70vh, 800px);
 }
 
 #cloud-jumper-popup {
