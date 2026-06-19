@@ -126,6 +126,7 @@
 #piano-popup .popup-titlebar {
     background: rgb(0, 0, 0);
     color: #ffffff;
+    max-width: 410px;
 }
 
 #avatar-popup .popup-titlebar {
@@ -222,7 +223,8 @@
     gap: 0;
     flex: 1;
     font-family: "Quicksand", sans-serif;
-    height: 100%;
+    width: fit-content;
+    height: fit-content;
 }
 
 #image-gallery-popup .popup-window {
