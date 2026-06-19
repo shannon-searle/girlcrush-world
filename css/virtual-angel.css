@@ -2,4 +2,16 @@
     width: fit-content;
     height: 100%;
     display: block;
+  
+}
+
+/* ============================================================
+   Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    #britney-background {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 }

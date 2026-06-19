@@ -38,16 +38,16 @@
 }
 
 #note-from-shan-popup {
-    top: min(20%, 80vh);
-    left: min(45%, 75vw);
-    width: clamp(240px, 30vw, 500px);
+    bottom: 50px;
+    left: 200px;
+    width: clamp(240px, 20vw, 500px);
     height: auto;
     z-index: 10;
 }
 
 #webmaster-popup {
-    top: min(15%, 80vh);
-    left: min(5%, 60vw);
+    top: min(25%, 80vh);
+    left: min(35%, 60vw);
     width: clamp(670px, 50vw, 770px);
     height: clamp(500px, 70vh, 650px);
 }
@@ -227,8 +227,6 @@
     gap: 0;
     flex: 1;
     font-family: "Quicksand", sans-serif;
-    width: fit-content;
-    height: fit-content;
 }
 
 #image-gallery-popup .popup-window {
@@ -352,7 +350,8 @@
     #avatar-popup,
     #piano-popup,
     #my-music-popup,
-    #cloud-jumper-popup {
+    #cloud-jumper-popup ,
+    #virtual-angel-popup{
         position: relative;
         top: auto;
         left: auto;
@@ -363,9 +362,11 @@
         height: fit-content;
         max-width: 100%;
         max-height: none;
+        margin-bottom: 80px;
     }
 
 
+    
     #chatbox-popup{
         position: fixed;
         left: 0;
@@ -399,6 +400,7 @@
         margin-top: 10px;
         max-width: 100%;
         max-height: none;
+        margin-bottom: 80px;
     }
 
     #image-gallery-popup {
@@ -430,7 +432,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        height: clamp(500px, 90vh, 800px);
+        height: clamp(500px, 90vh, 700px);
     }
 
     #note-from-shan-popup {
