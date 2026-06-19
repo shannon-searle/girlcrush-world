@@ -48,8 +48,8 @@
 #webmaster-popup {
     top: min(15%, 80vh);
     left: min(5%, 60vw);
-    width: 50vw;
-    height: 70vh;
+    width: clamp(670px, 50vw, 770px);
+    height: clamp(500px, 70vh, 650px);
 }
 
 #my-music-popup {
