@@ -15,13 +15,60 @@
 }
 
 
+#angel-card {
+    width: auto;
+    height: 100%;
+    top: 0;
+    right: 0;
+    position: relative;
+    display: block;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card img {
+    backface-visibility: hidden;
+    position: absolute;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
 /* ============================================================
    Mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
+    #angel-card {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
     #britney-background {
         width: 100%;
         height: auto;
         display: block;
+    }
+
+    #divine-message {
+        width: 45%;
+        height: auto;
+        top: 12%;
+        right: -2%;
+        position: absolute;
+        filter:
+            drop-shadow(0 0 5px #325e77)
     }
 }
