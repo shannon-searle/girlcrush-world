@@ -10,9 +10,11 @@ const card = document.querySelector(".card");
 
 
 function showAngelCard() {
-    card.classList.toggle("flipped");
-    divineMessage.style.display = "none";
-    
+    angelCard.src = angelCards[Math.floor(Math.random() * angelCards.length)]
+    setTimeout(() => {
+        card.classList.toggle("flipped");
+        divineMessage.style.display = "none";
+    }, 5000);
 }
 
 function resetAngelCard() {
@@ -33,10 +35,6 @@ virtualAngelIcon.addEventListener('pointerdown', (e) => {
     const audio = new Audio(angelSounds[currentSound]);
     audio.currentTime = 0;
     audio.play();
-
+    showAngelCard();
     currentSound = (currentSound + 1) % angelSounds.length;
-    angelCard.src = angelCards[Math.floor(Math.random() * angelCards.length)]
-    setTimeout(() => {
-        showAngelCard();
-    }, 5000);
 });
