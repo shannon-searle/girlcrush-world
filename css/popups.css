@@ -430,7 +430,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        height: clamp(700px, 90vh, 1000px);
+        height: clamp(500px, 90vh, 800px);
     }
 
     #note-from-shan-popup {

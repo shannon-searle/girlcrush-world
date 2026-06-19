@@ -14,7 +14,7 @@
 
     position: fixed;
     top: 25px;
-    left: 25px;
+    left: 30px;
 
     padding-bottom: 100px;
 
@@ -71,17 +71,6 @@
    Mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
-    .icon-tray {
-    display: grid;
-    grid-template-columns: repeat(2, 70px);
-    gap: 20px;
-
-    position: absolute;
-    top: 150px;
-    left: 25px;
-
-    z-index: 1;
-}
 
     .icon {
         width: 40px;
@@ -103,5 +92,15 @@
 
     .icon span {
         font-size: 28px;
+    }
+
+    .icon-tray {
+        top: 150px;
+        left: 25px;
+        position: absolute;
+        height: 500px;
+        width: fit-content;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
 }
