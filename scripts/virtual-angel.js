@@ -10,7 +10,6 @@ const card = document.querySelector(".card");
 
 
 function showAngelCard() {
-    angelCard.src = angelCards[Math.floor(Math.random() * angelCards.length)]
     card.classList.toggle("flipped");
     divineMessage.style.display = "none";
     
@@ -36,7 +35,7 @@ virtualAngelIcon.addEventListener('pointerdown', (e) => {
     audio.play();
 
     currentSound = (currentSound + 1) % angelSounds.length;
-
+    angelCard.src = angelCards[Math.floor(Math.random() * angelCards.length)]
     setTimeout(() => {
         showAngelCard();
     }, 5000);
