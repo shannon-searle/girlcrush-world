@@ -80,10 +80,9 @@
     position: fixed;
     bottom: 100px;
     left: 12vw;
-    flex: 1;
-    width: fit-content;
-    height: clamp(300px, 70vh, 800px);
+    align-items: flex-start;
 }
+
 
 #cloud-jumper-popup {
     top: min(20%, 65vh);
@@ -178,13 +177,11 @@
 /* ── Popup Window ── */
 .popup-window {
     border-radius: 10px;
-    flex: 1;
     min-height: 0;
     overflow-y: hidden;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .window-classic {
@@ -217,6 +214,7 @@
     padding: 20% 18% 10%;
     margin: 0;
     gap: 0;
+    align-items: center;
 }
 
 #webmaster-popup .popup-window {
@@ -244,7 +242,10 @@
     background: none;
     padding: 0;
     margin: 0;
-    padding-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: fit-content;
 }
 
 #my-music-popup .popup-window {
@@ -350,8 +351,8 @@
     #avatar-popup,
     #piano-popup,
     #my-music-popup,
-    #cloud-jumper-popup ,
-    #virtual-angel-popup{
+    #cloud-jumper-popup,
+    #virtual-angel-popup {
         position: relative;
         top: auto;
         left: auto;
@@ -365,8 +366,15 @@
         margin-bottom: 80px;
     }
 
+    #virtual-angel-popup .popup-window {
+        width: 100%;
+    }
 
-    
+    #virtual-angel-popup .card {
+        width: 100%;
+    }
+
+
     #chatbox-popup{
         position: fixed;
         left: 0;
@@ -443,8 +451,8 @@
         width: 50%;
     }
 
-    #virtual-angel-popup .popup-window {
+    /* #virtual-angel-popup .popup-window {
         padding-bottom: 0;
-    }
+    } */
     
 }
