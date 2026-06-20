@@ -26,17 +26,13 @@ function resetAngelCard() {
     audio.currentTime = 0;
 }
 
-document.addEventListener("click", (e) => {
-    const closeBtn = e.target.closest("[data-close='virtual-angel-popup']");
-    if (!closeBtn) return;
-
-    resetAngelCard();
-});
-
-
-virtualAngelIcon.addEventListener('pointerdown', (e) => {
+function openVirtualAngel() {
+    console.log("pointerdown");
     audio.currentTime = 0;
     audio.play();
     showAngelCard();
-    currentSound = (currentSound + 1) % angelSounds.length;
-});
+}
+
+
+window.openVirtualAngel = openVirtualAngel;
+window.resetAngelCard = resetAngelCard;

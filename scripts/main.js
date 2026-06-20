@@ -147,6 +147,10 @@ function openPopup(id) {
     if (id === 'chatbox-popup') {
         document.getElementById('chatbox-button').classList.add('open');
     }
+
+    if (id === "virtual-angel-popup") {
+        window.openVirtualAngel();
+    }
 }
 
 function closePopup(id) {
@@ -159,6 +163,9 @@ function closePopup(id) {
     }
     if (id === 'chatbox-popup' ) {
         document.getElementById('chatbox-button').classList.remove('open');
+    }
+    if (id === "virtual-angel-popup") {
+        window.resetAngelCard();
     }
 }
 
