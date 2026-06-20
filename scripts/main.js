@@ -167,6 +167,9 @@ function closePopup(id) {
     if (id === "virtual-angel-popup") {
         window.resetAngelCard();
     }
+    if (id === "cloud-jumper-popup") {
+        window.resetCloudJumper();
+    }
 }
 
 // add listener for popup buttons

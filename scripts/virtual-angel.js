@@ -27,7 +27,6 @@ function resetAngelCard() {
 }
 
 function openVirtualAngel() {
-    console.log("pointerdown");
     audio.currentTime = 0;
     audio.play();
     showAngelCard();

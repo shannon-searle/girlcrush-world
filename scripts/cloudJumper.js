@@ -440,11 +440,8 @@ playAgain.addEventListener('pointerdown', (event) => {
     reset();
 });
 
-// event listener for close button 
-closeBtn.addEventListener('pointerdown', (event) => { // note bug with this - if player is in the air it doesnt reset 
-    event.stopPropagation();
-    reset();
-});
+// event listener for close popup will all reset 
+window.resetCloudJumper = reset;
 
 
 // ============================================================
