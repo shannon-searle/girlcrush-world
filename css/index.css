@@ -204,7 +204,7 @@ a { outline: none; }
     width: 100vw;
     height: 100vh;
     justify-content: flex-end;
-    padding: 8vh;
+    padding-bottom: 8vh;
 }
 
 .arrival-video {
@@ -284,15 +284,10 @@ a { outline: none; }
 
 /* ── Mobile (≤ 768px) ── */
 @media (max-width: 768px) {
-    .page-container {
-        min-height: 100dvh;
-        padding: 2vh 4vw;
-    }
 
     section {
         width: 100%;
         min-height: 100dvh;
-        padding: 3vh 5vw;
         gap: 2vh;
         font-size: 10px;
     }
@@ -350,5 +345,9 @@ a { outline: none; }
 
     #screen-dead .dead-bg {
         width: 200vw;
+    }
+
+    #screen-arrival {
+        padding-bottom: 15vh;
     }
 }

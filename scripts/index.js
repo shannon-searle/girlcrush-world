@@ -42,7 +42,7 @@ document.querySelector('.arrival-video').addEventListener('play', () => {
         document.querySelectorAll('#screen-arrival p, #screen-arrival .button').forEach(el => {
             el.style.opacity = '1';
         });
-    }, 7630);
+    }, 7650);
 });
 
 // ── Stars ──
