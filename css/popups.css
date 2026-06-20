@@ -158,8 +158,8 @@
     background: rgba(228, 234, 241);
     color: rgb(66, 89, 115);
     border: none;
-    right: -2px;
-    top: -2px;
+    right: 2px;
+    top: 2px;
     z-index: 10;
     border-radius: 7px;
     width: 30px;

@@ -13,268 +13,107 @@
 <body class="page-index">
     <div id="bg"></div>
     <canvas id="stars"></canvas>
+
     <div class="page-container">
-        <!-- long way through -->
-        <section id="section1">
-            <!-- <a class="title" onclick="next('section1', 'section2', true)">girlcrush222</a> -->
-             <div id="title-container">
-                <img class="title" onclick="next('section1', 'section2', 'black')" src="images/metalic-title.png">
-             </div>
-             <!-- short way -->
-            <div class = "backdoor" id="skip">
-                <button class = "skip" onclick="goToBase()">
-                <img class="img-default" src="images/door.png" />
-                <img class="img-hover" src="images/door-open.png" />
+
+        <!-- Title screen -->
+        <section id="screen-title">
+            <div id="title-container">
+                <img class="title" onclick="next('screen-title', 'screen-portal', 'black')" src="images/metalic-title.png" alt="girlcrush222">
+            </div>
+            <div class="backdoor">
+                <button class="skip" onclick="goToBase()">
+                    <img class="img-default" src="images/door.png" alt="door" />
+                    <img class="img-hover" src="images/door-open.png" alt="open door" />
                 </button>
                 <p>back door</p>
             </div>
         </section>
 
-        <section id="section2" style="display:none;">
-            <div class="waiting-room-content">
-                <img src="./images/waiting_room1.png">
-                <img id="portal" src="./images/portal2.png">
-                <p>you have made it to the waiting room!<br>you may now begin your journey into the girlcrush digital realm<br>
-                    enter through the portal, if you dare</p>
+        <!-- Portal: waiting room -->
+        <section id="screen-portal" style="display:none;">
+            <div class="scene-frame">
+                <img src="./images/waiting_room1.png" alt="waiting room">
+                <img id="portal" src="./images/portal2.png" alt="portal">
+                <p>you have made it to the waiting room!<br>
+                   you may now begin your journey into the girlcrush digital realm<br>
+                   enter through the portal, if you dare</p>
             </div>
             <div class="game-options">
-                <button class="button" onclick="next('section2', 'section7', 'black')">retreat</button>
-                <button class="button" onclick="next('section2', 'section3', 'black')">begin</button>
+                <button class="button" onclick="next('screen-portal', 'screen-dead', 'black')">retreat</button>
+                <button class="button" onclick="next('screen-portal', 'screen-enter', 'black')">begin</button>
             </div>
         </section>
 
-        <section id="section3" style="display:none;">
-            <div class="waiting-room-content">
-                <img src="./images/waiting_room1.png">
-                <div class="background"></div>
-                 <p>you step inside the portal<br>a wave of nausea hits the pit of your stomach and you hear a muffled voice cry out in the distance<br>
-                it’s the princess. she needs your help!<br>what will you do?</p>
+        <!-- Enter: step inside the portal -->
+        <section id="screen-enter" style="display:none;">
+            <div class="scene-frame">
+                <img src="./images/waiting_room1.png" alt="waiting room">
+                <div class="scene-overlay"></div>
+                <p>you step inside the portal<br>
+                   a wave of nausea hits the pit of your stomach and you hear a muffled voice cry out in the distance<br>
+                   it's the princess. she needs your help!<br>
+                   what will you do?</p>
             </div>
             <div class="game-options">
-                <button class="button" onclick="next('section3', 'section7', 'black')">retreat</button>
-                <button class="button" onclick="next('section3', 'section4')">venture further</button>
+                <button class="button" onclick="next('screen-enter', 'screen-dead', 'black')">retreat</button>
+                <button class="button" onclick="next('screen-enter', 'screen-freefall')">venture further</button>
             </div>
         </section>
 
-        <section id="section4" style="display:none;">
-            <div class="waiting-room-content">
-                <img src="./images/waiting_room1.png">
-                <div class="background"></div>
-                <p>you freefall into the unknown<br>the edges of your vision sink into darkness<br>as you slip further and further away from reality</p>
+        <!-- Freefall -->
+        <section id="screen-freefall" style="display:none;">
+            <div class="scene-frame">
+                <img src="./images/waiting_room1.png" alt="waiting room">
+                <div class="scene-overlay"></div>
+                <p>you freefall into the unknown<br>
+                   the edges of your vision sink into darkness<br>
+                   as you slip further and further away from reality</p>
             </div>
             <div class="game-options">
-                <button class="button" onclick="next('section4', 'section7', 'black')">retreat</button>
-                <button class="button" onclick="next('section4', 'section5')">faint</button>
+                <button class="button" onclick="next('screen-freefall', 'screen-dead', 'black')">retreat</button>
+                <button class="button" onclick="next('screen-freefall', 'screen-surrender')">faint</button>
             </div>
         </section>
 
-        <section id="section5" style="display:none;">
-            <div class="waiting-room-content">
-                <img src="./images/waiting_room1.png">
-                <p>you feel strange<br>are losing control...<br>or gaining it?</p>
+        <!-- Surrender -->
+        <section id="screen-surrender" style="display:none;">
+            <div class="scene-frame">
+                <img src="./images/waiting_room1.png" alt="waiting room">
+                <p>you feel strange<br>
+                   are losing control...<br>
+                   or gaining it?</p>
             </div>
             <div class="game-options">
-                <button class="button" onclick="next('section5', 'section7', 'black')">retreat</button>               
-                <button class="button" onclick="next('section5', 'section6')">surrender to the power</button>
+                <button class="button" onclick="next('screen-surrender', 'screen-dead', 'black')">retreat</button>
+                <button class="button" onclick="next('screen-surrender', 'screen-arrival')">surrender to the power</button>
             </div>
         </section>
 
-        <section id="section6" style="display:none;">
-            <div class="waiting-room-content">
-                <img src="./images/waiting_room1.png">
-                <p>you wake up in a daze and feel yourself somewhere, otherworldly?<br>could it be… the girlcrush digital realm?</p>
-            </div>
+        <!-- Arrival -->
+        <section id="screen-arrival" style="display:none;">
+            <video class="arrival-video" autoplay muted playsinline>
+                <source src="./images/final-step.mp4" type="video/mp4">
+            </video>
+            <p>you wake up in a daze and feel yourself somewhere, otherworldly<br>
+               could it be… the girlcrush digital realm?</p>
             <button class="button" onclick="goToBase()">explore!</button>
         </section>
-        <!-- you died -->
-        <section id="section7" style="display:none;">
+
+        <!-- Dead -->
+        <section id="screen-dead" style="display:none;">
+            <img class="dead-bg" src="./images/you-died2.jpg" alt="you died">
             <p>you died!</p>
             <p><b>score</b>: not good</p>
             <p><em>unknown</em> user tried to run away from the girlcrush digital realm and was crushed by the queen of the darkland</p>
             <div class="game-options">
-                <button class="button"onclick="next('section7', 'section2')">respawn</button>
-                <button class="button" onclick="next('section7', 'section1')">title screen</button>
+                <button class="button" onclick="next('screen-dead', 'screen-portal')">respawn</button>
+                <button class="button" onclick="next('screen-dead', 'screen-title')">title screen</button>
             </div>
-            <img src="./images/you-died2.jpg">
         </section>
 
     </div>
-    <script>
-        // change html 
-                        //document.documentElement.style.background = "black";
-        // buttons next 
-        function next(hideId, showId, newBg) {
-            const bg = document.getElementById("bg");
 
-            // set new background first (hidden via fade)
-            if (newBg) {
-                bg.style.opacity = "0";
-            }
-
-            document.body.style.transition = "opacity 1s ease";
-            document.body.style.opacity = "0";
-
-            setTimeout(() => {
-
-                // 1. swap UI
-                document.getElementById(hideId).style.display = "none";
-                document.getElementById(showId).style.display = "flex";
-
-                // 2. change background FIRST (while hidden)
-                if (newBg) {
-                    bg.style.background = newBg;
-                }
-
-                // 3. force repaint then fade back in
-                requestAnimationFrame(() => {
-                    bg.style.opacity = "1";
-                    document.body.style.opacity = "1";
-                });
-
-            }, 1000);
-            setTimeout(() => {
-                document.documentElement.style.background = "black";
-            }, 1600);
-
-            
-            
-        }
-
-        function goToBase() {
-            const body = document.body;
-            const bg = document.getElementById("bg");
-            // set new background first (hidden via fade)
-            bg.style.opacity = "0";
-            setTimeout(() => {
-                bg.style.background = '#fce4ec';
-                // 3. force repaint then fade back in
-                requestAnimationFrame(() => {
-                    bg.style.opacity = "1";
-                    document.body.style.opacity = "1";
-                });
-
-            }, 1000);
-
-            body.style.transition = "opacity 1s ease";
-
-            // ensure visible first (prevents Safari skipping animation)
-            body.style.opacity = "1";
-
-            requestAnimationFrame(() => {
-                body.style.opacity = "0";
-            });
-
-            setTimeout(() => {
-                window.location.replace("base.html?from=index");
-            }, 1000);
-        }
-
-        // stars
-
-        const canvas = document.getElementById('stars');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        const stars = Array.from({ length: 150 }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 1.5,
-            speed: Math.random() * 0.2 + 0.05,            
-            opacity: Math.random(),
-            direction: Math.random() > 0.5 ? 1 : -1
-        }));
-
-        function drawStar(x, y, size, opacity) {
-            ctx.save();
-            ctx.translate(x, y);
-            ctx.beginPath();
-            for (let i = 0; i < 5; i++) {
-                ctx.lineTo(
-                    Math.cos((18 + i * 72) * Math.PI / 180) * size,
-                    -Math.sin((18 + i * 72) * Math.PI / 180) * size
-                );
-                ctx.lineTo(
-                    Math.cos((54 + i * 72) * Math.PI / 180) * size * 0.4,
-                    -Math.sin((54 + i * 72) * Math.PI / 180) * size * 0.4
-                );
-            }
-            ctx.closePath();
-            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-            ctx.fill();
-            ctx.restore();
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            stars.forEach(star => {
-                star.opacity += 0.02 * star.direction;
-                if (star.opacity >= 1 || star.opacity <= 0) star.direction *= -1;
-                star.y -= star.speed;
-                if (star.y <0) star.y = canvas.height;
-                
-                drawStar(star.x, star.y, star.size * 5, star.opacity);
-
-                
-            });
-
-            requestAnimationFrame(draw);
-        }
-
-        draw();
-
-    </script>
-
-        <!-- <script>
-            // video fade in fade out loop
-            const video = document.querySelector('video');
-            video.removeAttribute('loop');
-
-            function update() {
-                if (video.readyState >=2 && video.duration) {
-                    const timeLeft = video.duration - video.currentTime;
-
-                    if (video.currentTime < 1) {
-                        // fade in
-                        video.style.opacity = video.currentTime / 1;
-                    } else if (timeLeft < 2) {
-                        // fade out
-                        video.style.opacity = timeLeft / 2;
-                    } else {
-                        video.style.opacity = '1';
-
-                    }
-
-                    if (timeLeft < 0.05) {
-                        video.style.opacity = '0';
-                        video.currentTime = 0;
-                        video.play();
-                    }
-                }
-                requestAnimationFrame(update);
-            }
-
-            video.addEventListener('canplay', function() {
-                video.play();
-                requestAnimationFrame(update);
-            }, {once: true});
-
-            // turn toni red after click
-            document.querySelector('.title').addEventListener('click', function(e) {
-                if (this.style.color === 'red') {
-                    this.style.color = '#f8abf3';
-                } else {
-                    this.style.color = 'red';
-                }
-            });
-        </script> -->
-
+    <script src="scripts/index.js"></script>
 </body>
 </html>
