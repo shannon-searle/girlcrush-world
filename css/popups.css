@@ -103,7 +103,7 @@
     cursor: grab;
     user-select: none;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
     line-height: 1.6;
@@ -122,11 +122,6 @@
     cursor: grab;
 }
 
-#virtual-angel-popup .popup-titlebar {
-    background: rgb(228, 234, 241);
-    color: #325e77;
-}
-
 #piano-popup .popup-titlebar {
     background: rgb(0, 0, 0);
     color: #ffffff;
@@ -141,11 +136,11 @@
 /* Close button */
 .popup-close {
     display: block;
+    text-align: center;
     margin: 0;
     width: 35px;
     height: 30px;
     padding: 0;
-    border: none;
     cursor: pointer;
     border-top: 2px solid rgba(255, 255, 255, 0.9);
     border-left: 2px solid rgba(255, 255, 255, 0.9);
@@ -155,6 +150,25 @@
     background: inherit;
     color: inherit;
     border-radius: 8px;
+}
+
+#virtual-angel-popup .popup-close {
+    display: block;
+    position: absolute;
+    background: rgba(228, 234, 241);
+    color: rgb(66, 89, 115);
+    border: none;
+    right: -2px;
+    top: -2px;
+    z-index: 10;
+    border-radius: 7px;
+    width: 30px;
+    height: 30px;
+}
+
+#virtual-angel-popup .popup-close:hover {
+    color: #ff3399;
+    background: #ffc0de;
 }
 
 /* Close button on button bar */

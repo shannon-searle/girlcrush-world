@@ -19,6 +19,7 @@
     height: 100%;
     object-fit: cover;
     backface-visibility: hidden;
+    border-radius: 10px;
 }
 
 #angel-card {
@@ -30,6 +31,7 @@
     object-fit: cover;
     backface-visibility: hidden;
     transform: rotateY(180deg);
+    border-radius: 10px;
 }
 
 #divine-message {
