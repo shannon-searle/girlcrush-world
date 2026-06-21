@@ -43,12 +43,16 @@
     position: absolute;
     filter: drop-shadow(0 0 5px #325e77);
 }
+
+.card.flipped .front-card .popup-close{
+    opacity: 0;
+    pointer-events: auto;
+}
 /* ============================================================
    Mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
     .card {
-        position: relative;
         width: 100%;
     }
 
