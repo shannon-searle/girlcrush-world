@@ -15,7 +15,7 @@
 #welcome-popup {
     top: min(22%, 85vh);
     left: min(22%, 80vw);
-    width: clamp(350px, 35vw, 500px);
+    width: clamp(350px, 35vw, 475px);
     height: fit-content;
     min-height: 150px;
     margin-bottom: 35%;

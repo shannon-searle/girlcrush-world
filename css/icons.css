@@ -4,20 +4,19 @@
     display: grid;
     grid-auto-flow: column;
 
-    grid-template-rows: repeat(auto-fill, 70px);
-    grid-auto-columns: 70px;
+    grid-template-rows: repeat(auto-fill, clamp(30px, 3vw, 50px));
+    grid-auto-columns: clamp(30px, 3vw, 50px);
 
-    gap: 35px;
+    gap: clamp(40px, 4vw, 50px) clamp(25px, 3vw, 40px);
 
     height: 100vh;
     width: fit-content;
 
     position: fixed;
-    top: 25px;
-    left: 30px;
+    top: clamp(15px, 2vw, 25px);
+    left: clamp(15px, 2vw, 30px);
 
     padding-bottom: 100px;
-
 }
 
 .icon:hover {
@@ -28,10 +27,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50px;
+
+    width: 100%;
     font-family: "Press Start 2P", system-ui;
-    font-size: 8px;
+
+    font-size: clamp(6px, 0.6vw, 8px);
     text-align: center;
+
     gap: 5px;
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -41,8 +43,9 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+
+    width: 100%;
+    aspect-ratio: 1 / 1; /* keeps it square */
 }
 
 .icon button img {
@@ -60,10 +63,11 @@
     color: rgb(100, 80, 120);
     word-break: keep-all;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    line-height: 1.2;
 }
 
 .icon span {
-    font-size: 40px;
+    font-size: clamp(20px, 2vw, 40px);
     cursor: pointer;
 }
 

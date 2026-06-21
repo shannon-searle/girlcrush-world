@@ -69,8 +69,7 @@
     right: 16px;
     font-size: 15px;
     font-weight: bold;
-    color: rgb(148, 213, 124);
-    text-shadow: 0 1px 2px rgba(52, 91, 58);
+    color: rgb(136, 195, 114);
     z-index: 10;
     user-select: none;       /* stops accidental text selection on tap */
     pointer-events: none;    /* taps pass through to the game */

@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: url('/images/cursor.cur'), auto;
+    cursor: url('../images/cursors/cursor.cur'), auto;
     user-select: none;
     touch-action: manipulation;
     -webkit-user-select: none;
