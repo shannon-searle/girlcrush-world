@@ -357,6 +357,67 @@ html, body {
         width: auto;
     }
 
+
+    #epicGif2 {
+        position: absolute;
+        left: 23%;
+        bottom: 50px;
+        height: 15%;
+        width: auto;
+    }
+
+    #epicGif4 {
+        position: absolute;
+        top: 3%;
+        right: 8%;
+        width: 8%;
+        height: auto;
+    }
+
+    #epicGif5 {
+        position: absolute;
+        bottom: 38%;
+        left: 22%;
+        right: auto;
+        height: 12%;
+        width: auto;
+    }
+
+    #epicGif6 {
+        position: absolute;
+        bottom: 30%;
+        left: 22%;
+        height: 5%;
+        width: auto;
+    }
+
+
+    #epicGif7 {
+        position: absolute;
+        bottom: 10%;
+        right: 2%;
+        left: auto;
+        height: 8%;
+        width: auto;
+    }
+
+    #epicGif8 {
+        position: absolute;
+        top: 1%;
+        right: 1%;
+        height: 5%;
+        width: auto;
+    }
+
+    #epicGif9 {
+        position: absolute;
+        top: 35%;
+        left: auto;
+        right: 7%;
+        height: 5%;
+        width: auto;
+    }
+
     .princess-of-the-inside {
         top: 60%;
         right: 5%;
