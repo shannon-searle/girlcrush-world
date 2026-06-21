@@ -1,0 +1,16 @@
+
+/* ── 11. Start Bar ── */
+
+.nav-bar {
+    width: 100vw;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    background: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5000;
+    gap: 10vw;
+    padding: 10px;
+}

@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="css/start-bar.css" />
     <link rel="stylesheet" href="css/cloud-jumper.css" />
     <link rel="stylesheet" href="css/virtual-angel.css" />
+    <link rel="stylesheet" href="css/nav-bar.css" />
+
 
     <!-- preload imgages -->
     <link rel="preload" as="image" href="./images/shan/background.webp">
@@ -50,6 +52,81 @@
     ============================================== -->
 
     <!-- <img src="images/princess-of-the-inside.png" alt="princess of the inside" class="princess-of-the-inside"/> -->
+
+
+    <!-- =============================================
+         NAV BAR (top taskbar)
+    ============================================== -->
+    <!-- <div class="nav-bar">
+        <button>girlcrush world</button>
+        <button>music</button>
+        <button>digital journal</button>
+    </div> -->
+
+    <!-- =============================================
+         START BAR (bottom taskbar)
+    ============================================== -->
+    <div class="start-bar">
+        <button id="start-button" data-popup="about-me-popup">start</button>
+
+        <div class="button-bar open" id="welcome-button">
+            <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
+            <p>welcome</p>
+        </div>
+
+        <div class="button-bar" id="pixel-avatar-button">
+            <button class="popup-close" data-close="avatar-popup" data-closemenu="pixel-avatar-button">✕</button>
+            <p>pixel avatar</p>
+        </div>
+
+        <div class="button-bar" id="piano-button">
+            <button class="popup-close" data-close="piano-popup" data-closemenu="piano-button">✕</button>
+            <p>piano!</p>
+        </div>
+
+        <div class="button-bar" id="my-music-button">
+            <button class="popup-close" data-close="my-music-popup" data-closemenu="my-music-button">✕</button>
+            <p>my music</p>
+        </div>
+
+        <div class="button-bar open" id="decor-button">
+            <button class="popup-close" data-close="decor-popup" data-closemenu="decor-button">✕</button>
+            <p>decor</p>
+        </div>
+
+        <div class="button-bar" id="webmaster-button">
+            <button class="popup-close"
+                    data-close="webmaster-popup"
+                    data-closemenu="webmaster-button"
+                    data-close-also="note-from-shan-popup">✕</button>
+            <p>webmaster</p>
+        </div>
+
+        <div class="button-bar" id="cloud-jumper-button">
+            <button class="popup-close"
+                    data-close="cloud-jumper-popup"
+                    data-closemenu="cloud-jumper-button">✕</button>
+            <p>cloud jumper</p>
+        </div>
+
+        <div class="button-bar" id="virtual-angel-button">
+            <button class="popup-close"
+                    data-close="virtual-angel-popup"
+                    data-closemenu="virtual-angel-button">✕</button>
+            <p>virtual angel</p>
+        </div>
+
+        <div class="button-bar" id="image-gallery-button">
+            <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
+            <p>image-gallery</p>
+        </div>
+        <!-- chat box icon -->
+        <button id="chatbox-button" data-popup="chatbox-popup">
+            <img src="images/chat-box.png" alt="chatbox" />
+        </button>
+
+    </div>
+
 
     <!-- =============================================
          DESKTOP ICON TRAY
@@ -130,70 +207,6 @@
 
 
     <!-- =============================================
-         START BAR (bottom taskbar)
-    ============================================== -->
-    <div class="start-bar">
-        <button id="start-button" data-popup="about-me-popup">start</button>
-
-        <div class="button-bar open" id="welcome-button">
-            <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
-            <p>welcome</p>
-        </div>
-
-        <div class="button-bar" id="pixel-avatar-button">
-            <button class="popup-close" data-close="avatar-popup" data-closemenu="pixel-avatar-button">✕</button>
-            <p>pixel avatar</p>
-        </div>
-
-        <div class="button-bar" id="piano-button">
-            <button class="popup-close" data-close="piano-popup" data-closemenu="piano-button">✕</button>
-            <p>piano!</p>
-        </div>
-
-        <div class="button-bar" id="my-music-button">
-            <button class="popup-close" data-close="my-music-popup" data-closemenu="my-music-button">✕</button>
-            <p>my music</p>
-        </div>
-
-        <div class="button-bar open" id="decor-button">
-            <button class="popup-close" data-close="decor-popup" data-closemenu="decor-button">✕</button>
-            <p>decor</p>
-        </div>
-
-        <div class="button-bar" id="webmaster-button">
-            <button class="popup-close"
-                    data-close="webmaster-popup"
-                    data-closemenu="webmaster-button"
-                    data-close-also="note-from-shan-popup">✕</button>
-            <p>webmaster</p>
-        </div>
-
-        <div class="button-bar" id="cloud-jumper-button">
-            <button class="popup-close"
-                    data-close="cloud-jumper-popup"
-                    data-closemenu="cloud-jumper-button">✕</button>
-            <p>cloud jumper</p>
-        </div>
-
-        <div class="button-bar" id="virtual-angel-button">
-            <button class="popup-close"
-                    data-close="virtual-angel-popup"
-                    data-closemenu="virtual-angel-button">✕</button>
-            <p>virtual angel</p>
-        </div>
-
-        <div class="button-bar" id="image-gallery-button">
-            <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
-            <p>image-gallery</p>
-        </div>
-        <!-- chat box icon -->
-        <button id="chatbox-button" data-popup="chatbox-popup">
-            <img src="images/chat-box.png" alt="chatbox" />
-        </button>
-
-    </div>
-
-    <!-- =============================================
          chat box
     ============================================== -->
     <div id="chatbox-popup" class="popup">
@@ -216,7 +229,7 @@
     <div id="welcome-popup" class="popup open">
         <div class="popup-window window-classic">
             <div class="popup-titlebar">
-                <span>welcome traveller</span>
+                <span>welcome</span>
                 <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
             </div>
             <div class="welcome-content">
@@ -304,7 +317,16 @@
             <div class="card">
                 <div class="front-card">
                     <button class="popup-close" data-close="virtual-angel-popup" data-closemenu="virtual-angel-button">✕</button>
-                    <img class="window-classic" id="britney-background" src="./images/virtual-angel/britney-with-background2.gif">
+                    <video
+                        class="window-classic"
+                        id="britney-background"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                    >
+                        <source src="./images/virtual-angel/britney-with-background2.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="back-card">
                     <button class="popup-close" data-close="virtual-angel-popup" data-closemenu="virtual-angel-button">✕</button>
