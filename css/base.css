@@ -182,6 +182,14 @@ html, body {
     position: fixed;
     bottom: 10%;
     left: 40%;
+    height: 5%;
+    width: auto;
+}
+
+#epicGif2 {
+    position: fixed;
+    left: 23%;
+    bottom: 50px;
     height: 15%;
     width: auto;
 }
@@ -189,8 +197,57 @@ html, body {
 #epicGif3 {
     position: fixed;
     top: 8%;
-    left: 18%;
+    left: 26%;
     height: 10%;
+    width: auto;
+}
+
+#epicGif4 {
+    position: fixed;
+    top: 3%;
+    right: 5%;
+    width: 8%;
+    height: auto;
+}
+
+#epicGif5 {
+    position: fixed;
+    bottom: 28%;
+    right: 35%;
+    height: 12%;
+    width: auto;
+}
+
+#epicGif6 {
+    position: fixed;
+    bottom: 30%;
+    left: 10%;
+    height: 5%;
+    width: auto;
+}
+
+
+#epicGif7 {
+    position: fixed;
+    bottom: 50px;
+    left: 10%;
+    height: 12%;
+    width: auto;
+}
+
+#epicGif8 {
+    position: fixed;
+    top: 1%;
+    right: 1%;
+    height: 8%;
+    width: auto;
+}
+
+#epicGif9 {
+    position: fixed;
+    top: 25%;
+    left: 17%;
+    height: 12%;
     width: auto;
 }
 

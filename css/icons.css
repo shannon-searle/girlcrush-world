@@ -7,7 +7,7 @@
     grid-template-rows: repeat(auto-fill, clamp(30px, 3vw, 50px));
     grid-auto-columns: clamp(30px, 3vw, 50px);
 
-    gap: clamp(40px, 4vw, 50px) clamp(25px, 3vw, 40px);
+    gap: clamp(45px, 4vw, 50px) clamp(30px, 3vw, 40px);
 
     height: 100vh;
     width: fit-content;

@@ -86,7 +86,7 @@ section {
     width: 50vw;
     height: auto;
     cursor: pointer;
-    filter: drop-shadow(0 0 8px rgba(225, 102, 160, 0.8))
+    filter: drop-shadow(0 0 8px rgba(225, 102, 160, 1))
         drop-shadow(0 0 15px rgba(225, 102, 160, 0.6))
         drop-shadow(0 0 30px rgba(225, 102, 160, 0.2));
     animation: shake 5.5s infinite;
