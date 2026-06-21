@@ -470,8 +470,8 @@
         width: 50%;
     }
 
-    /* #virtual-angel-popup .popup-window {
-        padding-bottom: 0;
-    } */
+    .popup-titlebar {
+        padding: 5px 10px;
+    }
     
 }
