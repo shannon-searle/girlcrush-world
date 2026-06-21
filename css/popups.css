@@ -166,8 +166,8 @@
     top: 2px;
     z-index: 10;
     border-radius: 7px;
-    width: 30px;
-    height: 30px;
+    width: clamp(25px, 2vw, 30px);
+    height: clamp(25px, 2vw, 30px);
 }
 
 

@@ -116,7 +116,7 @@ html, body {
 
 .site-title:hover {
     transform: translateY(-1px) scale(1.01);
-    filter: drop-shadow(0 0 12px rgba(224, 247, 250, 0.5));
+    filter: drop-shadow(0 0 12px rgb(214, 250, 255));
 }
 
 .field-border {
