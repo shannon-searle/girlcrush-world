@@ -30,8 +30,8 @@
 }
 
 #piano-popup {
-    top: min(15%, 80vh);
-    left: min(15%, 75vw);
+    bottom: 25%;
+    left: min(25%, 75vw);
     width: clamp(300px, 50vw, 800px);
     height: auto;
     min-height: 50px;
@@ -46,8 +46,8 @@
 }
 
 #webmaster-popup {
-    top: min(25%, 80vh);
-    left: min(35%, 60vw);
+    bottom: 10%;
+    left: min(15%, 60vw);
     width: clamp(670px, 50vw, 770px);
     height: clamp(500px, 70vh, 650px);
 }
@@ -85,8 +85,8 @@
 
 
 #cloud-jumper-popup {
-    top: min(20%, 65vh);
-    left: min(35%, 70vw);
+    bottom: 12%;
+    left: min(38%, 70vw);
     width: fit-content;
     height: clamp(550px, 40vw, 650px);
 
