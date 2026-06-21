@@ -32,6 +32,7 @@ const config = {
 // Game-level state — things that belong to the game, not the player
 // ============================================================
 const state = {
+    gameWindowOpen: false,
     gameStarted: false,
     gameOver: false,
     initialized: false,
@@ -230,25 +231,25 @@ let lastTime = 0;
 // Game loop — update()
 // ============================================================
 function update(timestamp) {
-    // dt = elapsed time, normalized so dt === 1 at exactly 60fps
-    let dt = (timestamp - lastTime) / (1000 / 60);
-    lastTime = timestamp;
-
-    // update player img
-    if (player.isJumping) {
-        cloudJumper.src = "./images/cloud-jumper/cloud-jumper-in-air.png";
-    } else {
-        cloudJumper.src = "./images/cloud-jumper/cloud-jumper2.png";
-    }
-
-    // clamp: after a tab-switch or lag spike, don't teleport the player
-    dt = Math.min(dt, 3);
-
     if (state.gameStarted) {
         if (state.gameOver) {
             requestAnimationFrame(update);
             return;
         }
+        
+        // dt = elapsed time, normalized so dt === 1 at exactly 60fps
+        let dt = (timestamp - lastTime) / (1000 / 60);
+        lastTime = timestamp;
+
+        // update player img
+        if (player.isJumping) {
+            cloudJumper.src = "./images/cloud-jumper/cloud-jumper-in-air.png";
+        } else {
+            cloudJumper.src = "./images/cloud-jumper/cloud-jumper2.png";
+        }
+
+        // clamp: after a tab-switch or lag spike, don't teleport the player
+        dt = Math.min(dt, 3);
 
         // player physics
         player.applyPhysics(dt);
@@ -407,31 +408,40 @@ function beginJump() {
     state.gameStarted = true;
     player.startJump();
     showGameInstructions();
+    requestAnimationFrame(update);
 }
 
 // desktop keyboard events
 document.addEventListener('keydown', (event) => {
-    if (event.repeat) return;
-    if (event.code === 'Space') {
-        beginJump();
+    if (state.gameWindowOpen) {
+        if (event.repeat) return;
+        if (event.code === 'Space') {
+            beginJump();
+        }
     }
 });
 
 document.addEventListener('keyup', (event) => {
-    if (event.code === 'Space') {
-        player.stopCharging();
+    if (state.gameWindowOpen) {
+        if (event.code === 'Space') {
+            player.stopCharging();
+        }
     }
 });
 
 // mobile touch events
 gameContainer.addEventListener('pointerdown', (event) => {
-    event.preventDefault();  // stops the page scrolling while playing
-    beginJump();
+    if (state.gameWindowOpen) {
+        event.preventDefault();  // stops the page scrolling while playing
+        beginJump();
+    }
 });
 
 gameContainer.addEventListener('pointerup', (event) => {
-    event.preventDefault();
-    player.stopCharging();
+    if (state.gameWindowOpen) {
+        event.preventDefault();
+        player.stopCharging();
+    }
 });
 
 // event listener for play again button
@@ -448,4 +458,3 @@ window.resetCloudJumper = reset;
 // Boot
 // ============================================================
 createClouds(layout.cloudStart, config.cloudWidth, config.cloudY);
-requestAnimationFrame(update);

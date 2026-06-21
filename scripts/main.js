@@ -152,6 +152,10 @@ function openPopup(id) {
     if (id === "virtual-angel-popup") {
         window.openVirtualAngel();
     }
+
+    if (id === "cloud-jumper-popup") {
+        state.gameWindowOpen = true;
+    }
 }
 
 function closePopup(id) {
@@ -170,6 +174,7 @@ function closePopup(id) {
     }
     if (id === "cloud-jumper-popup") {
         window.resetCloudJumper();
+        state.gameWindowOpen = false;
     }
 }
 
