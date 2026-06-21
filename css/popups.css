@@ -100,7 +100,6 @@
     font-weight: 200;
     font-size: 12px;
     padding: 5px 20px;
-    cursor: grab;
     user-select: none;
     display: flex;
     align-items: center;
@@ -110,7 +109,12 @@
     width: 100%;
 }
 
-.popup-titlebar:active { cursor: grabbing; }
+.popup-titlebar,
+.popup-titlebar span {
+    cursor: grab;
+}
+
+.popup-titlebar:active, .popup-titlebar span:active{ cursor: grabbing; }
 
 
 /* ── Popup Titlebar - Individual Styles ── */
