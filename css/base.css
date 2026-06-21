@@ -4,12 +4,11 @@
     padding: 0;
     box-sizing: border-box;
     cursor: url('../images/cursors/cursor.cur'), auto;
-    user-select: none;
+        user-select: none;
     touch-action: manipulation;
     -webkit-user-select: none;
     -ms-user-select: none;
-
-    -webkit-touch-callout: none; /* disables iOS long-press menu */
+    -webkit-touch-callout: none;
     -webkit-user-drag: none;
 }
 
@@ -18,6 +17,24 @@ p, span, div {
   -webkit-user-select: none;
 }
 
+img, button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+img:focus,
+button:focus {
+    outline: none;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
 
 /* ── Body & Background ── */
 body {

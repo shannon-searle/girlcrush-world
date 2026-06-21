@@ -1,3 +1,34 @@
+// reset to screen title
+function resetToScreenTitle() {
+    // set bg
+    const bg = document.getElementById("bg");
+    bg.style.background = `radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            #e0f7fa 35%,
+            #f3e5f5 70%,
+            #fce4ec 100%
+        )`;
+    // remove previous screen
+    document.querySelectorAll("section").forEach(el => {
+        el.style.display = "none";
+    });
+    // show title screen
+    document.getElementById('screen-title').style.display = "flex";
+    document.body.style.opacity = "1";
+    // reset html background
+    document.documentElement.style.background = "#fce4ec";
+    document.body.style.background = "";
+
+}
+
+// ── reset on page load ──
+window.addEventListener("pageshow", resetToScreenTitle);
+
+// Push a dummy state so we can catch the back button
+history.pushState(null, '', window.location.href);
+
+
 // ── Section transitions ──
 
 function fadeBody(out, callback) {
@@ -32,7 +63,7 @@ function next(hideId, showId, newBg) {
 function goToBase() {
     setBackground("#fce4ec");
     fadeBody(true, () => {
-        window.location.replace("base.html?from=index");
+        window.location.href = "base.html?from=index";
     });
 }
 
