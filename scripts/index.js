@@ -92,7 +92,7 @@ window.addEventListener("resize", resizeCanvas);
 const stars = Array.from({ length: 150 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    size: Math.random() * 1.5,
+    size: Math.random() * 2,
     speed: Math.random() * 0.2 + 0.05,
     opacity: Math.random(),
     direction: Math.random() > 0.5 ? 1 : -1,
