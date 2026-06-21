@@ -166,6 +166,13 @@
     height: 30px;
 }
 
+.popup-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+}
+
 #virtual-angel-popup .popup-close:hover {
     color: #ff3399;
     background: #ffc0de;
