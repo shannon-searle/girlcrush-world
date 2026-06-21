@@ -252,6 +252,11 @@ html, body {
         height: auto;
     }
 
+    .site-title:hover {
+        transform: none;
+        filter: none;
+    }
+
     .field-border {
         background: linear-gradient(
             to bottom,
