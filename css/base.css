@@ -108,16 +108,9 @@ html, body {
     /* animation: shake 5.5s infinite; */
     /* margin-bottom: 5vh; */
     z-index: 1;
-    cursor: pointer;
     text-align: center;
-}
-
-.site-title{
     width: 26vw;
     height: auto;
-}
-
-.site-title {
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
