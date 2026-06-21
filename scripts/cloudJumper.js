@@ -73,6 +73,20 @@ class Player {
         this.charging = false;
         this.onPlatform = false;
         this.activePlatform = null;
+        this.jumpingSrc = "./images/cloud-jumper/cloud-jumper-in-air.png";
+        this.platformSrc = "./images/cloud-jumper/cloud-jumper2.png";
+    }
+
+    setPlayerImage() {
+        if (this.charging) {
+            cloudJumper.src = this.jumpingSrc;
+        }
+        else {
+            setTimeout(() => {
+                cloudJumper.src = this.platformSrc;
+
+            }, 250)
+        }
     }
 
     // called on space / touch
@@ -82,11 +96,13 @@ class Player {
         this.onPlatform = false;
         this.activePlatform = null;
         this.velocityY = config.jumpPower;
+        this.setPlayerImage();
     }
 
     // called on key/touch release
     stopCharging() {
         this.charging = false;
+        this.setPlayerImage();
     }
 
     applyPhysics(dt) {
@@ -236,17 +252,10 @@ function update(timestamp) {
             requestAnimationFrame(update);
             return;
         }
-        
+
         // dt = elapsed time, normalized so dt === 1 at exactly 60fps
         let dt = (timestamp - lastTime) / (1000 / 60);
         lastTime = timestamp;
-
-        // update player img
-        if (player.isJumping) {
-            cloudJumper.src = "./images/cloud-jumper/cloud-jumper-in-air.png";
-        } else {
-            cloudJumper.src = "./images/cloud-jumper/cloud-jumper2.png";
-        }
 
         // clamp: after a tab-switch or lag spike, don't teleport the player
         dt = Math.min(dt, 3);
