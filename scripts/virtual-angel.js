@@ -4,9 +4,9 @@ const britneyBackground = document.getElementById('britney-background');
 const divineMessage = document.getElementById('divine-message');
 const angelSound = "./audio/britneeey-sound-effect.mp3";
 const audio = new Audio(angelSound);
-const angelCards = ["./images/virtual-angel/GRETA.mp4", "./images/virtual-angel/MIK.mp4",
-                    "./images/virtual-angel/MUM.mp4", "./images/virtual-angel/OSCAR.mp4",
-                    "./images/virtual-angel/SANTANA.mp4"]
+const angelCards = ["./media/virtual-angel/GRETA.mp4", "./media/virtual-angel/MIK.mp4",
+                    "./media/virtual-angel/MUM.mp4", "./media/virtual-angel/OSCAR.mp4",
+                    "./media/virtual-angel/SANTANA.mp4"]
 const card = document.querySelector(".card");
 
 let flipTimeout = 0;

@@ -73,8 +73,8 @@ class Player {
         this.charging = false;
         this.onPlatform = false;
         this.activePlatform = null;
-        this.jumpingSrc = "./images/cloud-jumper/cloud-jumper-in-air.png";
-        this.platformSrc = "./images/cloud-jumper/cloud-jumper2.png";
+        this.jumpingSrc = "./media/cloud-jumper/cloud-jumper-in-air.png";
+        this.platformSrc = "./media/cloud-jumper/cloud-jumper2.png";
     }
 
     setPlayerImage() {
@@ -183,9 +183,9 @@ class Player {
 // ============================================================
 class Cloud {
     static images = [
-        "./images/cloud-jumper/cloud1.png",
-        "./images/cloud-jumper/cloud1.png",
-        "./images/cloud-jumper/cloud2.png"
+        "./media/cloud-jumper/cloud1.png",
+        "./media/cloud-jumper/cloud1.png",
+        "./media/cloud-jumper/cloud2.png"
     ];
 
     constructor(x, y) {

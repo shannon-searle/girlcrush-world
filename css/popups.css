@@ -227,7 +227,7 @@
 #avatar-popup .popup-window { background: #e8e8e8; }
 
 #piano-popup .popup-window {
-    background: url("../images/piano/background2.png") center / cover no-repeat;
+    background: url("../media/piano/background2.png") center / cover no-repeat;
     display: flex;
     flex-direction: column;
     padding: 20% 18% 10%;
@@ -237,7 +237,7 @@
 }
 
 #webmaster-popup .popup-window {
-    background: url("../images/shan/background.webp") no-repeat center / cover;
+    background: url("../media/shan/background.webp") no-repeat center / cover;
     display: flex;
     flex-direction: column;
     padding: 0;

@@ -328,9 +328,9 @@ Epic gifs change gif
 ------------------------------------------ */
 
 const gifs = [
-    './epic-gifs/gif1.gif',
-    './epic-gifs/gif2.gif',
-    './epic-gifs/gif3.gif',
+    './epic-media/decor-gifs/gif1.gif',
+    './epic-media/decor-gifs/gif2.gif',
+    './epic-media/decor-gifs/gif3.gif',
 ];
 
 let currentGif = 0;

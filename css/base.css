@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: url('../images/cursors/cursor.cur'), auto;
+    cursor: url('../media/cursors/cursor.cur'), auto;
         user-select: none;
     touch-action: manipulation;
     -webkit-user-select: none;
@@ -46,8 +46,8 @@ body {
     position: relative;
     overflow-y: auto;
     background:
-        url('../images/background/scrib3.png'),
-        url('../images/background/websitebackground2.jpg'),
+        url('../media/background/scrib3.png'),
+        url('../media/background/websitebackground2.jpg'),
         linear-gradient(
             160deg,
             #fce4ec 0%,
@@ -282,8 +282,8 @@ html, body {
     body {
         padding: 10px 10px 50px 10px;
         background:
-            url('../images/background/mobile.png'),
-            url('../images/background/websiteBackgroundMobile2.png'),
+            url('../media/background/mobile.png'),
+            url('../media/background/websiteBackgroundMobile2.png'),
             linear-gradient(
                 160deg,
                 #fce4ec 0%,
