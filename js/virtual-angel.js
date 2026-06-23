@@ -2,7 +2,7 @@ const virtualAngelIcon = document.querySelector('button[data-popup="virtual-ange
 const angelCard = document.getElementById('angel-card');
 const britneyBackground = document.getElementById('britney-background');
 const divineMessage = document.getElementById('divine-message');
-const angelSound = "./audio/britneeey-sound-effect.mp3";
+const angelSound = "./media/audio/britneeey-sound-effect.mp3";
 const audio = new Audio(angelSound);
 const angelCards = ["./media/virtual-angel/GRETA.mp4", "./media/virtual-angel/MIK.mp4",
                     "./media/virtual-angel/MUM.mp4", "./media/virtual-angel/OSCAR.mp4",
