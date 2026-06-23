@@ -23,6 +23,7 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 #britney-background, #angel-card {
@@ -48,6 +49,17 @@
     opacity: 0;
     pointer-events: auto;
 }
+
+.front-card {
+    -webkit-transform: translateZ(1px); /* nudge forward, keeps it in front */
+}
+
+.back-card {
+    transform: rotateY(180deg) translateZ(1px);
+    -webkit-transform: rotateY(180deg) translateZ(1px);
+}
+
+
 /* ============================================================
    Mobile (≤ 768px)
    ============================================================ */

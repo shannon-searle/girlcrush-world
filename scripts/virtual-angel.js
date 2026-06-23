@@ -9,9 +9,11 @@ const angelCards = ["./images/virtual-angel/GRETA.mp4", "./images/virtual-angel/
                     "./images/virtual-angel/SANTANA.mp4"]
 const card = document.querySelector(".card");
 
+let flipTimeout = 0;
 
 function showAngelCard() {
     angelCard.src = angelCards[Math.floor(Math.random() * angelCards.length)]
+    angelCard.pl
     flipTimeout = setTimeout(() => {
         card.classList.toggle("flipped");
         divineMessage.style.display = "none";

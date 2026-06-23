@@ -35,7 +35,8 @@
     <!-- preload imgages -->
     <link rel="preload" as="image" href="./images/shan/background.webp">
     <link rel="preload" as="image" href="./images/piano/background2.png">
-    
+    <link rel="preload" as="image" href="./images/piano/background2.png">
+
 </head>
 
 <body class="page-base">
@@ -337,9 +338,8 @@
                         loop
                         muted
                         playsinline
-                    >
-                        <source type="video/mp4">
-                    </video>
+                        preload="auto"
+                    ></video>
                 </div>
             </div>
             <img id="divine-message" src="./images/virtual-angel/divine-message.png">

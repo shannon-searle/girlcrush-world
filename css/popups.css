@@ -168,7 +168,7 @@
     border-radius: 7px;
     width: clamp(25px, 2vw, 30px);
     height: clamp(25px, 2vw, 30px);
-}
+} 
 
 
 #virtual-angel-popup .popup-close:hover {
