@@ -1,4 +1,3 @@
-
 /* ── 6. Icon Tray ── */
 .icon-tray {
     display: grid;
@@ -7,7 +6,7 @@
     grid-template-rows: repeat(auto-fill, clamp(30px, 3vw, 50px));
     grid-auto-columns: clamp(30px, 3vw, 50px);
 
-    gap: clamp(45px, 4vw, 50px) clamp(30px, 3vw, 40px);
+    gap: clamp(50px, 4vw, 60px) clamp(30px, 3vw, 40px);
 
     height: 100vh;
     width: fit-content;
@@ -33,39 +32,52 @@
 
     font-size: clamp(6px, 0.6vw, 8px);
     text-align: center;
-
-    gap: 5px;
+    
     cursor: pointer;
     transition: transform 0.2s ease;
 }
 
 .icon button {
-    background: none;
-    border: none;
-    cursor: pointer;
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
 
     width: 100%;
-    aspect-ratio: 1 / 1; /* keeps it square */
-}
-
-.icon button img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
     cursor: pointer;
-    pointer-events: none;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%),
-                linear-gradient(to right,  transparent 0%, black 5%, black 95%, transparent 100%);
-    mask-composite: intersect;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: inherit;
 }
 
-.icon p {
+.icon button p {
     color: rgb(100, 80, 120);
     word-break: keep-all;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     line-height: 1.2;
     background: rgba(255, 255, 255, 0.7);
     padding: 3px;
+    height: 3.6em;      /* fixed label box */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    overflow: hidden;
+}
+
+
+.icon button img {
+    width: 100%;
+    height: clamp(30px, 3vw, 70px);
+    object-fit: contain;
+    cursor: pointer;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%),
+                linear-gradient(to right,  transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-composite: intersect;
 }
 
 .icon span {
@@ -78,12 +90,10 @@
    ============================================================ */
 @media (max-width: 768px) {
 
-
-    .icon p {
+    .icon button p {
         word-break: keep-all;
         font-size: clamp(7px, 1.5vw, 9px);
         padding: 3px;
-
     }
 
     .icon span {
