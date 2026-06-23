@@ -368,8 +368,8 @@ html, body {
 
     #epicGif4 {
         position: absolute;
-        top: 3%;
-        right: 8%;
+        top: 30%;
+        right: 18%;
         width: 8%;
         height: auto;
     }
@@ -403,8 +403,10 @@ html, body {
 
     #epicGif8 {
         position: absolute;
-        top: 1%;
-        right: 1%;
+        bottom: 32%;
+        top: auto;
+        right: 5%;
+        left: auto;
         height: 5%;
         width: auto;
     }
