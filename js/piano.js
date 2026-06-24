@@ -1,7 +1,7 @@
 /* ------------------------------------------
     piano
 ------------------------------------------ */
-const BASE_URL = "https://tonejs.github.io/media/audio/salamander/";
+const BASE_URL = "https://tonejs.github.io/audio/salamander/";
 const audioctx = new (window.AudioContext || window.webkitAudioContext)();
 
 // only load samples close to your key range (C4–E5)
