@@ -1,16 +1,70 @@
 
-/* ── 11. Start Bar ── */
+/* ── 11. Nav Bar ── */
 
 .nav-bar {
     width: 100vw;
-    height: 40px;
+    height: 50px;
     display: flex;
     justify-content: center;
+    align-items: center;
     background: none;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
+    gap: 6vw;
     z-index: 5000;
-    gap: 10vw;
-    padding: 10px;
+    margin-top: 1vh;
+}
+
+.nav-bar button {
+    position: relative;
+    background: none;
+    border: none;
+    width: 120px;
+    height: 40px;
+}
+
+.nav-bar button img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav-bar button p {
+    position: absolute;
+    inset: 0;             /* top:0 right:0 bottom:0 left:0 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    pointer-events: none; /* prevents blocking clicks */
+    font-family: "Quicksand", sans-serif;
+    font-size: 12px;
+    color: rgb(56, 42, 70);
+
+}
+
+.nav-star-connector {
+    width: auto;
+    height: 50%;
+}
+
+/* ============================================================
+   Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    .nav-bar button {
+        width: 100px;
+        margin: 0;
+    }
+
+    .nav-bar {
+        justify-content: space-evenly;
+        gap: 0;
+    }
+
+    .nav-star-connector {
+        width: auto;
+    }
+
 }

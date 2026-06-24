@@ -13,9 +13,9 @@
 
 /* ── Popups — Individual ── */
 #welcome-popup {
-    top: min(22%, 85vh);
-    left: min(22%, 80vw);
-    width: clamp(350px, 35vw, 475px);
+    top: min(27%, 85vh);
+    left: min(30%, 80vw);
+    width: clamp(450px, 35vw, 475px);
     height: fit-content;
     min-height: 150px;
     margin-bottom: 35%;
@@ -382,7 +382,6 @@
         height: fit-content;
         max-width: 100%;
         max-height: none;
-        margin-bottom: 80px;
     }
 
     #virtual-angel-popup .popup-window {

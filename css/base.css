@@ -42,7 +42,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 2vh 2vw;
+    padding: 70px 3vw;
     position: relative;
     overflow-y: auto;
     background:
@@ -109,7 +109,7 @@ html, body {
     /* margin-bottom: 5vh; */
     z-index: 1;
     text-align: center;
-    width: 26vw;
+    width: clamp(350px, 30vw, 500px);
     height: auto;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -280,7 +280,8 @@ html, body {
     }
 
     body {
-        padding: 10px 10px 50px 10px;
+        padding: 60px 10px 50px 10px;
+        margin-bottom: 80px;
         background:
             url('../media/background/mobile.png'),
             url('../media/background/websiteBackgroundMobile2.png'),
@@ -300,12 +301,10 @@ html, body {
     }
 
     .site-title {
-        font-size: clamp(1.5rem, 10vw, 8rem);
-        word-break: break-word;
         /* padding: 0 4vw; */
         margin-top: 2px;
         margin-bottom: 10px;
-        width: 70vw;
+        width: 80vw;
         height: auto;
     }
 
@@ -351,7 +350,7 @@ html, body {
 
     #epicGif3 {
         position: absolute;
-        top: 25%;
+        top: 30%;
         left: 50%;
         height: 8%;
         width: auto;
@@ -376,8 +375,8 @@ html, body {
 
     #epicGif5 {
         position: absolute;
-        bottom: 34%;
-        left: 25%;
+        bottom: 30%;
+        left: 28%;
         right: auto;
         height: 10%;
         width: auto;
