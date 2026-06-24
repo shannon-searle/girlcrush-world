@@ -40,6 +40,10 @@ function closePopup(id) {
         window.resetCloudJumper();
         state.gameWindowOpen = false;
     }
+
+    if (id === "strawberry-wedding-popup") {
+        window.resetMedia();
+    }
 }
 
 // add listener for popup buttons

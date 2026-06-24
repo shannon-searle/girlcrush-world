@@ -83,12 +83,12 @@ section {
 }
 
 .title {
-    width: 50vw;
+    width: 60vw;
     height: auto;
     cursor: pointer;
-    filter: drop-shadow(0 0 8px rgba(225, 102, 160, 1))
-        drop-shadow(0 0 15px rgba(225, 102, 160, 0.6))
-        drop-shadow(0 0 30px rgba(225, 102, 160, 0.2));
+    filter: drop-shadow(0 0 8px rgba(225, 102, 160, 0.6))
+        drop-shadow(0 0 12px rgba(225, 102, 160, 0.4))
+        drop-shadow(0 0 15px rgba(225, 102, 160, 0.1));
     animation: shake 5.5s infinite;
 }
 
@@ -283,6 +283,15 @@ a { outline: none; }
 
 /* ── Mobile (≤ 768px) ── */
 @media (max-width: 768px) {
+    #bg {
+        background: radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            #e0f7fa 55%,
+            #f3e5f5 85%,
+            #fce4ec 100%
+        );
+    }
 
     section {
         width: 100%;
