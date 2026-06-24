@@ -38,13 +38,6 @@ document.querySelectorAll('[data-layer]').forEach(button => {
     });
 });
 
-// Epic gifs prev/next
-document.querySelectorAll('[data-gif]').forEach(button => {
-    button.addEventListener('click', function () {
-        changeGif(parseInt(this.dataset.gif));
-    });
-});
-
 /* ------------------------------------------
     Start bar taskbar buttons
 ------------------------------------------ */
@@ -129,22 +122,28 @@ if (window.location.search === '?from=index') {
 }
 
 /* ------------------------------------------
-Epic gifs change gif
+Image Gallery
 ------------------------------------------ */
 
-const gifs = [
-    './epic-media/decor-gifs/gif1.gif',
-    './epic-media/decor-gifs/gif2.gif',
-    './epic-media/decor-gifs/gif3.gif',
+const imageGallery = [
+    './media/decor-gifs/gif1.gif',
+    './media/decor-gifs/gif2.gif',
+    './media/decor-gifs/gif3.gif',
 ];
 
 let currentGif = 0;
 
 function changeGif(direction) {
-    currentGif = (currentGif + direction + gifs.length) % gifs.length;
-    document.getElementById('epicGif').src = gifs[currentGif];
+    currentGif = (currentGif + direction + imageGallery.length) % imageGallery.length;
+    document.getElementById('epicGif').src = imageGallery[currentGif];
 }
 
+// Epic gifs prev/next
+document.querySelectorAll('[data-gif]').forEach(button => {
+    button.addEventListener('click', function () {
+        changeGif(parseInt(this.dataset.gif));
+    });
+});
 
     /* ------------------------------------------
 STARS
