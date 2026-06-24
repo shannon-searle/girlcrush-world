@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="css/cloud-jumper.css" />
     <link rel="stylesheet" href="css/virtual-angel.css" />
     <link rel="stylesheet" href="css/nav-bar.css" />
+    <link rel="stylesheet" href="css/strawberry-wedding.css" />
+
 
 
     <!-- preload imgages -->
@@ -104,6 +106,11 @@
         <div class="button-bar open" id="decor-button">
             <button class="popup-close" data-close="decor-popup" data-closemenu="decor-button">✕</button>
             <p>decor</p>
+        </div>
+
+        <div class="button-bar" id="strawberry-wedding-button">
+            <button class="popup-close" data-close="strawberry-wedding-popup" data-closemenu="strawberry-wedding-button">✕</button>
+            <p>strawberry wedding</p>
         </div>
 
         <div class="button-bar" id="webmaster-button">
@@ -198,7 +205,7 @@
         </div>
 
         <div class="icon">
-            <button data-coming-soon>
+            <button data-popup="strawberry-wedding-popup" data-startmenu="strawberry-wedding-button">
                 <img src="media/icons/strawberry.png" />
                 <p>strawberry wedding</p>
             </button>
@@ -628,6 +635,19 @@
                         <p id="game-over">Game Over</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- strawberry wedding popup-->
+    <div id="strawberry-wedding-popup" class="popup">
+        <div class="popup-window window-classic">
+            <div class="popup-titlebar">
+                <span>strawberry wedding</span>
+                <button class="popup-close" id="strawberry-wedding-close" data-close="strawberry-wedding-popup" data-closemenu="strawberry-wedding-button">✕</button>
+            </div>
+            <div class="strawberry-wedding-container"> 
+                <img src="./media/strawberry-wedding/wedding-title-screen.gif">
             </div>
         </div>
     </div>

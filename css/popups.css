@@ -21,6 +21,13 @@
     margin-bottom: 35%;
 }
 
+#strawberry-wedding-popup {
+    top: 7vh;
+    left: 17vw;
+    width: clamp(450px, 70vw, 1000px);
+    height: auto;
+}
+
 #avatar-popup {
     top: 5%;
     right: 5%;
@@ -371,7 +378,8 @@
     #piano-popup,
     #my-music-popup,
     #cloud-jumper-popup,
-    #virtual-angel-popup {
+    #virtual-angel-popup, 
+    #strawberry-wedding-popup {
         position: relative;
         top: auto;
         left: auto;

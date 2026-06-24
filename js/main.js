@@ -104,6 +104,8 @@ makeDraggable(document.getElementById('my-music-popup'));
 makeDraggable(document.getElementById('cloud-jumper-popup'));
 makeDraggable(document.getElementById('virtual-angel-popup'));
 makeDraggable(document.getElementById('webmaster-popup'));
+makeDraggable(document.getElementById('strawberry-wedding-popup'));
+
 
 
 
