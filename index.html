@@ -45,8 +45,8 @@
                 <img src="./media/waiting_room1.png" alt="waiting room">
                 <img id="portal" src="./media/portal2.png" alt="portal">
                 <p>you have made it to the waiting room!<br>
-                   you may now begin your journey into the girlcrush digital realm<br>
-                   enter through the portal, if you dare</p>
+                    you may now begin your journey into the girlcrush digital realm<br>
+                    enter through the portal, if you dare</p>
             </div>
             <div class="game-options">
                 <button class="button" onclick="next('screen-portal', 'screen-dead', 'black')">retreat</button>
@@ -60,9 +60,9 @@
                 <img src="./media/waiting_room1.png" alt="waiting room">
                 <div class="scene-overlay"></div>
                 <p>you step inside the portal<br>
-                   a wave of nausea hits the pit of your stomach and you hear a muffled voice cry out in the distance<br>
-                   it's the princess. she needs your help!<br>
-                   what will you do?</p>
+                    a wave of nausea hits the pit of your stomach and you hear a muffled voice cry out in the distance<br>
+                    it's the princess. she needs your help!<br>
+                    what will you do?</p>
             </div>
             <div class="game-options">
                 <button class="button" onclick="next('screen-enter', 'screen-dead', 'black')">retreat</button>
@@ -76,8 +76,8 @@
                 <img src="./media/waiting_room1.png" alt="waiting room">
                 <div class="scene-overlay"></div>
                 <p>you freefall into the unknown<br>
-                   the edges of your vision sink into darkness<br>
-                   as you slip further and further away from reality</p>
+                    the edges of your vision sink into darkness<br>
+                    as you slip further and further away from reality</p>
             </div>
             <div class="game-options">
                 <button class="button" onclick="next('screen-freefall', 'screen-dead', 'black')">retreat</button>
@@ -90,8 +90,8 @@
             <div class="scene-frame">
                 <img src="./media/waiting_room1.png" alt="waiting room">
                 <p>you feel strange<br>
-                   are losing control...<br>
-                   or gaining it?</p>
+                    are losing control...<br>
+                    or gaining it?</p>
             </div>
             <div class="game-options">
                 <button class="button" onclick="next('screen-surrender', 'screen-dead', 'black')">retreat</button>
@@ -101,11 +101,17 @@
 
         <!-- Arrival -->
         <section id="screen-arrival" style="display:none;">
-            <video class="arrival-video" autoplay muted playsinline>
+            <video
+                class="arrival-video"
+                autoplay
+                muted
+                playsinline
+                preload="auto"
+            >
                 <source src="./media/final-step.mp4" type="video/mp4">
             </video>
             <p>you wake up in a daze and feel yourself somewhere, otherworldly<br>
-               could it be… the girlcrush digital realm?</p>
+                could it be… the girlcrush digital realm?</p>
             <button class="button" onclick="goToBase()">explore!</button>
         </section>
 
