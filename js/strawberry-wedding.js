@@ -1,12 +1,18 @@
 const rsvp = document.getElementById('rsvp');
-const media = document.getElementById('strawberry-wedding-media');
+const titleScreen = document.getElementById('wedding-title-screen');
+const wedding = document.getElementById('wedding');
 
-rsvp.addEventListener('pointerup', (e) => {
-    media.src = './media/strawberry-wedding/strawberry-wedding.gif';
-    rsvp.style.display = 'none';
+
+rsvp.addEventListener('pointerup', () => {
+    wedding.play();
+    wedding.classList.add('active');
+    titleScreen.classList.remove('active');
+    rsvp.classList.add("hidden");
+
 });
 
 function resetMedia() {
-    media.src = './media/strawberry-wedding/wedding-title-screen.gif';
-    rsvp.style.display = 'flex';
+    wedding.classList.remove('active');
+    titleScreen.classList.add('active');
+    rsvp.classList.remove("hidden");
 }

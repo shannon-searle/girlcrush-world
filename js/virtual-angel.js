@@ -12,8 +12,15 @@ const card = document.querySelector(".card");
 let flipTimeout = 0;
 
 function showAngelCard() {
-    angelCard.src = angelCards[Math.floor(Math.random() * angelCards.length)]
-    angelCard.pl
+    angelCard.src = angelCards[Math.floor(Math.random() * angelCards.length)];
+
+    angelCard.oncanplay = () => {
+        angelCard.play();
+        angelCard.oncanplay = null;
+    };
+
+    angelCard.load();
+
     flipTimeout = setTimeout(() => {
         card.classList.toggle("flipped");
         divineMessage.style.display = "none";
