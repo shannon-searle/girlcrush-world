@@ -237,7 +237,7 @@
 }
 
 #webmaster-popup .popup-window {
-    background: url("../media/shan/background.webp") no-repeat center / cover;
+    background: url("../media/shan/background.webp") no-repeat top center / cover;
     display: flex;
     flex-direction: column;
     padding: 0;
