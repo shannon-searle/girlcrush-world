@@ -24,7 +24,7 @@
 }
 
 #rsvp {
-    margin-bottom: 25%;
+    margin-bottom: 15%;
     position: absolute;
     z-index: 10;
     background: none;
@@ -81,4 +81,28 @@
 
 #rsvp img:hover, #rsvp p:hover {
     cursor: pointer;
+}
+
+/* ============================================================
+   Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+   #rsvp {
+    animation: pulse 0.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        25% {
+            transform: scale(1.03);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        75% {
+            transform: scale(1.03);
+        }
+    }
 }
