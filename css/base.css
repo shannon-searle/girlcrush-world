@@ -259,6 +259,13 @@ html, body {
     pointer-events: none;
 }
 
+.princess-container {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
 
 .princess-of-the-inside {
     position: absolute;
@@ -422,7 +429,22 @@ html, body {
         width: auto;
     }
 
+    #decor-popup {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: clamp(500px, 90vh, 700px);
+    }
+
+    .princess-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: clamp(500px, 90vh, 700px);
+    }
+
     .princess-of-the-inside {
+        position: absolute;
         top: 60%;
         right: 5%;
     }

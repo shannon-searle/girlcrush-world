@@ -486,13 +486,6 @@
         overflow-x: hidden;
     }
 
-    #decor-popup {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: clamp(500px, 90vh, 700px);
-    }
-
     #note-from-shan-popup {
         position: absolute;
         top: 50%;
