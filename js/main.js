@@ -1,9 +1,3 @@
-
-// if not mobile open chatbox
-if (window.innerWidth > 768) {
-    openPopup('chatbox-popup');
-}
-
 // fade into base
 window.addEventListener("load", () => {
     requestAnimationFrame(() => {

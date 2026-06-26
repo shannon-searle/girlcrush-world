@@ -36,7 +36,6 @@ function incrementZIndex(id) {
         const popup = document.getElementById(id);
         tabCounter += 1;
         popup.style.zIndex = tabCounter;
-        console.log(tabCounter);
     }
 }
 

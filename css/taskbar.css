@@ -122,7 +122,7 @@
 
 /* ── Chat Button ── */
 
-.taskbar #chatbox-button {
+#chatbox-button {
     margin: 10px;
 
     display: flex;
@@ -132,11 +132,10 @@
     background: none;
     border: none;
 
-    cursor: pointer;
     transition: 0.2s;
 }
 
-.taskbar #chatbox-button img {
+#chatbox-button img {
     width: 25px;
     height: 25px;
     transition: 0.2s;
@@ -148,6 +147,11 @@
     filter:
         drop-shadow(0 0 4px rgba(217, 102, 160, 0.9))
         drop-shadow(0 0 8px rgba(217, 102, 160, 0.5));
+}
+
+#chatbox-button:hover,
+#chatbox-button img:hover {
+    cursor: pointer;
 }
 
 

@@ -128,10 +128,11 @@ html, body {
     background: linear-gradient(
         to bottom,
         rgba(224, 247, 250, 0),
-        rgb(224, 247, 250)
+        rgb(224, 247, 250),
+        rgb(198, 236, 244)
     );
-    width: clamp(200px, 20vw, 300px);
-    height: clamp(200px, 35vh, 350px);
+    width: clamp(200px, 20vw, 250px);
+    height: clamp(200px, 90vh, 1000px);
 }
 
 

@@ -138,7 +138,7 @@
 
 .taskbar-button .popup-close {
     position: absolute;
-    top: 1px;
+    top: 3px;
     right: 0;
 
     width: 18px;
@@ -197,7 +197,7 @@
    Popup Positioning — Individual
 ───────────────────────────── */
 
-#welcome-popup { top: min(27%, 85vh); left: min(30%, 80vw); width: clamp(450px, 35vw, 475px); height: fit-content; }
+#welcome-popup { bottom: 30vh; left: 25vh; width: clamp(450px, 35vw, 475px); height: fit-content; }
 #strawberry-wedding-popup { top: 20vh; right: 8vw; width: clamp(400px, 25vw, 550px); aspect-ratio: 4 / 3; }
 #avatar-popup { top: 5%; right: 5%; width: clamp(180px, 20vw, 320px); max-height: 90vh; }
 #piano-popup { bottom: 25%; left: min(25%, 75vw); width: clamp(300px, 50vw, 800px); }
