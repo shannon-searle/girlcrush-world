@@ -14,16 +14,21 @@ function taskbarOpen(id) {
         taskbar.insertBefore(btn, taskbarSpacer);
         // clear previous "last"
         document.querySelectorAll(".keep-full").forEach(b => b.classList.remove("keep-full"));
-        if (!mobile && taskbarSpacer.clientWidth <= 0) {
+        if (!mobile && taskbarSpacer.clientWidth <= 20) {
             enableScalableTaskbar(btn);
         }
     }
 }
 
 function taskbarClose(id) {
+    document.querySelectorAll(".keep-full").forEach(b => b.classList.remove("keep-full"));
     document.getElementById(id).classList.remove('open');
-    if (!mobile && taskbarSpacer.clientWidth > 0) {
-            disableCompactTaskbar();
+
+    if (!mobile && taskbarSpacer.clientWidth > 20) {
+        disableScalableTaskbar();
+    } else {
+        const btns = [...document.querySelectorAll(".taskbar-button.open:not(#start-button)")];
+        btns[btns.length - 1].classList.add("keep-full");
     }
 }
 
