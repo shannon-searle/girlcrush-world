@@ -1,5 +1,6 @@
 
 let tabCounter = 2; // rework this 
+let baseIndex = 2;
 
 /* ------------------------------------------
     Popup helpers
@@ -31,15 +32,18 @@ function openPopup(id) {
 }
 
 function incrementZIndex(id) {
-    const popup = document.getElementById(id);
-    tabCounter += 1;
-    popup.style.zIndex = tabCounter;
-    console.log(tabCounter);
+    if (id != 'decor-popup') {
+        const popup = document.getElementById(id);
+        tabCounter += 1;
+        popup.style.zIndex = tabCounter;
+        console.log(tabCounter);
+    }
 }
 
 function restackPopups() {
     tabCounter -= 1;
-    const popups = [...document.querySelectorAll('.popup.open')];
+const popups = [...document.querySelectorAll('.popup.open')]
+        .filter(popup => popup.id !== 'decor-popup');
 
     popups.sort((a, b) =>
         parseInt(getComputedStyle(a).zIndex || 0, 15)
@@ -47,7 +51,7 @@ function restackPopups() {
     );
 
     popups.forEach((popup, i) => {
-        popup.style.zIndex = i;
+        popup.style.zIndex = baseIndex + i;
     });
 }
 
