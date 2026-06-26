@@ -50,7 +50,7 @@ function closePopup(id) {
 document.querySelectorAll('[data-popup]').forEach(button => {
     button.addEventListener('click', function() {
         const popupId = this.dataset.popup;
-        const startmenuId = this.dataset.startmenu;
+        const taskbarId = this.dataset.taskbar;
 
         if (!popupId) return;
 
@@ -73,8 +73,8 @@ document.querySelectorAll('[data-popup]').forEach(button => {
         }
 
         openPopup(popupId);
-        if (startmenuId) {
-            openStartMenu(startmenuId);
+        if (taskbarId) {
+            taskbarOpen(taskbarId);
         }
     });
 });
@@ -89,7 +89,7 @@ document.querySelectorAll('[data-close]').forEach(button => {
         if (!popupId) return;
 
         closePopup(popupId);
-        if (menuId)    closeStartMenu(menuId);
+        if (menuId)    taskbarClose(menuId);
         if (alsoClose) alsoClose.split(',').forEach(id => closePopup(id.trim()));
     });
 });

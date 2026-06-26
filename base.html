@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/about.css" />
     <link rel="stylesheet" href="css/image-gallery.css" />
     <link rel="stylesheet" href="css/piano.css" />
-    <link rel="stylesheet" href="css/start-bar.css" />
+    <link rel="stylesheet" href="css/taskbar.css" />
     <link rel="stylesheet" href="css/cloud-jumper.css" />
     <link rel="stylesheet" href="css/virtual-angel.css" />
     <link rel="stylesheet" href="css/nav-bar.css" />
@@ -78,49 +78,49 @@
     </nav>
 
     <!-- =============================================
-         START BAR (bottom taskbar)
+         Taskbar
     ============================================== -->
-    <div class="start-bar">
-        <div class="start-bar-tab window-classic" id="start-button">
+    <div class="taskbar">
+        <div class="taskbar-button window-classic" id="start-button">
             <p>start</p>
         </div>
 
-        <div class="start-bar-tab open window-classic" id="decor-button">
+        <div class="taskbar-button open window-classic" id="decor-button">
             <button class="popup-close" data-close="decor-popup" data-closemenu="decor-button">✕</button>
             <img src="./media/decor-gifs/gif2.gif"> 
             <p>decor</p>
         </div>
 
-        <div class="start-bar-tab open window-classic" id="welcome-button">
+        <div class="taskbar-button open window-classic" id="welcome-button">
             <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
             <img src="./media/icons/notebook.png"> 
             <p>welcome</p>
         </div>
 
-        <div class="start-bar-tab window-classic" id="pixel-avatar-button">
+        <div class="taskbar-button window-classic" id="pixel-avatar-button">
             <button class="popup-close" data-close="avatar-popup" data-closemenu="pixel-avatar-button">✕</button>
             <img src="./media/pixel-avatar-button.png"> 
             <p>pixel avatar</p>
         </div>
 
-        <div class="start-bar-tab window-classic" id="piano-button">
+        <div class="taskbar-button window-classic" id="piano-button">
             <button class="popup-close" data-close="piano-popup" data-closemenu="piano-button">✕</button>
             <img src="./media/piano/piano.png"> 
             <p>piano!</p>
         </div>
 
-        <div class="start-bar-tab window-classic" id="my-music-button">
+        <div class="taskbar-button window-classic" id="my-music-button">
             <button class="popup-close" data-close="my-music-popup" data-closemenu="my-music-button">✕</button>
             <p>my music</p>
         </div>
 
-        <div class="start-bar-tab window-classic" id="strawberry-wedding-button">
+        <div class="taskbar-button window-classic" id="strawberry-wedding-button">
             <button class="popup-close" data-close="strawberry-wedding-popup" data-closemenu="strawberry-wedding-button">✕</button>
             <img src="./media/icons/strawberry.png"> 
             <p>strawberry wedding</p>
         </div>
 
-        <div class="start-bar-tab window-classic" id="webmaster-button">
+        <div class="taskbar-button window-classic" id="webmaster-button">
             <button class="popup-close"
                     data-close="webmaster-popup"
                     data-closemenu="webmaster-button"
@@ -129,7 +129,7 @@
             <p>webmaster</p>
         </div>
 
-        <div class="start-bar-tab window-classic" id="cloud-jumper-button">
+        <div class="taskbar-button window-classic" id="cloud-jumper-button">
             <button class="popup-close"
                     data-close="cloud-jumper-popup"
                     data-closemenu="cloud-jumper-button">✕</button>
@@ -137,7 +137,7 @@
             <p>cloud jumper</p>
         </div>
 
-        <div class="start-bar-tab window-classic" id="virtual-angel-button">
+        <div class="taskbar-button window-classic" id="virtual-angel-button">
             <button class="popup-close"
                     data-close="virtual-angel-popup"
                     data-closemenu="virtual-angel-button">✕</button>
@@ -145,11 +145,15 @@
             <p>virtual angel</p>
         </div>
 
-        <div class="start-bar-tab window-classic" id="image-gallery-button">
+        <div class="taskbar-button window-classic" id="image-gallery-button">
             <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
             <img src="./media/folder.png"> 
             <p>image-gallery</p>
         </div>
+
+        <!-- remaining space -->
+        <div class="taskbar-spacer"></div>
+
         <!-- chat box icon -->
         <button id="chatbox-button" data-popup="chatbox-popup">
             <img src="media/chat-box.png" alt="chatbox" />
@@ -164,14 +168,14 @@
     <div class="icon-tray">
 
         <div class="icon">
-            <button data-popup="welcome-popup" data-startmenu="welcome-button">
+            <button data-popup="welcome-popup" data-taskbar="welcome-button">
                 <img src="media/icons/notebook.png"/>
                 <p>welcome message</p>
             </button>
         </div>
 
         <div class="icon">
-            <button data-popup="avatar-popup" data-startmenu="pixel-avatar-button">
+            <button data-popup="avatar-popup" data-taskbar="pixel-avatar-button">
                 <img src="media/pixel-avatar-button.png" alt="pixel avatar" />
                 <p>pixel avatar</p>
             </button>
@@ -179,7 +183,7 @@
         </div>
 
         <div class="icon">
-            <button data-popup="virtual-angel-popup" data-startmenu="virtual-angel-button">
+            <button data-popup="virtual-angel-popup" data-taskbar="virtual-angel-button">
                 <img src="media/icons/wings.png" alt="virtual angel" />
                 <p>your virtual angel</p>
             </button>
@@ -187,7 +191,7 @@
         </div>
 
         <div class="icon">
-            <button data-popup="image-gallery-popup" data-startmenu="image-gallery-button">
+            <button data-popup="image-gallery-popup" data-taskbar="image-gallery-button">
                 <img src="media/folder.png" alt="image gallery" />
                 <p>image gallery</p>
             </button>
@@ -195,35 +199,35 @@
         </div>
 
         <div class="icon">
-            <button data-popup="decor-popup" data-startmenu="decor-button">
+            <button data-popup="decor-popup" data-taskbar="decor-button">
                 <img src="./media/decor-gifs/gif2.gif"/>
                 <p>decor</p>
             </button>
         </div>
 
         <div class="icon">
-            <button data-popup="cloud-jumper-popup" data-startmenu="cloud-jumper-button">
+            <button data-popup="cloud-jumper-popup" data-taskbar="cloud-jumper-button">
                 <img src="./media/icons/cloud.png"">
                 <p>cloud jumper</p>
             </button>
         </div>
 
         <div class="icon">
-            <button data-popup="piano-popup" data-startmenu="piano-button">
+            <button data-popup="piano-popup" data-taskbar="piano-button">
                 <img src="media/piano/piano.png" alt="piano" />
                 <p>piano</p>
             </button>
         </div>
 
         <div class="icon">
-            <button data-popup="strawberry-wedding-popup" data-startmenu="strawberry-wedding-button">
+            <button data-popup="strawberry-wedding-popup" data-taskbar="strawberry-wedding-button">
                 <img src="media/icons/strawberry.png" />
                 <p>strawberry wedding</p>
             </button>
         </div>
 
         <div class="icon">
-            <button data-popup="webmaster-popup" data-startmenu="webmaster-button">
+            <button data-popup="webmaster-popup" data-taskbar="webmaster-button">
                 <img src="media/webmaster3.png" alt="webmaster" />
                 <p>webmaster</p>
             </button>
@@ -677,6 +681,8 @@
     <script src="js/piano.js"></script>
     <script src="js/strawberryWedding.js"></script>
     <script src="js/navBar.js"></script>
+    <script src="js/taskbar.js"></script>
+
 
 </body>
 </html>

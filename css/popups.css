@@ -136,7 +136,7 @@
     background: #ffc0de;
 }
 
-.start-bar-tab .popup-close {
+.taskbar-button .popup-close {
     position: absolute;
     top: 1px;
     right: 0;
@@ -380,10 +380,5 @@
         left: 50%;
         height: 300px;
         width: 50%;
-    }
-
-    /* hide close button in taskbar */
-    .start-bar-tab .popup-close {
-        display: none;
     }
 }

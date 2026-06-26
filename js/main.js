@@ -38,23 +38,6 @@ document.querySelectorAll('[data-layer]').forEach(button => {
     });
 });
 
-/* ------------------------------------------
-    Start bar taskbar buttons
------------------------------------------- */
-function openStartMenu(id) {
-    const btn = document.getElementById(id);
-    const chatButton = document.getElementById('chatbox-button');
-    if (!btn.classList.contains('open')) {
-        btn.classList.add('open');
-        document.querySelector('.start-bar').insertBefore(btn, chatButton);
-    }
-
-}
-
-function closeStartMenu(id) {
-    document.getElementById(id).classList.remove('open');
-}
-
 
 /* ------------------------------------------
     Avatar dress-up: swap a layer's image
