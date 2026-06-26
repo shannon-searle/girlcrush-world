@@ -97,8 +97,8 @@ function makeDraggable(popup) {
 makeDraggable(document.getElementById('welcome-popup'));
 makeDraggable(document.getElementById('avatar-popup'));
 makeDraggable(document.getElementById('piano-popup'));
-makeDraggable(document.getElementById('likes-popup'));
-makeDraggable(document.getElementById('dislikes-popup'));
+// makeDraggable(document.getElementById('likes-popup'));
+// makeDraggable(document.getElementById('dislikes-popup'));
 makeDraggable(document.getElementById('image-gallery-popup'));
 makeDraggable(document.getElementById('my-music-popup'));
 makeDraggable(document.getElementById('cloud-jumper-popup'));

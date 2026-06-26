@@ -81,62 +81,73 @@
          START BAR (bottom taskbar)
     ============================================== -->
     <div class="start-bar">
-        <button id="start-button" data-popup="about-me-popup">start</button>
+        <div class="start-bar-tab window-classic" id="start-button">
+            <p>start</p>
+        </div>
 
-        <div class="button-bar open" id="welcome-button">
+        <div class="start-bar-tab open window-classic" id="decor-button">
+            <button class="popup-close" data-close="decor-popup" data-closemenu="decor-button">✕</button>
+            <img src="./media/decor-gifs/gif2.gif"> 
+            <p>decor</p>
+        </div>
+
+        <div class="start-bar-tab open window-classic" id="welcome-button">
             <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
+            <img src="./media/icons/notebook.png"> 
             <p>welcome</p>
         </div>
 
-        <div class="button-bar" id="pixel-avatar-button">
+        <div class="start-bar-tab window-classic" id="pixel-avatar-button">
             <button class="popup-close" data-close="avatar-popup" data-closemenu="pixel-avatar-button">✕</button>
+            <img src="./media/pixel-avatar-button.png"> 
             <p>pixel avatar</p>
         </div>
 
-        <div class="button-bar" id="piano-button">
+        <div class="start-bar-tab window-classic" id="piano-button">
             <button class="popup-close" data-close="piano-popup" data-closemenu="piano-button">✕</button>
+            <img src="./media/piano/piano.png"> 
             <p>piano!</p>
         </div>
 
-        <div class="button-bar" id="my-music-button">
+        <div class="start-bar-tab window-classic" id="my-music-button">
             <button class="popup-close" data-close="my-music-popup" data-closemenu="my-music-button">✕</button>
             <p>my music</p>
         </div>
 
-        <div class="button-bar open" id="decor-button">
-            <button class="popup-close" data-close="decor-popup" data-closemenu="decor-button">✕</button>
-            <p>decor</p>
-        </div>
-
-        <div class="button-bar" id="strawberry-wedding-button">
+        <div class="start-bar-tab window-classic" id="strawberry-wedding-button">
             <button class="popup-close" data-close="strawberry-wedding-popup" data-closemenu="strawberry-wedding-button">✕</button>
+            <img src="./media/icons/strawberry.png"> 
             <p>strawberry wedding</p>
         </div>
 
-        <div class="button-bar" id="webmaster-button">
+        <div class="start-bar-tab window-classic" id="webmaster-button">
             <button class="popup-close"
                     data-close="webmaster-popup"
                     data-closemenu="webmaster-button"
                     data-close-also="note-from-shan-popup">✕</button>
+            <img src="./media/webmaster3.png"> 
             <p>webmaster</p>
         </div>
 
-        <div class="button-bar" id="cloud-jumper-button">
+        <div class="start-bar-tab window-classic" id="cloud-jumper-button">
             <button class="popup-close"
                     data-close="cloud-jumper-popup"
                     data-closemenu="cloud-jumper-button">✕</button>
+            <img src="./media/icons/cloud.png"> 
             <p>cloud jumper</p>
         </div>
 
-        <div class="button-bar" id="virtual-angel-button">
+        <div class="start-bar-tab window-classic" id="virtual-angel-button">
             <button class="popup-close"
                     data-close="virtual-angel-popup"
                     data-closemenu="virtual-angel-button">✕</button>
+            <img src="./media/icons/wings.png"> 
             <p>virtual angel</p>
         </div>
 
-        <div class="button-bar" id="image-gallery-button">
+        <div class="start-bar-tab window-classic" id="image-gallery-button">
             <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
+            <img src="./media/folder.png"> 
             <p>image-gallery</p>
         </div>
         <!-- chat box icon -->
@@ -254,7 +265,7 @@
                 <span>welcome</span>
                 <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
             </div>
-            <div class="welcome-content">
+            <div class="welcome-content window-classic-indent">
                 <p>hello!</p>
                 <p>thank you for visiting the girlcrush digital realm!</p>
                 <p>girlcrush is my very real imaginary universe. it was slowly revealed to me, pieced together by the magical worm inside my brain.</p>
@@ -374,7 +385,7 @@
                 <span>Dress me up!</span>
                 <button class="popup-close" data-close="avatar-popup" data-closemenu="pixel-avatar-button">✕</button>
             </div>
-            <div class="avatar-editor">
+            <div class="avatar-editor window-classic-indent">
                 <div class="avatar-controls">
                     <div class="control-group">
                         <p class="control-label">Body</p>
@@ -456,7 +467,7 @@
                 <span>image-gallery</span>
                 <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
             </div>
-            <div class="image-gallery-container">
+            <div class="image-gallery-container window-classic-indent">
                 <button data-gif="-1">❮</button>
                 <img id="epicGif" src="./media/decor-gifs/gif1.gif" draggable="false"/>
                 <button data-gif="1">❯</button>
@@ -466,14 +477,30 @@
 
 
     <!-- About me popup -->
-    <div id="about-me-popup" class="popup">
+    <!-- <div id="about-me-popup" class="popup">
         <div class="popup-window">
             <div class="popup-titlebar">
-                <span></span>
-                <button class="popup-close" data-close="about-me-popup" data-close-also="likes-popup,dislikes-popup">✕</button>
+                <span>about me</span>
+                <button class="popup-close" data-close="about-me-popup">✕</button>
             </div>
             <div class="about-me-container">
                 <div class="toni-img-container"> 
+                    <div class="likes">
+                        <p>bugs and worms</p>
+                        <p>being outside in the sun</p>
+                        <p>making things</p>
+                        <p>hot chips</p>
+                        <p>spending time with my friends</p>
+                        <p><333</p>
+                    </div>
+        
+                    <div class="dislikes">
+                        <p>capsicum</p>
+                        <p>forgetting to put my jewllery on</p>
+                        <p>cobbler's pegs</p>
+                        <p>houses painted entirely white</p>
+                        <p>the dark</p>
+                    </div>
                 </div>
                 <div class="about-me-container2">
                     <div class="questions-container">
@@ -495,14 +522,10 @@
                     <div class="questions-container" id="description">
                         <p>💬 blahj j hjfksnd hjdn hbd jjnd h vh dhsaj kfbhd sabfhs fh ds bfhd sabfhsda h sdabjfhb sdbfhds fhdsjbf hsdbfhs fhdsj bfhsbdf 🌸</p>
                     </div>
-                    <div class="likes-dis">
-                        <button data-popup="likes-popup">love</button>
-                        <button data-popup="dislikes-popup">hate</button>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Webmaster popup -->
     <div id="webmaster-popup" class="popup">
@@ -511,7 +534,7 @@
                 <span>webmaster</span>
                 <button class="popup-close" data-close="webmaster-popup" data-closemenu="webmaster-button" data-close-also="note-from-shan-popup">✕</button>
             </div>
-            <div class="webmaster-container">
+            <div class="webmaster-container window-classic-indent">
                 <p class="webmaster-name">shannon</p>
                 <img src="./media/shan/me.jpg"/>
                 <div class="shan-likes">
@@ -549,35 +572,6 @@
     <div id="note-from-shan-popup" class="popup">
         <div class="popup-window">
             <img src="./media/me-working.webp">
-        </div>
-    </div>
-
-    <!-- Likes popup -->
-    <div id="likes-popup" class="popup">
-        <div class="popup-window">
-            <p class="popup-titlebar">love</p>
-            <div class="likes">
-                <p>bugs and worms</p>
-                <p>being outside in the sun</p>
-                <p>making things</p>
-                <p>hot chips</p>
-                <p>spending time with my friends</p>
-                <p><333</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dislikes popup -->
-    <div id="dislikes-popup" class="popup">
-        <div class="popup-window">
-            <p class="popup-titlebar">hate</p>
-            <div class="dislikes">
-                <p>capsicum</p>
-                <p>forgetting to put my jewllery on</p>
-                <p>cobbler's pegs</p>
-                <p>houses painted entirely white</p>
-                <p>the dark</p>
-            </div>
         </div>
     </div>
 
@@ -622,7 +616,7 @@
                 <span>cloud jumper</span>
                 <button class="popup-close" id="cloud-jumper-close" data-close="cloud-jumper-popup" data-closemenu="cloud-jumper-button">✕</button>
             </div>
-            <div class="cloud-jumper-container"> 
+            <div class="cloud-jumper-container window-classic-indent"> 
                 <p>a sexxidude production</p>
                 <div class="cloud-jumper-game"> 
                     <img id="cloud-jumper" src="media/cloud-jumper/cloud-jumper2.png">
@@ -645,7 +639,7 @@
                 <span>strawberry wedding</span>
                 <button class="popup-close" id="strawberry-wedding-close" data-close="strawberry-wedding-popup" data-closemenu="strawberry-wedding-button">✕</button>
             </div>
-            <div class="strawberry-wedding-container"> 
+            <div class="strawberry-wedding-container window-classic-indent"> 
                 <button id="rsvp">
                     <img src="./media/strawberry-wedding/letter.png">
                     <p>RSVP</p>
