@@ -42,12 +42,12 @@ function restackPopups() {
     const popups = [...document.querySelectorAll('.popup.open')];
 
     popups.sort((a, b) =>
-        parseInt(getComputedStyle(a).zIndex || 0, 10)
-        - parseInt(getComputedStyle(b).zIndex || 0, 10)
+        parseInt(getComputedStyle(a).zIndex || 0, 15)
+        - parseInt(getComputedStyle(b).zIndex || 0, 15)
     );
 
     popups.forEach((popup, i) => {
-        popup.style.zIndex = tabCounter + i;
+        popup.style.zIndex = i;
     });
 }
 
