@@ -1,48 +1,82 @@
 
+let tabCounter = 2; // rework this 
+
 /* ------------------------------------------
     Popup helpers
 ------------------------------------------ */
 function openPopup(id) {
-    document.getElementById(id).classList.add('open');
+    const popup = document.getElementById(id);
 
-    // Also highlight the Start button when the About popup opens
-    if (id === 'about-me-popup') {
-        document.getElementById('start-button').classList.add('open');
-    }
-    if (id === 'chatbox-popup') {
-        document.getElementById('chatbox-button').classList.add('open');
-    }
+    if (!popup.classList.contains('open')) {
+        popup.classList.add('open');
 
-    if (id === "virtual-angel-popup") {
-        window.openVirtualAngel();
-    }
+        incrementZIndex(id);
 
-    if (id === "cloud-jumper-popup") {
-        state.gameWindowOpen = true;
+        // Also highlight the Start button when the About popup opens
+        if (id === 'about-me-popup') {
+            document.getElementById('start-button').classList.add('open');
+        }
+        if (id === 'chatbox-popup') {
+            document.getElementById('chatbox-button').classList.add('open');
+        }
+
+        if (id === "virtual-angel-popup") {
+            window.openVirtualAngel();
+        }
+
+        if (id === "cloud-jumper-popup") {
+            state.gameWindowOpen = true;
+        }
     }
+}
+
+function incrementZIndex(id) {
+    const popup = document.getElementById(id);
+    tabCounter += 1;
+    popup.style.zIndex = tabCounter;
+    console.log(tabCounter);
+}
+
+function restackPopups() {
+    tabCounter -= 1;
+    const popups = [...document.querySelectorAll('.popup.open')];
+
+    popups.sort((a, b) =>
+        parseInt(getComputedStyle(a).zIndex || 0, 10)
+        - parseInt(getComputedStyle(b).zIndex || 0, 10)
+    );
+
+    popups.forEach((popup, i) => {
+        popup.style.zIndex = tabCounter + i;
+    });
 }
 
 function closePopup(id) {
     const popup = document.getElementById(id);
-    popup.classList.remove('open');
-    popup.style.transform = 'translate(0px, 0px)';  // reset drag position
 
-    if (id === 'about-me-popup') {
-        document.getElementById('start-button').classList.remove('open');
-    }
-    if (id === 'chatbox-popup' ) {
-        document.getElementById('chatbox-button').classList.remove('open');
-    }
-    if (id === "virtual-angel-popup") {
-        window.resetAngelCard();
-    }
-    if (id === "cloud-jumper-popup") {
-        window.resetCloudJumper();
-        state.gameWindowOpen = false;
-    }
+    if (popup.classList.contains('open')) {
+        popup.classList.remove('open');
+        restackPopups();
 
-    if (id === "strawberry-wedding-popup") {
-        window.resetMedia();
+        popup.style.transform = 'translate(0px, 0px)';  // reset drag position
+
+        if (id === 'about-me-popup') {
+            document.getElementById('start-button').classList.remove('open');
+        }
+        if (id === 'chatbox-popup' ) {
+            document.getElementById('chatbox-button').classList.remove('open');
+        }
+        if (id === "virtual-angel-popup") {
+            window.resetAngelCard();
+        }
+        if (id === "cloud-jumper-popup") {
+            window.resetCloudJumper();
+            state.gameWindowOpen = false;
+        }
+
+        if (id === "strawberry-wedding-popup") {
+            window.resetMedia();
+        }
     }
 }
 
