@@ -26,6 +26,7 @@
     padding: 5px 10px;
 
     font-family: "Zen Dots", sans-serif;
+    letter-spacing: 0.8px;
 
     font-size: 14px;
     line-height: 1.6;
@@ -56,7 +57,7 @@
 
 #webmaster-popup .popup-titlebar {
     background: rgb(188, 242, 242);
-    color: rgb(44, 64, 64);
+    color: rgb(72, 106, 106);
 }
 
 #cloud-jumper-popup .popup-titlebar {
@@ -72,7 +73,7 @@
 
 #avatar-popup .popup-titlebar {
     background: #c4e63a;
-    color: #4f4f4f;
+    color: #5a6a19;
 }
 
 
