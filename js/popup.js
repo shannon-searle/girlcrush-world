@@ -1,5 +1,5 @@
 
-let tabCounter = 2; // rework this 
+let tabCounter = 2; // rework this
 let baseIndex = 2;
 
 /* ------------------------------------------
@@ -12,8 +12,9 @@ function openPopup(id) {
         document.getElementById("popup-container").prepend(popup);
 
         popup.classList.add('open');
-
-        incrementZIndex(id);
+        if (popup.id !== 'chatbox-popup' && popup.id !== 'decor-popup') {
+            incrementZIndex(id);
+        }
 
         // Also highlight the Start button when the About popup opens
         if (id === 'about-me-popup') {
@@ -34,7 +35,7 @@ function openPopup(id) {
 }
 
 function incrementZIndex(id) {
-    if (id != 'decor-popup') {
+    if (id != 'decor-popup' && id != 'chatbox-popup') {
         const popup = document.getElementById(id);
         tabCounter += 1;
         popup.style.zIndex = tabCounter;
@@ -45,7 +46,7 @@ function incrementZIndex(id) {
 function decrementPopups() {
     tabCounter -= 1;
     const popups = [...document.querySelectorAll('.popup.open')]
-        .filter(popup => popup.id !== 'decor-popup');
+        .filter(popup => popup.id !== 'decor-popup'  && popup.id !== 'chatbox-popup');
 
     popups.sort((a, b) =>
         parseInt(getComputedStyle(a).zIndex || 0, 15)
@@ -60,7 +61,7 @@ function decrementPopups() {
 // restack when touching another popup
 function restackPopups(frontPopup) {
     const popups = [...document.querySelectorAll('.popup.open')]
-        .filter(popup => (popup.id !== 'decor-popup' && popup !== frontPopup));
+        .filter(popup => (popup.id !== 'decor-popup' && popup !== frontPopup &&  popup.id !== 'chatbox-popup'));
 
     popups.sort((a, b) =>
         parseInt(getComputedStyle(a).zIndex || 0, 15)
@@ -77,7 +78,9 @@ function closePopup(id) {
 
     if (popup.classList.contains('open')) {
         popup.classList.remove('open');
-        decrementPopups();
+        if (id !== 'chatbox-popup' && id !== 'decor-popup') {
+            decrementPopups();
+        }
 
         popup.style.transform = 'translate(0px, 0px)';  // reset drag position
 
