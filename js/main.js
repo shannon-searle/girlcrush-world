@@ -41,50 +41,6 @@ function changeLayer(layerId, newSrc) {
 }
 
 
-/* ------------------------------------------
-    Draggable popups (drag by titlebar only)
------------------------------------------- */
-function makeDraggable(popup) {
-    let offsetX = 0, offsetY = 0;
-    let startX  = 0, startY  = 0;
-
-    popup.addEventListener('mousedown', function (e) {
-        if (!e.target.closest('.popup-titlebar')) return;
-
-        startX = e.clientX - offsetX;
-        startY = e.clientY - offsetY;
-
-        document.addEventListener('mousemove', onDrag);
-        document.addEventListener('mouseup',   stopDrag);
-    });
-
-    function onDrag(e) {
-        offsetX = e.clientX - startX;
-        offsetY = e.clientY - startY;
-        popup.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    }
-
-    function stopDrag() {
-        document.removeEventListener('mousemove', onDrag);
-        document.removeEventListener('mouseup',   stopDrag);
-    }
-}
-
-// Apply draggable to specific popups
-makeDraggable(document.getElementById('welcome-popup'));
-makeDraggable(document.getElementById('avatar-popup'));
-makeDraggable(document.getElementById('piano-popup'));
-// makeDraggable(document.getElementById('likes-popup'));
-// makeDraggable(document.getElementById('dislikes-popup'));
-makeDraggable(document.getElementById('image-gallery-popup'));
-makeDraggable(document.getElementById('my-music-popup'));
-makeDraggable(document.getElementById('cloud-jumper-popup'));
-makeDraggable(document.getElementById('virtual-angel-popup'));
-makeDraggable(document.getElementById('webmaster-popup'));
-makeDraggable(document.getElementById('strawberry-wedding-popup'));
-
-
-
 
 /* ------------------------------------------
 Page fade-in (when navigating from index)

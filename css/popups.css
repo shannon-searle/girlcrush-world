@@ -35,12 +35,16 @@
     color: #d966a0;
 
     user-select: none;
-    cursor: grab;
 
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .popup-titlebar span,
+.popup-titlebar:hover {
+    cursor: grab;
+}
+
+.popup-titlebar span:active,
 .popup-titlebar:active {
     cursor: grabbing;
 }

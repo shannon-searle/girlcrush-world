@@ -39,9 +39,10 @@ function incrementZIndex(id) {
     }
 }
 
-function restackPopups() {
+// decrement popups
+function decrementPopups() {
     tabCounter -= 1;
-const popups = [...document.querySelectorAll('.popup.open')]
+    const popups = [...document.querySelectorAll('.popup.open')]
         .filter(popup => popup.id !== 'decor-popup');
 
     popups.sort((a, b) =>
@@ -54,12 +55,27 @@ const popups = [...document.querySelectorAll('.popup.open')]
     });
 }
 
+// restack when touching another popup
+function restackPopups(frontPopup) {
+    const popups = [...document.querySelectorAll('.popup.open')]
+        .filter(popup => (popup.id !== 'decor-popup' && popup !== frontPopup));
+
+    popups.sort((a, b) =>
+        parseInt(getComputedStyle(a).zIndex || 0, 15)
+        - parseInt(getComputedStyle(b).zIndex || 0, 15)
+    );
+    popups.forEach((popup, i) => {
+        popup.style.zIndex = baseIndex + i;
+    });
+    frontPopup.style.zIndex = tabCounter;
+}
+
 function closePopup(id) {
     const popup = document.getElementById(id);
 
     if (popup.classList.contains('open')) {
         popup.classList.remove('open');
-        restackPopups();
+        decrementPopups();
 
         popup.style.transform = 'translate(0px, 0px)';  // reset drag position
 
@@ -130,3 +146,50 @@ document.querySelectorAll('[data-close]').forEach(button => {
         if (alsoClose) alsoClose.split(',').forEach(id => closePopup(id.trim()));
     });
 });
+
+
+
+/* ------------------------------------------
+    Draggable popups (drag by titlebar only)
+------------------------------------------ */
+function makeDraggable(popup) {
+    let offsetX = 0, offsetY = 0;
+    let startX  = 0, startY  = 0;
+
+    popup.addEventListener('mousedown', function (e) {
+        if (!e.target.closest('.popup-titlebar')) return;
+
+        startX = e.clientX - offsetX;
+        startY = e.clientY - offsetY;
+        if (popup.style.zIndex !== tabCounter.toString()) {
+            restackPopups(popup);
+        }
+
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('mouseup',   stopDrag);
+    });
+
+    function onDrag(e) {
+        offsetX = e.clientX - startX;
+        offsetY = e.clientY - startY;
+        popup.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    }
+
+    function stopDrag() {
+        document.removeEventListener('mousemove', onDrag);
+        document.removeEventListener('mouseup',   stopDrag);
+    }
+}
+
+// Apply draggable to specific popups
+makeDraggable(document.getElementById('welcome-popup'));
+makeDraggable(document.getElementById('avatar-popup'));
+makeDraggable(document.getElementById('piano-popup'));
+// makeDraggable(document.getElementById('likes-popup'));
+// makeDraggable(document.getElementById('dislikes-popup'));
+makeDraggable(document.getElementById('image-gallery-popup'));
+makeDraggable(document.getElementById('my-music-popup'));
+makeDraggable(document.getElementById('cloud-jumper-popup'));
+makeDraggable(document.getElementById('virtual-angel-popup'));
+makeDraggable(document.getElementById('webmaster-popup'));
+makeDraggable(document.getElementById('strawberry-wedding-popup'));
