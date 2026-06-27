@@ -28,9 +28,10 @@
     align-items: center;
 
     width: 100%;
-    font-family: "Press Start 2P", system-ui;
+    font-family: "Zen Dots", sans-serif;
+    letter-spacing: 0.5px;
 
-    font-size: clamp(6px, 0.6vw, 8px);
+    font-size: clamp(8px, 0.7vw, 10px);
     text-align: center;
     
     cursor: pointer;
@@ -54,9 +55,9 @@
 .icon button p {
     color: rgb(100, 80, 120);
     word-break: keep-all;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    /* text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); */
     line-height: 1.2;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     padding: 3px;
     height: 3.6em;      /* fixed label box */
 
@@ -92,7 +93,6 @@
 
     .icon button p {
         word-break: keep-all;
-        font-size: clamp(7px, 1.5vw, 9px);
         padding: 3px;
     }
 

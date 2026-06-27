@@ -42,8 +42,10 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    font-family: "Press Start 2P", system-ui;
-    font-size: clamp(6px, 0.7vw, 8px);
+    font-family: "Zen Dots", sans-serif;
+    letter-spacing: 0.5px;
+
+    font-size: clamp(8px, 0.7vw, 9px);
 
     color: rgb(91, 75, 108);
 

@@ -25,8 +25,9 @@
     width: 100%;
     padding: 5px 10px;
 
-    font-family: "Press Start 2P", system-ui;
-    font-size: 12px;
+    font-family: "Zen Dots", sans-serif;
+
+    font-size: 14px;
     line-height: 1.6;
 
     background: #ffe0f0;
@@ -90,7 +91,8 @@
     cursor: pointer;
     text-align: center;
 
-    font-family: "Press Start 2P", system-ui;
+    font-family: "Zen Dots", sans-serif;
+
     background: inherit;
     color: inherit;
 
@@ -335,6 +337,9 @@
         max-height: none;
     }
 
+    #avatar-popup .popup-window {
+        width: 100%;
+    }
 
     #webmaster-popup {
         width: 50%;
