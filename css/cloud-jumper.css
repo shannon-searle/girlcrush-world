@@ -123,4 +123,8 @@
     .cloud-jumper-controls {
         margin: 0;
     }
+
+    .cloud-jumper-container {
+        padding-bottom: 30px;
+    }
 }
