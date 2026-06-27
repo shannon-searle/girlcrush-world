@@ -9,6 +9,8 @@ function openPopup(id) {
     const popup = document.getElementById(id);
 
     if (!popup.classList.contains('open')) {
+        document.getElementById("popup-container").prepend(popup);
+
         popup.classList.add('open');
 
         incrementZIndex(id);

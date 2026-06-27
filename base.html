@@ -274,412 +274,414 @@
          Each popup follows this structure:
            .popup > .popup-close + .popup-window > .popup-titlebar + [content]
     ============================================== -->
+    <div id="popup-container">
 
-    <!-- Welcome popup -->
-    <div id="welcome-popup" class="popup open">
-        <div class="popup-window window-classic">
-            <div class="popup-titlebar">
-                <span>welcome</span>
-                <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
-            </div>
-            <div class="welcome-content window-classic-indent">
-                <p>hello!</p>
-                <p>thank you for visiting the girlcrush digital realm!</p>
-                <p>girlcrush is my very real imaginary universe. it was slowly revealed to me, pieced together by the magical worm inside my brain.</p>
-                <p>it’s my fairytale dreamscape, some fragments of my life, the inner world i go to when im alone.</p>
-                <p>now it’s somewhere that you can go as well.</p>
-                <p>please enjoy your stay and do come again soon!</p>
-                <p>love,<br>toni ⋆˙⟡</p>
-            </div>
-        </div>
-        <!-- sticky note -->
-        <div class="sticky-note-thankyou">
-            <img src="media/star.png"/>
-            <p>
-                the girlcrush digital realm was brought to life by shannon!
-            </p> 
-            <p>
-                i couldn’t have done any of this without them and am forever grateful.
-            </p>
-            <p>
-                say thank you shannon ૮₍ ˶ᵔ ᵕ ᵔ˶ ₎ა ☆⋆｡
-            </p>
-        </div>
-    </div>
-
-
-    <!-- Piano popup -->
-    <div id="piano-popup" class="popup">
-        <div class="popup-window">
-            <div class="popup-titlebar">
-                <span>turn sound on</span>
-                <button class="popup-close" data-close="piano-popup" data-closemenu="piano-button">✕</button>
-            </div>
-            <div class="piano-play">
-                <img src="media/piano/piano4.png" alt="piano" />
-                <!-- white keys -->
-                <button class="key" data-note="C4" style="left: 3%; width: 8.5%; height: 77%;"></button>
-                <button class="key" data-note="D4" style="left: 12.5%; width: 8.5%; height: 77%;"></button>
-                <button class="key" data-note="E4" style="left: 22%; width: 8.5%; height: 77%;"></button>
-                <button class="key" data-note="F4" style="left: 31.5%; width: 8.5%; height: 77%;"></button>
-                <button class="key" data-note="G4" style="left: 41%; width: 8.5%; height: 77%;"></button>
-                <button class="key" data-note="A4" style="left: 50.5%; width: 8.5%; height: 77%;"></button>
-                <button class="key" data-note="B4" style="left: 60%; width: 8.5%; height: 77%;"></button>
-                <button class="key" data-note="C5" style="left: 69.5%; width: 8.5%; height: 77%;"></button>
-                <button class="key" data-note="D5" style="left: 79%; width: 8.5%; height: 77%;"></button>
-                <button class="key" data-note="E5" style="left: 88.5%; width: 8.5%; height: 77%;"></button>
-
-                <!-- black keys -->
-                <button class="black-key" data-note="C#4" style="left: 9.25%; width: 5.25%; height: 40%;"></button>
-                <button class="black-key" data-note="D#4" style="left: 19%; width: 5.25%; height: 40%;"></button>
-
-                <!-- skip (no E#/Fb) -->
-
-                <button class="black-key" data-note="F#4" style="left: 38%; width: 5.25%; height: 40%;"></button>
-                <button class="black-key" data-note="G#4" style="left: 47.5%; width: 5.25%; height: 40%;"></button>
-                <button class="black-key" data-note="A#4" style="left: 57%; width: 5.25%; height: 40%;"></button>
-
-                <!-- skip (no B#/Cb) -->
-
-                <button class="black-key" data-note="C#5" style="left: 76%; width: 5.25%; height: 40%;"></button>
-                <button class="black-key" data-note="D#5" style="left: 85.5%; width: 5.25%; height: 40%;"></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- My Music popup -->
-    <div id="my-music-popup" class="popup">
-        <div class="popup-window window-classic">
-            <div class="popup-titlebar">
-                <span>my music!</span>
-                <button class="popup-close" data-close="my-music-popup" data-closemenu="my-music-button">✕</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- virtual angel popup -->
-    <div id="virtual-angel-popup" class="popup">
-        <div class="popup-window">
-            <!-- <div class="popup-titlebar">
-                <span>your virtual angel</span>
-                <button class="popup-close" data-close="virtual-angel-popup" data-closemenu="virtual-angel-button">✕</button>
-            </div> -->
-            <div class="card">
-                <div class="front-card">
-                    <button class="popup-close" data-close="virtual-angel-popup" data-closemenu="virtual-angel-button">✕</button>
-                    <video
-                        class="window-classic"
-                        id="britney-background"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                    >
-                        <source src="./media/virtual-angel/britney-with-background2.mp4" type="video/mp4">
-                    </video>
+        <!-- Welcome popup -->
+        <div id="welcome-popup" class="popup open">
+            <div class="popup-window window-classic">
+                <div class="popup-titlebar">
+                    <span>welcome</span>
+                    <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
                 </div>
-                <div class="back-card">
+                <div class="welcome-content window-classic-indent">
+                    <p>hello!</p>
+                    <p>thank you for visiting the girlcrush digital realm!</p>
+                    <p>girlcrush is my very real imaginary universe. it was slowly revealed to me, pieced together by the magical worm inside my brain.</p>
+                    <p>it’s my fairytale dreamscape, some fragments of my life, the inner world i go to when im alone.</p>
+                    <p>now it’s somewhere that you can go as well.</p>
+                    <p>please enjoy your stay and do come again soon!</p>
+                    <p>love,<br>toni ⋆˙⟡</p>
+                </div>
+            </div>
+            <!-- sticky note -->
+            <div class="sticky-note-thankyou">
+                <img src="media/star.png"/>
+                <p>
+                    the girlcrush digital realm was brought to life by shannon!
+                </p> 
+                <p>
+                    i couldn’t have done any of this without them and am forever grateful.
+                </p>
+                <p>
+                    say thank you shannon ૮₍ ˶ᵔ ᵕ ᵔ˶ ₎ა ☆⋆｡
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Piano popup -->
+        <div id="piano-popup" class="popup">
+            <div class="popup-window">
+                <div class="popup-titlebar">
+                    <span>turn sound on</span>
+                    <button class="popup-close" data-close="piano-popup" data-closemenu="piano-button">✕</button>
+                </div>
+                <div class="piano-play">
+                    <img src="media/piano/piano4.png" alt="piano" />
+                    <!-- white keys -->
+                    <button class="key" data-note="C4" style="left: 3%; width: 8.5%; height: 77%;"></button>
+                    <button class="key" data-note="D4" style="left: 12.5%; width: 8.5%; height: 77%;"></button>
+                    <button class="key" data-note="E4" style="left: 22%; width: 8.5%; height: 77%;"></button>
+                    <button class="key" data-note="F4" style="left: 31.5%; width: 8.5%; height: 77%;"></button>
+                    <button class="key" data-note="G4" style="left: 41%; width: 8.5%; height: 77%;"></button>
+                    <button class="key" data-note="A4" style="left: 50.5%; width: 8.5%; height: 77%;"></button>
+                    <button class="key" data-note="B4" style="left: 60%; width: 8.5%; height: 77%;"></button>
+                    <button class="key" data-note="C5" style="left: 69.5%; width: 8.5%; height: 77%;"></button>
+                    <button class="key" data-note="D5" style="left: 79%; width: 8.5%; height: 77%;"></button>
+                    <button class="key" data-note="E5" style="left: 88.5%; width: 8.5%; height: 77%;"></button>
+
+                    <!-- black keys -->
+                    <button class="black-key" data-note="C#4" style="left: 9.25%; width: 5.25%; height: 40%;"></button>
+                    <button class="black-key" data-note="D#4" style="left: 19%; width: 5.25%; height: 40%;"></button>
+
+                    <!-- skip (no E#/Fb) -->
+
+                    <button class="black-key" data-note="F#4" style="left: 38%; width: 5.25%; height: 40%;"></button>
+                    <button class="black-key" data-note="G#4" style="left: 47.5%; width: 5.25%; height: 40%;"></button>
+                    <button class="black-key" data-note="A#4" style="left: 57%; width: 5.25%; height: 40%;"></button>
+
+                    <!-- skip (no B#/Cb) -->
+
+                    <button class="black-key" data-note="C#5" style="left: 76%; width: 5.25%; height: 40%;"></button>
+                    <button class="black-key" data-note="D#5" style="left: 85.5%; width: 5.25%; height: 40%;"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Music popup -->
+        <div id="my-music-popup" class="popup">
+            <div class="popup-window window-classic">
+                <div class="popup-titlebar">
+                    <span>my music!</span>
+                    <button class="popup-close" data-close="my-music-popup" data-closemenu="my-music-button">✕</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- virtual angel popup -->
+        <div id="virtual-angel-popup" class="popup">
+            <div class="popup-window">
+                <!-- <div class="popup-titlebar">
+                    <span>your virtual angel</span>
                     <button class="popup-close" data-close="virtual-angel-popup" data-closemenu="virtual-angel-button">✕</button>
+                </div> -->
+                <div class="card">
+                    <div class="front-card">
+                        <button class="popup-close" data-close="virtual-angel-popup" data-closemenu="virtual-angel-button">✕</button>
+                        <video
+                            class="window-classic"
+                            id="britney-background"
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                        >
+                            <source src="./media/virtual-angel/britney-with-background2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="back-card">
+                        <button class="popup-close" data-close="virtual-angel-popup" data-closemenu="virtual-angel-button">✕</button>
+                        <video
+                            class="window-classic"
+                            id="angel-card"
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            preload="auto"
+                        ></video>
+                    </div>
+                </div>
+                <img id="divine-message" src="./media/virtual-angel/divine-message.png">
+            </div>
+        </div>
+
+        <!-- Avatar dress-up popup -->
+        <div id="avatar-popup" class="popup">
+            <div class="popup-window window-classic">
+                <div class="popup-titlebar">
+                    <span>Dress me up!</span>
+                    <button class="popup-close" data-close="avatar-popup" data-closemenu="pixel-avatar-button">✕</button>
+                </div>
+                <div class="avatar-editor window-classic-indent">
+                    <div class="avatar-controls">
+                        <div class="control-group">
+                            <p class="control-label">Body</p>
+                            <button data-layer="layer-body" data-src="media/pixel-avatar/body-default.png"><img src="media/pixel-avatar/body-default.png"  alt="body 1" /></button>
+                            <button data-layer="layer-body" data-src="media/pixel-avatar/body2.png"       ><img src="media/pixel-avatar/body2.png"           alt="body 2" /></button>
+                            <button data-layer="layer-body" data-src="media/pixel-avatar/body-pink.png"   ><img src="media/pixel-avatar/body-pink.png"        alt="body 3" /></button>
+                            <button data-layer="layer-body" data-src="media/pixel-avatar/body-green.png"  ><img src="media/pixel-avatar/body-green.png"       alt="body 4" /></button>
+                        </div>
+                        <div class="control-group">
+                            <p class="control-label">Eyes</p>
+                            <button data-layer="layer-eyes" data-src="media/pixel-avatar/eyes-dark-blue.png" ><img src="media/pixel-avatar-thumb/eyes-dark-blue.png"  alt="dark blue eyes"  /></button>
+                            <button data-layer="layer-eyes" data-src="media/pixel-avatar/eyes-red.png"       ><img src="media/pixel-avatar-thumb/eyes-red.png"         alt="red eyes"        /></button>
+                            <button data-layer="layer-eyes" data-src="media/pixel-avatar/eyes-brown.png"     ><img src="media/pixel-avatar-thumb/eyes-brown.png"       alt="brown eyes"      /></button>
+                            <button data-layer="layer-eyes" data-src="media/pixel-avatar/eyes-light-blue.png"><img src="media/pixel-avatar-thumb/eyes-light-blue.png"  alt="light blue eyes" /></button>
+                        </div>
+                        <div class="control-group">
+                            <p class="control-label">Blush</p>
+                            <button data-layer="layer-blush" data-src="media/pixel-avatar/blush.png" ><img src="media/pixel-avatar-thumb/blush.png"  alt="no blush" /></button>
+                            <button data-layer="layer-blush" data-src="media/pixel-avatar/blush2.png"><img src="media/pixel-avatar-thumb/blush1.png" alt="blush"    /></button>
+                        </div>
+                        <div class="control-group">
+                            <p class="control-label">Hair</p>
+                            <button data-layer="layer-hair" data-src="media/pixel-avatar/red-hair-short.png"  ><img src="media/pixel-avatar-thumb/red-hair-short.png"   alt="short red hair"  /></button>
+                            <button data-layer="layer-hair" data-src="media/pixel-avatar/black-long-hair.png" ><img src="media/pixel-avatar-thumb/black-long-hair.png"  alt="black long hair" /></button>
+                            <button data-layer="layer-hair" data-src="media/pixel-avatar/brown-short-hair.png"><img src="media/pixel-avatar-thumb/brown-short-hair.png" alt="brown short hair"/></button>
+                            <button data-layer="layer-hair" data-src="media/pixel-avatar/toni-hair.png"       ><img src="media/pixel-avatar-thumb/toni-hair.png"        alt="toni hair"       /></button>
+                            <button data-layer="layer-hair" data-src="media/pixel-avatar/blonde-hair.png"     ><img src="media/pixel-avatar-thumb/blonde-hair.png"      alt="blonde hair"     /></button>
+                        </div>
+                        <div class="control-group">
+                            <p class="control-label">Tops</p>
+                            <button data-layer="layer-top" data-src="media/pixel-avatar/black-top-graphic.png"><img src="media/pixel-avatar-thumb/black-top-graphic.png" alt="black graphic tee" /></button>
+                            <button data-layer="layer-top" data-src="media/pixel-avatar/orange-tank.png"      ><img src="media/pixel-avatar-thumb/orange-tank.png"        alt="orange tank"       /></button>
+                            <button data-layer="layer-top" data-src="media/pixel-avatar/red-bra.png"          ><img src="media/pixel-avatar-thumb/red-bra.png"            alt="red bra"           /></button>
+                            <button data-layer="layer-top" data-src="media/pixel-avatar/pink-tee.png"         ><img src="media/pixel-avatar-thumb/pink-tee.png"           alt="pink tee"          /></button>
+                            <button data-layer="layer-top" data-src="media/pixel-avatar/green-halter.png"     ><img src="media/pixel-avatar-thumb/green-halter.png"       alt="green halter"      /></button>
+                        </div>
+                        <div class="control-group">
+                            <p class="control-label">Bottoms</p>
+                            <button data-layer="layer-bottoms" data-src="media/pixel-avatar/purple-pants.png" ><img src="media/pixel-avatar-thumb/purple-pants.png"  alt="purple pants"  /></button>
+                            <button data-layer="layer-bottoms" data-src="media/pixel-avatar/purple-skirt.png" ><img src="media/pixel-avatar-thumb/purple-skirt.png"  alt="purple skirt"  /></button>
+                            <button data-layer="layer-bottoms" data-src="media/pixel-avatar/grey-pants.png"   ><img src="media/pixel-avatar-thumb/grey-pants.png"    alt="grey pants"    /></button>
+                            <button data-layer="layer-bottoms" data-src="media/pixel-avatar/blue-shorts.png"  ><img src="media/pixel-avatar-thumb/blue-shorts.png"   alt="blue shorts"   /></button>
+                            <button data-layer="layer-bottoms" data-src="media/pixel-avatar/flares.png"       ><img src="media/pixel-avatar-thumb/flares.png"        alt="flares"        /></button>
+                        </div>
+                        <div class="control-group">
+                            <p class="control-label">Shoes</p>
+                            <button data-layer="layer-shoes" data-src="media/pixel-avatar/shoes-black-basic.png"><img src="media/pixel-avatar-thumb/shoes-black-basic.png" alt="black shoes"  /></button>
+                            <button data-layer="layer-shoes" data-src="media/pixel-avatar/brown-boots.png"      ><img src="media/pixel-avatar-thumb/brown-boots.png"        alt="brown boots"  /></button>
+                            <button data-layer="layer-shoes" data-src="media/pixel-avatar/red-boots.png"        ><img src="media/pixel-avatar-thumb/red-boots.png"          alt="red boots"    /></button>
+                            <button data-layer="layer-shoes" data-src="media/pixel-avatar/gumboots.png"         ><img src="media/pixel-avatar-thumb/gumboots.png"           alt="gumboots"     /></button>
+                        </div>
+                        <div class="control-group">
+                            <p class="control-label">Background</p>
+                            <button data-layer="layer-background" data-src="media/pixel-avatar/background-blue.png"     ><img src="media/pixel-avatar/background-blue.png"      alt="blue background" /></button>
+                            <button data-layer="layer-background" data-src="media/pixel-avatar/background-pink.png"     ><img src="media/pixel-avatar/background-pink.png"      alt="pink background" /></button>
+                            <button data-layer="layer-background" data-src="media/pixel-avatar/background-landscape.png"><img src="media/pixel-avatar/background-landscape.png" alt="day background"  /></button>
+                            <button data-layer="layer-background" data-src="media/pixel-avatar/background-night.png"    ><img src="media/pixel-avatar/background-night.png"     alt="night background"/></button>
+                        </div>
+                    </div>
+                    <div class="avatar-canvas">
+                        <img id="layer-background" class="avatar-layer" src="media/pixel-avatar/background-landscape.png" alt="" />
+                        <img id="layer-body"        class="avatar-layer" src="media/pixel-avatar/body-default.png"         alt="" />
+                        <img id="layer-blush"       class="avatar-layer" src="media/pixel-avatar/blush.png"                alt="" />
+                        <img id="layer-eyes"        class="avatar-layer" src="media/pixel-avatar/eyes-dark-blue.png"       alt="" />
+                        <img id="layer-mouth"       class="avatar-layer" src="media/pixel-avatar/mouth-default.png"        alt="" />
+                        <img id="layer-bottoms"     class="avatar-layer" src="media/pixel-avatar/purple-pants.png"         alt="" />
+                        <img id="layer-top"         class="avatar-layer" src="media/pixel-avatar/black-top-graphic.png"    alt="" />
+                        <img id="layer-shoes"       class="avatar-layer" src="media/pixel-avatar/shoes-black-basic.png"    alt="" />
+                        <img id="layer-hair"        class="avatar-layer" src="media/pixel-avatar/red-hair-short.png"       alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- image-gallery popup -->
+        <div id="image-gallery-popup" class="popup">
+            <div class="popup-window window-classic">
+                <div class="popup-titlebar">
+                    <span>image-gallery</span>
+                    <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
+                </div>
+                <div class="image-gallery-container window-classic-indent">
+                    <button data-gif="-1">❮</button>
+                    <img id="epicGif" src="./media/decor-gifs/gif1.gif" draggable="false"/>
+                    <button data-gif="1">❯</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- About me popup -->
+        <!-- <div id="about-me-popup" class="popup">
+            <div class="popup-window">
+                <div class="popup-titlebar">
+                    <span>about me</span>
+                    <button class="popup-close" data-close="about-me-popup">✕</button>
+                </div>
+                <div class="about-me-container">
+                    <div class="toni-img-container"> 
+                        <div class="likes">
+                            <p>bugs and worms</p>
+                            <p>being outside in the sun</p>
+                            <p>making things</p>
+                            <p>hot chips</p>
+                            <p>spending time with my friends</p>
+                            <p><333</p>
+                        </div>
+            
+                        <div class="dislikes">
+                            <p>capsicum</p>
+                            <p>forgetting to put my jewllery on</p>
+                            <p>cobbler's pegs</p>
+                            <p>houses painted entirely white</p>
+                            <p>the dark</p>
+                        </div>
+                    </div>
+                    <div class="about-me-container2">
+                        <div class="questions-container">
+                            <div class="questions">
+                                <p>🌷 Name:</p>
+                                <p>⭐ Star Sign:</p>
+                                <p>🎀 Pronouns:</p>
+                                <p>📏 Height:</p>
+                                <p>🎮 LVL:</p>
+                            </div>
+                            <div class="answers">
+                                <p>toni</p>
+                                <p>libra ♎</p>
+                                <p>she/her</p>
+                                <p>175cm</p>
+                                <p>222 🏆</p>
+                            </div>
+                        </div>
+                        <div class="questions-container" id="description">
+                            <p>💬 blahj j hjfksnd hjdn hbd jjnd h vh dhsaj kfbhd sabfhs fh ds bfhd sabfhsda h sdabjfhb sdbfhds fhdsjbf hsdbfhs fhdsj bfhsbdf 🌸</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Webmaster popup -->
+        <div id="webmaster-popup" class="popup">
+            <div class="popup-window window-classic">
+                <div class="popup-titlebar">
+                    <span>webmaster</span>
+                    <button class="popup-close" data-close="webmaster-popup" data-closemenu="webmaster-button" data-close-also="note-from-shan-popup">✕</button>
+                </div>
+                <div class="webmaster-container window-classic-indent">
+                    <p class="webmaster-name">shannon</p>
+                    <img src="./media/shan/me.jpg"/>
+                    <div class="shan-likes">
+                        <p style="font-weight: bold;">likes:</p>
+                        <p>eating dumplings w friends</p>
+                        <p>anime</p>
+                        <p>my furbaby: prosecco 🐾</p>
+                        <p>drawing silly lil characters</p>
+                        <p>silver nail polish</p>
+                        <p>adventuring</p>
+                    </div>
+                    <img src="./media/shan/anime.jpg"/>
+                    <img src="./media/shan/flowers.jpg"/>
+                    <img src="./media/shan/prosecco.jpg"/>
+                    <img src="./media/shan/camping.jpg"/>
+                    <button data-popup="note-from-shan-popup">
+                        <img src="./media/blinkies/click-me2.gif"/>
+                    </button>
+                    <img src="./media/shan/fortnite.jpg"/>
+                    <img src="./media/shan/horses.jpg"/>
+                    <div class="shan-dislikes">
+                        <p style="font-weight: bold;">dislikes:</p>
+                        <p>steamed vegetables</p>
+                        <p>open-toe shoes</p>
+                        <p>sleeping in</p>
+                        <p>brain rot</p>
+                        <p>unstacking the dishwasher</p>
+                        <p>fluorescent lighting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Note from shan popup -->
+        <div id="note-from-shan-popup" class="popup">
+            <div class="popup-window">
+                <img src="./media/me-working.webp">
+            </div>
+        </div>
+
+        <!-- decor popup-->
+        <div id="decor-popup" class="popup">
+            <div class="popup-window">
+                <img id="epicGif1" src="./media/decor-gifs/gif1.gif" draggable="false"/>
+                <img id="epicGif2" src="./media/decor-gifs/angel1.gif" draggable="false"/>
+                <img id="epicGif3" src="./media/decor-gifs/gif3.gif" draggable="false"/>
+                <img id="epicGif4" src="./media/decor-gifs/gif4.gif" draggable="false"/>
+                <img id="epicGif5" src="./media/decor-gifs/teddy.gif" draggable="false"/>
+                <img id="epicGif6" src="./media/decor-gifs/music-gif.gif" draggable="false"/>
+                <img id="epicGif7" src="./media/decor-gifs/cattt.gif" draggable="false"/>
+                <img id="epicGif8" src="./media/decor-gifs/gif6.gif" draggable="false"/>
+                <img id="epicGif9" src="./media/decor-gifs/punk-rawk.gif" draggable="false"/>
+
+
+                <div class="blinkies">
+                    <img src="media/blinkies/blinkiesCafe-mi.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-fO.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-R4.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-1F.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-5b.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-RI.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-hs.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-Rg.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-Ff.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-zz.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-2b.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-E4.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-lR.gif"/>
+                    <!-- <img src="media/blinkies/blinkiesCafe-BZ.gif"/>
+                    <img src="media/blinkies/blinkiesCafe-lU.gif"/> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- cloud jumper mini game popup-->
+        <div id="cloud-jumper-popup" class="popup">
+            <div class="popup-window window-classic">
+                <div class="popup-titlebar">
+                    <span>cloud jumper</span>
+                    <button class="popup-close" id="cloud-jumper-close" data-close="cloud-jumper-popup" data-closemenu="cloud-jumper-button">✕</button>
+                </div>
+                <div class="cloud-jumper-container window-classic-indent"> 
+                    <p>a sexxidude production</p>
+                    <div class="cloud-jumper-game"> 
+                        <img id="cloud-jumper" src="media/cloud-jumper/cloud-jumper2.png">
+                        <div id="score-display">0m</div>
+                        <button id="play-again">Play Again</button>
+                        <div class="cloud-jumper-controls">
+                            <p id="desktop-instructions">Press space to jump!</p>
+                            <p id="mobile-instructions">Press to jump!</p>
+                            <p id="game-over">Game Over</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- strawberry wedding popup-->
+        <div id="strawberry-wedding-popup" class="popup">
+            <div class="popup-window window-classic">
+                <div class="popup-titlebar">
+                    <span>strawberry wedding</span>
+                    <button class="popup-close" id="strawberry-wedding-close" data-close="strawberry-wedding-popup" data-closemenu="strawberry-wedding-button">✕</button>
+                </div>
+                <div class="strawberry-wedding-container window-classic-indent"> 
+                    <button id="rsvp">
+                        <img src="./media/strawberry-wedding/letter.png">
+                        <p>RSVP</p>
+                    </button>
                     <video
-                        class="window-classic"
-                        id="angel-card"
+                        class="strawberry-wedding-media active"
+                        id="wedding-title-screen"
                         autoplay
                         loop
                         muted
                         playsinline
                         preload="auto"
+                        src="./media/strawberry-wedding/wedding-title-screen.mp4"
+                    ></video>
+                    <video
+                        class="strawberry-wedding-media"
+                        id="wedding"
+                        loop
+                        muted
+                        playsinline
+                        preload="auto"
+                        src="./media/strawberry-wedding/strawberry-wedding.mp4"
                     ></video>
                 </div>
-            </div>
-            <img id="divine-message" src="./media/virtual-angel/divine-message.png">
-        </div>
-    </div>
-
-    <!-- Avatar dress-up popup -->
-    <div id="avatar-popup" class="popup">
-        <div class="popup-window window-classic">
-            <div class="popup-titlebar">
-                <span>Dress me up!</span>
-                <button class="popup-close" data-close="avatar-popup" data-closemenu="pixel-avatar-button">✕</button>
-            </div>
-            <div class="avatar-editor window-classic-indent">
-                <div class="avatar-controls">
-                    <div class="control-group">
-                        <p class="control-label">Body</p>
-                        <button data-layer="layer-body" data-src="media/pixel-avatar/body-default.png"><img src="media/pixel-avatar/body-default.png"  alt="body 1" /></button>
-                        <button data-layer="layer-body" data-src="media/pixel-avatar/body2.png"       ><img src="media/pixel-avatar/body2.png"           alt="body 2" /></button>
-                        <button data-layer="layer-body" data-src="media/pixel-avatar/body-pink.png"   ><img src="media/pixel-avatar/body-pink.png"        alt="body 3" /></button>
-                        <button data-layer="layer-body" data-src="media/pixel-avatar/body-green.png"  ><img src="media/pixel-avatar/body-green.png"       alt="body 4" /></button>
-                    </div>
-                    <div class="control-group">
-                        <p class="control-label">Eyes</p>
-                        <button data-layer="layer-eyes" data-src="media/pixel-avatar/eyes-dark-blue.png" ><img src="media/pixel-avatar-thumb/eyes-dark-blue.png"  alt="dark blue eyes"  /></button>
-                        <button data-layer="layer-eyes" data-src="media/pixel-avatar/eyes-red.png"       ><img src="media/pixel-avatar-thumb/eyes-red.png"         alt="red eyes"        /></button>
-                        <button data-layer="layer-eyes" data-src="media/pixel-avatar/eyes-brown.png"     ><img src="media/pixel-avatar-thumb/eyes-brown.png"       alt="brown eyes"      /></button>
-                        <button data-layer="layer-eyes" data-src="media/pixel-avatar/eyes-light-blue.png"><img src="media/pixel-avatar-thumb/eyes-light-blue.png"  alt="light blue eyes" /></button>
-                    </div>
-                    <div class="control-group">
-                        <p class="control-label">Blush</p>
-                        <button data-layer="layer-blush" data-src="media/pixel-avatar/blush.png" ><img src="media/pixel-avatar-thumb/blush.png"  alt="no blush" /></button>
-                        <button data-layer="layer-blush" data-src="media/pixel-avatar/blush2.png"><img src="media/pixel-avatar-thumb/blush1.png" alt="blush"    /></button>
-                    </div>
-                    <div class="control-group">
-                        <p class="control-label">Hair</p>
-                        <button data-layer="layer-hair" data-src="media/pixel-avatar/red-hair-short.png"  ><img src="media/pixel-avatar-thumb/red-hair-short.png"   alt="short red hair"  /></button>
-                        <button data-layer="layer-hair" data-src="media/pixel-avatar/black-long-hair.png" ><img src="media/pixel-avatar-thumb/black-long-hair.png"  alt="black long hair" /></button>
-                        <button data-layer="layer-hair" data-src="media/pixel-avatar/brown-short-hair.png"><img src="media/pixel-avatar-thumb/brown-short-hair.png" alt="brown short hair"/></button>
-                        <button data-layer="layer-hair" data-src="media/pixel-avatar/toni-hair.png"       ><img src="media/pixel-avatar-thumb/toni-hair.png"        alt="toni hair"       /></button>
-                        <button data-layer="layer-hair" data-src="media/pixel-avatar/blonde-hair.png"     ><img src="media/pixel-avatar-thumb/blonde-hair.png"      alt="blonde hair"     /></button>
-                    </div>
-                    <div class="control-group">
-                        <p class="control-label">Tops</p>
-                        <button data-layer="layer-top" data-src="media/pixel-avatar/black-top-graphic.png"><img src="media/pixel-avatar-thumb/black-top-graphic.png" alt="black graphic tee" /></button>
-                        <button data-layer="layer-top" data-src="media/pixel-avatar/orange-tank.png"      ><img src="media/pixel-avatar-thumb/orange-tank.png"        alt="orange tank"       /></button>
-                        <button data-layer="layer-top" data-src="media/pixel-avatar/red-bra.png"          ><img src="media/pixel-avatar-thumb/red-bra.png"            alt="red bra"           /></button>
-                        <button data-layer="layer-top" data-src="media/pixel-avatar/pink-tee.png"         ><img src="media/pixel-avatar-thumb/pink-tee.png"           alt="pink tee"          /></button>
-                        <button data-layer="layer-top" data-src="media/pixel-avatar/green-halter.png"     ><img src="media/pixel-avatar-thumb/green-halter.png"       alt="green halter"      /></button>
-                    </div>
-                    <div class="control-group">
-                        <p class="control-label">Bottoms</p>
-                        <button data-layer="layer-bottoms" data-src="media/pixel-avatar/purple-pants.png" ><img src="media/pixel-avatar-thumb/purple-pants.png"  alt="purple pants"  /></button>
-                        <button data-layer="layer-bottoms" data-src="media/pixel-avatar/purple-skirt.png" ><img src="media/pixel-avatar-thumb/purple-skirt.png"  alt="purple skirt"  /></button>
-                        <button data-layer="layer-bottoms" data-src="media/pixel-avatar/grey-pants.png"   ><img src="media/pixel-avatar-thumb/grey-pants.png"    alt="grey pants"    /></button>
-                        <button data-layer="layer-bottoms" data-src="media/pixel-avatar/blue-shorts.png"  ><img src="media/pixel-avatar-thumb/blue-shorts.png"   alt="blue shorts"   /></button>
-                        <button data-layer="layer-bottoms" data-src="media/pixel-avatar/flares.png"       ><img src="media/pixel-avatar-thumb/flares.png"        alt="flares"        /></button>
-                    </div>
-                    <div class="control-group">
-                        <p class="control-label">Shoes</p>
-                        <button data-layer="layer-shoes" data-src="media/pixel-avatar/shoes-black-basic.png"><img src="media/pixel-avatar-thumb/shoes-black-basic.png" alt="black shoes"  /></button>
-                        <button data-layer="layer-shoes" data-src="media/pixel-avatar/brown-boots.png"      ><img src="media/pixel-avatar-thumb/brown-boots.png"        alt="brown boots"  /></button>
-                        <button data-layer="layer-shoes" data-src="media/pixel-avatar/red-boots.png"        ><img src="media/pixel-avatar-thumb/red-boots.png"          alt="red boots"    /></button>
-                        <button data-layer="layer-shoes" data-src="media/pixel-avatar/gumboots.png"         ><img src="media/pixel-avatar-thumb/gumboots.png"           alt="gumboots"     /></button>
-                    </div>
-                    <div class="control-group">
-                        <p class="control-label">Background</p>
-                        <button data-layer="layer-background" data-src="media/pixel-avatar/background-blue.png"     ><img src="media/pixel-avatar/background-blue.png"      alt="blue background" /></button>
-                        <button data-layer="layer-background" data-src="media/pixel-avatar/background-pink.png"     ><img src="media/pixel-avatar/background-pink.png"      alt="pink background" /></button>
-                        <button data-layer="layer-background" data-src="media/pixel-avatar/background-landscape.png"><img src="media/pixel-avatar/background-landscape.png" alt="day background"  /></button>
-                        <button data-layer="layer-background" data-src="media/pixel-avatar/background-night.png"    ><img src="media/pixel-avatar/background-night.png"     alt="night background"/></button>
-                    </div>
-                </div>
-                <div class="avatar-canvas">
-                    <img id="layer-background" class="avatar-layer" src="media/pixel-avatar/background-landscape.png" alt="" />
-                    <img id="layer-body"        class="avatar-layer" src="media/pixel-avatar/body-default.png"         alt="" />
-                    <img id="layer-blush"       class="avatar-layer" src="media/pixel-avatar/blush.png"                alt="" />
-                    <img id="layer-eyes"        class="avatar-layer" src="media/pixel-avatar/eyes-dark-blue.png"       alt="" />
-                    <img id="layer-mouth"       class="avatar-layer" src="media/pixel-avatar/mouth-default.png"        alt="" />
-                    <img id="layer-bottoms"     class="avatar-layer" src="media/pixel-avatar/purple-pants.png"         alt="" />
-                    <img id="layer-top"         class="avatar-layer" src="media/pixel-avatar/black-top-graphic.png"    alt="" />
-                    <img id="layer-shoes"       class="avatar-layer" src="media/pixel-avatar/shoes-black-basic.png"    alt="" />
-                    <img id="layer-hair"        class="avatar-layer" src="media/pixel-avatar/red-hair-short.png"       alt="" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- image-gallery popup -->
-    <div id="image-gallery-popup" class="popup">
-        <div class="popup-window window-classic">
-            <div class="popup-titlebar">
-                <span>image-gallery</span>
-                <button class="popup-close" data-close="image-gallery-popup" data-closemenu="image-gallery-button">✕</button>
-            </div>
-            <div class="image-gallery-container window-classic-indent">
-                <button data-gif="-1">❮</button>
-                <img id="epicGif" src="./media/decor-gifs/gif1.gif" draggable="false"/>
-                <button data-gif="1">❯</button>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- About me popup -->
-    <!-- <div id="about-me-popup" class="popup">
-        <div class="popup-window">
-            <div class="popup-titlebar">
-                <span>about me</span>
-                <button class="popup-close" data-close="about-me-popup">✕</button>
-            </div>
-            <div class="about-me-container">
-                <div class="toni-img-container"> 
-                    <div class="likes">
-                        <p>bugs and worms</p>
-                        <p>being outside in the sun</p>
-                        <p>making things</p>
-                        <p>hot chips</p>
-                        <p>spending time with my friends</p>
-                        <p><333</p>
-                    </div>
-        
-                    <div class="dislikes">
-                        <p>capsicum</p>
-                        <p>forgetting to put my jewllery on</p>
-                        <p>cobbler's pegs</p>
-                        <p>houses painted entirely white</p>
-                        <p>the dark</p>
-                    </div>
-                </div>
-                <div class="about-me-container2">
-                    <div class="questions-container">
-                        <div class="questions">
-                            <p>🌷 Name:</p>
-                            <p>⭐ Star Sign:</p>
-                            <p>🎀 Pronouns:</p>
-                            <p>📏 Height:</p>
-                            <p>🎮 LVL:</p>
-                        </div>
-                        <div class="answers">
-                            <p>toni</p>
-                            <p>libra ♎</p>
-                            <p>she/her</p>
-                            <p>175cm</p>
-                            <p>222 🏆</p>
-                        </div>
-                    </div>
-                    <div class="questions-container" id="description">
-                        <p>💬 blahj j hjfksnd hjdn hbd jjnd h vh dhsaj kfbhd sabfhs fh ds bfhd sabfhsda h sdabjfhb sdbfhds fhdsjbf hsdbfhs fhdsj bfhsbdf 🌸</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- Webmaster popup -->
-    <div id="webmaster-popup" class="popup">
-        <div class="popup-window window-classic">
-            <div class="popup-titlebar">
-                <span>webmaster</span>
-                <button class="popup-close" data-close="webmaster-popup" data-closemenu="webmaster-button" data-close-also="note-from-shan-popup">✕</button>
-            </div>
-            <div class="webmaster-container window-classic-indent">
-                <p class="webmaster-name">shannon</p>
-                <img src="./media/shan/me.jpg"/>
-                <div class="shan-likes">
-                    <p style="font-weight: bold;">likes:</p>
-                    <p>eating dumplings w friends</p>
-                    <p>anime</p>
-                    <p>my furbaby: prosecco 🐾</p>
-                    <p>drawing silly lil characters</p>
-                    <p>silver nail polish</p>
-                    <p>adventuring</p>
-                </div>
-                <img src="./media/shan/anime.jpg"/>
-                <img src="./media/shan/flowers.jpg"/>
-                <img src="./media/shan/prosecco.jpg"/>
-                <img src="./media/shan/camping.jpg"/>
-                <button data-popup="note-from-shan-popup">
-                    <img src="./media/blinkies/click-me2.gif"/>
-                </button>
-                <img src="./media/shan/fortnite.jpg"/>
-                <img src="./media/shan/horses.jpg"/>
-                <div class="shan-dislikes">
-                    <p style="font-weight: bold;">dislikes:</p>
-                    <p>steamed vegetables</p>
-                    <p>open-toe shoes</p>
-                    <p>sleeping in</p>
-                    <p>brain rot</p>
-                    <p>unstacking the dishwasher</p>
-                    <p>fluorescent lighting</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Note from shan popup -->
-    <div id="note-from-shan-popup" class="popup">
-        <div class="popup-window">
-            <img src="./media/me-working.webp">
-        </div>
-    </div>
-
-    <!-- decor popup-->
-    <div id="decor-popup" class="popup open">
-        <div class="popup-window">
-            <img id="epicGif1" src="./media/decor-gifs/gif1.gif" draggable="false"/>
-            <img id="epicGif2" src="./media/decor-gifs/angel1.gif" draggable="false"/>
-            <img id="epicGif3" src="./media/decor-gifs/gif3.gif" draggable="false"/>
-            <img id="epicGif4" src="./media/decor-gifs/gif4.gif" draggable="false"/>
-            <img id="epicGif5" src="./media/decor-gifs/teddy.gif" draggable="false"/>
-            <img id="epicGif6" src="./media/decor-gifs/music-gif.gif" draggable="false"/>
-            <img id="epicGif7" src="./media/decor-gifs/cattt.gif" draggable="false"/>
-            <img id="epicGif8" src="./media/decor-gifs/gif6.gif" draggable="false"/>
-            <img id="epicGif9" src="./media/decor-gifs/punk-rawk.gif" draggable="false"/>
-
-
-            <div class="blinkies">
-                <img src="media/blinkies/blinkiesCafe-mi.gif"/>
-                <img src="media/blinkies/blinkiesCafe-fO.gif"/>
-                <img src="media/blinkies/blinkiesCafe-R4.gif"/>
-                <img src="media/blinkies/blinkiesCafe-1F.gif"/>
-                <img src="media/blinkies/blinkiesCafe-5b.gif"/>
-                <img src="media/blinkies/blinkiesCafe-RI.gif"/>
-                <img src="media/blinkies/blinkiesCafe-hs.gif"/>
-                <img src="media/blinkies/blinkiesCafe-Rg.gif"/>
-                <img src="media/blinkies/blinkiesCafe-Ff.gif"/>
-                <img src="media/blinkies/blinkiesCafe-zz.gif"/>
-                <img src="media/blinkies/blinkiesCafe-2b.gif"/>
-                <img src="media/blinkies/blinkiesCafe-E4.gif"/>
-                <img src="media/blinkies/blinkiesCafe-lR.gif"/>
-                <!-- <img src="media/blinkies/blinkiesCafe-BZ.gif"/>
-                <img src="media/blinkies/blinkiesCafe-lU.gif"/> -->
-            </div>
-        </div>
-    </div>
-
-    <!-- cloud jumper mini game popup-->
-    <div id="cloud-jumper-popup" class="popup">
-        <div class="popup-window window-classic">
-            <div class="popup-titlebar">
-                <span>cloud jumper</span>
-                <button class="popup-close" id="cloud-jumper-close" data-close="cloud-jumper-popup" data-closemenu="cloud-jumper-button">✕</button>
-            </div>
-            <div class="cloud-jumper-container window-classic-indent"> 
-                <p>a sexxidude production</p>
-                <div class="cloud-jumper-game"> 
-                    <img id="cloud-jumper" src="media/cloud-jumper/cloud-jumper2.png">
-                    <div id="score-display">0m</div>
-                    <button id="play-again">Play Again</button>
-                    <div class="cloud-jumper-controls">
-                        <p id="desktop-instructions">Press space to jump!</p>
-                        <p id="mobile-instructions">Press to jump!</p>
-                        <p id="game-over">Game Over</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- strawberry wedding popup-->
-    <div id="strawberry-wedding-popup" class="popup">
-        <div class="popup-window window-classic">
-            <div class="popup-titlebar">
-                <span>strawberry wedding</span>
-                <button class="popup-close" id="strawberry-wedding-close" data-close="strawberry-wedding-popup" data-closemenu="strawberry-wedding-button">✕</button>
-            </div>
-            <div class="strawberry-wedding-container window-classic-indent"> 
-                <button id="rsvp">
-                    <img src="./media/strawberry-wedding/letter.png">
-                    <p>RSVP</p>
-                </button>
-                <video
-                    class="strawberry-wedding-media active"
-                    id="wedding-title-screen"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    preload="auto"
-                    src="./media/strawberry-wedding/wedding-title-screen.mp4"
-                ></video>
-                <video
-                    class="strawberry-wedding-media"
-                    id="wedding"
-                    loop
-                    muted
-                    playsinline
-                    preload="auto"
-                    src="./media/strawberry-wedding/strawberry-wedding.mp4"
-                ></video>
             </div>
         </div>
     </div>

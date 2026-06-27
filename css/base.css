@@ -289,8 +289,8 @@ html, body {
     }
 
     body {
-        padding: 60px 10px 50px 10px;
-        margin-bottom: 80px;
+        box-sizing: border-box;
+        padding: 60px 10px 30px 10px;
         background:
             url('../media/background/mobile.png'),
             url('../media/background/websiteBackgroundMobile2.png'),
@@ -306,6 +306,7 @@ html, body {
         background-size: 100vw, 120vw auto, cover;
         background-position: center top, right top, center;
         background-attachment: scroll, scroll;
+        min-height: 1500px;
         
     }
 
@@ -340,8 +341,10 @@ html, body {
 
     .blinkies {
         width: 150px;
-        right: 10%;
-        bottom: 45%;
+        left: 5%;
+        right: auto;
+        top: 5%;
+        bottom: auto;
         gap: 3px;
         position: absolute;
     }
@@ -352,17 +355,18 @@ html, body {
 
     #epicGif1 {
         position: absolute;
-        top: 55%;
-        right: 10%;
-        left: auto;
+        top: 22%;
+        right: auto;
+        left: 10%;
         height: 5%;
         width: auto;
     }
 
     #epicGif3 {
         position: absolute;
-        top: 30%;
-        left: 50%;
+        top: 3%;
+        right: 5%;
+        left: auto;
         height: 8%;
         width: auto;
     }
@@ -378,9 +382,9 @@ html, body {
 
     #epicGif4 {
         position: absolute;
-        top: 30%;
-        right: 18%;
-        width: 8%;
+        top: 20%;
+        right: 12%;
+        width: 10%;
         height: auto;
     }
 
@@ -434,7 +438,7 @@ html, body {
         position: absolute;
         top: 0;
         left: 0;
-        height: clamp(500px, 90vh, 700px);
+        height: 700px;
     }
 
     .princess-container {
