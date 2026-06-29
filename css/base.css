@@ -47,7 +47,7 @@ body {
     overflow-y: auto;
     background:
         url('../media/background/scrib3.png'),
-        url('../media/background/websitebackground2.jpg'),
+        url('../media/background/websiteBackground.jpg'),
         linear-gradient(
             160deg,
             #fce4ec 0%,
@@ -63,6 +63,22 @@ body {
     transition: opacity 2s ease;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('../media/background/websiteBackgroundDark.jpg') right top / cover no-repeat;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body.darkMode::before {
+    opacity: 1;
+}
+
+
 html, body {
     overflow: hidden;
     user-select: none;
@@ -71,6 +87,31 @@ html, body {
 }
 
 
+/* ─────────────────────────────
+   Window Styling (Win98 style)
+───────────────────────────── */
+
+.window-classic {
+    border-top: 2px solid #f2f2f2;
+    border-left: 2px solid #f2f2f2;
+    border-right: 2px solid #9a9a9a;
+    border-bottom: 2px solid #9a9a9a;
+
+    box-shadow:
+        -1px -1px 0 #e0e0e0,
+         1px  1px 0 #6f6f6f;
+}
+
+.window-classic-indent {
+    border-top: 1px solid #b5b5b5;
+    border-left: 1px solid #b5b5b5;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+
+    box-shadow:
+        inset 1px 1px 0 rgba(0,0,0,0.12),
+        inset -1px -1px 0 rgba(255,255,255,0.6);
+}
 
 /* ── 4. Animations ── */
 
@@ -161,6 +202,14 @@ html, body {
 }
 
 
+#dark-mode {
+    position: absolute;
+    top:10px;
+    right: 10px;
+    width: fit-content;
+    height: auto;
+}
+
 /* blinkies */
 
 .blinkies {
@@ -206,7 +255,7 @@ html, body {
 
 #epicGif4 {
     position: fixed;
-    top: 3%;
+    bottom: 30%;
     right: 5%;
     width: 8%;
     height: auto;

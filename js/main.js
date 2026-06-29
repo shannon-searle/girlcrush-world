@@ -5,6 +5,11 @@ window.addEventListener("load", () => {
     });
 });
 
+const darkMode = document.getElementById("dark-mode");
+
+darkMode.addEventListener("click", () => {
+    document.body.classList.toggle("darkMode");
+});
 
 /* --------------------------- ---------------
     Cursor heart trail

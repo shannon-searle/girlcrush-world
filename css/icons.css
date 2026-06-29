@@ -14,6 +14,9 @@
     left: clamp(15px, 2vw, 30px);
 
     padding-bottom: 100px;
+    
+    border: none;
+    box-shadow: none;
 }
 
 .icon:hover {
@@ -52,7 +55,6 @@
 .icon button p {
     color: rgb(100, 80, 120);
     word-break: keep-all;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     line-height: 1.2;
     background: rgba(255, 255, 255, 0.6);
     padding: 3px;
@@ -96,9 +98,9 @@
     .icon-tray {
         position: relative;
         flex-direction: row;
-        justify-content: space-evenly;
-
-        row-gap: clamp(20px, 3vh, 25px);
+        justify-content: center;
+        gap: 10px;
+        /* row-gap: clamp(20px, 3vh, 25px); */
 
         top: auto;
         left: auto;
@@ -109,11 +111,20 @@
         height: auto;
         max-width: 100%;
         max-height: none;
-        padding: 10px;
-
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 0;
+        padding-bottom: 0;
     }
 
     .icon {
-        width: clamp(20px, 10vw, 30px);
+        width: 50px;
     }
+
+    .icon button img{
+        padding: 2px;
+        width: auto;
+    }
+
+
 }
