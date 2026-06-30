@@ -337,8 +337,13 @@ function initGame() {
 
 // create initial clouds
 function createClouds(startX, gap, Y) {
-    for (let i = 0; i < config.numClouds; i++) {
+    let cloudSplit = Math.floor(config.numClouds/2);
+    let cloudSplitX = 50;
+    for (let i = 0; i < cloudSplit; i++) {
         clouds.push(new Cloud(startX + (i * gap), Y));
+    }
+    for (let i = cloudSplit; i < config.numClouds; i++) {
+        clouds.push(new Cloud(startX + cloudSplitX + (i * gap), Y));
     }
 }
 
