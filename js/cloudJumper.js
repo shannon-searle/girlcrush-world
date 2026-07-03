@@ -40,8 +40,8 @@ const state = {
     loopRunning: false,
     score: 0,
     difficulty: 0, 
-    gapRoundDown: 30, // the closer this is to 10 which is the minimum the more gaps you will see between clouds i.e harder
-    gapRamp: 0.5, // scaler closer this gets to 1 the longer the max gap will be
+    gapRoundDown: 30, // the closer this is to the minimum the more gaps you will see between clouds i.e harder
+    gapRamp: 0.65, // scaler closer this gets to 1 the longer the max gap will be
     speedRamp: 1 // want this to increase and get faster 
 };
 
