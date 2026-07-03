@@ -27,10 +27,6 @@ function openPopup(id) {
         if (id === "virtual-angel-popup") {
             window.openVirtualAngel();
         }
-
-        if (id === "cloud-jumper-popup") {
-            state.gameWindowOpen = true;
-        }
     }
 }
 
@@ -94,8 +90,7 @@ function closePopup(id) {
             window.resetAngelCard();
         }
         if (id === "cloud-jumper-popup") {
-            window.resetCloudJumper();
-            state.gameWindowOpen = false;
+            window.closeCloudJumper();
         }
 
         if (id === "strawberry-wedding-popup") {

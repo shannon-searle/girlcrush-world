@@ -39,7 +39,7 @@
     transition: 0.5s;
 }
 
-#game-over, #play-again, #mobile-instructions{
+#game-over, #play-again, #mobile-instructions, #desktop-instructions{
     display: none;
 }
 
@@ -53,12 +53,15 @@
     height: 50px;
 }
 
-#cloud-jumper {
+.player-sprite {
     position: absolute;
     left: 150px;
-    bottom: 80px;
+    bottom: 0;
     width: auto;
     height: 120px;
+    pointer-events: none;
+    will-change: transform;
+    transition: opacity 0.08s linear;
 }
         
 #score-display {
@@ -74,7 +77,7 @@
     pointer-events: none;    /* taps pass through to the game */
 }
 
-#play-again {
+.start-btn {
     background: #ffe0f0;
     color: #d966a0;
     font-family: "Press Start 2P", system-ui;
@@ -89,35 +92,31 @@
     transition: 0.2s;
     white-space: nowrap;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#play-again:hover {
+.start-btn:hover {
     color: #fcf6f9;
     background: #d966a0;
+}
+
+.player-sprite {
+    will-change: transform;
+}
+
+.player-sprite,
+.player-sprite + img {
+    transition: opacity 0.08s linear;
 }
 
 /* ============================================================
    Mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
-    #cloud-jumper {
-        position: absolute;
-        left: 20px;
-    }
-
-    #mobile-instructions {
-        display: block;
-    }
-
-    #desktop-instructions {
-        display: none;
-    }
-
     .cloud-jumper-game {
-        width: min(500px, 90vw);   /* caps at 550px, shrinks on small screens */
+        width: min(500px, 90vw);
     }
 
     .cloud-jumper-controls {
@@ -126,5 +125,7 @@
 
     .cloud-jumper-container {
         padding-bottom: 30px;
+        /* touch-action: none; */
+        overscroll-behavior: none;
     }
 }

@@ -10,6 +10,7 @@ const gameOverText = document.getElementById('game-over');
 const desktopInstructions = document.getElementById('desktop-instructions');
 const mobileInstructions = document.getElementById('mobile-instructions');
 const playAgain = document.getElementById('play-again');
+const startGame = document.getElementById('start-game');
 
 // ============================================================
 // Config — every "magic number" lives here, tweak in one place
@@ -21,7 +22,7 @@ const config = {
     jumpPower: 8,
     cloudSpeed: 1.5,
     cloudWidth: 90,
-    cloudHeight: 50,             
+    cloudHeight: 50,
     cloudY: 30,
     startPlayerY: 80,
     playerWidth: 57,
@@ -36,6 +37,7 @@ const state = {
     gameStarted: false,
     gameOver: false,
     initialized: false,
+    loopRunning: false,
     score: 0,
     difficulty: 0, 
     gapRoundDown: 30, // the closer this is to 10 which is the minimum the more gaps you will see between clouds i.e harder
@@ -61,11 +63,29 @@ if (layout.mobile) { layout.cloudStart = 10; }
 if (layout.mobile) { layout.centerX = 58.5; }
 
 // ============================================================
+// Image preloading — avoids a decode/paint hitch mid-game when
+// the player sprite swaps between jumping/platform states
+// ============================================================
+const preloadedImages = {};
+function preloadImage(src) {
+    if (preloadedImages[src]) return preloadedImages[src];
+    const img = new Image();
+    img.src = src;
+    preloadedImages[src] = img;
+    return img;
+}
+
+// ============================================================
 // Player class — position, velocity, and jump state
 // ============================================================
 class Player {
     constructor() {
-        this.el = document.getElementById('cloud-jumper');
+        // Two real <img> elements declared in your HTML — both styled by
+        // the shared .player-sprite CSS class, so sizing/position is
+        // consistent by construction. No cloning, no computed-style
+        // workarounds needed.
+        this.el = document.getElementById('cloud-jumper');        // platform/idle sprite
+        this.jumpEl = document.getElementById('cloud-jumper-jump'); // jumping sprite
         this.y = config.startPlayerY;
         this.prevY = config.startPlayerY;
         this.velocityY = 0;
@@ -73,18 +93,48 @@ class Player {
         this.charging = false;
         this.onPlatform = false;
         this.activePlatform = null;
-        this.jumpingSrc = "./media/cloud-jumper/cloud-jumper-in-air.png";
-        this.platformSrc = "./media/cloud-jumper/cloud-jumper2.png";
+
+        // fixed anchor — all movement happens via transform from here on,
+        // so these elements never trigger layout after initial placement.
+        // left/bottom/width/height come from the .player-sprite CSS class;
+        // only the mobile left-offset needs a JS override since it depends
+        // on layout.playerLeft computed at runtime.
+        this.el.style.left = layout.playerLeft + 'px';
+        this.jumpEl.style.left = layout.playerLeft + 'px';
+        this.el.style.opacity = '1';
+        this.jumpEl.style.opacity = '0';
+
+        // We toggle opacity between two pre-loaded, already-in-DOM images
+        // instead of swapping a single element's .src — reassigning .src
+        // mid-animation forces the browser to redo decode/layout for that
+        // element, which visibly hitched the player's motion right at the
+        // moment of the swap. Opacity toggling is compositor-only.
+        this._pendingImageSwap = null;
+
+        // apply the initial transform now — render() otherwise isn't
+        // called until the game loop starts (i.e. after the first jump),
+        // which left the player sitting at the bottom:0 anchor (y=0)
+        // instead of config.startPlayerY until then
+        this.render();
     }
 
     setPlayerImage() {
+        // clear any pending swap so rapid charge/release doesn't
+        // stack up multiple timeouts fighting each other
+        if (this._pendingImageSwap) {
+            clearTimeout(this._pendingImageSwap);
+            this._pendingImageSwap = null;
+        }
+
         if (this.charging) {
-            cloudJumper.src = this.jumpingSrc;
+            this.jumpEl.style.opacity = '1';
+            this.el.style.opacity = '0';
         }
         else {
-            setTimeout(() => {
-                cloudJumper.src = this.platformSrc;
-
+            this._pendingImageSwap = setTimeout(() => {
+                this.jumpEl.style.opacity = '0';
+                this.el.style.opacity = '1';
+                this._pendingImageSwap = null;
             }, 250)
         }
     }
@@ -163,8 +213,17 @@ class Player {
         }
     }
 
+    // GPU-composited move: translateY is negative because the anchor
+    // is bottom:0, so moving "up" (higher y) means translating up (negative Y).
+    // NOTE: tried rounding this to whole pixels to fix sub-pixel blur, but
+    // on small/slow movement that caused visible stair-step judder instead
+    // (several frames rounding to the same pixel, then jumping 1px) — worse
+    // than the blur. Left as float; sub-pixel blur is the lesser issue here.
+    // Both twin elements (el + jumpEl) move together — only opacity differs.
     render() {
-        this.el.style.bottom = this.y + 'px';
+        const t = `translate3d(0, ${-this.y}px, 0)`;
+        this.el.style.transform = t;
+        this.jumpEl.style.transform = t;
     }
 
     reset() {
@@ -174,6 +233,12 @@ class Player {
         this.charging = false;
         this.onPlatform = false;
         this.activePlatform = null;
+        if (this._pendingImageSwap) {
+            clearTimeout(this._pendingImageSwap);
+            this._pendingImageSwap = null;
+        }
+        this.el.style.opacity = '1';
+        this.jumpEl.style.opacity = '0';
         this.render();
     }
 }
@@ -188,10 +253,26 @@ class Cloud {
         "./media/cloud-jumper/cloud2.png"
     ];
 
+    static preloaded = false;
+    static preloadAll() {
+        if (Cloud.preloaded) return;
+        Cloud.preloaded = true;
+        Cloud.images.forEach(preloadImage);
+    }
+
     constructor(x, y) {
+        Cloud.preloadAll();
+
         this.el = document.createElement('img');
         this.el.src = this.randomiseCloud();
         this.el.classList.add('cloud');
+
+        // fixed anchor at (0,0) — movement happens entirely via transform
+        this.el.style.position = 'absolute';
+        this.el.style.left = '0px';
+        this.el.style.bottom = '0px';
+        this.el.style.willChange = 'transform';
+
         game.appendChild(this.el);
 
         this.x = x;
@@ -229,9 +310,11 @@ class Cloud {
         this.render();
     }
 
+    // GPU-composited move — translate along both axes from the
+    // fixed (0,0) anchor set in the constructor. Left as float — see note
+    // on Player.render() about rounding causing visible judder.
     render() {
-        this.el.style.left = this.x + 'px';
-        this.el.style.bottom = this.y + 'px';
+        this.el.style.transform = `translate3d(${this.x}px, ${-this.y}px, 0)`;
     }
 }
 
@@ -247,27 +330,39 @@ let lastTime = 0;
 // Game loop — update()
 // ============================================================
 function update(timestamp) {
-    if (state.gameStarted) {
-        if (state.gameOver) {
-            requestAnimationFrame(update);
-            return;
-        }
+    // Always track elapsed time, even while idle/paused/game-over — this
+    // keeps lastTime fresh so dt never spikes huge the moment the game
+    // (re)starts after sitting idle. Previously lastTime was frozen while
+    // !gameStarted or gameOver, so resuming produced one giant dt (a visible
+    // "fast" jump), and on iOS — where rAF timing is more prone to gaps from
+    // address-bar/scroll/low-power throttling — this happened often enough
+    // to look like a constant fast/slow flicker.
+    let dt = (timestamp - lastTime) / (1000 / 60);
+    lastTime = timestamp;
 
-        // dt = elapsed time, normalized so dt === 1 at exactly 60fps
-        let dt = (timestamp - lastTime) / (1000 / 60);
-        lastTime = timestamp;
+    // clamp on BOTH ends: upper bound guards against lag-spike teleports,
+    // lower bound (0) guards against a rare backwards/equal timestamp
+    // producing negative dt, which would flip gravity's sign for a frame
+    // and launch the player the wrong way — another source of "fast" glitches.
+    dt = Math.min(Math.max(dt, 0), 3);
 
-        // clamp: after a tab-switch or lag spike, don't teleport the player
-        dt = Math.min(dt, 3);
-
+    if (state.gameStarted && !state.gameOver) {
         // player physics
         player.applyPhysics(dt);
 
         // Move clouds
-        // right edge of the furthest-right cloud — the anchor for new spawns
-        let rightEdge = Math.max(...clouds.map(c => c.x)) + config.cloudWidth;
+        // right edge of the furthest-right cloud — the anchor for new spawns.
+        // Plain loop instead of Math.max(...clouds.map()) to avoid allocating
+        // a new array + spreading it every single frame (GC pressure was
+        // contributing to the mobile stutter).
+        let rightEdge = -Infinity;
+        for (let i = 0; i < clouds.length; i++) {
+            if (clouds[i].x > rightEdge) rightEdge = clouds[i].x;
+        }
+        rightEdge += config.cloudWidth;
 
-        clouds.forEach(c => {
+        for (let i = 0; i < clouds.length; i++) {
+            const c = clouds[i];
             c.move(dt);
 
             // recycle when fully off the left edge
@@ -275,7 +370,7 @@ function update(timestamp) {
                 rightEdge = c.respawn(rightEdge);   // chain the next spawn
             }
             c.render();
-        });
+        }
 
         // Collision detection — may snap player.y onto a cloud top
         player.checkLanding(clouds);
@@ -387,8 +482,7 @@ function showGameInstructions() {
         else {
             desktopInstructions.style.display = 'none';
         }
-    }
-    else if (state.gameStarted) {
+    } else if (state.gameStarted) {
         gameOverText.style.display = "none";
         playAgain.style.display = "none";
         if (layout.mobile) {
@@ -397,11 +491,16 @@ function showGameInstructions() {
         else {
             desktopInstructions.style.display = 'none';
         }
-    }
-    else {
+    } else if (!state.gameWindowOpen) {
+        gameOverText.style.display = "none";
+        playAgain.style.display = "none";
+        startGame.style.display = "block";
+        mobileInstructions.style.display = 'none';
+        desktopInstructions.style.display = 'none';
+
+    } else {
         gameOverText.style.display = 'none';
         playAgain.style.display = 'none';
-
         if (layout.mobile) {
             mobileInstructions.style.display = 'block';
         }
@@ -422,7 +521,16 @@ function beginJump() {
     state.gameStarted = true;
     player.startJump();
     showGameInstructions();
-    requestAnimationFrame(update);
+
+    // update() keeps calling requestAnimationFrame(update) on itself forever
+    // once started (see bottom of the function) — so the loop only ever
+    // needs to be kicked off ONCE. Calling it again here on every jump was
+    // stacking a brand new concurrent loop each time, so after a few jumps
+    // physics/movement were being applied 2x, 3x, 4x+ per real frame.
+    if (!state.loopRunning) {
+        state.loopRunning = true;
+        requestAnimationFrame(update);
+    }
 }
 
 // desktop keyboard events
@@ -449,11 +557,28 @@ gameContainer.addEventListener('pointerdown', (event) => {
         event.preventDefault();  // stops the page scrolling while playing
         beginJump();
     }
-});
+}, { passive: false });
 
 gameContainer.addEventListener('pointerup', (event) => {
     if (state.gameWindowOpen) {
         event.preventDefault();
+        player.stopCharging();
+    }
+}, { passive: false });
+
+// iOS Safari fires pointercancel (not pointerup) when it decides the touch
+// is actually a scroll/zoom gesture, or the finger slides off the element.
+// Without this, player.charging can get stuck true forever after a cancel,
+// since stopCharging() would never be called.
+gameContainer.addEventListener('pointercancel', (event) => {
+    if (state.gameWindowOpen) {
+        player.stopCharging();
+    }
+});
+
+// also guard against the finger sliding off the game area mid-charge
+gameContainer.addEventListener('pointerleave', (event) => {
+    if (state.gameWindowOpen && player.charging) {
         player.stopCharging();
     }
 });
@@ -464,8 +589,19 @@ playAgain.addEventListener('pointerdown', (event) => {
     reset();
 });
 
-// event listener for close popup will all reset 
-window.resetCloudJumper = reset;
+// event listener for close popup will call reset
+function closeCloudJumper() {
+    state.gameWindowOpen = false;
+    reset();
+}
+
+// event listener for start game button
+startGame.addEventListener('pointerdown', (event) => {
+    event.stopPropagation();
+    state.gameWindowOpen = true;
+    startGame.style.display = 'none';
+    showGameInstructions();
+});
 
 
 // ============================================================
