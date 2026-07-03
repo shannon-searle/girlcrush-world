@@ -42,11 +42,11 @@
 }
 
 .nav-bar a:hover img {
-    filter: drop-shadow(0 6px 10px rgba(56, 42, 70, 0.45)) brightness(1.05);
+    filter: drop-shadow(0 6px 10px rgba(56, 42, 70, 0.45)) brightness(1.01);
 }
 
 .nav-bar a:active img {
-    filter: drop-shadow(0 2px 3px rgba(56, 42, 70, 0.3)) brightness(0.95);
+    filter: drop-shadow(0 2px 3px rgba(56, 42, 70, 0.3));
     transform: translateY(1px) scale(0.97);
 }
 
