@@ -5,13 +5,13 @@
     position: relative;
 }
 
-.popup {
+.panel {
     display: none;
     position: fixed;
     z-index: 2;
 }
 
-.popup.open {
+.panel.open {
     display: flex;
 }
 
@@ -258,7 +258,7 @@
    Chatbox Popup
 ───────────────────────────── */
 
-#chatbox-popup {
+#chatbox {
     position: fixed;
     right: 0;
     bottom: 30px;
@@ -272,7 +272,7 @@
 
 @media (max-width: 768px) {
 
-    .popup.open {
+    .panel.open {
         z-index: 1000;
     }
 
@@ -344,7 +344,7 @@
     }
 
     /* special mobile overrides */
-    #chatbox-popup {
+    #chatbox {
         position: fixed;
         left: 0;
         bottom: 30px;

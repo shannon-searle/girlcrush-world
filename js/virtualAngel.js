@@ -1,4 +1,4 @@
-const virtualAngelIcon = document.querySelector('button[data-popup="virtual-angel-popup"]');
+const virtualAngelIcon = document.querySelector('button[data-panel="virtual-angel-popup"]');
 const angelCard = document.getElementById('angel-card');
 const britneyBackground = document.getElementById('britney-background');
 const divineMessage = document.getElementById('divine-message');

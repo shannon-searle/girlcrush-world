@@ -136,3 +136,4 @@ const translateX = (Math.random() * 20 - 10);    // -10 to 10px
 const translateY = (Math.random() * 20 - 10);    // -10 to 10px
 img.style.transform = `rotate(${rotate}deg) translate(${translateX}px, ${translateY}px)`;
 });
+
