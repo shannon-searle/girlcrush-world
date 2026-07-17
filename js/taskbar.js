@@ -52,3 +52,19 @@ function disableScalableTaskbar() {
 if (window.innerWidth <= 768) {
     enableCompactTaskbar();
 }
+
+document.querySelectorAll('.taskbar-button').forEach(taskbarButton => {
+    taskbarButton.addEventListener('click', function () {
+        const button = taskbarButton.querySelector('.popup-close');
+        const panelId = button.dataset.close;
+
+        if (!panelId) return;
+        
+        const panel = document.getElementById(panelId);
+        
+        if (panel.classList.contains('popup')) {
+            restackPopups(panel);
+        }
+
+    });
+});
