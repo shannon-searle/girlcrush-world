@@ -42,60 +42,95 @@
         <!-- Portal: waiting room -->
         <section id="screen-portal" style="display:none;">
             <div class="scene-frame">
-                <img src="./media/waiting_room1.png" alt="waiting room">
-                <img id="portal" src="./media/portal2.png" alt="portal">
+                <div class="scene-media">
+                    <img src="./media/waiting_room1.png" alt="waiting room">
+                    <img id="portal" src="./media/portal2.png" alt="portal">
+                </div>
+            </div>
+            <div class="scene-info">
                 <p>you have made it to the waiting room!<br>
                     you may now begin your journey into the girlcrush digital realm<br>
                     enter through the portal, if you dare</p>
-            </div>
-            <div class="game-options">
-                <button class="button" onclick="next('screen-portal', 'screen-dead', 'black')">retreat</button>
-                <button class="button" onclick="next('screen-portal', 'screen-enter', 'black')">begin</button>
+                <div class="game-options">
+                    <button class="button" onclick="next('screen-portal', 'screen-dead', 'black')">retreat</button>
+                    <button class="button" onclick="next('screen-portal', 'screen-enter', 'black')">begin</button>
+                </div>
             </div>
         </section>
 
         <!-- Enter: step inside the portal -->
         <section id="screen-enter" style="display:none;">
-            <div class="scene-frame">
-                <img src="./media/waiting_room1.png" alt="waiting room">
-                <div class="scene-overlay"></div>
+            <div class="scene-frame" style="box-shadow:none;"">
+                <div class="scene-media">
+                    <video
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="auto"
+                        style="object-fit:contain"
+
+                    >
+                        <source src="./media/portal-intro.mp4" type="video/mp4">
+                    </video>
+                    <div class="scene-overlay"></div>
+                </div>
+            </div>
+            <div class="scene-info">
                 <p>you step inside the portal<br>
                     a wave of nausea hits the pit of your stomach and you hear a muffled voice cry out in the distance<br>
                     it's the princess. she needs your help!<br>
                     what will you do?</p>
-            </div>
-            <div class="game-options">
-                <button class="button" onclick="next('screen-enter', 'screen-dead', 'black')">retreat</button>
-                <button class="button" onclick="next('screen-enter', 'screen-freefall')">venture further</button>
+                <div class="game-options">
+                    <button class="button" onclick="next('screen-enter', 'screen-dead', 'black')">retreat</button>
+                    <button class="button" onclick="next('screen-enter', 'screen-freefall')">venture further</button>
+                </div>
             </div>
         </section>
 
         <!-- Freefall -->
         <section id="screen-freefall" style="display:none;">
             <div class="scene-frame">
-                <img src="./media/waiting_room1.png" alt="waiting room">
-                <div class="scene-overlay"></div>
+                <div class="scene-media">
+                    <!-- <img src="./media/spiral3.gif" alt="freefall"> -->
+                    <video
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="auto"
+                    >
+                        <source src="./media/spiral3.mp4" type="video/mp4">
+                    </video>
+                    <div class="scene-overlay"></div>
+                </div>
+            </div>
+            <div class="scene-info">
                 <p>you freefall into the unknown<br>
                     the edges of your vision sink into darkness<br>
                     as you slip further and further away from reality</p>
-            </div>
-            <div class="game-options">
-                <button class="button" onclick="next('screen-freefall', 'screen-dead', 'black')">retreat</button>
-                <button class="button" onclick="next('screen-freefall', 'screen-surrender')">faint</button>
+                <div class="game-options">
+                    <button class="button" onclick="next('screen-freefall', 'screen-dead', 'black')">retreat</button>
+                    <button class="button" onclick="next('screen-freefall', 'screen-surrender')">faint</button>
+                </div>
             </div>
         </section>
 
         <!-- Surrender -->
         <section id="screen-surrender" style="display:none;">
-            <div class="scene-frame">
-                <img src="./media/waiting_room1.png" alt="waiting room">
+            <div class="scene-frame" style="box-shadow:none">
+                <div class="scene-media">
+                    <img src="./media/waiting_room1.png" alt="waiting room">
+                </div>
+            </div>
+            <div class="scene-info">
                 <p>you feel strange<br>
                     are losing control...<br>
                     or gaining it?</p>
-            </div>
-            <div class="game-options">
-                <button class="button" onclick="next('screen-surrender', 'screen-dead', 'black')">retreat</button>
-                <button class="button" onclick="next('screen-surrender', 'screen-arrival')">surrender to the power</button>
+                <div class="game-options">
+                    <button class="button" onclick="next('screen-surrender', 'screen-dead', 'black')">retreat</button>
+                    <button class="button" onclick="next('screen-surrender', 'screen-arrival')">surrender</button>
+                </div>
             </div>
         </section>
 
