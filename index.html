@@ -15,8 +15,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Rubik+Beastly&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     
     <!-- stylesheet -->
+    <link rel="stylesheet" href="css/shared.css" />
     <link rel="stylesheet" href="css/index.css" />
 </head>
 <body class="page-index">
@@ -27,11 +29,13 @@
 
         <!-- Title screen -->
         <section id="screen-title">
+            <div id="angel-light"></div>
+            <div id="wings"></div>
             <div id="title-container">
-                <img class="title" onclick="next('screen-title', 'screen-portal', 'black')" src="media/titleFont2.png" alt="girlcrush222">
+                <img class="title" data-hide="screen-title" data-show="screen-portal" data-bg="black" src="media/titleFont2.png" alt="girlcrush222">
             </div>
             <div class="backdoor">
-                <button class="skip" onclick="goToBase()">
+                <button class="skip" data-goto-base>
                     <img class="img-default" src="media/door.png" alt="door" />
                     <img class="img-hover" src="media/door-open.png" alt="open door" />
                 </button>
@@ -52,47 +56,34 @@
                     you may now begin your journey into the girlcrush digital realm<br>
                     enter through the portal, if you dare</p>
                 <div class="game-options">
-                    <button class="button" onclick="next('screen-portal', 'screen-dead', 'black')">retreat</button>
-                    <button class="button" onclick="next('screen-portal', 'screen-enter', 'black')">begin</button>
+                    <button class="button" data-hide="screen-portal" data-show="screen-dead" data-bg="black">retreat</button>
+                    <button class="button" data-hide="screen-portal" data-show="screen-enter" data-bg="black">begin</button>
                 </div>
             </div>
         </section>
 
         <!-- Enter: step inside the portal -->
         <section id="screen-enter" style="display:none;">
-            <div class="scene-frame" style="box-shadow:none;"">
+            <div class="scene-frame" style="box-shadow:none;">
                 <div class="scene-media">
-                    <video
-                        autoplay
-                        muted
-                        loop
-                        playsinline
-                        preload="auto"
-                        style="object-fit:contain"
-
-                    >
-                        <source src="./media/portal-intro.mp4" type="video/mp4">
-                    </video>
-                    <div class="scene-overlay"></div>
+                    <img src="./media/portal-intro.gif" alt="enter portal">
                 </div>
             </div>
             <div class="scene-info">
-                <p>you step inside the portal<br>
-                    a wave of nausea hits the pit of your stomach and you hear a muffled voice cry out in the distance<br>
+                <p>as you step inside the portal<br>you hear a muffled voice cry out<br>
                     it's the princess. she needs your help!<br>
                     what will you do?</p>
                 <div class="game-options">
-                    <button class="button" onclick="next('screen-enter', 'screen-dead', 'black')">retreat</button>
-                    <button class="button" onclick="next('screen-enter', 'screen-freefall')">venture further</button>
+                    <button class="button" data-hide="screen-enter" data-show="screen-dead" data-bg="black">retreat</button>
+                    <button class="button" data-hide="screen-enter" data-show="screen-freefall">venture further</button>
                 </div>
             </div>
         </section>
 
         <!-- Freefall -->
         <section id="screen-freefall" style="display:none;">
-            <div class="scene-frame">
+            <div class="scene-frame" style="box-shadow:none;">
                 <div class="scene-media">
-                    <!-- <img src="./media/spiral3.gif" alt="freefall"> -->
                     <video
                         autoplay
                         muted
@@ -110,8 +101,8 @@
                     the edges of your vision sink into darkness<br>
                     as you slip further and further away from reality</p>
                 <div class="game-options">
-                    <button class="button" onclick="next('screen-freefall', 'screen-dead', 'black')">retreat</button>
-                    <button class="button" onclick="next('screen-freefall', 'screen-surrender')">faint</button>
+                    <button class="button" data-hide="screen-freefall" data-show="screen-dead" data-bg="black">retreat</button>
+                    <button class="button" data-hide="screen-freefall" data-show="screen-surrender">faint</button>
                 </div>
             </div>
         </section>
@@ -120,7 +111,16 @@
         <section id="screen-surrender" style="display:none;">
             <div class="scene-frame" style="box-shadow:none">
                 <div class="scene-media">
-                    <img src="./media/waiting_room1.png" alt="waiting room">
+                    <video
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="auto"
+                    >
+                        <source src="./media/control.mp4" type="video/mp4">
+                    </video>
+                    <div class="scene-overlay"></div>
                 </div>
             </div>
             <div class="scene-info">
@@ -128,26 +128,18 @@
                     are losing control...<br>
                     or gaining it?</p>
                 <div class="game-options">
-                    <button class="button" onclick="next('screen-surrender', 'screen-dead', 'black')">retreat</button>
-                    <button class="button" onclick="next('screen-surrender', 'screen-arrival')">surrender</button>
+                    <button class="button" data-hide="screen-surrender" data-show="screen-dead" data-bg="black">retreat</button>
+                    <button class="button" data-hide="screen-surrender" data-show="screen-arrival">surrender</button>
                 </div>
             </div>
         </section>
 
         <!-- Arrival -->
         <section id="screen-arrival" style="display:none;">
-            <video
-                class="arrival-video"
-                autoplay
-                muted
-                playsinline
-                preload="auto"
-            >
-                <source src="./media/final-step.mp4" type="video/mp4">
-            </video>
+            <img class="arrival" src="./media/final-step.jpg" alt="final step">
             <p>you wake up in a daze and feel yourself somewhere, otherworldly<br>
                 could it be… the girlcrush digital realm?</p>
-            <button class="button" onclick="goToBase()">explore!</button>
+            <button class="button" data-goto-base>explore!</button>
         </section>
 
         <!-- Dead -->
@@ -157,13 +149,14 @@
             <p><b>score</b>: not good</p>
             <p><em>unknown</em> user tried to run away from the girlcrush digital realm and was crushed by the queen of the darkland</p>
             <div class="game-options">
-                <button class="button" onclick="next('screen-dead', 'screen-portal')">respawn</button>
-                <button class="button" onclick="next('screen-dead', 'screen-title')">title screen</button>
+                <button class="button" data-hide="screen-dead" data-show="screen-portal">respawn</button>
+                <button class="button" data-hide="screen-dead" data-show="screen-title">title screen</button>
             </div>
         </section>
 
     </div>
 
+    <script src="js/stars.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
