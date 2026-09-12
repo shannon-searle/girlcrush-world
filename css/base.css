@@ -1,16 +1,4 @@
-/* ── Reset ── */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: url('../media/cursors/cursor.cur'), auto;
-        user-select: none;
-    touch-action: manipulation;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-user-drag: none;
-}
+/* Reset and @keyframes shake live in shared.css */
 
 p, span, div {
   user-select: none;
@@ -63,24 +51,9 @@ body {
     transition: opacity 2s ease;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: url('../media/background/websiteBackgroundDark.jpg') right top / cover no-repeat;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-    z-index: -1;
-}
-
-body.darkMode::before {
-    opacity: 1;
-}
-
-
 html, body {
     overflow: hidden;
+    overscroll-behavior: none;
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -115,20 +88,6 @@ html, body {
 
 /* ── 4. Animations ── */
 
-@keyframes shake {
-    0%   { transform: translate(0, 0); }
-    10%  { transform: translate(-4px, 1px); }
-    20%  { transform: translate(2px, -3px); }
-    30%  { transform: translate(-1px, 4px); }
-    40%  { transform: translate(4px, -1px); }
-    50%  { transform: translate(-3px, 3px); }
-    60%  { transform: translate(1px, -4px); }
-    70%  { transform: translate(-4px, 2px); }
-    80%  { transform: translate(3px, 1px); }
-    90%  { transform: translate(-2px, -4px); }
-    100% { transform: translate(0, 0); }
-}
-
 @keyframes heart-fade {
     0%   { transform: scale(1); opacity: 0.8; }
     100% { transform: scale(0); opacity: 0; }
@@ -162,18 +121,40 @@ html, body {
 } */
 
 .field-border {
-    /* border: 3px solid #e0f7fa; */
-    /* border-radius: 10px; */
-    /* background: #e166a0; */
-    border: none;
+    border: 3px solid #ffdbf1;
+    border-radius: 20px 20px 20px 20px;
     background: linear-gradient(
         to bottom,
-        rgba(224, 247, 250, 0),
-        rgb(224, 247, 250),
-        rgb(198, 236, 244)
+        rgba(243, 249, 250, 0.5),
+        rgb(246, 247, 247)
     );
+
     width: clamp(200px, 20vw, 250px);
-    height: clamp(200px, 90vh, 1000px);
+    height: clamp(300px, 40vh, 600px);
+
+    box-shadow:
+        /* soft shadow underneath */
+        0 18px 40px rgba(0, 0, 0, 0.18),
+
+        /* tighter shadow for depth */
+        0 8px 16px rgba(0, 0, 0, 0.12),
+
+        /* subtle highlight around the edge */
+        0 0 0 2px rgba(255, 255, 255, 0.35) inset,
+
+        /* inner shading */
+        inset 0 -8px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* ─────────────────────────────
+   Chatbox
+───────────────────────────── */
+
+#chatbox {
+    position: fixed;
+    right: 5vw;
+    bottom: 45vh;
+    z-index: 5010;
 }
 
 
@@ -201,14 +182,6 @@ html, body {
     pointer-events: none;
 }
 
-
-#dark-mode {
-    position: absolute;
-    top:10px;
-    right: 10px;
-    width: fit-content;
-    height: auto;
-}
 
 /* blinkies */
 
@@ -255,8 +228,8 @@ html, body {
 
 #epicGif4 {
     position: fixed;
-    bottom: 30%;
-    right: 5%;
+    bottom: 7%;
+    right: 3%;
     width: 8%;
     height: auto;
 }
@@ -326,6 +299,32 @@ html, body {
     z-index: 0;
 }
 
+/* guestbook: two separate elements so desktop (standalone
+   floating icon) and mobile (normal tray icon) can be styled
+   independently instead of fighting over shared markup. */
+.icon-tray .guestbook-mobile {
+    display: none;
+}
+
+.guestbook-desktop {
+    position: fixed;
+    right: 9%;
+    bottom: 10%;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.guestbook-desktop img {
+    display: block;
+    height: clamp(160px, 30vh, 300px);
+    width: auto;
+    transition: transform 0.3s ease;
+    transform-origin: bottom right;
+}
+
+.guestbook-desktop:hover img {
+    transform: scale(1.1);
+}
 
 /* ============================================================
    Mobile (≤ 768px)
@@ -335,6 +334,14 @@ html, body {
         overflow-y: auto;
         overflow-x: hidden;
         touch-action: manipulation;
+    }
+
+    .icon-tray .guestbook-mobile {
+        display: flex;
+    }
+
+    .guestbook-desktop {
+        display: none;
     }
 
     body {
@@ -377,16 +384,40 @@ html, body {
     .field-border {
         background: linear-gradient(
             to bottom,
-            rgba(224, 247, 250, 0) 0,
-            rgb(224, 247, 250) 30%
+            rgb(247, 246, 247),
+            #ffdbf1
         );
+
+        /* background: linear-gradient(
+            to bottom,
+            rgba(224, 247, 250, 0),
+            rgb(224, 247, 250),
+            rgb(198, 236, 244)
+        ); */
         width: 100%;
         height: 100%;
-        border: none;
         display: block;
+        box-shadow: none;
+        border: 5px solid #ffdbf1;
+
     }
 
-    
+
+    #chatbox {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+
+        width: 100%;
+        height: 300px;
+        max-width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
 
     .blinkies {
         width: 150px;

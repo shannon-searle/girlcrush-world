@@ -1,18 +1,29 @@
+// ============================================================
+// Config — media paths and timing for the virtual angel card
+// ============================================================
+const angelConfig = {
+    sound: "./media/audio/britneeey-sound-effect.mp3",
+    cards: [
+        "./media/virtual-angel/GRETA.mp4",
+        "./media/virtual-angel/MIK.mp4",
+        "./media/virtual-angel/MUM.mp4",
+        "./media/virtual-angel/OSCAR.mp4",
+        "./media/virtual-angel/SANTANA.mp4",
+    ],
+    flipDelayMs: 5000,
+};
+
 const virtualAngelIcon = document.querySelector('button[data-panel="virtual-angel-popup"]');
 const angelCard = document.getElementById('angel-card');
 const britneyBackground = document.getElementById('britney-background');
 const divineMessage = document.getElementById('divine-message');
-const angelSound = "./media/audio/britneeey-sound-effect.mp3";
-const audio = new Audio(angelSound);
-const angelCards = ["./media/virtual-angel/GRETA.mp4", "./media/virtual-angel/MIK.mp4",
-                    "./media/virtual-angel/MUM.mp4", "./media/virtual-angel/OSCAR.mp4",
-                    "./media/virtual-angel/SANTANA.mp4"]
+const audio = new Audio(angelConfig.sound);
 const card = document.querySelector(".card");
 
 let flipTimeout = 0;
 
 function showAngelCard() {
-    angelCard.src = angelCards[Math.floor(Math.random() * angelCards.length)];
+    angelCard.src = angelConfig.cards[Math.floor(Math.random() * angelConfig.cards.length)];
 
     angelCard.oncanplay = () => {
         angelCard.play();
@@ -24,7 +35,7 @@ function showAngelCard() {
     flipTimeout = setTimeout(() => {
         card.classList.toggle("flipped");
         divineMessage.style.display = "none";
-    }, 5000);
+    }, angelConfig.flipDelayMs);
 }
 
 function resetAngelCard() {

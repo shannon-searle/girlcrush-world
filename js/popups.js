@@ -1,5 +1,16 @@
-let tabCounter = 2; // rework this
-let baseIndex = 2;
+// ============================================================
+// Config — fixed values for the popup stacking system
+// ============================================================
+const popupConfig = {
+    baseZIndex: 2,
+};
+
+// ============================================================
+// State — the mutable z-index counter
+// ============================================================
+const popupState = {
+    tabCounter: 2,
+};
 
 /* ------------------------------------------
     Panel helpers
@@ -19,17 +30,11 @@ function openPanel(id) {
     }
 
     // per-panel side effects
-    if (id === 'about-me-popup') {
-        document.getElementById('start-button').classList.add('open');
-    }
     if (id === 'chatbox') {
-        document.getElementById('chatbox-button').classList.add('open');
+        document.getElementById('chatbox-button')?.classList.add('open');
     }
     if (id === 'virtual-angel-popup') {
         window.openVirtualAngel();
-    }
-    if (id === 'cloud-jumper-popup') {
-        state.gameWindowOpen = true;
     }
 }
 
@@ -45,18 +50,14 @@ function closePanel(id) {
     }
 
     // per-panel side effects
-    if (id === 'about-me-popup') {
-        document.getElementById('start-button').classList.remove('open');
-    }
     if (id === 'chatbox') {
-        document.getElementById('chatbox-button').classList.remove('open');
+        document.getElementById('chatbox-button')?.classList.remove('open');
     }
     if (id === 'virtual-angel-popup') {
         window.resetAngelCard();
     }
     if (id === 'cloud-jumper-popup') {
         window.closeCloudJumper();
-        state.gameWindowOpen = false;
     }
     if (id === 'strawberry-wedding-popup') {
         window.resetMedia();
@@ -80,8 +81,8 @@ function togglePanel(id) {
 ------------------------------------------ */
 function incrementZIndex(id) {
     const popup = document.getElementById(id);
-    tabCounter += 1;
-    popup.style.zIndex = tabCounter;
+    popupState.tabCounter += 1;
+    popup.style.zIndex = popupState.tabCounter;
 }
 
 function getZ(el) {
@@ -90,13 +91,13 @@ function getZ(el) {
 }
 
 function decrementPopups() {
-    tabCounter -= 1;
+    popupState.tabCounter -= 1;
     const popups = [...document.querySelectorAll('.popup.open')];
 
     popups.sort((a, b) => getZ(a) - getZ(b));
 
     popups.forEach((popup, i) => {
-        popup.style.zIndex = baseIndex + i;
+        popup.style.zIndex = popupConfig.baseZIndex + i;
     });
 }
 
@@ -107,9 +108,9 @@ function restackPopups(frontPopup) {
     popups.sort((a, b) => getZ(a) - getZ(b));
 
     popups.forEach((popup, i) => {
-        popup.style.zIndex = baseIndex + i;
+        popup.style.zIndex = popupConfig.baseZIndex + i;
     });
-    frontPopup.style.zIndex = tabCounter;
+    frontPopup.style.zIndex = popupState.tabCounter;
 }
 
 // add listener for panel buttons
@@ -123,16 +124,6 @@ document.querySelectorAll('[data-panel]').forEach(button => {
         if (panelId === 'chatbox') {
             togglePanel('chatbox');
             return;
-        }
-
-        if (panelId === 'about-me-popup') {
-            const panel = document.getElementById(panelId);
-            if (panel.classList.contains('open')) {
-                closePanel('about-me-popup');
-                closePanel('likes-popup');
-                closePanel('dislikes-popup');
-                return;
-            }
         }
 
         openPanel(panelId);
@@ -160,6 +151,18 @@ document.querySelectorAll('[data-close]').forEach(button => {
 
 
 /* ------------------------------------------
+    Bring a popup to the front when clicked
+    anywhere inside it (not just the titlebar)
+------------------------------------------ */
+document.getElementById('popup-container').addEventListener('mousedown', (e) => {
+    const popup = e.target.closest('.popup.open');
+    if (!popup) return;
+    if (popup.style.zIndex !== popupState.tabCounter.toString()) {
+        restackPopups(popup);
+    }
+});
+
+/* ------------------------------------------
     Draggable popups (drag by titlebar only)
 ------------------------------------------ */
 function makeDraggable(popup) {
@@ -171,7 +174,7 @@ function makeDraggable(popup) {
 
         startX = e.clientX - offsetX;
         startY = e.clientY - offsetY;
-        if (popup.style.zIndex !== tabCounter.toString()) {
+        if (popup.style.zIndex !== popupState.tabCounter.toString()) {
             restackPopups(popup);
         }
 
@@ -195,9 +198,6 @@ function makeDraggable(popup) {
 makeDraggable(document.getElementById('welcome-popup'));
 makeDraggable(document.getElementById('avatar-popup'));
 makeDraggable(document.getElementById('piano-popup'));
-// makeDraggable(document.getElementById('likes-popup'));
-// makeDraggable(document.getElementById('dislikes-popup'));
-makeDraggable(document.getElementById('image-gallery-popup'));
 makeDraggable(document.getElementById('my-music-popup'));
 makeDraggable(document.getElementById('cloud-jumper-popup'));
 makeDraggable(document.getElementById('virtual-angel-popup'));

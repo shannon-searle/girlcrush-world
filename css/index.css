@@ -1,16 +1,4 @@
-/* ── Reset ── */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: url('../media/cursors/cursor.cur'), auto;
-    user-select: none;
-    touch-action: manipulation;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-user-drag: none;
-}
+/* Reset and @keyframes shake live in shared.css */
 
 /* ── Base ── */
 html {
@@ -29,7 +17,7 @@ body {
 #bg {
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: -3;
     opacity: 1;
     transition: opacity 1s ease;
     background: radial-gradient(
@@ -39,6 +27,24 @@ body {
         #f3e5f5 70%,
         #fce4ec 100%
     );
+}
+
+#wings {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    opacity: 1;
+    pointer-events: none;
+    background: url("../media/wings-background.png") center / cover;
+}
+
+#angel-light {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 1;
+    pointer-events: none;
+    background: url("../media/light-background.png") center / 100% auto no-repeat;
 }
 
 /* ── Stars canvas ── */
@@ -69,7 +75,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3vh;
+    gap: 5vh;
     text-align: center;
 }
 
@@ -86,33 +92,20 @@ section {
     width: 60vw;
     height: auto;
     cursor: pointer;
-    filter: drop-shadow(0 0 8px rgba(225, 102, 160, 0.6))
-        drop-shadow(0 0 12px rgba(225, 102, 160, 0.4))
-        drop-shadow(0 0 15px rgba(225, 102, 160, 0.1));
+    filter: drop-shadow(0 0 5px rgba(165, 146, 222, 0.4))
+        drop-shadow(0 0 8px rgba(225, 102, 160, 0.4))
+        drop-shadow(0 0 10px rgba(225, 102, 160, 0.1));
     animation: shake 5.5s infinite;
-}
-
-@keyframes shake {
-    0%   { transform: translate(0, 0); }
-    10%  { transform: translate(-4px, 1px); }
-    20%  { transform: translate(2px, -3px); }
-    30%  { transform: translate(-1px, 4px); }
-    40%  { transform: translate(4px, -1px); }
-    50%  { transform: translate(-3px, 3px); }
-    60%  { transform: translate(1px, -4px); }
-    70%  { transform: translate(-4px, 2px); }
-    80%  { transform: translate(3px, 1px); }
-    90%  { transform: translate(-2px, -4px); }
-    100% { transform: translate(0, 0); }
 }
 
 /* ── Typography ── */
 p {
     color: #000000;
-    font-family: "Press Start 2P", system-ui;
+    font-family: "Zen Dots", sans-serif;
     font-weight: 200;
-    font-size: 10px;
-    line-height: 2.5;
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 1px;
     text-align: center;
 }
 
@@ -122,9 +115,11 @@ a { outline: none; }
 .button {
     background: #2c3651;
     color: #ffffff;
-    font-family: "Press Start 2P", system-ui;
+    font-family: "Zen Dots", sans-serif;
     font-weight: 200;
-    font-size: 12px;
+    font-size: clamp(8px, 1.5vw, 12px);
+    line-height: 1.8;
+    letter-spacing: 1px;
     padding: 8px 16px;
     border: none;
     cursor: pointer;
@@ -141,7 +136,7 @@ a { outline: none; }
 }
 
 .game-options {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -154,7 +149,6 @@ a { outline: none; }
     position: relative;
     overflow: hidden;
     border-radius: 10%;
-    margin: 30px;
     margin-top: 0;
     justify-content: center;
     box-shadow: 0 0 80px #563d48;
@@ -167,15 +161,15 @@ a { outline: none; }
 
 .scene-media img {
     display: block;
-    width: clamp(300px, 55vw, 750px);
-    height: clamp(250px, 70vh, 650px);
+    width: clamp(300px, 50vw, 650px);
+    height: clamp(250px, 60vh, 550px);
 }
 
 .scene-media video {
     display: block;
-    width: clamp(300px, 55vw, 750px);
-    height: clamp(250px, 70vh, 650px);
-    object-fit: cover;
+    width: clamp(300px, 50vw, 650px);
+    height: clamp(250px, 60vh, 550px);
+    object-fit: contain;
 }
 
 /* Caption text + game options, grouped in their own background card */
@@ -183,15 +177,16 @@ a { outline: none; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3vh;
-    max-width: clamp(300px, 55vw, 850px);
-    padding: 20px 30px;
+    gap: 2vh;
+    width: clamp(300px, 45vw, 850px);
+    padding: clamp(8px, 2vh, 16px) clamp(12px, 3vw, 24px);
     background: #161c2b;
     border-radius: 20px;
 }
 
 .scene-info p {
     color: #ffffff;
+    font-size: clamp(9px, 1.5vw, 12px);
 }
 
 /* Dark overlay for enter + freefall screens */
@@ -227,7 +222,7 @@ a { outline: none; }
     padding-bottom: 8vh;
 }
 
-.arrival-video {
+.arrival {
     position: absolute;
     top: 0;
     left: 0;
@@ -240,7 +235,7 @@ a { outline: none; }
 #screen-arrival .button {
     position: relative;
     z-index: 1;
-    opacity: 0;
+    /* opacity: 0; */
 
 }
 
@@ -254,7 +249,7 @@ a { outline: none; }
 
 #screen-dead p {
     color: #ffffff;
-    font-size: 16px;
+    font-size: 20px;
     max-width: 80%;
     text-shadow: 2px 2px 4px #000000;
 }
@@ -262,20 +257,18 @@ a { outline: none; }
 /* ── Backdoor ── */
 .backdoor {
     position: fixed;
-    right: 3%;
-    bottom: 3%;
+    right: 2%;
+    bottom: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
+    gap: 2px;
 }
 
 .backdoor p {
-    font-family: "Press Start 2P", system-ui;
+    font-family: "Zen Dots", sans-serif;
     font-weight: 200;
-    font-size: 8px;
-    margin: 0;
-    padding: 1px;
+    font-size: 10px;
     line-height: 1;
 }
 
@@ -305,21 +298,36 @@ a { outline: none; }
 
 /* ── Mobile (≤ 768px) ── */
 @media (max-width: 768px) {
-    #bg {
-        background: radial-gradient(
-            circle at center,
-            #ffffff 0%,
-            #e0f7fa 55%,
-            #f3e5f5 85%,
-            #fce4ec 100%
+    #angel-light {
+        display: none;
+        /* background: url("/media/light-mobile.png") center / 100% auto no-repeat;
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0,0,0,0.2) 15%,
+            black 35%,
+            black 65%,
+            rgba(0,0,0,0.2) 85%,
+            transparent 100%
         );
+
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0,0,0,0.2) 15%,
+            black 35%,
+            black 65%,
+            rgba(0,0,0,0.2) 85%,
+            transparent 100%
+        );
+        filter: blur(8px);
+        transform: scale(1.05); */
     }
 
     section {
         width: 100%;
         min-height: 100dvh;
-        gap: 2vh;
-        font-size: 10px;
+        font-size: 13px;
     }
 
     .title {
@@ -329,22 +337,31 @@ a { outline: none; }
 
     .scene-frame {
         border-radius: 12%;
+        box-shadow: 0 0 20px #563d48;
     }
 
     .scene-media img,
     .scene-media video {
         width: 90vw;
-        height: 50vh;
+        height: 45vh;
     }
 
+    #screen-enter .scene-media img {
+        height: 40vh;
+    }
+
+    .scene-info {
+        padding: 20px 10px;
+    }
+
+
     .scene-info p {
-        font-size: 8px;
-        line-height: 1.8;
+        line-height: 1.6;
     }
 
     #portal {
         width: 55%;
-        bottom: 10%;
+        bottom: 7%;
         animation-duration: 4s;
     }
 
@@ -356,11 +373,11 @@ a { outline: none; }
 
     .backdoor {
         right: 3%;
-        bottom: 2%;
-        transform: scale(0.9);
+        bottom: 1%;
+        transform: scale(0.8);
     }
 
-    .backdoor p { font-size: 6px; }
+    .backdoor p { font-size: 8px; }
 
     .skip img {
         width: 28px;
@@ -370,7 +387,7 @@ a { outline: none; }
     #stars { opacity: 0.9; }
 
     #screen-dead p {
-        font-size: 12px;
+        font-size: 16px;
         max-width: 100%;
     }
 
@@ -388,5 +405,9 @@ a { outline: none; }
 
     .game-options {
         gap: 35px;
+    }
+
+    #wings {
+        background: url("../media/wings-background.png") center / 100% auto no-repeat;
     }
 }

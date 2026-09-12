@@ -1,0 +1,29 @@
+/* ── Reset ──
+   Shared by base.html and index.html. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('../media/cursors/cursor.cur'), auto;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+}
+
+/* ── Shared animations ── */
+@keyframes shake {
+    0%   { transform: translate(0, 0); }
+    10%  { transform: translate(-4px, 1px); }
+    20%  { transform: translate(2px, -3px); }
+    30%  { transform: translate(-1px, 4px); }
+    40%  { transform: translate(4px, -1px); }
+    50%  { transform: translate(-3px, 3px); }
+    60%  { transform: translate(1px, -4px); }
+    70%  { transform: translate(-4px, 2px); }
+    80%  { transform: translate(3px, 1px); }
+    90%  { transform: translate(-2px, -4px); }
+    100% { transform: translate(0, 0); }
+}
