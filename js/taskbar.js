@@ -1,8 +1,7 @@
 const taskbar = document.querySelector('.taskbar');
 const taskbarSpacer = document.querySelector('.taskbar-spacer');
 const startButton = document.querySelector("#start-button");
-const chatButton = document.getElementById('chatbox-button');
-const mobile = (window.innerWidth <= 768);
+let mobile = window.innerWidth <= MOBILE_BREAKPOINT;
 
 /* ------------------------------------------
     Start menu taskbar buttons
@@ -28,7 +27,7 @@ function taskbarClose(id) {
         disableScalableTaskbar();
     } else {
         const btns = [...document.querySelectorAll(".taskbar-button.open:not(#start-button)")];
-        btns[btns.length - 1].classList.add("keep-full");
+        if (btns.length) btns[btns.length - 1].classList.add("keep-full");
     }
 }
 
@@ -49,9 +48,17 @@ function disableScalableTaskbar() {
     taskbar.classList.remove("scaleable");
 }
 
-if (window.innerWidth <= 768) {
-    enableCompactTaskbar();
+function updateMobileState() {
+    mobile = window.innerWidth <= MOBILE_BREAKPOINT;
+    if (mobile) {
+        enableCompactTaskbar();
+    } else {
+        disableCompactTaskbar();
+    }
 }
+
+updateMobileState();
+window.addEventListener("resize", updateMobileState);
 
 document.querySelectorAll('.taskbar-button').forEach(taskbarButton => {
     taskbarButton.addEventListener('click', function () {

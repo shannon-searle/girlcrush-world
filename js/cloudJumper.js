@@ -49,7 +49,7 @@ const state = {
 // Layout — measured/derived values, filled in by initGame()
 // ============================================================
 const layout = {
-    mobile: window.innerWidth <= 768,
+    mobile: window.innerWidth <= MOBILE_BREAKPOINT,
     playerLeft: 162,
     centerX: 200.5,
     maxGap: 0,
