@@ -20,7 +20,7 @@
 }
 
 .icon:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .icon {
@@ -118,11 +118,11 @@
     }
 
     .icon {
-        width: 50px;
+        width: 60px;
     }
 
     .icon button img{
-        padding: 2px;
+        padding: 0 0 2px 0;
         width: auto;
     }
 
