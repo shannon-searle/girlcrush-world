@@ -16,13 +16,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Rubik+Beastly&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
     <!-- stylesheet -->
     <link rel="stylesheet" href="css/shared.css" />
     <link rel="stylesheet" href="css/index.css" />
 </head>
 <body class="page-index">
     <div id="bg"></div>
+    <video id="bg-video" autoplay muted loop playsinline preload="auto">
+        <source src="./media/index/intro/spooky_boomerang.mp4" type="video/mp4">
+    </video>
     <canvas id="stars"></canvas>
 
     <div class="page-container">
@@ -32,12 +36,12 @@
             <div id="angel-light"></div>
             <div id="wings"></div>
             <div id="title-container">
-                <img class="title" data-hide="screen-title" data-show="screen-portal" data-bg="black" src="media/titleFont2.png" alt="girlcrush222">
+                <img class="title" data-hide="screen-title" data-show="screen-portal" data-bg="spooky" src="media/titleFont2.png" alt="girlcrush222">
             </div>
             <div class="backdoor">
                 <button class="skip" data-goto-base>
-                    <img class="img-default" src="media/door.png" alt="door" />
-                    <img class="img-hover" src="media/door-open.png" alt="open door" />
+                    <img class="img-default" src="media/index/intro/door.png" alt="door" />
+                    <img class="img-hover" src="media/index/intro/door-open.png" alt="open door" />
                 </button>
                 <p>back door</p>
             </div>
@@ -47,8 +51,8 @@
         <section id="screen-portal" style="display:none;">
             <div class="scene-frame">
                 <div class="scene-media">
-                    <img src="./media/waiting_room1.png" alt="waiting room">
-                    <img id="portal" src="./media/portal2.png" alt="portal">
+                    <img src="./media/index/intro/waiting_room1.png" alt="waiting room">
+                    <img id="portal" src="./media/index/intro/portal2.png" alt="portal">
                 </div>
             </div>
             <div class="scene-info">
@@ -56,8 +60,8 @@
                     you may now begin your journey into the girlcrush digital realm<br>
                     enter through the portal, if you dare</p>
                 <div class="game-options">
-                    <button class="button" data-hide="screen-portal" data-show="screen-dead" data-bg="black">retreat</button>
-                    <button class="button" data-hide="screen-portal" data-show="screen-enter" data-bg="black">begin</button>
+                    <button class="button" data-hide="screen-portal" data-show="screen-dead" data-bg="spooky">retreat</button>
+                    <button class="button" data-hide="screen-portal" data-show="screen-enter" data-bg="spooky">begin</button>
                 </div>
             </div>
         </section>
@@ -66,15 +70,15 @@
         <section id="screen-enter" style="display:none;">
             <div class="scene-frame" style="box-shadow:none;">
                 <div class="scene-media">
-                    <img src="./media/portal-intro.gif" alt="enter portal">
+                    <img src="./media/index/intro/portal-intro.gif" alt="enter portal">
                 </div>
             </div>
             <div class="scene-info">
-                <p>as you step inside the portal<br>you hear a muffled voice cry out<br>
+                <p>as you step inside the portal, you hear a muffled voice cry out<br>
                     it's the princess. she needs your help!<br>
                     what will you do?</p>
                 <div class="game-options">
-                    <button class="button" data-hide="screen-enter" data-show="screen-dead" data-bg="black">retreat</button>
+                    <button class="button" data-hide="screen-enter" data-show="screen-dead" data-bg="spooky">retreat</button>
                     <button class="button" data-hide="screen-enter" data-show="screen-freefall">venture further</button>
                 </div>
             </div>
@@ -91,17 +95,15 @@
                         playsinline
                         preload="auto"
                     >
-                        <source src="./media/spiral3.mp4" type="video/mp4">
+                        <source src="./media/index/intro/spiral3.mp4" type="video/mp4">
                     </video>
-                    <div class="scene-overlay"></div>
                 </div>
             </div>
             <div class="scene-info">
                 <p>you freefall into the unknown<br>
-                    the edges of your vision sink into darkness<br>
-                    as you slip further and further away from reality</p>
+                    the edges of your vision sink into darkness as you slip further and further away from reality</p>
                 <div class="game-options">
-                    <button class="button" data-hide="screen-freefall" data-show="screen-dead" data-bg="black">retreat</button>
+                    <button class="button" data-hide="screen-freefall" data-show="screen-dead" data-bg="spooky">retreat</button>
                     <button class="button" data-hide="screen-freefall" data-show="screen-surrender">faint</button>
                 </div>
             </div>
@@ -118,17 +120,15 @@
                         playsinline
                         preload="auto"
                     >
-                        <source src="./media/control.mp4" type="video/mp4">
+                        <source src="./media/index/intro/control.mp4" type="video/mp4">
                     </video>
-                    <div class="scene-overlay"></div>
                 </div>
             </div>
             <div class="scene-info">
                 <p>you feel strange<br>
-                    are losing control...<br>
-                    or gaining it?</p>
+                    are losing control... or gaining it?</p>
                 <div class="game-options">
-                    <button class="button" data-hide="screen-surrender" data-show="screen-dead" data-bg="black">retreat</button>
+                    <button class="button" data-hide="screen-surrender" data-show="screen-dead" data-bg="spooky">retreat</button>
                     <button class="button" data-hide="screen-surrender" data-show="screen-arrival">surrender</button>
                 </div>
             </div>
@@ -136,15 +136,26 @@
 
         <!-- Arrival -->
         <section id="screen-arrival" style="display:none;">
-            <img class="arrival" src="./media/final-step.jpg" alt="final step">
-            <p>you wake up in a daze and feel yourself somewhere, otherworldly<br>
-                could it be… the girlcrush digital realm?</p>
-            <button class="button" data-goto-base>explore!</button>
+            <video
+                class="arrival"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+            >
+                <source src="./media/index/intro/final-step_actual.mp4" type="video/mp4">
+            </video>
+            <div class="scene-info">
+                <p>you wake up in a daze and feel yourself somewhere, otherworldly<br>
+                    could it be… the girlcrush digital realm?</p>
+                <button class="button" data-goto-base>explore!</button>
+            </div>
         </section>
 
         <!-- Dead -->
         <section id="screen-dead" style="display:none;">
-            <img class="dead-bg" src="./media/you-died2.jpg" alt="you died">
+            <img class="dead-bg" src="./media/index/intro/you-died2.jpg" alt="you died">
             <p>you died!</p>
             <p><b>score</b>: not good</p>
             <p><em>unknown</em> user tried to run away from the girlcrush digital realm and was crushed by the queen of the darkland</p>

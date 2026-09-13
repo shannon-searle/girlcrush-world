@@ -19,7 +19,7 @@ body {
     inset: 0;
     z-index: -3;
     opacity: 1;
-    transition: opacity 1s ease;
+    transition: opacity 0.8s ease-in-out;
     background: radial-gradient(
         circle at center,
         #ffffff 0%,
@@ -29,13 +29,25 @@ body {
     );
 }
 
+#bg-video {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease-in-out;
+}
+
 #wings {
     position: fixed;
     inset: 0;
     z-index: -2;
     opacity: 1;
     pointer-events: none;
-    background: url("../media/wings-background.png") center / cover;
+    background: url("../media/index/intro/wings-background.png") center / cover;
 }
 
 #angel-light {
@@ -44,7 +56,7 @@ body {
     z-index: -1;
     opacity: 1;
     pointer-events: none;
-    background: url("../media/light-background.png") center / 100% auto no-repeat;
+    background: url("../media/index/intro/light-background.png") center / 100% auto no-repeat;
 }
 
 /* ── Stars canvas ── */
@@ -75,7 +87,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5vh;
+    gap: 2vh;
     text-align: center;
 }
 
@@ -113,26 +125,30 @@ a { outline: none; }
 
 /* ── Buttons ── */
 .button {
-    background: #2c3651;
+    background: #8d8297;
     color: #ffffff;
     font-family: "Zen Dots", sans-serif;
     font-weight: 200;
     font-size: clamp(8px, 1.5vw, 12px);
     line-height: 1.8;
     letter-spacing: 1px;
-    padding: 8px 16px;
-    border: none;
+    padding: 10px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow:
-        1px 2px 3px rgba(0,0,0,0.15),
-        -1px 2px 3px rgba(0,0,0,0.15),
-        1px -1px 4px rgba(0,0,0,0.15);
+        0 4px 10px rgba(0, 0, 0, 0.35),
+        0 0 16px rgba(74, 57, 96, 0.6);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button:hover {
-    background: #e166a0;
+    background: #cba6f0;
     color: #231111;
+    transform: translateY(-2px);
+    box-shadow:
+        0 6px 14px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(203, 166, 240, 0.7);
 }
 
 .game-options {
@@ -151,7 +167,17 @@ a { outline: none; }
     border-radius: 10%;
     margin-top: 0;
     justify-content: center;
-    box-shadow: 0 0 80px #563d48;
+    /* box-shadow: 0 0 50px #ff78b3; */
+}
+
+/* Waiting room: fade the frame's edges into the page instead of a box-shadow glow */
+#screen-portal .scene-frame {
+    mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
+                linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
+                         linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
 }
 
 /* Groups the media elements in markup; contributes no box of its own */
@@ -161,49 +187,47 @@ a { outline: none; }
 
 .scene-media img {
     display: block;
-    width: clamp(300px, 50vw, 650px);
-    height: clamp(250px, 60vh, 550px);
+    width: clamp(320px, 54vw, 720px);
+    height: clamp(270px, 64vh, 610px);
 }
 
 .scene-media video {
     display: block;
-    width: clamp(300px, 50vw, 650px);
-    height: clamp(250px, 60vh, 550px);
+    width: clamp(320px, 54vw, 720px);
+    height: clamp(270px, 64vh, 610px);
     object-fit: contain;
 }
 
-/* Caption text + game options, grouped in their own background card */
+/* Caption text + game options, no card background — text relies on a
+   heavy shadow to stay legible over the moving stars/scene behind it */
 .scene-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2vh;
-    width: clamp(300px, 45vw, 850px);
+    gap: 3vh;
+    width: clamp(300px, 35vw, 850px);
     padding: clamp(8px, 2vh, 16px) clamp(12px, 3vw, 24px);
-    background: #161c2b;
+    background: none;
     border-radius: 20px;
 }
 
 .scene-info p {
     color: #ffffff;
     font-size: clamp(9px, 1.5vw, 12px);
-}
-
-/* Dark overlay for enter + freefall screens */
-.scene-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgb(0, 0, 0);
-    z-index: -1;
+    line-height: 3;
+    text-shadow:
+        0 0 6px rgba(0, 0, 0, 0.9),
+        0 0 14px rgba(0, 0, 0, 0.7),
+        1px 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 /* ── Portal ── */
 #portal {
     position: absolute;
-    width: 50%;
+    width: 40%;
     height: auto;
     bottom: 15%;
-    left: 25%;
+    right: 30%;
     box-shadow: none;
     animation: float 3s ease-in-out infinite;
 }
@@ -219,7 +243,7 @@ a { outline: none; }
     width: 100vw;
     height: 100vh;
     justify-content: flex-end;
-    padding-bottom: 8vh;
+    padding-bottom: 4vh;
 }
 
 .arrival {
@@ -229,14 +253,24 @@ a { outline: none; }
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 75%;
+}
+
+#screen-arrival .scene-info {
+    background: none;
+    gap: 1vh;
+}
+
+#screen-arrival .scene-info p {
+    color: #aa84d1;
+    text-shadow: none;
 }
 
 #screen-arrival p,
 #screen-arrival .button {
     position: relative;
     z-index: 1;
-    /* opacity: 0; */
-
+    box-shadow: none;
 }
 
 /* ── Dead screen ── */
@@ -266,8 +300,8 @@ a { outline: none; }
 }
 
 .backdoor p {
-    font-family: "Zen Dots", sans-serif;
-    font-weight: 200;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 400;
     font-size: 10px;
     line-height: 1;
 }
@@ -300,28 +334,6 @@ a { outline: none; }
 @media (max-width: 768px) {
     #angel-light {
         display: none;
-        /* background: url("/media/light-mobile.png") center / 100% auto no-repeat;
-        -webkit-mask-image: linear-gradient(
-            to bottom,
-            transparent 0%,
-            rgba(0,0,0,0.2) 15%,
-            black 35%,
-            black 65%,
-            rgba(0,0,0,0.2) 85%,
-            transparent 100%
-        );
-
-        mask-image: linear-gradient(
-            to bottom,
-            transparent 0%,
-            rgba(0,0,0,0.2) 15%,
-            black 35%,
-            black 65%,
-            rgba(0,0,0,0.2) 85%,
-            transparent 100%
-        );
-        filter: blur(8px);
-        transform: scale(1.05); */
     }
 
     section {
@@ -408,6 +420,6 @@ a { outline: none; }
     }
 
     #wings {
-        background: url("../media/wings-background.png") center / 100% auto no-repeat;
+        background: url("../media/index/intro/wings-background.png") center / 100% auto no-repeat;
     }
 }
