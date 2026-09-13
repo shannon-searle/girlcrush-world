@@ -4,7 +4,7 @@
 .nav-bar {
     width: auto;
     height: 50px;
-    margin: -10px -2vw 0; /* cancels body's top/left/right padding so this spans edge-to-edge, flush with the top */
+    margin: -15px -2vw 0; /* cancels body's top/left/right padding so this spans edge-to-edge, flush with the top */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
