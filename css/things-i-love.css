@@ -135,11 +135,11 @@
     width: 222.48%;
 }
 
-/* prev/next triggers — sit together at the bottom, centered */
+/* prev/next triggers — plain arrows flanking the photo */
 .item-carousel-prev,
 .item-carousel-next {
     position: absolute;
-    bottom: 4%;
+    top: 50%;
     z-index: 2;
     width: clamp(28px, 3.5vw, 40px);
     aspect-ratio: 1;
@@ -154,23 +154,24 @@
     align-items: center;
     justify-content: center;
     line-height: 1;
+    transform: translateY(-50%);
     transition: transform 0.15s ease;
 }
 
 .item-carousel-prev {
-    left: calc(50% - clamp(28px, 3.5vw, 40px) - 4px);
+    left: 2%;
 }
 
 .item-carousel-next {
-    left: calc(50% + 4px);
+    right: 2%;
 }
 
 .item-carousel-prev:hover {
-    transform: scale(1.1) translateX(-1.5px);
+    transform: translateY(-50%) scale(1.1) translateX(-1.5px);
 }
 
 .item-carousel-next:hover {
-    transform: scale(1.1) translateX(1.5px);
+    transform: translateY(-50%) scale(1.1) translateX(1.5px);
 }
 
 /* ─────────────────────────────
