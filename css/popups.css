@@ -83,6 +83,11 @@
     color: #5a6a19;
 }
 
+#things-i-love-popup .popup-titlebar {
+    background: #e8dcc8;
+    color: #6b5642;
+}
+
 
 /* ─────────────────────────────
    Close Button — Base
@@ -184,6 +189,7 @@
 #webmaster-popup { bottom: 10%; left: min(15%, 60vw); width: clamp(670px, 50vw, 770px); height: clamp(500px, 70vh, 650px); }
 #virtual-angel-popup { bottom: 100px; left: 12vw; align-items: flex-start; }
 #cloud-jumper-popup { bottom: 12%; left: min(38%, 70vw); height: clamp(550px, 40vw, 650px); width: fit-content; }
+#things-i-love-popup { top: 15%; right: 15%; width: clamp(500px, 45vw, 850px); }
 
 
 /* ─────────────────────────────
@@ -221,6 +227,20 @@
     width: fit-content;
 }
 
+#things-i-love-popup .popup-window {
+    background: #fdf3f7;
+}
+
+#things-i-love-popup .things-i-love-container {
+    padding: 16px;
+}
+
+#things-i-love-popup img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* ─────────────────────────────
    Mobile (≤ 768px)
 ───────────────────────────── */
@@ -242,7 +262,8 @@
     #cloud-jumper-popup,
     #virtual-angel-popup,
     #strawberry-wedding-popup,
-    #webmaster-popup{
+    #webmaster-popup,
+    #things-i-love-popup{
         position: relative;
         top: auto;
         left: auto;

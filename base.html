@@ -140,6 +140,14 @@
                     data-closemenu="virtual-angel-button">✕</button>
         </div>
 
+        <div class="taskbar-button window-classic" id="things-i-love-button">
+            <img src="./media/base/icons/chicken.png" alt="">
+            <p>things i love</p>
+            <button class="popup-close"
+                    data-close="things-i-love-popup"
+                    data-closemenu="things-i-love-button">✕</button>
+        </div>
+
         <!-- remaining space -->
         <div class="taskbar-spacer"></div>
 
@@ -219,7 +227,7 @@
         </div>
 
         <div class="icon">
-            <button data-coming-soon>
+            <button data-panel="things-i-love-popup" data-taskbar="things-i-love-button">
                 <img src="media/base/icons/chicken.png" alt="things i love" />
                 <p>things i love</p>
             </button>
@@ -508,6 +516,19 @@
                         <p>unstacking the dishwasher</p>
                         <p>fluorescent lighting</p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- things i love -->
+        <div id="things-i-love-popup" class="popup panel">
+            <div class="popup-window window-classic">
+                <div class="popup-titlebar">
+                    <span>things i love</span>
+                    <button class="popup-close" data-close="things-i-love-popup" data-closemenu="things-i-love-button">✕</button>
+                </div>
+                <div class="things-i-love-container window-classic-indent">
+                    <img src="./media/base/BAG.png" alt="things i love">
                 </div>
             </div>
         </div>
