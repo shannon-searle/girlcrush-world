@@ -1,6 +1,5 @@
 const taskbar = document.querySelector('.taskbar');
 const taskbarSpacer = document.querySelector('.taskbar-spacer');
-const startButton = document.querySelector("#start-button");
 let mobile = window.innerWidth <= MOBILE_BREAKPOINT;
 
 /* ------------------------------------------

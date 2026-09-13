@@ -43,7 +43,9 @@ function closePanel(id) {
     if (!panel.classList.contains('open')) return;
 
     panel.classList.remove('open');
-    panel.style.transform = 'translate(0px, 0px)'; // reset drag position
+    if (id !== 'chatbox') {
+        panel.style.transform = 'translate(0px, 0px)'; // reset drag position
+    }
 
     if (panel.classList.contains('popup')) {
         decrementPopups();
@@ -198,7 +200,6 @@ function makeDraggable(popup) {
 makeDraggable(document.getElementById('welcome-popup'));
 makeDraggable(document.getElementById('avatar-popup'));
 makeDraggable(document.getElementById('piano-popup'));
-makeDraggable(document.getElementById('my-music-popup'));
 makeDraggable(document.getElementById('cloud-jumper-popup'));
 makeDraggable(document.getElementById('virtual-angel-popup'));
 makeDraggable(document.getElementById('webmaster-popup'));

@@ -177,13 +177,11 @@
    Popup Positioning — Individual
 ───────────────────────────── */
 
-#welcome-popup { bottom: 30vh; left: 40vh; width: clamp(450px, 35vw, 475px); height: fit-content;}
+#welcome-popup { inset: 0; margin: auto; width: clamp(450px, 35vw, 475px); height: fit-content; }
 #strawberry-wedding-popup { top: 20vh; right: 8vw; width: clamp(400px, 25vw, 550px); aspect-ratio: 4 / 3; }
 #avatar-popup { top: 5%; right: 5%; width: clamp(180px, 20vw, 320px); max-height: 90vh; }
 #piano-popup { bottom: 25%; left: min(25%, 75vw); width: clamp(300px, 50vw, 800px); }
-#note-from-shan-popup { bottom: 50px; left: 200px; width: clamp(240px, 20vw, 500px); z-index: 10; }
 #webmaster-popup { bottom: 10%; left: min(15%, 60vw); width: clamp(670px, 50vw, 770px); height: clamp(500px, 70vh, 650px); }
-#my-music-popup { top: min(40%, 80vh); left: min(25%, 75vw); width: clamp(200px, 20vw, 360px); height: clamp(150px, 20vh, 280px); }
 #virtual-angel-popup { bottom: 100px; left: 12vw; align-items: flex-start; }
 #cloud-jumper-popup { bottom: 12%; left: min(38%, 70vw); height: clamp(550px, 40vw, 650px); width: fit-content; }
 
@@ -208,25 +206,19 @@
 }
 
 #piano-popup .popup-window {
-    background: url("../media/piano/background2.png") center / cover no-repeat;
+    background: url("../media/base/piano/background2.png") center / cover no-repeat;
     padding: 20% 18% 10%;
     align-items: center;
 }
 
 #webmaster-popup .popup-window {
-    background: url("../media/shan/background.webp") top center / cover no-repeat;
+    background: url("../media/base/shan/background.webp") top center / cover no-repeat;
     font-family: "Quicksand", sans-serif;
 }
 
 #virtual-angel-popup .popup-window {
     background: none;
     width: fit-content;
-}
-
-#my-music-popup .popup-window {
-    background: rgba(220,200,255);
-    flex: 1;
-    overflow-y: auto;
 }
 
 /* ─────────────────────────────
@@ -247,7 +239,6 @@
     #welcome-popup,
     #avatar-popup,
     #piano-popup,
-    #my-music-popup,
     #cloud-jumper-popup,
     #virtual-angel-popup,
     #strawberry-wedding-popup,
@@ -293,11 +284,4 @@
         padding: 30% 12% 12%;
     }
 
-    #note-from-shan-popup {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        height: 300px;
-        width: 50%;
-    }
 }

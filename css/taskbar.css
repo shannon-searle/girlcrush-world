@@ -42,12 +42,12 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    font-family: "Zen Dots", sans-serif;
-    letter-spacing: 0.5px;
+    font-family: "Quicksand", sans-serif;
+    letter-spacing: 0.3px;
 
-    font-size: clamp(8px, 0.7vw, 9px);
+    font-size: clamp(10px, 0.9vw, 11px);
 
-    color: rgb(91, 75, 108);
+    color: rgb(65, 49, 82);
 
     background: rgb(232, 218, 248);
     border-radius: 2px;
@@ -123,38 +123,85 @@
     color: #dbeefb;
 }
 
-/* ── Chat Button ── */
+/* ── Guestbook button ── */
 
 #chatbox-button {
-    margin: 10px;
+    position: absolute;
+    right: 20px;
+    bottom: 60px; /* flush with the visible bar's bottom edge, not the box's (see .taskbar padding-bottom) */
 
-    display: flex;
-    align-items: center;
-
-    padding: 2px;
+    display: block;
     background: none;
     border: none;
+    padding: 0;
 
-    transition: 0.2s;
+    cursor: pointer;
+    transform-origin: bottom right;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.chatbox-tooltip {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 10px;
+
+    padding: 6px 12px;
+    background: #ffe0f0;
+    color: #d966a0;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+
+    font-family: "Quicksand", sans-serif;
+    font-size: 12px;
+    white-space: nowrap;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.chatbox-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: #ffe0f0;
+}
+
+#chatbox-button:hover .chatbox-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tooltip-open-label {
+    display: none;
+}
+
+#chatbox-button.open .tooltip-closed-label {
+    display: none;
+}
+
+#chatbox-button.open .tooltip-open-label {
+    display: inline;
 }
 
 #chatbox-button img {
-    width: 25px;
-    height: 25px;
-    transition: 0.2s;
+    display: block;
+    height: clamp(90px, 12vw, 150px);
+    width: auto;
+    pointer-events: none;
 }
 
-#chatbox-button:hover,
-#chatbox-button.open {
-    transform: translateY(-2px) scale(1.04);
+#chatbox-button:hover {
+    transform: scale(1.08);
     filter:
         drop-shadow(0 0 4px rgba(217, 102, 160, 0.9))
         drop-shadow(0 0 8px rgba(217, 102, 160, 0.5));
-}
-
-#chatbox-button:hover,
-#chatbox-button img:hover {
-    cursor: pointer;
 }
 
 
@@ -208,5 +255,10 @@
 
 /* hide close button in taskbar */
 .taskbar.compact .taskbar-button .popup-close {
+    display: none;
+}
+
+/* mobile already has its own guestbook tray icon */
+.taskbar.compact #chatbox-button {
     display: none;
 }

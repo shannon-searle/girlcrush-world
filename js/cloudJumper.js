@@ -4,7 +4,6 @@
 const game = document.querySelector('.cloud-jumper-game');
 const cloudJumper = document.getElementById('cloud-jumper');
 const gameContainer = document.querySelector('.cloud-jumper-container');
-const closeBtn = document.getElementById('cloud-jumper-close')
 const scoreDisplay = document.getElementById('score-display');
 const gameOverText = document.getElementById('game-over');
 const desktopInstructions = document.getElementById('desktop-instructions');
@@ -248,9 +247,9 @@ class Player {
 // ============================================================
 class Cloud {
     static images = [
-        "./media/cloud-jumper/cloud1.png",
-        "./media/cloud-jumper/cloud1.png",
-        "./media/cloud-jumper/cloud2.png"
+        "./media/base/cloud-jumper/cloud1.png",
+        "./media/base/cloud-jumper/cloud1.png",
+        "./media/base/cloud-jumper/cloud2.png"
     ];
 
     static preloaded = false;
