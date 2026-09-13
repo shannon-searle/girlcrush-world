@@ -26,6 +26,7 @@
     width: 150px;
     height: 100%;
     flex-shrink: 0;
+    cursor: pointer;
     transition: transform 0.2s ease;
     list-style: none;
 }
