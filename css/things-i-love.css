@@ -1,0 +1,196 @@
+/* ─────────────────────────────
+   "Things I Love" popup — relies on base primitives in popups.css
+───────────────────────────── */
+
+#things-i-love-popup .popup-titlebar {
+    background: #e8dcc8;
+    color: #6b5642;
+}
+
+#things-i-love-popup {
+    top: 10%;
+    left: 15%;
+    width: clamp(800px, 75vw, 900px);
+}
+
+#things-i-love-popup .popup-window {
+    background: #fdf3f7;
+    width: 100%;
+}
+
+#things-i-love-popup .things-i-love-container {
+    position: relative;
+    overflow: hidden;
+    padding: 16px;
+}
+
+/* ─────────────────────────────
+   Bag flat-lay — base image plus an absolutely-positioned cutout per item
+───────────────────────────── */
+
+.bag-items {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1500 / 1250;
+}
+
+.bag-base {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.bag-item {
+    position: absolute;
+    display: block;
+    transition: transform 0.25s ease;
+    cursor: pointer;
+}
+
+.bag-item:hover {
+    transform: scale(1.2);
+    z-index: 10;
+}
+
+/* ─────────────────────────────
+   Item image carousels — reusable pattern for any clickable bag item
+───────────────────────────── */
+
+.item-carousel {
+    display: flex; /* always laid out; open state is opacity/visibility so it can fade */
+    position: absolute;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    border-radius: 5px;
+    cursor: pointer; /* clicking anywhere out here closes the overlay */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.item-carousel.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.25s ease;
+}
+
+/* tinted frame; width+height both capped so the media box can shrink to fit */
+.item-carousel-window {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    padding: 14px;
+    background: rgba(224, 246, 255, 0.75);
+    border-radius: 10px;
+    cursor: default; /* the framed image isn't itself the close-trigger */
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.05),
+        0 8px 16px rgba(0, 0, 0, 0.05),
+        0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* crops each photo to its real content — canvas is 1920x1080, only part of it is opaque */
+.item-carousel-media {
+    position: relative;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.item-carousel-media img {
+    position: absolute;
+    top: 0;
+    height: auto;
+    display: block;
+}
+
+/* ipod photos: content is 1092 wide, starting at x=673 */
+#ipod-carousel .item-carousel-media {
+    aspect-ratio: 1092 / 1080;
+}
+
+#ipod-carousel .item-carousel-media img {
+    left: -61.63%;
+    width: 175.824%;
+}
+
+/* camera photos: content is 863 wide, starting at x=644 */
+#camera-carousel .item-carousel-media {
+    aspect-ratio: 863 / 1080;
+}
+
+#camera-carousel .item-carousel-media img {
+    left: -74.62%;
+    width: 222.48%;
+}
+
+/* prev/next triggers — sit together at the bottom, centered */
+.item-carousel-prev,
+.item-carousel-next {
+    position: absolute;
+    bottom: 4%;
+    z-index: 2;
+    width: clamp(28px, 3.5vw, 40px);
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: clamp(16px, 2vw, 22px);
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: transform 0.15s ease;
+}
+
+.item-carousel-prev {
+    left: calc(50% - clamp(28px, 3.5vw, 40px) - 4px);
+}
+
+.item-carousel-next {
+    left: calc(50% + 4px);
+}
+
+.item-carousel-prev:hover {
+    transform: scale(1.1) translateX(-1.5px);
+}
+
+.item-carousel-next:hover {
+    transform: scale(1.1) translateX(1.5px);
+}
+
+/* ─────────────────────────────
+   Mobile (≤ 768px)
+───────────────────────────── */
+
+@media (max-width: 768px) {
+    #things-i-love-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+}

@@ -1,3 +1,17 @@
+/* popup shell (titlebar/positioning/background) — moved from popups.css */
+#cloud-jumper-popup .popup-titlebar {
+    background: rgb(203, 232, 192);
+    color: #345b3a;
+}
+
+#cloud-jumper-popup { bottom: 12%; left: min(38%, 70vw); height: clamp(550px, 40vw, 650px); width: fit-content; }
+
+#cloud-jumper-popup .popup-window {
+    background: #000;
+    flex: 1;
+    gap: 0;
+}
+
 .cloud-jumper-container {
     background: none;
     color: #ffffff;
@@ -114,6 +128,22 @@
    Mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
+    #cloud-jumper-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
     .cloud-jumper-game {
         width: min(500px, 90vw);
     }

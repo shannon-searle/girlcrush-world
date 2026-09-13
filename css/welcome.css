@@ -1,4 +1,26 @@
 
+/* popup shell (positioning/background) — moved from popups.css */
+#welcome-popup { inset: 0; margin: auto; width: clamp(450px, 35vw, 475px); height: fit-content; }
+#welcome-popup .popup-window { background: #e0f7fa; }
+
+@media (max-width: 768px) {
+    #welcome-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        margin-bottom: 40%;
+    }
+}
+
 /* sticky note */
 .sticky-note-thankyou p {
     color: rgb(56, 42, 70);

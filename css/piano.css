@@ -1,4 +1,19 @@
 
+/* popup shell (titlebar/positioning/background) — moved from popups.css */
+#piano-popup .popup-titlebar {
+    background: #000;
+    color: #fff;
+    max-width: 410px;
+}
+
+#piano-popup { bottom: 25%; left: min(25%, 75vw); width: clamp(300px, 50vw, 800px); }
+
+#piano-popup .popup-window {
+    background: url("../media/base/piano/background2.png") center / cover no-repeat;
+    padding: 20% 18% 10%;
+    align-items: center;
+}
+
 /* Piano */
 .key, .black-key {
     touch-action: none;
@@ -59,6 +74,26 @@
 }
 
 @media (max-width: 768px) {
+    #piano-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    #piano-popup .popup-window {
+        padding: 30% 12% 12%;
+    }
+
     #piano-popup .popup-titlebar span {
         font-size: 12px;
         font-family: 'Courier New', Courier, monospace;

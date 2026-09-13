@@ -1,5 +1,5 @@
 /* ─────────────────────────────
-   Popups — Base
+   Popups — Base (generic; per-popup styling lives in that feature's own CSS file)
 ───────────────────────────── */
 #popup-container {
     position: relative;
@@ -54,42 +54,6 @@
 
 
 /* ─────────────────────────────
-   Popup Titlebar — Variants
-───────────────────────────── */
-
-#strawberry-wedding-popup .popup-titlebar {
-    background: rgb(39, 39, 39);
-    color: #d80000;
-}
-
-#webmaster-popup .popup-titlebar {
-    background: rgb(188, 242, 242);
-    color: rgb(72, 106, 106);
-}
-
-#cloud-jumper-popup .popup-titlebar {
-    background: rgb(203, 232, 192);
-    color: #345b3a;
-}
-
-#piano-popup .popup-titlebar {
-    background: #000;
-    color: #fff;
-    max-width: 410px;
-}
-
-#avatar-popup .popup-titlebar {
-    background: #c4e63a;
-    color: #5a6a19;
-}
-
-#things-i-love-popup .popup-titlebar {
-    background: #e8dcc8;
-    color: #6b5642;
-}
-
-
-/* ─────────────────────────────
    Close Button — Base
 ───────────────────────────── */
 
@@ -125,29 +89,7 @@
     background: #ffc0de;
 }
 
-/* ── Close Button Variants ── */
-
-#virtual-angel-popup .popup-close {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-
-    width: clamp(20px, 2vw, 25px);
-    height: clamp(20px, 2vw, 25px);
-
-    background: rgb(230, 251, 255);
-    color: rgb(106, 152, 171);
-
-    border: none;
-    border-radius: 0 7px 0 0;
-
-    z-index: 10;
-}
-
-#virtual-angel-popup .popup-close:hover {
-    background: #ffc0de;
-}
-
+/* generic — applies to any taskbar tab's own close button */
 .taskbar-button .popup-close {
     position: absolute;
     top: 3px;
@@ -179,69 +121,6 @@
 
 
 /* ─────────────────────────────
-   Popup Positioning — Individual
-───────────────────────────── */
-
-#welcome-popup { inset: 0; margin: auto; width: clamp(450px, 35vw, 475px); height: fit-content; }
-#strawberry-wedding-popup { top: 20vh; right: 8vw; width: clamp(400px, 25vw, 550px); aspect-ratio: 4 / 3; }
-#avatar-popup { top: 5%; right: 5%; width: clamp(180px, 20vw, 320px); max-height: 90vh; }
-#piano-popup { bottom: 25%; left: min(25%, 75vw); width: clamp(300px, 50vw, 800px); }
-#webmaster-popup { bottom: 10%; left: min(15%, 60vw); width: clamp(670px, 50vw, 770px); height: clamp(500px, 70vh, 650px); }
-#virtual-angel-popup { bottom: 100px; left: 12vw; align-items: flex-start; }
-#cloud-jumper-popup { bottom: 12%; left: min(38%, 70vw); height: clamp(550px, 40vw, 650px); width: fit-content; }
-#things-i-love-popup { top: 15%; right: 15%; width: clamp(500px, 45vw, 850px); }
-
-
-/* ─────────────────────────────
-   Popup Window Content Styles
-───────────────────────────── */
-
-#welcome-popup .popup-window { background: #e0f7fa; }
-
-#avatar-popup .popup-window { background: #e8e8e8; }
-
-#cloud-jumper-popup .popup-window {
-    background: #000;
-    flex: 1;
-    gap: 0;
-}
-
-#strawberry-wedding-popup .popup-window {
-    width: 100%;
-    height: 100%;
-}
-
-#piano-popup .popup-window {
-    background: url("../media/base/piano/background2.png") center / cover no-repeat;
-    padding: 20% 18% 10%;
-    align-items: center;
-}
-
-#webmaster-popup .popup-window {
-    background: url("../media/base/shan/background.webp") top center / cover no-repeat;
-    font-family: "Quicksand", sans-serif;
-}
-
-#virtual-angel-popup .popup-window {
-    background: none;
-    width: fit-content;
-}
-
-#things-i-love-popup .popup-window {
-    background: #fdf3f7;
-}
-
-#things-i-love-popup .things-i-love-container {
-    padding: 16px;
-}
-
-#things-i-love-popup img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* ─────────────────────────────
    Mobile (≤ 768px)
 ───────────────────────────── */
 
@@ -253,56 +132,6 @@
 
     .popup-titlebar {
         padding: 5px 10px;
-    }
-
-    /* reset positioning */
-    #welcome-popup,
-    #avatar-popup,
-    #piano-popup,
-    #cloud-jumper-popup,
-    #virtual-angel-popup,
-    #strawberry-wedding-popup,
-    #webmaster-popup,
-    #things-i-love-popup{
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none;
-
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: none;
-        margin-top: 20px;
-        margin-bottom: 40px;
-
-
-    }
-
-    #welcome-popup {
-        margin-bottom: 40%;
-    }
-
-    #avatar-popup .popup-window {
-        width: 100%;
-    }
-
-    #webmaster-popup {
-        width: 50%;
-    }
-
-     #virtual-angel-popup .popup-window {
-        width: 100%;
-    }
-
-    #virtual-angel-popup .card {
-        width: 100%;
-    }
-
-    #piano-popup .popup-window {
-        padding: 30% 12% 12%;
     }
 
 }

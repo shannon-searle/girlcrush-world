@@ -1,4 +1,13 @@
 
+/* popup shell (titlebar/positioning/background) — moved from popups.css */
+#avatar-popup .popup-titlebar {
+    background: #c4e63a;
+    color: #5a6a19;
+}
+
+#avatar-popup { top: 5%; right: 5%; width: clamp(180px, 20vw, 320px); max-height: 90vh; }
+#avatar-popup .popup-window { background: #e8e8e8; }
+
 /* ── 10. Avatar Editor ── */
 
 .avatar-editor {
@@ -83,6 +92,26 @@
 }
 
 @media (max-width: 768px) {
+
+    #avatar-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    #avatar-popup .popup-window {
+        width: 100%;
+    }
 
     .avatar-editor {
         flex-direction: column-reverse;

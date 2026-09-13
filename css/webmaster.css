@@ -1,5 +1,18 @@
 /* webmaster */
 
+/* popup shell (titlebar/positioning/background) — moved from popups.css */
+#webmaster-popup .popup-titlebar {
+    background: rgb(188, 242, 242);
+    color: rgb(72, 106, 106);
+}
+
+#webmaster-popup { bottom: 10%; left: min(15%, 60vw); width: clamp(670px, 50vw, 770px); height: clamp(500px, 70vh, 650px); }
+
+#webmaster-popup .popup-window {
+    background: url("../media/base/shan/background.webp") top center / cover no-repeat;
+    font-family: "Quicksand", sans-serif;
+}
+
 #webmaster-popup img {
     width: clamp(100px, 20vh, 200px);
     height: auto;
@@ -57,6 +70,22 @@
 }
 
 @media (max-width: 768px) {
+    #webmaster-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+
+        width: 50%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
      #webmaster-popup img {
         width: 100%;
         height: auto;

@@ -22,7 +22,11 @@ function openPanel(id) {
     const panel = document.getElementById(id);
     if (panel.classList.contains('open')) return;
 
-    document.getElementById("popup-container").prepend(panel);
+    // nested panels (e.g. an item-carousel living inside another popup)
+    // stay put — only reparent top-level panels to bring them to the front
+    if (panel.parentElement === document.getElementById("popup-container")) {
+        document.getElementById("popup-container").prepend(panel);
+    }
     panel.classList.add('open');
 
     if (panel.classList.contains('popup')) {
@@ -35,6 +39,9 @@ function openPanel(id) {
     }
     if (id === 'virtual-angel-popup') {
         window.openVirtualAngel();
+    }
+    if (panel.classList.contains('item-carousel')) {
+        window.resetItemCarousel(id);
     }
 }
 

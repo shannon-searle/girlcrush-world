@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/shared.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/popups.css" />
+    <link rel="stylesheet" href="css/things-i-love.css" />
     <link rel="stylesheet" href="css/webmaster.css" />
     <link rel="stylesheet" href="css/avatar.css" />
     <link rel="stylesheet" href="css/welcome.css" />
@@ -528,7 +529,35 @@
                     <button class="popup-close" data-close="things-i-love-popup" data-closemenu="things-i-love-button">✕</button>
                 </div>
                 <div class="things-i-love-container window-classic-indent">
-                    <img src="./media/base/BAG.png" alt="things i love">
+                    <div class="bag-items">
+                        <img class="bag-base" src="./media/base/things-i-love/BAG.png" alt="things i love">
+                        <img class="bag-item" src="./media/base/things-i-love/ipod.png" alt="ipod"
+                             data-panel="ipod-carousel"
+                             style="left: 46.67%; top: 14.96%; width: 14.33%; height: 14.64%;">
+                        <img class="bag-item" src="./media/base/things-i-love/camera.png" alt="camera"
+                             data-panel="camera-carousel"
+                             style="left: 63.93%; top: 35.68%; width: 15.73%; height: 15.92%;">
+                    </div>
+
+                    <div id="ipod-carousel" class="panel item-carousel">
+                        <div class="item-carousel-window">
+                            <button class="item-carousel-prev" id="ipod-carousel-prev" aria-label="previous image">‹</button>
+                            <div class="item-carousel-media">
+                                <img class="item-carousel-img" alt="album art">
+                            </div>
+                            <button class="item-carousel-next" id="ipod-carousel-next" aria-label="next image">›</button>
+                        </div>
+                    </div>
+
+                    <div id="camera-carousel" class="panel item-carousel">
+                        <div class="item-carousel-window">
+                            <button class="item-carousel-prev" id="camera-carousel-prev" aria-label="previous image">‹</button>
+                            <div class="item-carousel-media">
+                                <img class="item-carousel-img" alt="camera photo">
+                            </div>
+                            <button class="item-carousel-next" id="camera-carousel-next" aria-label="next image">›</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -606,6 +635,7 @@
     <script src="js/virtualAngel.js"></script>
     <script src="js/piano.js"></script>
     <script src="js/strawberryWedding.js"></script>
+    <script src="js/itemCarousel.js"></script>
     <script src="js/navBar.js"></script>
     <script src="js/taskbar.js"></script>
 

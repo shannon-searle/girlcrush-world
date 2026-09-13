@@ -1,3 +1,32 @@
+/* popup shell (positioning/background/close button) — moved from popups.css */
+#virtual-angel-popup { bottom: 100px; left: 12vw; align-items: flex-start; }
+
+#virtual-angel-popup .popup-window {
+    background: none;
+    width: fit-content;
+}
+
+#virtual-angel-popup .popup-close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+
+    width: clamp(20px, 2vw, 25px);
+    height: clamp(20px, 2vw, 25px);
+
+    background: rgb(230, 251, 255);
+    color: rgb(106, 152, 171);
+
+    border: none;
+    border-radius: 0 7px 0 0;
+
+    z-index: 10;
+}
+
+#virtual-angel-popup .popup-close:hover {
+    background: #ffc0de;
+}
+
 .card {
     position: relative;
     width: clamp(200px, 25vw, 533px);
@@ -64,6 +93,26 @@
    Mobile (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
+    #virtual-angel-popup {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    #virtual-angel-popup .popup-window {
+        width: 100%;
+    }
+
     .card {
         width: 100%;
     }
