@@ -7,7 +7,7 @@
 
 /* wide enough for the canvas and control grid to sit side by side,
    so the popup reads square instead of a tall single column */
-#avatar-popup { top: 5%; right: 5%; width: clamp(180px, 45vw, 560px); max-height: 90vh; }
+#avatar-popup { top: 15%; right: 5%; width: clamp(180px, 45vw, 560px); max-height: 90vh; }
 #avatar-popup .popup-window { background: #e8e8e8; }
 
 /* ── 10. Avatar Editor ── */
@@ -18,14 +18,18 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 12px;
-    padding-top: 10px;
+    padding: 10px;
     position: relative;
 }
 
-/* canvas always reads first (top when stacked, left when side by side),
-   independent of its later position in the markup */
-.avatar-canvas {
+/* canvas (+ its action buttons) always reads first — top when stacked,
+   left when side by side — independent of its later position in the markup */
+.avatar-canvas-wrap {
     order: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .avatar-canvas {
@@ -47,13 +51,50 @@
     height: 100%;
 }
 
+.avatar-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: clamp(100px, 15vw, 260px);
+}
+
+.avatar-action-btn {
+    font-family: "Zen Dots", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    color: #5a6a19;
+
+    padding: 10px;
+
+    background: #e8e8e8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #9a9a9a;
+    border-bottom: 2px solid #9a9a9a;
+
+    cursor: pointer;
+    width: 50%;
+}
+
+.avatar-action-btn:hover {
+    background: #d6d6d6;
+}
+
+.avatar-action-btn:active {
+    background: #c4e63a;
+    border-top: 2px solid #9a9a9a;
+    border-left: 2px solid #9a9a9a;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
 .avatar-controls {
     display: flex;
     flex-direction: column;
-    flex: 1 1 260px;
+    flex: 1 1 220px;
     min-width: 220px;
     gap: 0.5vw;
-    padding: 0.5vw;
     overflow-y: auto;
     max-height: 100%;
 }
@@ -69,7 +110,7 @@
 }
 
 .avatar-controls button:active {
-    background: #d6d6d6;
+    background: #c4e63a;
     border-top: 2px solid #9a9a9a;
     border-left: 2px solid #9a9a9a;
     border-right: 2px solid #ffffff;
@@ -85,6 +126,7 @@
     width: clamp(10px, 30px, 60px);
     height: clamp(10px, 30px, 60px);
     display: block;
+    cursor: pointer;
 }
 
 .control-group {
@@ -137,6 +179,10 @@
     .avatar-canvas {
         width: 50vw;
         height: 50vw;
+    }
+
+    .avatar-actions {
+        width: 50vw;
     }
 
     .avatar-controls {

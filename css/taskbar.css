@@ -263,10 +263,6 @@
     display: none;
 }
 
-/* ─────────────────────────────
-   Tina — peeks out from behind the bar
-───────────────────────────── */
-
 #tina-peek {
     --tina-height: clamp(110px, 13vw, 180px);
     --tina-bar-top: 30px; /* visible height of the bar (see .taskbar bottom/padding-bottom) */

@@ -83,9 +83,6 @@
     ============================================== -->
     <img class="site-title" src="media/titleFont2.png" alt="Site Title">
 
-    <!-- =============================================
-         Tina — peeks out from behind the taskbar
-    ============================================== -->
     <div id="tina-peek">
         <img src="./media/base/tina-blink.gif" alt="tina" />
     </div>
@@ -167,8 +164,8 @@
         <!-- guestbook -->
         <button id="chatbox-button" data-panel="chatbox">
             <span class="chatbox-tooltip">
-                <span class="tooltip-closed-label">sign the guestbook</span>
-                <span class="tooltip-open-label">close guestbook</span>
+                <span class="tooltip-closed-label">text me</span>
+                <span class="tooltip-open-label">ttyl</span>
             </span>
             <img src="media/base/guestbook.png" alt="guestbook"/>
         </button>
@@ -493,16 +490,22 @@
                             <button data-layer="layer-background" data-src="media/base/pixel-avatar/background-night.png"    ><img src="media/base/pixel-avatar/background-night.png"     alt="night background"/></button>
                         </div>
                     </div>
-                    <div class="avatar-canvas">
-                        <img id="layer-background" class="avatar-layer" src="media/base/pixel-avatar/background-landscape.png" alt="" />
-                        <img id="layer-body"        class="avatar-layer" src="media/base/pixel-avatar/body-default.png"         alt="" />
-                        <img id="layer-blush"       class="avatar-layer" src="media/base/pixel-avatar/blush.png"                alt="" />
-                        <img id="layer-eyes"        class="avatar-layer" src="media/base/pixel-avatar/eyes-dark-blue.png"       alt="" />
-                        <img id="layer-mouth"       class="avatar-layer" src="media/base/pixel-avatar/mouth-default.png"        alt="" />
-                        <img id="layer-bottoms"     class="avatar-layer" src="media/base/pixel-avatar/purple-pants.png"         alt="" />
-                        <img id="layer-top"         class="avatar-layer" src="media/base/pixel-avatar/black-top-graphic.png"    alt="" />
-                        <img id="layer-shoes"       class="avatar-layer" src="media/base/pixel-avatar/shoes-black-basic.png"    alt="" />
-                        <img id="layer-hair"        class="avatar-layer" src="media/base/pixel-avatar/red-hair-short.png"       alt="" />
+                    <div class="avatar-canvas-wrap">
+                        <div class="avatar-canvas">
+                            <img id="layer-background" class="avatar-layer" src="media/base/pixel-avatar/background-landscape.png" alt="" />
+                            <img id="layer-body"        class="avatar-layer" src="media/base/pixel-avatar/body-default.png"         alt="" />
+                            <img id="layer-blush"       class="avatar-layer" src="media/base/pixel-avatar/blush.png"                alt="" />
+                            <img id="layer-eyes"        class="avatar-layer" src="media/base/pixel-avatar/eyes-dark-blue.png"       alt="" />
+                            <img id="layer-mouth"       class="avatar-layer" src="media/base/pixel-avatar/mouth-default.png"        alt="" />
+                            <img id="layer-bottoms"     class="avatar-layer" src="media/base/pixel-avatar/purple-pants.png"         alt="" />
+                            <img id="layer-top"         class="avatar-layer" src="media/base/pixel-avatar/black-top-graphic.png"    alt="" />
+                            <img id="layer-shoes"       class="avatar-layer" src="media/base/pixel-avatar/shoes-black-basic.png"    alt="" />
+                            <img id="layer-hair"        class="avatar-layer" src="media/base/pixel-avatar/red-hair-short.png"       alt="" />
+                        </div>
+                        <div class="avatar-actions">
+                            <button id="avatar-randomize" class="avatar-action-btn">randomise</button>
+                            <button id="avatar-reset" class="avatar-action-btn">reset</button>
+                        </div>
                     </div>
                 </div>
             </div>
