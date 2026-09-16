@@ -62,15 +62,62 @@ window.addEventListener("resize", updateMobileState);
 document.querySelectorAll('.taskbar-button').forEach(taskbarButton => {
     taskbarButton.addEventListener('click', function () {
         const button = taskbarButton.querySelector('.popup-close');
-        const panelId = button.dataset.close;
+        if (!button) return;
 
+        const panelId = button.dataset.close;
         if (!panelId) return;
-        
+
         const panel = document.getElementById(panelId);
-        
+
         if (panel.classList.contains('popup')) {
             restackPopups(panel);
         }
 
     });
+});
+
+/* ------------------------------------------
+    Start menu
+------------------------------------------ */
+const startButton = document.getElementById('start-button');
+const startMenu = document.getElementById('start-menu');
+
+function openStartMenu() {
+    startMenu.classList.add('open');
+    startButton.classList.add('open');
+}
+
+function closeStartMenu() {
+    startMenu.classList.remove('open');
+    startButton.classList.remove('open');
+}
+
+function toggleStartMenu() {
+    if (startMenu.classList.contains('open')) {
+        closeStartMenu();
+    } else {
+        openStartMenu();
+    }
+}
+
+startButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleStartMenu();
+});
+
+// clicking a menu item closes the start menu behind it
+startMenu.querySelectorAll('[data-panel]').forEach(item => {
+    item.addEventListener('click', closeStartMenu);
+});
+
+// click anywhere outside the menu/button closes it
+document.addEventListener('click', (e) => {
+    if (!startMenu.classList.contains('open')) return;
+    if (e.target.closest('#start-menu') || e.target.closest('#start-button')) return;
+    closeStartMenu();
+});
+
+// escape closes it
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeStartMenu();
 });

@@ -262,3 +262,42 @@
 .taskbar.compact #chatbox-button {
     display: none;
 }
+
+/* ─────────────────────────────
+   Tina — peeks out from behind the bar
+───────────────────────────── */
+
+#tina-peek {
+    --tina-height: clamp(110px, 13vw, 180px);
+    --tina-bar-top: 30px; /* visible height of the bar (see .taskbar bottom/padding-bottom) */
+
+    position: fixed;
+    left: 30%;
+    /* sunk so only her top half clears the bar */
+    bottom: calc(var(--tina-bar-top) - var(--tina-height) / 2);
+    z-index: 1; /* behind the taskbar (so it crops her) and behind any open popup */
+
+    height: var(--tina-height);
+    line-height: 0;
+
+    transform: translateX(-50%);
+    transition: transform 0.4s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+#tina-peek img {
+    display: block;
+    height: 100%;
+    width: auto;
+    pointer-events: none;
+}
+
+/* pop all the way out, feet just clear of the bar */
+#tina-peek:hover {
+    transform: translateX(-50%) translateY(calc(var(--tina-height) / -2 - 6px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #tina-peek {
+        transition: none;
+    }
+}

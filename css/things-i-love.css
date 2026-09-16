@@ -8,9 +8,19 @@
 }
 
 #things-i-love-popup {
-    top: 10%;
-    left: 15%;
-    width: clamp(800px, 75vw, 900px);
+    /* the flat-lay is a fixed 1500:1250 box, so height follows width:
+       height = width x 1250/1500 + 41px of leftover chrome (titlebar + container padding).
+       cap the width by the height that's actually free, so short screens don't
+       push the popup down behind the taskbar. */
+    --til-top: 8vh;
+    --til-bottom-guard: 40px; /* taskbar (30px visible) plus a little air */
+    --til-free-height: calc(100vh - var(--til-top) - var(--til-bottom-guard));
+
+    --til-width: min(900px, 92%, calc((var(--til-free-height) - 41px) * 1.2));
+
+    top: var(--til-top);
+    left: calc((100% - var(--til-width)) / 2);
+    width: var(--til-width);
 }
 
 #things-i-love-popup .popup-window {
@@ -135,27 +145,43 @@
     width: 222.48%;
 }
 
-/* prev/next triggers — plain arrows flanking the photo */
+/* prev/next triggers — glassy pink chevron buttons flanking the photo */
 .item-carousel-prev,
 .item-carousel-next {
     position: absolute;
     top: 50%;
     z-index: 2;
-    width: clamp(28px, 3.5vw, 40px);
+    width: clamp(30px, 3.6vw, 42px);
     aspect-ratio: 1;
-    border: none;
+    border: 1px solid rgba(217, 102, 160, 0.35);
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.55);
-    color: #fff;
-    font-size: clamp(16px, 2vw, 22px);
+    background: linear-gradient(145deg, #ffffff, #ffe9f4);
     padding: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
     transform: translateY(-50%);
-    transition: transform 0.15s ease;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.08),
+        0 6px 14px rgba(217, 102, 160, 0.18);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.item-carousel-prev::before,
+.item-carousel-next::before {
+    content: "";
+    box-sizing: border-box;
+    width: 9px;
+    height: 9px;
+    border: solid #d966a0;
+    border-width: 0 2px 2px 0;
+    /* the border-corner shape's ink sits toward the bottom-right of its box, so nudge it back before rotating */
+    transform: rotate(-45deg) translate(-1.75px, -1.75px);
+}
+
+.item-carousel-prev::before {
+    transform: rotate(135deg) translate(-1.75px, -1.75px);
 }
 
 .item-carousel-prev {
@@ -164,6 +190,14 @@
 
 .item-carousel-next {
     right: 2%;
+}
+
+.item-carousel-prev:hover,
+.item-carousel-next:hover {
+    background: linear-gradient(145deg, #ffffff, #ffd2e6);
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 8px 20px rgba(217, 102, 160, 0.3);
 }
 
 .item-carousel-prev:hover {

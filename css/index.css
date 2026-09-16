@@ -172,10 +172,10 @@ a { outline: none; }
 
 /* Waiting room: fade the frame's edges into the page instead of a box-shadow glow */
 #screen-portal .scene-frame {
-    mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-                linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%),
-                         linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 82%, transparent 100%),
+                linear-gradient(to right,  transparent 0%, black 15%, black 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 82%, transparent 100%),
+                         linear-gradient(to right,  transparent 0%, black 15%, black 82%, transparent 100%);
     mask-composite: intersect;
     -webkit-mask-composite: source-in;
 }

@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/icons.css" />
     <link rel="stylesheet" href="css/piano.css" />
     <link rel="stylesheet" href="css/taskbar.css" />
+    <link rel="stylesheet" href="css/start-menu.css" />
     <link rel="stylesheet" href="css/cloud-jumper.css" />
     <link rel="stylesheet" href="css/virtual-angel.css" />
     <link rel="stylesheet" href="css/nav-bar.css" />
@@ -56,15 +57,19 @@
          NAV BAR (top taskbar)
     ============================================== -->
     <nav class="nav-bar">
-        <a>
+        <a href="base.html" class="current">
+            <p>home</p>
+        </a>
+        <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
+        <a href="about-me.html">
             <p>about me</p>
         </a>
         <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
-        <a>
+        <a href="girlcrush-world.html">
             <p>girlcrush world</p>
         </a>
         <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
-        <a>
+        <a href="music.html">
             <p>music</p>
         </a>
         <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
@@ -77,6 +82,13 @@
          SITE TITLE
     ============================================== -->
     <img class="site-title" src="media/titleFont2.png" alt="Site Title">
+
+    <!-- =============================================
+         Tina — peeks out from behind the taskbar
+    ============================================== -->
+    <div id="tina-peek">
+        <img src="./media/base/tina-blink.gif" alt="tina" />
+    </div>
 
     <!-- =============================================
          Taskbar
@@ -163,6 +175,19 @@
 
     </div>
 
+    <!-- =============================================
+         Start Menu
+    ============================================== -->
+    <div id="start-menu" class="panel start-menu">
+        <div class="start-menu-window window-classic">
+            <div class="start-menu-sidebar">
+                <span>girlcrush</span>
+            </div>
+            <div class="start-menu-items">
+                <!-- start menu items go here -->
+            </div>
+        </div>
+    </div>
 
     <!-- =============================================
          DESKTOP ICON TRAY
@@ -541,21 +566,21 @@
 
                     <div id="ipod-carousel" class="panel item-carousel">
                         <div class="item-carousel-window">
-                            <button class="item-carousel-prev" id="ipod-carousel-prev" aria-label="previous image">‹</button>
+                            <button class="item-carousel-prev" id="ipod-carousel-prev" aria-label="previous image"></button>
                             <div class="item-carousel-media">
                                 <img class="item-carousel-img" alt="album art">
                             </div>
-                            <button class="item-carousel-next" id="ipod-carousel-next" aria-label="next image">›</button>
+                            <button class="item-carousel-next" id="ipod-carousel-next" aria-label="next image"></button>
                         </div>
                     </div>
 
                     <div id="camera-carousel" class="panel item-carousel">
                         <div class="item-carousel-window">
-                            <button class="item-carousel-prev" id="camera-carousel-prev" aria-label="previous image">‹</button>
+                            <button class="item-carousel-prev" id="camera-carousel-prev" aria-label="previous image"></button>
                             <div class="item-carousel-media">
                                 <img class="item-carousel-img" alt="camera photo">
                             </div>
-                            <button class="item-carousel-next" id="camera-carousel-next" aria-label="next image">›</button>
+                            <button class="item-carousel-next" id="camera-carousel-next" aria-label="next image"></button>
                         </div>
                     </div>
                 </div>

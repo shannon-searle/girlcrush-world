@@ -52,6 +52,10 @@
     text-decoration: underline;
 }
 
+.nav-bar a.current p {
+    text-decoration: underline;
+}
+
 .nav-star-connector {
     display: block;
     width: auto;
@@ -78,7 +82,7 @@
    ============================================================ */
 @media (max-width: 768px) {
     .nav-bar a {
-        width: 78px;
+        width: 62px;
         margin: 0;
     }
 

@@ -1,0 +1,29 @@
+/* =============================================
+   Page Content — basic subpages (about me, music, girlcrush world)
+============================================= */
+
+.page-content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.page-content h1 {
+    font-family: "Zen Dots", sans-serif;
+    letter-spacing: 0.8px;
+    font-size: clamp(20px, 3vw, 32px);
+    color: #7a4a68;
+}
+
+.page-content p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+    color: #5c4a56;
+}

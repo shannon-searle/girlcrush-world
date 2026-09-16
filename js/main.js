@@ -8,17 +8,6 @@ const mainConfig = {
 };
 
 /* ------------------------------------------
-    Fade the page in on load
------------------------------------------- */
-function initPageFadeIn() {
-    window.addEventListener("load", () => {
-        requestAnimationFrame(() => {
-            document.body.style.opacity = "1";
-        });
-    });
-}
-
-/* ------------------------------------------
     Cursor heart trail
 ------------------------------------------ */
 function initCursorHeartTrail() {
@@ -66,7 +55,6 @@ function initBlinkies() {
     });
 }
 
-initPageFadeIn();
 initCursorHeartTrail();
 initArrivalFadeIn();
 initBlinkies();
