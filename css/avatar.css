@@ -5,7 +5,9 @@
     color: #5a6a19;
 }
 
-#avatar-popup { top: 5%; right: 5%; width: clamp(180px, 20vw, 320px); max-height: 90vh; }
+/* wide enough for the canvas and control grid to sit side by side,
+   so the popup reads square instead of a tall single column */
+#avatar-popup { top: 5%; right: 5%; width: clamp(180px, 45vw, 560px); max-height: 90vh; }
 #avatar-popup .popup-window { background: #e8e8e8; }
 
 /* ── 10. Avatar Editor ── */
@@ -14,9 +16,16 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
+    gap: 12px;
     padding-top: 10px;
     position: relative;
+}
+
+/* canvas always reads first (top when stacked, left when side by side),
+   independent of its later position in the markup */
+.avatar-canvas {
+    order: -1;
 }
 
 .avatar-canvas {
@@ -41,6 +50,8 @@
 .avatar-controls {
     display: flex;
     flex-direction: column;
+    flex: 1 1 260px;
+    min-width: 220px;
     gap: 0.5vw;
     padding: 0.5vw;
     overflow-y: auto;
@@ -114,7 +125,9 @@
     }
 
     .avatar-editor {
-        flex-direction: column-reverse;
+        /* canvas already sorts first via `order: -1`; column-reverse would
+           now flip it to the bottom, so plain column here keeps it on top */
+        flex-direction: column;
         align-items: center;
         width: 100%;
 
