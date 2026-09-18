@@ -1,42 +1,43 @@
+/* =============================================
+   Avatar
+============================================= */
 
-/* popup shell (titlebar/positioning/background) — moved from popups.css */
 #avatar-popup .popup-titlebar {
     background: #c4e63a;
     color: #5a6a19;
 }
 
-/* wide enough for the canvas and control grid to sit side by side,
-   so the popup reads square instead of a tall single column */
-#avatar-popup { top: 15%; right: 5%; width: clamp(180px, 45vw, 560px); max-height: 90vh; }
+#avatar-popup { top: 15%; right: 5%; width: clamp(180px, 50vw, 660px); max-height: 90vh; }
 #avatar-popup .popup-window { background: #e8e8e8; }
 
-/* ── 10. Avatar Editor ── */
+/* =============================================
+   Avatar Editor
+============================================= */
 
 .avatar-editor {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
     gap: 12px;
     padding: 10px;
     position: relative;
 }
 
-/* canvas (+ its action buttons) always reads first — top when stacked,
-   left when side by side — independent of its later position in the markup */
 .avatar-canvas-wrap {
     order: -1;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
     gap: 10px;
+    width: 100%;
 }
 
 .avatar-canvas {
     position: relative;
-    width: clamp(100px, 15vw, 260px);
-    height: clamp(100px, 15vw, 260px);
-    margin: 0 auto;
+    width: clamp(100px, 60vw, 360px);
+    height: clamp(100px, 60vw, 360px);
+    flex-shrink: 0;
     border-top: 2px solid #808080;
     border-left: 2px solid #808080;
     border-right: 2px solid #ffffff;
@@ -54,9 +55,19 @@
 .avatar-actions {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    width: clamp(100px, 15vw, 260px);
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.avatar-action-btn,
+.control-arrow {
+    background: #e8e8e8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #9a9a9a;
+    border-bottom: 2px solid #9a9a9a;
+    cursor: pointer;
 }
 
 .avatar-action-btn {
@@ -64,24 +75,17 @@
     font-size: 11px;
     letter-spacing: 0.3px;
     color: #5a6a19;
-
     padding: 10px;
-
-    background: #e8e8e8;
-    border-top: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
-    border-right: 2px solid #9a9a9a;
-    border-bottom: 2px solid #9a9a9a;
-
-    cursor: pointer;
-    width: 50%;
+    width: 100%;
 }
 
-.avatar-action-btn:hover {
+.avatar-action-btn:hover,
+.control-arrow:hover {
     background: #d6d6d6;
 }
 
-.avatar-action-btn:active {
+.avatar-action-btn:active,
+.control-arrow:active {
     background: #c4e63a;
     border-top: 2px solid #9a9a9a;
     border-left: 2px solid #9a9a9a;
@@ -90,116 +94,186 @@
 }
 
 .avatar-controls {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 220px;
-    min-width: 220px;
-    gap: 0.5vw;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px 10px;
+    width: auto;
     overflow-y: auto;
     max-height: 100%;
+
+    border-radius: 8px;
+    padding: 5px;
 }
 
-.avatar-controls button {
-    background: #e8e8e8;
-    border-top: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
-    border-right: 2px solid #9a9a9a;
-    border-bottom: 2px solid #9a9a9a;
-    cursor: pointer;
+.control-swatches button {
+    background: none;
+    border: none;
     padding: 0;
+    cursor: default;
 }
 
-.avatar-controls button:active {
-    background: #c4e63a;
-    border-top: 2px solid #9a9a9a;
-    border-left: 2px solid #9a9a9a;
-    border-right: 2px solid #ffffff;
-    border-bottom: 2px solid #ffffff;
-}
-
-.avatar-controls button:hover {
-    transform: translateY(-1px) scale(1.01);
-    background: #d6d6d6;
-}
-
-.avatar-controls button img {
-    width: clamp(10px, 30px, 60px);
-    height: clamp(10px, 30px, 60px);
+.control-swatches button img {
+    width: clamp(28px, 4vw, 48px);
+    height: clamp(28px, 4vw, 48px);
     display: block;
-    cursor: pointer;
+    object-fit: contain;
 }
 
 .control-group {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 0.5vw;
+    flex-direction: column;
+    gap: 4px;
+
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 6px 8px;
 }
 
 .control-label {
     font-family: "Zen Dots", sans-serif;
     font-size: 10px;
     color: #4f4f4f;
-    width: 100%;
 }
 
+/* =============================================
+   Cycler — one swatch shown at a time, flanked
+   by prev/next arrows
+============================================= */
+
+.control-cycler {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.control-arrow {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.control-swatches {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.control-swatches button {
+    display: none;
+}
+
+.control-swatches button.active {
+    display: block;
+}
+
+/* =============================================
+   Mobile (≤ 768px)
+============================================= */
 @media (max-width: 768px) {
-
     #avatar-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none;
-
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: none;
-        margin-top: 20px;
-        margin-bottom: 40px;
+        bottom: var(--taskbar-visible-height, 40px) !important;
+        padding-bottom: var(--mobile-popup-gap);
     }
 
     #avatar-popup .popup-window {
-        width: 100%;
+        height: 100% !important;
     }
 
     .avatar-editor {
-        /* canvas already sorts first via `order: -1`; column-reverse would
-           now flip it to the bottom, so plain column here keeps it on top */
         flex-direction: column;
-        align-items: center;
+        flex-wrap: nowrap;
+        align-items: stretch;
         width: 100%;
-
+        height: 100%;
+        min-height: 0;
+        padding: 8px;
+        gap: 8px;
+        justify-content: space-evenly;
     }
 
+    .avatar-canvas-wrap {
+        flex: 1 1 auto;
+        min-height: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        max-height: 250px;
+    }
 
     .avatar-canvas {
-        width: 50vw;
-        height: 50vw;
+        width: auto;
+        height: 100%;
+        max-width: 60vw;
+        aspect-ratio: 1;
+        margin: 0;
+        flex-shrink: 0;
     }
 
     .avatar-actions {
-        width: 50vw;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: space-evenly;
+        width: auto;
+        height: 100%;
+        gap: 6px;
+    }
+
+    .avatar-action-btn {
+        font-size: 9px;
+        padding: 5px 10px;
+        width: auto;
     }
 
     .avatar-controls {
-        flex-direction: column;
-        gap: 6px;
-        padding: 20px;
-        max-height: none;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(4, min-content);
+        align-content: center;
+        align-items: center;
+        gap: 6px 15px;
+
+        flex: 0 0 auto;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        padding: 8px;
         width: 100%;
     }
 
     .control-group {
-        gap: 10px;
-        width: 100%;
+        min-width: 0;
+        min-height: 0;
+        gap: 2px;
+        justify-content: center;
+        padding: 5px 10px;
     }
 
-    .avatar-controls button img {
-        width: 40px;
-        height: 40px;
+    .control-cycler {
+        gap: 1px;
+    }
+
+    .control-label {
+        font-size: clamp(6px, 1.6vh, 10px);
+        line-height: 1.1;
+    }
+
+    .control-arrow {
+        width: clamp(10px, 4vh, 24px);
+        height: clamp(10px, 4vh, 24px);
+        font-size: clamp(7px, 2vh, 12px);
+    }
+
+    .control-swatches button img {
+        width: clamp(10px, 5vh, 34px);
+        height: clamp(10px, 5vh, 34px);
     }
 }

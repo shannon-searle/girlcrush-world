@@ -27,3 +27,10 @@
     font-size: 14px;
     color: #5c4a56;
 }
+
+@media (max-width: 768px) {
+    .page-content {
+        padding: 0px 0 40px 0;
+        gap: 0;
+    }
+}

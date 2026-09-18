@@ -1,5 +1,7 @@
+/* =============================================
+   Piano
+============================================= */
 
-/* popup shell (titlebar/positioning/background) — moved from popups.css */
 #piano-popup .popup-titlebar {
     background: #000;
     color: #fff;
@@ -14,7 +16,6 @@
     align-items: center;
 }
 
-/* Piano */
 .key, .black-key {
     touch-action: none;
     -webkit-tap-highlight-color: transparent;
@@ -22,12 +23,11 @@
     -webkit-user-select: none;
 }
 
-
-.piano-play {
+.piano-keyboard {
     position: relative;
 }
 
-.piano-play img {
+.piano-keyboard img {
     position: relative;
     top: 0;
     left: 0;
@@ -73,31 +73,27 @@
     color: black;
 }
 
+/* =============================================
+   Mobile (≤ 768px)
+============================================= */
 @media (max-width: 768px) {
     #piano-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none;
-
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: none;
-        margin-top: 20px;
-        margin-bottom: 40px;
+        top: var(--mobile-popup-top, 72px) !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: var(--taskbar-visible-height, 40px) !important;
+        max-height: none !important;
     }
 
     #piano-popup .popup-window {
-        padding: 30% 12% 12%;
+        height: 100% !important;
+        max-height: none !important;
+        border-radius: 0 !important;
+        padding: 20px 12%;
+        justify-content: center;
     }
 
     #piano-popup .popup-titlebar span {
-        font-size: 12px;
-        font-family: 'Courier New', Courier, monospace;
         color: white;
     }
-
 }

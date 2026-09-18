@@ -1,10 +1,11 @@
-/* Reset and @keyframes shake live in shared.css */
-
 html {
     background: #fce4ec;
 }
 
-/* ── Win98 UI font (icons + taskbar) ── */
+/* =============================================
+   Win98 UI Font
+============================================= */
+
 @font-face {
     font-family: "MS W98 UI";
     src: url('../media/base/fonts/MSW98UI-Regular.woff2') format('woff2'),
@@ -47,7 +48,10 @@ a:active {
     outline: none;
 }
 
-/* ── Body & Background ── */
+/* =============================================
+   Body & Background
+============================================= */
+
 body {
     display: flex;
     min-height: 100vh;
@@ -63,7 +67,7 @@ body {
             160deg,
             #fce4ec 0%,
             #e8eaf6 30%,
-            #e0f7fa 55%,
+            var(--teal-accent, #e0f7fa) 55%,
             #f3e5f5 80%,
             #fce4ec 100%
         );
@@ -90,10 +94,9 @@ html, body {
     -ms-user-select: none;
 }
 
-
-/* ─────────────────────────────
+/* =============================================
    Window Styling (Win98 style)
-───────────────────────────── */
+============================================= */
 
 .window-classic {
     border-top: 2px solid #f2f2f2;
@@ -117,15 +120,9 @@ html, body {
         inset -1px -1px 0 rgba(255,255,255,0.6);
 }
 
-/* ── 4. Animations ── */
-
-@keyframes heart-fade {
-    0%   { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(0); opacity: 0; }
-}
-
-
-/* ── 5. Site Title ── */
+/* =============================================
+   Site Title
+============================================= */
 
 .site-title {
     align-self: center;
@@ -138,59 +135,14 @@ html, body {
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.field-border {
-    border: 3px solid #ffdbf1;
-    border-radius: 20px 20px 20px 20px;
-    background: linear-gradient(
-        to bottom,
-        rgba(243, 249, 250, 0.5),
-        rgb(246, 247, 247)
-    );
+/* =============================================
+   Cursor Heart Trail
+============================================= */
 
-    width: clamp(280px, 26vw, 340px);
-    height: clamp(300px, 40vh, 600px);
-
-    box-shadow:
-        /* soft shadow underneath */
-        0 18px 40px rgba(0, 0, 0, 0.18),
-
-        /* tighter shadow for depth */
-        0 8px 16px rgba(0, 0, 0, 0.12),
-
-        /* subtle highlight around the edge */
-        0 0 0 2px rgba(255, 255, 255, 0.35) inset,
-
-        /* inner shading */
-        inset 0 -8px 16px rgba(0, 0, 0, 0.06);
+@keyframes heart-fade {
+    0%   { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(0); opacity: 0; }
 }
-
-/* ─────────────────────────────
-   Chatbox
-───────────────────────────── */
-
-#chatbox {
-    position: fixed;
-    right: 5vw;
-    bottom: 45vh;
-    z-index: 5010;
-
-    /* always laid out; visibility is animated via opacity/transform below
-       so closing can float the box up and away like a sent message */
-    display: flex;
-    opacity: 0;
-    transform: translateY(-24px);
-    pointer-events: none;
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-#chatbox.open {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-
-/* ── 13. Cursor Heart Trail ── */
 
 .cursor-heart {
     position: absolute;
@@ -201,9 +153,10 @@ html, body {
     animation: heart-fade 1s ease forwards;
 }
 
+/* =============================================
+   Stars
+============================================= */
 
-
-/* stars */
 #stars {
     position: fixed;
     top: 0;
@@ -214,146 +167,17 @@ html, body {
     pointer-events: none;
 }
 
-
-/* blinkies */
-
-.blinkies {
-    display: flex;
-    flex-wrap: wrap;
-    width: clamp(160px, 30vw, 480px);
-    position: fixed;
-    bottom: 70px;
-    right: 18%;
-    gap: 17px;
-    z-index: 1;
-}
-
-.blinkies img {
-    width: clamp(60px, 8vw, 130px);
-    height: auto;
-}
-
-/* epic gifs */
-#epicGif1 {
-    position: fixed;
-    bottom: 10%;
-    left: 40%;
-    height: 5%;
-    width: auto;
-}
-
-#epicGif2 {
-    position: fixed;
-    left: 23%;
-    bottom: 50px;
-    height: 15%;
-    width: auto;
-}
-
-#epicGif3 {
-    position: fixed;
-    top: 38%;
-    left: 36%;
-    height: 8%;
-    width: auto;
-}
-
-#epicGif4 {
-    position: fixed;
-    bottom: 7%;
-    right: 3%;
-    width: 8%;
-    height: auto;
-}
-
-#epicGif5 {
-    position: fixed;
-    bottom: 28%;
-    right: 35%;
-    height: 12%;
-    width: auto;
-}
-
-#epicGif6 {
-    position: fixed;
-    bottom: 30%;
-    left: 10%;
-    height: 5%;
-    width: auto;
-}
-
-
-#epicGif7 {
-    position: fixed;
-    bottom: 50px;
-    left: 10%;
-    height: 12%;
-    width: auto;
-}
-
-#epicGif8 {
-    position: fixed;
-    bottom: 48%;
-    right: 1%;
-    height: 8%;
-    width: auto;
-}
-
-#epicGif9 {
-    position: fixed;
-    top: 25%;
-    left: 17%;
-    height: 12%;
-    width: auto;
-}
-
-#decor {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.princess-container {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-
-
-.princess-of-the-inside {
-    position: absolute;
-    bottom: 3%;
-    right: 10%;
-    width: auto;
-    height: clamp(160px, 40vh, 500px);
-    z-index: 0;
-}
-
-/* guestbook: desktop signs it from the taskbar button (taskbar.css
-   #chatbox-button); mobile gets a normal tray icon instead. */
-.icon-tray .guestbook-mobile {
-    display: none;
-}
-
-/* ============================================================
+/* =============================================
    Mobile (≤ 768px)
-   ============================================================ */
+============================================= */
 @media (max-width: 768px) {
     html, body {
-        overflow-y: auto;
-        overflow-x: hidden;
         touch-action: manipulation;
-    }
-
-    .icon-tray .guestbook-mobile {
-        display: flex;
     }
 
     body {
         box-sizing: border-box;
-        padding: 60px 10px 30px 10px;
+        padding: 40px 10px;
         background:
             url('../media/base/background/mobile.png'),
             url('../media/base/background/websiteBackgroundMobile2.png'),
@@ -361,7 +185,7 @@ html, body {
                 160deg,
                 #fce4ec 0%,
                 #e8eaf6 30%,
-                #e0f7fa 55%,
+                var(--teal-accent, #e0f7fa) 55%,
                 #f3e5f5 80%,
                 #fce4ec 100%
             );
@@ -369,169 +193,18 @@ html, body {
         background-size: 100vw, 120vw auto, cover;
         background-position: center top, right top, center;
         background-attachment: scroll, scroll;
-        min-height: 1500px;
-        
+        min-height: 100vh;
+    }
+
+    body:has(.taskbar) {
+        padding-top: 20px;
     }
 
     .site-title {
-        margin-top: 2px;
-        margin-bottom: 10px;
+        margin: 2px 0;
         width: 80vw;
         height: auto;
         filter: none;
-
-    }
-
-    .site-title:hover {
-        transform: none;
-        filter: none;
-    }
-
-    .field-border {
-        background: linear-gradient(
-            to bottom,
-            rgb(247, 246, 247),
-            #ffdbf1
-        );
-
-        width: 100%;
-        height: 100%;
-        display: block;
-        box-shadow: none;
-        border: 5px solid #ffdbf1;
-
-    }
-
-
-    #chatbox {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none;
-
-        width: 100%;
-        height: 300px;
-        max-width: 100%;
-        max-height: none;
-        margin-top: 20px;
-        margin-bottom: 40px;
-    }
-
-    .blinkies {
-        width: 150px;
-        left: 5%;
-        right: auto;
-        top: 5%;
-        bottom: auto;
-        gap: 3px;
-        position: absolute;
-    }
-
-    .blinkies img {
-        width: 60px;
-    }
-
-    #epicGif1 {
-        position: absolute;
-        top: 22%;
-        right: auto;
-        left: 10%;
-        height: 5%;
-        width: auto;
-    }
-
-    #epicGif3 {
-        position: absolute;
-        top: 3%;
-        right: 5%;
-        left: auto;
-        height: 8%;
-        width: auto;
-    }
-
-
-    #epicGif2 {
-        position: absolute;
-        left: 23%;
-        bottom: 50px;
-        height: 15%;
-        width: auto;
-    }
-
-    #epicGif4 {
-        position: absolute;
-        top: 20%;
-        right: 12%;
-        width: 10%;
-        height: auto;
-    }
-
-    #epicGif5 {
-        position: absolute;
-        bottom: 30%;
-        left: 28%;
-        right: auto;
-        height: 10%;
-        width: auto;
-    }
-
-    #epicGif6 {
-        position: absolute;
-        bottom: 30%;
-        left: 22%;
-        height: 5%;
-        width: auto;
-    }
-
-
-    #epicGif7 {
-        position: absolute;
-        bottom: 10%;
-        right: 2%;
-        left: auto;
-        height: 8%;
-        width: auto;
-    }
-
-    #epicGif8 {
-        position: absolute;
-        bottom: 32%;
-        top: auto;
-        right: 5%;
-        left: auto;
-        height: 5%;
-        width: auto;
-    }
-
-    #epicGif9 {
-        position: absolute;
-        top: 35%;
-        left: auto;
-        right: 7%;
-        height: 5%;
-        width: auto;
-    }
-
-    #decor {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 700px;
-    }
-
-    .princess-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: clamp(500px, 90vh, 700px);
-    }
-
-    .princess-of-the-inside {
-        position: absolute;
-        top: 60%;
-        right: 5%;
     }
 
 }

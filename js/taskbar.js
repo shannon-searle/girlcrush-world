@@ -10,7 +10,7 @@ function taskbarOpen(id) {
     if (!btn.classList.contains('open')) {
         btn.classList.add('open');
         taskbar.insertBefore(btn, taskbarSpacer);
-        // clear previous "last"
+        // only the most recently opened tab keeps .keep-full
         document.querySelectorAll(".keep-full").forEach(b => b.classList.remove("keep-full"));
         if (!mobile && taskbarSpacer.clientWidth <= 20) {
             enableScalableTaskbar(btn);
@@ -39,12 +39,12 @@ function disableCompactTaskbar() {
 }
 
 function enableScalableTaskbar(lastbtn) {
-    taskbar.classList.add("scaleable");
+    taskbar.classList.add("scalable");
     lastbtn.classList.add("keep-full");
 }
 
 function disableScalableTaskbar() {
-    taskbar.classList.remove("scaleable");
+    taskbar.classList.remove("scalable");
 }
 
 function updateMobileState() {
@@ -72,52 +72,5 @@ document.querySelectorAll('.taskbar-button').forEach(taskbarButton => {
         if (panel.classList.contains('popup')) {
             restackPopups(panel);
         }
-
     });
-});
-
-/* ------------------------------------------
-    Start menu
------------------------------------------- */
-const startButton = document.getElementById('start-button');
-const startMenu = document.getElementById('start-menu');
-
-function openStartMenu() {
-    startMenu.classList.add('open');
-    startButton.classList.add('open');
-}
-
-function closeStartMenu() {
-    startMenu.classList.remove('open');
-    startButton.classList.remove('open');
-}
-
-function toggleStartMenu() {
-    if (startMenu.classList.contains('open')) {
-        closeStartMenu();
-    } else {
-        openStartMenu();
-    }
-}
-
-startButton.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleStartMenu();
-});
-
-// clicking a menu item closes the start menu behind it
-startMenu.querySelectorAll('[data-panel]').forEach(item => {
-    item.addEventListener('click', closeStartMenu);
-});
-
-// click anywhere outside the menu/button closes it
-document.addEventListener('click', (e) => {
-    if (!startMenu.classList.contains('open')) return;
-    if (e.target.closest('#start-menu') || e.target.closest('#start-button')) return;
-    closeStartMenu();
-});
-
-// escape closes it
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeStartMenu();
 });

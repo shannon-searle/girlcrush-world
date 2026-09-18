@@ -22,12 +22,14 @@
     <!-- style sheets -->
     <link rel="stylesheet" href="css/shared.css" />
     <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/decor.css" />
+    <link rel="stylesheet" href="css/guestbook.css" />
     <link rel="stylesheet" href="css/popups.css" />
     <link rel="stylesheet" href="css/things-i-love.css" />
     <link rel="stylesheet" href="css/webmaster.css" />
     <link rel="stylesheet" href="css/avatar.css" />
     <link rel="stylesheet" href="css/welcome.css" />
-    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/desktop-icons.css" />
     <link rel="stylesheet" href="css/piano.css" />
     <link rel="stylesheet" href="css/taskbar.css" />
     <link rel="stylesheet" href="css/start-menu.css" />
@@ -92,18 +94,18 @@
     ============================================== -->
     <div class="taskbar">
         <div class="taskbar-button window-classic" id="start-button">
-            <p>start</p>
+            <p>menu</p>
         </div>
 
         <div class="taskbar-button window-classic" id="decor-button">
-            <img src="./media/base/decor-gifs/gif2.gif" alt="">
+            <img src="./media/base/icons/lamp.png" alt="">
             <p>decor</p>
             <button class="popup-close" data-close="decor" data-closemenu="decor-button">✕</button>
 
         </div>
 
         <div class="taskbar-button open window-classic" id="welcome-button">
-            <img src="./media/base/icons/notebook.png" alt="">
+            <img src="./media/base/icons/welcome.png" alt="">
             <p>welcome</p>
             <button class="popup-close" data-close="welcome-popup" data-closemenu="welcome-button">✕</button>
         </div>
@@ -162,9 +164,9 @@
         <div class="taskbar-spacer"></div>
 
         <!-- guestbook -->
-        <button id="chatbox-button" data-panel="chatbox">
-            <span class="chatbox-tooltip">
-                <span class="tooltip-closed-label">text me</span>
+        <button id="guestbook-button" data-panel="guestbook">
+            <span class="guestbook-tooltip">
+                <span class="tooltip-closed-label">msg me</span>
                 <span class="tooltip-open-label">ttyl</span>
             </span>
             <img src="media/base/guestbook.png" alt="guestbook"/>
@@ -177,11 +179,36 @@
     ============================================== -->
     <div id="start-menu" class="panel start-menu">
         <div class="start-menu-window window-classic">
-            <div class="start-menu-sidebar">
-                <span>girlcrush</span>
+            <div class="start-menu-titlebar popup-titlebar">
+                <span>menu</span>
+                <button class="popup-close" id="start-menu-close">✕</button>
             </div>
-            <div class="start-menu-items">
-                <!-- start menu items go here -->
+            <div class="start-menu-body">
+                <div class="start-menu-sidebar">
+                    <span>girlcrush</span>
+                </div>
+                <div class="start-menu-items">
+                    <a class="start-menu-item current" href="base.html">
+                        <img src="media/base/star2.png" alt="" />
+                        home
+                    </a>
+                    <a class="start-menu-item" href="about-me.html">
+                        <img src="media/base/star2.png" alt="" />
+                        about me
+                    </a>
+                    <a class="start-menu-item" href="girlcrush-world.html">
+                        <img src="media/base/star2.png" alt="" />
+                        girlcrush world
+                    </a>
+                    <a class="start-menu-item" href="music.html">
+                        <img src="media/base/star2.png" alt="" />
+                        music
+                    </a>
+                    <a class="start-menu-item" href="https://girlcrush222.tumblr.com/" target="_blank">
+                        <img src="media/base/star2.png" alt="" />
+                        digital journal
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -189,77 +216,75 @@
     <!-- =============================================
          DESKTOP ICON TRAY
     ============================================== -->
-    <div class="icon-tray ">
+    <div class="desktop-icons">
 
-        <div class="icon">
-            <button data-panel="welcome-popup" data-taskbar="welcome-button">
-                <img src="media/base/icons/notebook.png" alt=""/>
-                <p>welcome message</p>
+        <div class="desktop-icon">
+            <button class="desktop-icon-button" data-panel="welcome-popup" data-taskbar="welcome-button">
+                <img class="desktop-icon-image" src="media/base/icons/welcome.png" alt=""/>
+                <p class="desktop-icon-label">welcome message</p>
             </button>
         </div>
 
-        <div class="icon">
-            <button data-panel="avatar-popup" data-taskbar="pixel-avatar-button">
-                <img src="media/base/pixel-avatar-button.png" alt="pixel avatar" />
-                <p>pixel avatar</p>
-            </button>
-            
-        </div>
-
-        <div class="icon">
-            <button data-panel="virtual-angel-popup" data-taskbar="virtual-angel-button">
-                <img src="media/base/icons/wings.png" alt="virtual angel" />
-                <p>virtual angel</p>
-            </button>
-            
-        </div>
-
-        <div class="icon">
-            <button data-panel="webmaster-popup" data-taskbar="webmaster-button">
-                <img src="media/base/webmaster3.png" alt="webmaster" />
-                <p>webmaster</p>
+        <div class="desktop-icon">
+            <button class="desktop-icon-button" data-panel="avatar-popup" data-taskbar="pixel-avatar-button">
+                <img class="desktop-icon-image" src="media/base/pixel-avatar-button.png" alt="pixel avatar" />
+                <p class="desktop-icon-label">pixel avatar</p>
             </button>
         </div>
 
-        <div class="icon">
-            <button data-panel="decor" data-taskbar="decor-button">
-                <img src="./media/base/decor-gifs/gif2.gif" alt=""/>
-                <p>decor</p>
+        <div class="desktop-icon">
+            <button class="desktop-icon-button" data-panel="virtual-angel-popup" data-taskbar="virtual-angel-button">
+                <img class="desktop-icon-image" src="media/base/icons/wings.png" alt="virtual angel" />
+                <p class="desktop-icon-label">virtual angel</p>
             </button>
         </div>
 
-        <div class="icon">
-            <button data-panel="cloud-jumper-popup" data-taskbar="cloud-jumper-button">
-                <img src="./media/base/icons/cloud.png" alt="cloud jumper">
-                <p>cloud jumper</p>
+        <div class="desktop-icon">
+            <button class="desktop-icon-button" data-panel="webmaster-popup" data-taskbar="webmaster-button">
+                <img class="desktop-icon-image" src="media/base/webmaster3.png" alt="webmaster" />
+                <p class="desktop-icon-label">webmaster</p>
             </button>
         </div>
 
-        <div class="icon">
-            <button data-panel="piano-popup" data-taskbar="piano-button">
-                <img src="media/base/piano/piano.png" alt="piano" />
-                <p>piano</p>
+        <div class="desktop-icon decor-icon">
+            <button class="desktop-icon-button" data-panel="decor" data-taskbar="decor-button">
+                <img class="desktop-icon-image" src="./media/base/icons/lamp.png" alt=""/>
+                <p class="desktop-icon-label">decor</p>
             </button>
         </div>
 
-        <div class="icon">
-            <button data-panel="strawberry-wedding-popup" data-taskbar="strawberry-wedding-button">
-                <img src="media/base/icons/strawberry.png" alt=""/>
-                <p>strawberry wedding</p>
+        <div class="desktop-icon">
+            <button class="desktop-icon-button" data-panel="cloud-jumper-popup" data-taskbar="cloud-jumper-button">
+                <img class="desktop-icon-image" src="./media/base/icons/cloud.png" alt="cloud jumper">
+                <p class="desktop-icon-label">cloud jumper</p>
             </button>
         </div>
 
-        <div class="icon">
-            <button data-panel="things-i-love-popup" data-taskbar="things-i-love-button">
-                <img src="media/base/icons/chicken.png" alt="things i love" />
-                <p>things i love</p>
+        <div class="desktop-icon">
+            <button class="desktop-icon-button" data-panel="piano-popup" data-taskbar="piano-button">
+                <img class="desktop-icon-image" src="media/base/piano/piano.png" alt="piano" />
+                <p class="desktop-icon-label">piano</p>
             </button>
         </div>
 
-        <div class="icon guestbook-mobile">
-            <button data-panel="chatbox">
-                <img src="media/base/guestbook.png" alt="guestbook"/>
-                <p>msg me</p>
+        <div class="desktop-icon">
+            <button class="desktop-icon-button" data-panel="strawberry-wedding-popup" data-taskbar="strawberry-wedding-button">
+                <img class="desktop-icon-image" src="media/base/icons/strawberry.png" alt=""/>
+                <p class="desktop-icon-label">strawberry wedding</p>
+            </button>
+        </div>
+
+        <div class="desktop-icon">
+            <button class="desktop-icon-button" data-panel="things-i-love-popup" data-taskbar="things-i-love-button">
+                <img class="desktop-icon-image" src="media/base/icons/chicken.png" alt="things i love" />
+                <p class="desktop-icon-label">things i love</p>
+            </button>
+        </div>
+
+        <div class="desktop-icon guestbook-mobile">
+            <button class="desktop-icon-button" data-panel="guestbook">
+                <img class="desktop-icon-image" src="media/base/guestbook.png" alt="guestbook"/>
+                <p class="desktop-icon-label">msg me</p>
             </button>
         </div>
 
@@ -268,7 +293,11 @@
     <!-- =============================================
         chat box
     ============================================== -->
-    <div id="chatbox" class="panel">
+    <div id="guestbook" class="panel">
+        <div class="popup-titlebar">
+            <span>msg me</span>
+            <button class="popup-close" data-close="guestbook" data-closemenu="guestbook-button">✕</button>
+        </div>
         <iframe class="field-border" src="https://www3.cbox.ws/box/?boxid=3555719&boxtag=M8wtC1"
             allowtransparency="yes"
             allow="autoplay"
@@ -357,7 +386,7 @@
                     <span>turn sound on</span>
                     <button class="popup-close" data-close="piano-popup" data-closemenu="piano-button">✕</button>
                 </div>
-                <div class="piano-play">
+                <div class="piano-keyboard">
                     <img src="media/base/piano/piano4.png" alt="piano" />
                     <!-- white keys -->
                     <button class="key" data-note="C4" style="left: 3%; width: 8.5%; height: 77%;"></button>
@@ -434,60 +463,108 @@
                     <div class="avatar-controls">
                         <div class="control-group">
                             <p class="control-label">Body</p>
-                            <button data-layer="layer-body" data-src="media/base/pixel-avatar/body-default.png"><img src="media/base/pixel-avatar/body-default.png"  alt="body 1" /></button>
-                            <button data-layer="layer-body" data-src="media/base/pixel-avatar/body2.png"       ><img src="media/base/pixel-avatar/body2.png"           alt="body 2" /></button>
-                            <button data-layer="layer-body" data-src="media/base/pixel-avatar/body-pink.png"   ><img src="media/base/pixel-avatar/body-pink.png"        alt="body 3" /></button>
-                            <button data-layer="layer-body" data-src="media/base/pixel-avatar/body-green.png"  ><img src="media/base/pixel-avatar/body-green.png"       alt="body 4" /></button>
+                            <div class="control-cycler">
+                                <button class="control-arrow control-prev" aria-label="previous">‹</button>
+                                <div class="control-swatches">
+                                    <button data-layer="layer-body" data-src="media/base/pixel-avatar/body-default.png"><img src="media/base/pixel-avatar/body-default.png"  alt="body 1" /></button>
+                                    <button data-layer="layer-body" data-src="media/base/pixel-avatar/body2.png"       ><img src="media/base/pixel-avatar/body2.png"           alt="body 2" /></button>
+                                    <button data-layer="layer-body" data-src="media/base/pixel-avatar/body-pink.png"   ><img src="media/base/pixel-avatar/body-pink.png"        alt="body 3" /></button>
+                                    <button data-layer="layer-body" data-src="media/base/pixel-avatar/body-green.png"  ><img src="media/base/pixel-avatar/body-green.png"       alt="body 4" /></button>
+                                </div>
+                                <button class="control-arrow control-next" aria-label="next">›</button>
+                            </div>
                         </div>
                         <div class="control-group">
                             <p class="control-label">Eyes</p>
-                            <button data-layer="layer-eyes" data-src="media/base/pixel-avatar/eyes-dark-blue.png" ><img src="media/base/pixel-avatar-thumb/eyes-dark-blue.png"  alt="dark blue eyes"  /></button>
-                            <button data-layer="layer-eyes" data-src="media/base/pixel-avatar/eyes-red.png"       ><img src="media/base/pixel-avatar-thumb/eyes-red.png"         alt="red eyes"        /></button>
-                            <button data-layer="layer-eyes" data-src="media/base/pixel-avatar/eyes-brown.png"     ><img src="media/base/pixel-avatar-thumb/eyes-brown.png"       alt="brown eyes"      /></button>
-                            <button data-layer="layer-eyes" data-src="media/base/pixel-avatar/eyes-light-blue.png"><img src="media/base/pixel-avatar-thumb/eyes-light-blue.png"  alt="light blue eyes" /></button>
+                            <div class="control-cycler">
+                                <button class="control-arrow control-prev" aria-label="previous">‹</button>
+                                <div class="control-swatches">
+                                    <button data-layer="layer-eyes" data-src="media/base/pixel-avatar/eyes-dark-blue.png" ><img src="media/base/pixel-avatar-thumb/eyes-dark-blue.png"  alt="dark blue eyes"  /></button>
+                                    <button data-layer="layer-eyes" data-src="media/base/pixel-avatar/eyes-red.png"       ><img src="media/base/pixel-avatar-thumb/eyes-red.png"         alt="red eyes"        /></button>
+                                    <button data-layer="layer-eyes" data-src="media/base/pixel-avatar/eyes-brown.png"     ><img src="media/base/pixel-avatar-thumb/eyes-brown.png"       alt="brown eyes"      /></button>
+                                    <button data-layer="layer-eyes" data-src="media/base/pixel-avatar/eyes-light-blue.png"><img src="media/base/pixel-avatar-thumb/eyes-light-blue.png"  alt="light blue eyes" /></button>
+                                </div>
+                                <button class="control-arrow control-next" aria-label="next">›</button>
+                            </div>
                         </div>
                         <div class="control-group">
                             <p class="control-label">Blush</p>
-                            <button data-layer="layer-blush" data-src="media/base/pixel-avatar/blush.png" ><img src="media/base/pixel-avatar-thumb/blush.png"  alt="no blush" /></button>
-                            <button data-layer="layer-blush" data-src="media/base/pixel-avatar/blush2.png"><img src="media/base/pixel-avatar-thumb/blush1.png" alt="blush"    /></button>
+                            <div class="control-cycler">
+                                <button class="control-arrow control-prev" aria-label="previous">‹</button>
+                                <div class="control-swatches">
+                                    <button data-layer="layer-blush" data-src="media/base/pixel-avatar/blush.png" ><img src="media/base/pixel-avatar-thumb/blush.png"  alt="no blush" /></button>
+                                    <button data-layer="layer-blush" data-src="media/base/pixel-avatar/blush2.png"><img src="media/base/pixel-avatar-thumb/blush1.png" alt="blush"    /></button>
+                                </div>
+                                <button class="control-arrow control-next" aria-label="next">›</button>
+                            </div>
                         </div>
                         <div class="control-group">
                             <p class="control-label">Hair</p>
-                            <button data-layer="layer-hair" data-src="media/base/pixel-avatar/red-hair-short.png"  ><img src="media/base/pixel-avatar-thumb/red-hair-short.png"   alt="short red hair"  /></button>
-                            <button data-layer="layer-hair" data-src="media/base/pixel-avatar/black-long-hair.png" ><img src="media/base/pixel-avatar-thumb/black-long-hair.png"  alt="black long hair" /></button>
-                            <button data-layer="layer-hair" data-src="media/base/pixel-avatar/brown-short-hair.png"><img src="media/base/pixel-avatar-thumb/brown-short-hair.png" alt="brown short hair"/></button>
-                            <button data-layer="layer-hair" data-src="media/base/pixel-avatar/toni-hair.png"       ><img src="media/base/pixel-avatar-thumb/toni-hair.png"        alt="toni hair"       /></button>
-                            <button data-layer="layer-hair" data-src="media/base/pixel-avatar/blonde-hair.png"     ><img src="media/base/pixel-avatar-thumb/blonde-hair.png"      alt="blonde hair"     /></button>
+                            <div class="control-cycler">
+                                <button class="control-arrow control-prev" aria-label="previous">‹</button>
+                                <div class="control-swatches">
+                                    <button data-layer="layer-hair" data-src="media/base/pixel-avatar/red-hair-short.png"  ><img src="media/base/pixel-avatar-thumb/red-hair-short.png"   alt="short red hair"  /></button>
+                                    <button data-layer="layer-hair" data-src="media/base/pixel-avatar/black-long-hair.png" ><img src="media/base/pixel-avatar-thumb/black-long-hair.png"  alt="black long hair" /></button>
+                                    <button data-layer="layer-hair" data-src="media/base/pixel-avatar/brown-short-hair.png"><img src="media/base/pixel-avatar-thumb/brown-short-hair.png" alt="brown short hair"/></button>
+                                    <button data-layer="layer-hair" data-src="media/base/pixel-avatar/toni-hair.png"       ><img src="media/base/pixel-avatar-thumb/toni-hair.png"        alt="toni hair"       /></button>
+                                    <button data-layer="layer-hair" data-src="media/base/pixel-avatar/blonde-hair.png"     ><img src="media/base/pixel-avatar-thumb/blonde-hair.png"      alt="blonde hair"     /></button>
+                                </div>
+                                <button class="control-arrow control-next" aria-label="next">›</button>
+                            </div>
                         </div>
                         <div class="control-group">
                             <p class="control-label">Tops</p>
-                            <button data-layer="layer-top" data-src="media/base/pixel-avatar/black-top-graphic.png"><img src="media/base/pixel-avatar-thumb/black-top-graphic.png" alt="black graphic tee" /></button>
-                            <button data-layer="layer-top" data-src="media/base/pixel-avatar/orange-tank.png"      ><img src="media/base/pixel-avatar-thumb/orange-tank.png"        alt="orange tank"       /></button>
-                            <button data-layer="layer-top" data-src="media/base/pixel-avatar/red-bra.png"          ><img src="media/base/pixel-avatar-thumb/red-bra.png"            alt="red bra"           /></button>
-                            <button data-layer="layer-top" data-src="media/base/pixel-avatar/pink-tee.png"         ><img src="media/base/pixel-avatar-thumb/pink-tee.png"           alt="pink tee"          /></button>
-                            <button data-layer="layer-top" data-src="media/base/pixel-avatar/green-halter.png"     ><img src="media/base/pixel-avatar-thumb/green-halter.png"       alt="green halter"      /></button>
+                            <div class="control-cycler">
+                                <button class="control-arrow control-prev" aria-label="previous">‹</button>
+                                <div class="control-swatches">
+                                    <button data-layer="layer-top" data-src="media/base/pixel-avatar/black-top-graphic.png"><img src="media/base/pixel-avatar-thumb/black-top-graphic.png" alt="black graphic tee" /></button>
+                                    <button data-layer="layer-top" data-src="media/base/pixel-avatar/orange-tank.png"      ><img src="media/base/pixel-avatar-thumb/orange-tank.png"        alt="orange tank"       /></button>
+                                    <button data-layer="layer-top" data-src="media/base/pixel-avatar/red-bra.png"          ><img src="media/base/pixel-avatar-thumb/red-bra.png"            alt="red bra"           /></button>
+                                    <button data-layer="layer-top" data-src="media/base/pixel-avatar/pink-tee.png"         ><img src="media/base/pixel-avatar-thumb/pink-tee.png"           alt="pink tee"          /></button>
+                                    <button data-layer="layer-top" data-src="media/base/pixel-avatar/green-halter.png"     ><img src="media/base/pixel-avatar-thumb/green-halter.png"       alt="green halter"      /></button>
+                                </div>
+                                <button class="control-arrow control-next" aria-label="next">›</button>
+                            </div>
                         </div>
                         <div class="control-group">
                             <p class="control-label">Bottoms</p>
-                            <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/purple-pants.png" ><img src="media/base/pixel-avatar-thumb/purple-pants.png"  alt="purple pants"  /></button>
-                            <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/purple-skirt.png" ><img src="media/base/pixel-avatar-thumb/purple-skirt.png"  alt="purple skirt"  /></button>
-                            <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/grey-pants.png"   ><img src="media/base/pixel-avatar-thumb/grey-pants.png"    alt="grey pants"    /></button>
-                            <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/blue-shorts.png"  ><img src="media/base/pixel-avatar-thumb/blue-shorts.png"   alt="blue shorts"   /></button>
-                            <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/flares.png"       ><img src="media/base/pixel-avatar-thumb/flares.png"        alt="flares"        /></button>
+                            <div class="control-cycler">
+                                <button class="control-arrow control-prev" aria-label="previous">‹</button>
+                                <div class="control-swatches">
+                                    <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/purple-pants.png" ><img src="media/base/pixel-avatar-thumb/purple-pants.png"  alt="purple pants"  /></button>
+                                    <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/purple-skirt.png" ><img src="media/base/pixel-avatar-thumb/purple-skirt.png"  alt="purple skirt"  /></button>
+                                    <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/grey-pants.png"   ><img src="media/base/pixel-avatar-thumb/grey-pants.png"    alt="grey pants"    /></button>
+                                    <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/blue-shorts.png"  ><img src="media/base/pixel-avatar-thumb/blue-shorts.png"   alt="blue shorts"   /></button>
+                                    <button data-layer="layer-bottoms" data-src="media/base/pixel-avatar/flares.png"       ><img src="media/base/pixel-avatar-thumb/flares.png"        alt="flares"        /></button>
+                                </div>
+                                <button class="control-arrow control-next" aria-label="next">›</button>
+                            </div>
                         </div>
                         <div class="control-group">
                             <p class="control-label">Shoes</p>
-                            <button data-layer="layer-shoes" data-src="media/base/pixel-avatar/shoes-black-basic.png"><img src="media/base/pixel-avatar-thumb/shoes-black-basic.png" alt="black shoes"  /></button>
-                            <button data-layer="layer-shoes" data-src="media/base/pixel-avatar/brown-boots.png"      ><img src="media/base/pixel-avatar-thumb/brown-boots.png"        alt="brown boots"  /></button>
-                            <button data-layer="layer-shoes" data-src="media/base/pixel-avatar/red-boots.png"        ><img src="media/base/pixel-avatar-thumb/red-boots.png"          alt="red boots"    /></button>
-                            <button data-layer="layer-shoes" data-src="media/base/pixel-avatar/gumboots.png"         ><img src="media/base/pixel-avatar-thumb/gumboots.png"           alt="gumboots"     /></button>
+                            <div class="control-cycler">
+                                <button class="control-arrow control-prev" aria-label="previous">‹</button>
+                                <div class="control-swatches">
+                                    <button data-layer="layer-shoes" data-src="media/base/pixel-avatar/shoes-black-basic.png"><img src="media/base/pixel-avatar-thumb/shoes-black-basic.png" alt="black shoes"  /></button>
+                                    <button data-layer="layer-shoes" data-src="media/base/pixel-avatar/brown-boots.png"      ><img src="media/base/pixel-avatar-thumb/brown-boots.png"        alt="brown boots"  /></button>
+                                    <button data-layer="layer-shoes" data-src="media/base/pixel-avatar/red-boots.png"        ><img src="media/base/pixel-avatar-thumb/red-boots.png"          alt="red boots"    /></button>
+                                    <button data-layer="layer-shoes" data-src="media/base/pixel-avatar/gumboots.png"         ><img src="media/base/pixel-avatar-thumb/gumboots.png"           alt="gumboots"     /></button>
+                                </div>
+                                <button class="control-arrow control-next" aria-label="next">›</button>
+                            </div>
                         </div>
                         <div class="control-group">
                             <p class="control-label">Background</p>
-                            <button data-layer="layer-background" data-src="media/base/pixel-avatar/background-blue.png"     ><img src="media/base/pixel-avatar/background-blue.png"      alt="blue background" /></button>
-                            <button data-layer="layer-background" data-src="media/base/pixel-avatar/background-pink.png"     ><img src="media/base/pixel-avatar/background-pink.png"      alt="pink background" /></button>
-                            <button data-layer="layer-background" data-src="media/base/pixel-avatar/background-landscape.png"><img src="media/base/pixel-avatar/background-landscape.png" alt="day background"  /></button>
-                            <button data-layer="layer-background" data-src="media/base/pixel-avatar/background-night.png"    ><img src="media/base/pixel-avatar/background-night.png"     alt="night background"/></button>
+                            <div class="control-cycler">
+                                <button class="control-arrow control-prev" aria-label="previous">‹</button>
+                                <div class="control-swatches">
+                                    <button data-layer="layer-background" data-src="media/base/pixel-avatar/background-blue.png"     ><img src="media/base/pixel-avatar/background-blue.png"      alt="blue background" /></button>
+                                    <button data-layer="layer-background" data-src="media/base/pixel-avatar/background-pink.png"     ><img src="media/base/pixel-avatar/background-pink.png"      alt="pink background" /></button>
+                                    <button data-layer="layer-background" data-src="media/base/pixel-avatar/background-landscape.png"><img src="media/base/pixel-avatar/background-landscape.png" alt="day background"  /></button>
+                                    <button data-layer="layer-background" data-src="media/base/pixel-avatar/background-night.png"    ><img src="media/base/pixel-avatar/background-night.png"     alt="night background"/></button>
+                                </div>
+                                <button class="control-arrow control-next" aria-label="next">›</button>
+                            </div>
                         </div>
                     </div>
                     <div class="avatar-canvas-wrap">
@@ -520,8 +597,8 @@
                 </div>
                 <div class="webmaster-container window-classic-indent">
                     <p class="webmaster-name">shannon</p>
-                    <img src="./media/base/shan/me.jpg" alt="shannon"/>
-                    <div class="shan-likes">
+                    <img class="webmaster-hero-photo" src="./media/base/shan/me.jpg" alt="shannon"/>
+                    <div class="webmaster-likes">
                         <p style="font-weight: bold;">likes:</p>
                         <p>eating dumplings w friends</p>
                         <p>anime</p>
@@ -536,7 +613,7 @@
                     <img src="./media/base/shan/camping.jpg" alt=""/>
                     <img src="./media/base/shan/fortnite.jpg" alt=""/>
                     <img src="./media/base/shan/horses.jpg" alt=""/>
-                    <div class="shan-dislikes">
+                    <div class="webmaster-dislikes">
                         <p style="font-weight: bold;">dislikes:</p>
                         <p>steamed vegetables</p>
                         <p>open-toe shoes</p>
@@ -666,6 +743,7 @@
     <script src="js/itemCarousel.js"></script>
     <script src="js/navBar.js"></script>
     <script src="js/taskbar.js"></script>
+    <script src="js/startMenu.js"></script>
 
 
 </body>

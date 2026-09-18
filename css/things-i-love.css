@@ -1,6 +1,6 @@
-/* ─────────────────────────────
-   "Things I Love" popup — relies on base primitives in popups.css
-───────────────────────────── */
+/* =============================================
+   Things I Love
+============================================= */
 
 #things-i-love-popup .popup-titlebar {
     background: #e8dcc8;
@@ -8,14 +8,9 @@
 }
 
 #things-i-love-popup {
-    /* the flat-lay is a fixed 1500:1250 box, so height follows width:
-       height = width x 1250/1500 + 41px of leftover chrome (titlebar + container padding).
-       cap the width by the height that's actually free, so short screens don't
-       push the popup down behind the taskbar. */
     --til-top: 8vh;
-    --til-bottom-guard: 40px; /* taskbar (30px visible) plus a little air */
+    --til-bottom-guard: calc(var(--taskbar-visible-height, 30px) + 10px);
     --til-free-height: calc(100vh - var(--til-top) - var(--til-bottom-guard));
-
     --til-width: min(900px, 92%, calc((var(--til-free-height) - 41px) * 1.2));
 
     top: var(--til-top);
@@ -34,9 +29,9 @@
     padding: 16px;
 }
 
-/* ─────────────────────────────
-   Bag flat-lay — base image plus an absolutely-positioned cutout per item
-───────────────────────────── */
+/* =============================================
+   Bag Flat-Lay
+============================================= */
 
 .bag-items {
     position: relative;
@@ -64,19 +59,19 @@
     z-index: 10;
 }
 
-/* ─────────────────────────────
-   Item image carousels — reusable pattern for any clickable bag item
-───────────────────────────── */
+/* =============================================
+   Item Image Carousels
+============================================= */
 
 .item-carousel {
-    display: flex; /* always laid out; open state is opacity/visibility so it can fade */
+    display: flex;
     position: absolute;
     inset: 0;
     justify-content: center;
     align-items: center;
     z-index: 20;
     border-radius: 5px;
-    cursor: pointer; /* clicking anywhere out here closes the overlay */
+    cursor: pointer;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -90,7 +85,6 @@
     transition: opacity 0.25s ease;
 }
 
-/* tinted frame; width+height both capped so the media box can shrink to fit */
 .item-carousel-window {
     position: relative;
     display: flex;
@@ -101,14 +95,13 @@
     padding: 14px;
     background: rgba(224, 246, 255, 0.75);
     border-radius: 10px;
-    cursor: default; /* the framed image isn't itself the close-trigger */
+    cursor: default;
     box-shadow:
         0 2px 6px rgba(0, 0, 0, 0.05),
         0 8px 16px rgba(0, 0, 0, 0.05),
         0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
-/* crops each photo to its real content — canvas is 1920x1080, only part of it is opaque */
 .item-carousel-media {
     position: relative;
     height: 100%;
@@ -125,7 +118,6 @@
     display: block;
 }
 
-/* ipod photos: content is 1092 wide, starting at x=673 */
 #ipod-carousel .item-carousel-media {
     aspect-ratio: 1092 / 1080;
 }
@@ -135,7 +127,6 @@
     width: 175.824%;
 }
 
-/* camera photos: content is 863 wide, starting at x=644 */
 #camera-carousel .item-carousel-media {
     aspect-ratio: 863 / 1080;
 }
@@ -145,7 +136,10 @@
     width: 222.48%;
 }
 
-/* prev/next triggers — glassy pink chevron buttons flanking the photo */
+/* =============================================
+   Prev/Next Buttons
+============================================= */
+
 .item-carousel-prev,
 .item-carousel-next {
     position: absolute;
@@ -174,9 +168,8 @@
     box-sizing: border-box;
     width: 9px;
     height: 9px;
-    border: solid #d966a0;
+    border: solid var(--pink-accent, #d966a0);
     border-width: 0 2px 2px 0;
-    /* the border-corner shape's ink sits toward the bottom-right of its box, so nudge it back before rotating */
     transform: rotate(-45deg) translate(-1.75px, -1.75px);
 }
 
@@ -206,26 +199,4 @@
 
 .item-carousel-next:hover {
     transform: translateY(-50%) scale(1.1) translateX(1.5px);
-}
-
-/* ─────────────────────────────
-   Mobile (≤ 768px)
-───────────────────────────── */
-
-@media (max-width: 768px) {
-    #things-i-love-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none;
-
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: none;
-        margin-top: 20px;
-        margin-bottom: 40px;
-    }
 }

@@ -1,21 +1,39 @@
-/* webmaster */
+/* =============================================
+   Webmaster
+============================================= */
 
-/* popup shell (titlebar/positioning/background) — moved from popups.css */
 #webmaster-popup .popup-titlebar {
     background: rgb(188, 242, 242);
     color: rgb(72, 106, 106);
 }
 
-#webmaster-popup { bottom: 10%; left: min(15%, 60vw); width: clamp(670px, 50vw, 770px); height: clamp(500px, 70vh, 650px); }
+#webmaster-popup { bottom: 10%; left: min(15%, 60vw); width: clamp(670px, 50vw, 770px); height: fit-content; max-height: 85vh; }
 
 #webmaster-popup .popup-window {
     background: url("../media/base/shan/background.webp") top center / cover no-repeat;
     font-family: "Quicksand", sans-serif;
 }
 
-#webmaster-popup img {
-    width: clamp(100px, 20vh, 200px);
+.webmaster-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: start;
+    align-items: center;
+    justify-items: center;
+    gap: clamp(8px, 1.5vh, 20px);
+
+    padding: clamp(10px, 2vh, 24px);
+    font-family: "Quicksand", sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+.webmaster-container img {
+    width: 100%;
     height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 10px;
     display: block;
 }
 
@@ -31,73 +49,67 @@
     transform: scale(1.05);
 }
 
-.webmaster-container {
-    padding: clamp(2px, 2vh, 30px);
-    font-family: "Quicksand", sans-serif;
-    gap: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
-}
-
 .webmaster-container p {
     color: rgb(0, 0, 0);
     font-size: clamp(8px, 1.5vh, 14px);
     line-height: 1.6;
 }
 
-.shan-likes, .shan-dislikes {
+.webmaster-likes, .webmaster-dislikes {
     background: rgba(188, 242, 242, 0.75);
     height: auto;
-    width: fit-content;
+    width: 100%;
     padding: clamp(8px, 1vh, 20px);
     border-radius: 20px;
     box-shadow: 2px 1px 2px hotpink, -2px -1px 2px hotpink, -2px 1px 2px pink;
     text-align: center;
 }
 
+/* =============================================
+   Hero Photo + Name Caption (share one grid cell)
+============================================= */
 
-.webmaster-name {
-    background: rgba(183, 255, 255, 0.5);
-    height: auto;
-    width: fit-content;
-    padding: 10px;
-    margin-left: 40px;
-    border-radius: 15px;
-    box-shadow: 2px 1px 2px hotpink, -2px -1px 2px hotpink, -2px 1px 2px pink;
+.webmaster-hero-photo {
+    grid-row: 1;
+    grid-column: 1;
 }
 
-@media (max-width: 768px) {
-    #webmaster-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none;
+.webmaster-name {
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 2;
+    align-self: end;
+    justify-self: center;
+    margin-bottom: 8px;
 
-        width: 50%;
-        height: auto;
-        max-width: 100%;
-        max-height: none;
-        margin-top: 20px;
-        margin-bottom: 40px;
+    background: rgba(183, 255, 255, 0.85);
+    height: auto;
+    width: fit-content;
+    padding: 4px 14px;
+    border-radius: 15px;
+    box-shadow: 2px 1px 2px hotpink, -2px -1px 2px hotpink, -2px 1px 2px pink;
+    text-align: center;
+}
+
+/* =============================================
+   Mobile (≤ 768px)
+============================================= */
+@media (max-width: 768px) {
+    .webmaster-container {
+        gap: 6px;
+        padding: 8px;
     }
 
-     #webmaster-popup img {
-        width: 100%;
-        height: auto;
-        display: block;
+    .webmaster-container p {
+        font-size: 10px;
+        line-height: 1.3;
     }
 
     .webmaster-name {
-        background: rgba(183, 255, 255, 0.5);
-        height: auto;
-        width: fit-content;
-        padding: 10px;
-        margin-left: 40px;
-        border-radius: 15px;
+        padding: 4px 12px;
+    }
+
+    .webmaster-likes, .webmaster-dislikes {
+        padding: 6px 12px;
     }
 }

@@ -18,13 +18,18 @@ const popupState = {
     Stacking behavior (z-index) only applies
     when the panel also carries class="popup".
 ------------------------------------------ */
+
 function openPanel(id) {
     const panel = document.getElementById(id);
     if (panel.classList.contains('open')) return;
 
     // nested panels (e.g. an item-carousel living inside another popup)
-    // stay put — only reparent top-level panels to bring them to the front
-    if (panel.parentElement === document.getElementById("popup-container")) {
+    // stay put — only reparent top-level panels to bring them to the front.
+    // Skipped for .popup: stacking is z-index driven, not DOM-order driven,
+    // so the reparent is a no-op there anyway — and moving the node in the
+    // same tick as adding .open would cancel the fade-in transition.
+    const skipReparent = panel.classList.contains('popup');
+    if (!skipReparent && panel.parentElement === document.getElementById("popup-container")) {
         document.getElementById("popup-container").prepend(panel);
     }
     panel.classList.add('open');
@@ -34,8 +39,8 @@ function openPanel(id) {
     }
 
     // per-panel side effects
-    if (id === 'chatbox') {
-        document.getElementById('chatbox-button')?.classList.add('open');
+    if (id === 'guestbook') {
+        document.getElementById('guestbook-button')?.classList.add('open');
     }
     if (id === 'virtual-angel-popup') {
         window.openVirtualAngel();
@@ -50,7 +55,7 @@ function closePanel(id) {
     if (!panel.classList.contains('open')) return;
 
     panel.classList.remove('open');
-    if (id !== 'chatbox') {
+    if (id !== 'guestbook') {
         panel.style.transform = 'translate(0px, 0px)'; // reset drag position
     }
 
@@ -59,8 +64,8 @@ function closePanel(id) {
     }
 
     // per-panel side effects
-    if (id === 'chatbox') {
-        document.getElementById('chatbox-button')?.classList.remove('open');
+    if (id === 'guestbook') {
+        document.getElementById('guestbook-button')?.classList.remove('open');
     }
     if (id === 'virtual-angel-popup') {
         window.resetAngelCard();
@@ -85,7 +90,7 @@ function togglePanel(id) {
 /* ------------------------------------------
     Stacking logic
     Only ever touches elements with class="popup"
-    (chatbox/decor don't carry it, so they
+    (guestbook/decor don't carry it, so they
     never enter this code at all).
 ------------------------------------------ */
 function incrementZIndex(id) {
@@ -122,6 +127,15 @@ function restackPopups(frontPopup) {
     frontPopup.style.zIndex = popupState.tabCounter;
 }
 
+function isMobile() {
+    return window.innerWidth <= MOBILE_BREAKPOINT;
+}
+
+function isBlockedByOpenPanel(targetId) {
+    const openPanelEl = document.querySelector('.popup.open, #guestbook.open, #start-menu.open');
+    return !!openPanelEl && openPanelEl.id !== targetId;
+}
+
 // add listener for panel buttons
 document.querySelectorAll('[data-panel]').forEach(button => {
     button.addEventListener('click', function() {
@@ -129,9 +143,10 @@ document.querySelectorAll('[data-panel]').forEach(button => {
         const taskbarId = this.dataset.taskbar;
 
         if (!panelId) return;
+        if (isMobile() && isBlockedByOpenPanel(panelId)) return;
 
-        if (panelId === 'chatbox') {
-            togglePanel('chatbox');
+        if (panelId === 'guestbook') {
+            togglePanel('guestbook');
             return;
         }
 
@@ -145,15 +160,15 @@ document.querySelectorAll('[data-panel]').forEach(button => {
 // close panel
 document.querySelectorAll('[data-close]').forEach(button => {
     button.addEventListener('click', function () {
-        const panelId  = this.dataset.close;
-        const menuId   = this.dataset.closemenu;
-        const alsoClose = this.dataset.closeAlso;
+        const panelId   = this.dataset.close;
+        const menuId    = this.dataset.closemenu;
+        const closeAlso = this.dataset.closeAlso;
 
         if (!panelId) return;
 
         closePanel(panelId);
         if (menuId)    taskbarClose(menuId);
-        if (alsoClose) alsoClose.split(',').forEach(id => closePanel(id.trim()));
+        if (closeAlso) closeAlso.split(',').forEach(id => closePanel(id.trim()));
     });
 });
 

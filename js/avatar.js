@@ -1,15 +1,8 @@
 /* ------------------------------------------
-    Avatar dress-up: click a swatch, swap that layer's image
------------------------------------------- */
-document.querySelectorAll('[data-layer]').forEach(button => {
-    button.addEventListener('click', function () {
-        document.getElementById(this.dataset.layer).src = this.dataset.src;
-    });
-});
-
-/* ------------------------------------------
-    Randomize / reset — built from the swatches already in the markup,
-    so a new outfit piece just needs a button added there
+    Avatar dress-up: each category cycles through its swatches with
+    prev/next arrows instead of picking directly from a grid of buttons.
+    The swatch buttons stay in the markup as the data source (and for
+    randomize/reset below) — only one is ever shown at a time.
 ------------------------------------------ */
 const avatarLayerOptions = {};
 document.querySelectorAll('[data-layer]').forEach(button => {
@@ -21,15 +14,44 @@ document.querySelectorAll('.avatar-layer').forEach(img => {
     avatarLayerDefaults[img.id] = img.src;
 });
 
+const avatarCyclers = [];
+
+document.querySelectorAll('.control-swatches').forEach(swatches => {
+    const buttons = [...swatches.querySelectorAll('button')];
+    const layerId = buttons[0].dataset.layer;
+    const layer = document.getElementById(layerId);
+    let index = 0;
+
+    function show(i) {
+        index = (i + buttons.length) % buttons.length;
+        buttons.forEach((b, idx) => b.classList.toggle('active', idx === index));
+        layer.src = buttons[index].dataset.src;
+    }
+
+    function syncToCurrentSrc() {
+        const i = buttons.findIndex(b => layer.src.endsWith(b.dataset.src));
+        show(i >= 0 ? i : 0);
+    }
+
+    const cycler = swatches.closest('.control-cycler');
+    cycler.querySelector('.control-prev').addEventListener('click', () => show(index - 1));
+    cycler.querySelector('.control-next').addEventListener('click', () => show(index + 1));
+
+    syncToCurrentSrc();
+    avatarCyclers.push(syncToCurrentSrc);
+});
+
 document.getElementById('avatar-randomize')?.addEventListener('click', () => {
     Object.entries(avatarLayerOptions).forEach(([layerId, options]) => {
         const layer = document.getElementById(layerId);
         if (layer) layer.src = options[Math.floor(Math.random() * options.length)];
     });
+    avatarCyclers.forEach(sync => sync());
 });
 
 document.getElementById('avatar-reset')?.addEventListener('click', () => {
     Object.entries(avatarLayerDefaults).forEach(([layerId, src]) => {
         document.getElementById(layerId).src = src;
     });
+    avatarCyclers.forEach(sync => sync());
 });

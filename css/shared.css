@@ -1,5 +1,18 @@
-/* ── Reset ──
-   Shared by base.html and index.html. */
+/* =============================================
+   Palette
+============================================= */
+
+:root {
+    --pink-accent: #d966a0;
+    --pink-titlebar: #ffe0f0;
+    --teal-accent: #e0f7fa;
+    --offwhite: #fcf6f9;
+}
+
+/* =============================================
+   Reset
+============================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +26,10 @@
     -webkit-user-drag: none;
 }
 
-/* ── Shared animations ── */
+/* =============================================
+   Shared Animations
+============================================= */
+
 @keyframes shake {
     0%   { transform: translate(0, 0); }
     10%  { transform: translate(-4px, 1px); }

@@ -26,7 +26,7 @@ const config = {
     startPlayerY: 80,
     playerWidth: 57,
     numClouds: 8
-}; 
+};
 
 // ============================================================
 // Game-level state — things that belong to the game, not the player
@@ -38,10 +38,10 @@ const state = {
     initialized: false,
     loopRunning: false,
     score: 0,
-    difficulty: 0, 
-    gapRoundDown: 30, // the closer this is to the minimum the more gaps you will see between clouds i.e harder
-    gapRamp: 0.65, // scaler closer this gets to 1 the longer the max gap will be
-    speedRamp: 1 // want this to increase and get faster 
+    difficulty: 0,
+    minGap: 30, // gaps smaller than this are treated as touching (harder as this shrinks)
+    gapRamp: 0.65, // 0-1, ramps toward 1 as the max gap between clouds widens
+    speedRamp: 1 // multiplies cloud speed, ramps up over time
 };
 
 // ============================================================
@@ -53,13 +53,14 @@ const layout = {
     centerX: 200.5,
     maxGap: 0,
     gameWidth: 0,
-    cloudStart: 70
+    cloudStartX: 70
 };
 
-// if mobile player starts change layout
-if (layout.mobile) { layout.playerLeft = 32; }
-if (layout.mobile) { layout.cloudStart = 10; }
-if (layout.mobile) { layout.centerX = 58.5; }
+if (layout.mobile) {
+    layout.playerLeft = 32;
+    layout.cloudStartX = 10;
+    layout.centerX = 58.5;
+}
 
 // ============================================================
 // Image preloading — avoids a decode/paint hitch mid-game when
@@ -79,12 +80,12 @@ function preloadImage(src) {
 // ============================================================
 class Player {
     constructor() {
-        // Two real <img> elements declared in your HTML — both styled by
+        // Two real <img> elements declared in the HTML — both styled by
         // the shared .player-sprite CSS class, so sizing/position is
         // consistent by construction. No cloning, no computed-style
         // workarounds needed.
-        this.el = document.getElementById('cloud-jumper');        // platform/idle sprite
-        this.jumpEl = document.getElementById('cloud-jumper-jump'); // jumping sprite
+        this.idleEl = document.getElementById('cloud-jumper');
+        this.jumpEl = document.getElementById('cloud-jumper-jump');
         this.y = config.startPlayerY;
         this.prevY = config.startPlayerY;
         this.velocityY = 0;
@@ -98,9 +99,9 @@ class Player {
         // left/bottom/width/height come from the .player-sprite CSS class;
         // only the mobile left-offset needs a JS override since it depends
         // on layout.playerLeft computed at runtime.
-        this.el.style.left = layout.playerLeft + 'px';
+        this.idleEl.style.left = layout.playerLeft + 'px';
         this.jumpEl.style.left = layout.playerLeft + 'px';
-        this.el.style.opacity = '1';
+        this.idleEl.style.opacity = '1';
         this.jumpEl.style.opacity = '0';
 
         // We toggle opacity between two pre-loaded, already-in-DOM images
@@ -127,14 +128,14 @@ class Player {
 
         if (this.charging) {
             this.jumpEl.style.opacity = '1';
-            this.el.style.opacity = '0';
+            this.idleEl.style.opacity = '0';
         }
         else {
             this._pendingImageSwap = setTimeout(() => {
                 this.jumpEl.style.opacity = '0';
-                this.el.style.opacity = '1';
+                this.idleEl.style.opacity = '1';
                 this._pendingImageSwap = null;
-            }, 250)
+            }, 250);
         }
     }
 
@@ -157,7 +158,6 @@ class Player {
     applyPhysics(dt) {
         this.prevY = this.y;
 
-        // keep jumping while holding key
         if (this.charging) {
             this.velocityY = Math.min(
                 this.velocityY + config.chargeRate * dt,
@@ -165,12 +165,10 @@ class Player {
             );
         }
 
-        // Apply physics when not on a platform
         if (!this.onPlatform) {
             this.velocityY -= config.gravity * dt;
             this.y += this.velocityY * dt;
         } else if (this.activePlatform) {
-            // Ride the active platform's Y position
             this.y = this.activePlatform.y + config.cloudHeight;
         }
     }
@@ -197,11 +195,10 @@ class Player {
             if (horizontalOverlap && crossedTop) {
                 landed = true;
                 this.activePlatform = c;
-                this.y = cloudTop;   // snap exactly onto the surface
+                this.y = cloudTop;
             }
         });
 
-        // if player has landed on a cloud, they are on platform
         if (landed) {
             this.onPlatform = true;
             this.velocityY = 0;
@@ -221,7 +218,7 @@ class Player {
     // Both twin elements (el + jumpEl) move together — only opacity differs.
     render() {
         const t = `translate3d(0, ${-this.y}px, 0)`;
-        this.el.style.transform = t;
+        this.idleEl.style.transform = t;
         this.jumpEl.style.transform = t;
     }
 
@@ -236,7 +233,7 @@ class Player {
             clearTimeout(this._pendingImageSwap);
             this._pendingImageSwap = null;
         }
-        this.el.style.opacity = '1';
+        this.idleEl.style.opacity = '1';
         this.jumpEl.style.opacity = '0';
         this.render();
     }
@@ -279,7 +276,6 @@ class Cloud {
         this.render();
     }
 
-    // randomises the cloud img
     randomiseCloud() {
         return Cloud.images[Math.floor(Math.random() * Cloud.images.length)];
     }
@@ -295,7 +291,7 @@ class Cloud {
     // place this cloud back into the chain past the rightmost cloud
     respawn(rightEdge) {
         let gap = Math.random() * layout.maxGap * state.gapRamp;   // edge-to-edge gap
-        if (gap < state.gapRoundDown) {
+        if (gap < state.minGap) {
             gap = -2;
         }
         this.x = rightEdge + gap;
@@ -346,10 +342,8 @@ function update(timestamp) {
     dt = Math.min(Math.max(dt, 0), 3);
 
     if (state.gameStarted && !state.gameOver) {
-        // player physics
         player.applyPhysics(dt);
 
-        // Move clouds
         // right edge of the furthest-right cloud — the anchor for new spawns.
         // Plain loop instead of Math.max(...clouds.map()) to avoid allocating
         // a new array + spreading it every single frame (GC pressure was
@@ -364,50 +358,41 @@ function update(timestamp) {
             const c = clouds[i];
             c.move(dt);
 
-            // recycle when fully off the left edge
             if (c.isOffScreen()) {
-                rightEdge = c.respawn(rightEdge);   // chain the next spawn
+                rightEdge = c.respawn(rightEdge);
             }
             c.render();
         }
 
-        // Collision detection — may snap player.y onto a cloud top
+        // checkLanding may snap player.y onto a cloud top, so render after it
         player.checkLanding(clouds);
-
-        // render AFTER collision so the snapped position is what's painted
         player.render();
 
-        // Game over if player falls off screen
         if (player.y < 0) {
             state.gameOver = true;
             showGameInstructions();
         }
 
-        // update score
-        state.score += config.cloudSpeed * state.speedRamp * 0.1 * dt;   // tune the multiplier
+        state.score += config.cloudSpeed * state.speedRamp * 0.1 * dt;
         scoreDisplay.textContent = Math.floor(state.score) + 'm';
-        
-        // update difficulty 
+
         state.difficulty += 0.01 * dt;
         increaseDifficulty();
-
     }
 
     requestAnimationFrame(update);
 }
 
-// increase game difficulty 
 function increaseDifficulty() {
     state.gapRamp = Math.min(1, 0.5 + (state.difficulty * 0.01));
 
-    if (state.gapRoundDown >= 25) {
-        state.gapRoundDown = Math.max(15, 50 - (state.difficulty * 0.1));
+    if (state.minGap >= 25) {
+        state.minGap = Math.max(15, 50 - (state.difficulty * 0.1));
     }
-    
+
     state.speedRamp = 1 + (state.difficulty * 0.04);
 }
 
-// calculate max gap
 function calculateMaxGap() {
     const maxTimeInAir = (2 * config.maxPower) / config.gravity;
     const edgeToEdgeGap = config.cloudSpeed * state.speedRamp * maxTimeInAir;
@@ -419,7 +404,6 @@ function calculateMaxGap() {
 // Reset and Init Functions
 // ============================================================
 
-// initialise game layout
 function initGame() {
     if (state.initialized) return;
     state.initialized = true;
@@ -429,7 +413,6 @@ function initGame() {
     calculateMaxGap();
 }
 
-// create initial clouds
 function createClouds(startX, gap, Y) {
     let cloudSplit = Math.floor(config.numClouds/2);
     let cloudSplitX = 50;
@@ -441,29 +424,21 @@ function createClouds(startX, gap, Y) {
     }
 }
 
-// reset game after 'Game Over'
 function reset() {
-    // reset state
     state.gameStarted = false;
     state.gameOver = false;
     state.score = 0;
-    state.difficulty =  0;
-    state.gapRoundDown = 50;
+    state.difficulty = 0;
+    state.minGap = 50;
     state.gapRamp = 0.5;
     state.speedRamp = 1;
 
-    // reset player
     player.reset();
-
-    // update score
     scoreDisplay.textContent = Math.floor(state.score) + 'm';
-
-    // reset UI
     showGameInstructions();
 
-    // reset cloud positions
     clouds.forEach((c, i) => {
-        c.setPosition(layout.cloudStart + (i * config.cloudWidth), config.cloudY);
+        c.setPosition(layout.cloudStartX + (i * config.cloudWidth), config.cloudY);
     });
 }
 
@@ -471,41 +446,34 @@ function reset() {
 // ============================================================
 // UI helpers
 // ============================================================
+function setInstructionsVisible(visible) {
+    const display = visible ? 'block' : 'none';
+    if (layout.mobile) {
+        mobileInstructions.style.display = display;
+    } else {
+        desktopInstructions.style.display = display;
+    }
+}
+
 function showGameInstructions() {
     if (state.gameOver) {
-        gameOverText.style.display = "block";
-        playAgain.style.display = "block";
-        if (layout.mobile) {
-            mobileInstructions.style.display = 'none';
-        }
-        else {
-            desktopInstructions.style.display = 'none';
-        }
+        gameOverText.style.display = 'block';
+        playAgain.style.display = 'block';
+        setInstructionsVisible(false);
     } else if (state.gameStarted) {
-        gameOverText.style.display = "none";
-        playAgain.style.display = "none";
-        if (layout.mobile) {
-            mobileInstructions.style.display = 'none';
-        }
-        else {
-            desktopInstructions.style.display = 'none';
-        }
+        gameOverText.style.display = 'none';
+        playAgain.style.display = 'none';
+        setInstructionsVisible(false);
     } else if (!state.gameWindowOpen) {
-        gameOverText.style.display = "none";
-        playAgain.style.display = "none";
-        startGame.style.display = "block";
+        gameOverText.style.display = 'none';
+        playAgain.style.display = 'none';
+        startGame.style.display = 'block';
         mobileInstructions.style.display = 'none';
         desktopInstructions.style.display = 'none';
-
     } else {
         gameOverText.style.display = 'none';
         playAgain.style.display = 'none';
-        if (layout.mobile) {
-            mobileInstructions.style.display = 'block';
-        }
-        else {
-            desktopInstructions.style.display = 'block';
-        }
+        setInstructionsVisible(true);
     }
 }
 
@@ -532,7 +500,6 @@ function beginJump() {
     }
 }
 
-// desktop keyboard events
 document.addEventListener('keydown', (event) => {
     if (state.gameWindowOpen) {
         if (event.repeat) return;
@@ -550,7 +517,6 @@ document.addEventListener('keyup', (event) => {
     }
 });
 
-// mobile touch events
 gameContainer.addEventListener('pointerdown', (event) => {
     if (state.gameWindowOpen) {
         event.preventDefault();  // stops the page scrolling while playing
@@ -582,19 +548,16 @@ gameContainer.addEventListener('pointerleave', (event) => {
     }
 });
 
-// event listener for play again button
 playAgain.addEventListener('pointerdown', (event) => {
     event.stopPropagation();
     reset();
 });
 
-// event listener for close popup will call reset
 function closeCloudJumper() {
     state.gameWindowOpen = false;
     reset();
 }
 
-// event listener for start game button
 startGame.addEventListener('pointerdown', (event) => {
     event.stopPropagation();
     state.gameWindowOpen = true;
@@ -606,4 +569,4 @@ startGame.addEventListener('pointerdown', (event) => {
 // ============================================================
 // Boot
 // ============================================================
-createClouds(layout.cloudStart, config.cloudWidth, config.cloudY);
+createClouds(layout.cloudStartX, config.cloudWidth, config.cloudY);

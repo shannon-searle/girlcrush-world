@@ -1,0 +1,242 @@
+/* =============================================
+   Blinkies
+============================================= */
+
+.blinkies {
+    display: flex;
+    flex-wrap: wrap;
+    width: clamp(160px, 30vw, 480px);
+    position: fixed;
+    bottom: 70px;
+    right: 18%;
+    gap: 17px;
+    z-index: 1;
+}
+
+.blinkies img {
+    width: clamp(60px, 8vw, 130px);
+    height: auto;
+}
+
+/* =============================================
+   Epic Gifs
+============================================= */
+
+#epicGif1 {
+    position: fixed;
+    bottom: 10%;
+    left: 40%;
+    height: 5%;
+    width: auto;
+}
+
+#epicGif2 {
+    position: fixed;
+    left: 23%;
+    bottom: 50px;
+    height: 15%;
+    width: auto;
+}
+
+#epicGif3 {
+    position: fixed;
+    top: 38%;
+    left: 36%;
+    height: 8%;
+    width: auto;
+}
+
+#epicGif4 {
+    position: fixed;
+    bottom: 7%;
+    right: 3%;
+    width: 8%;
+    height: auto;
+}
+
+#epicGif5 {
+    position: fixed;
+    bottom: 28%;
+    right: 35%;
+    height: 12%;
+    width: auto;
+}
+
+#epicGif6 {
+    position: fixed;
+    bottom: 30%;
+    left: 10%;
+    height: 5%;
+    width: auto;
+}
+
+#epicGif7 {
+    position: fixed;
+    bottom: 50px;
+    left: 10%;
+    height: 12%;
+    width: auto;
+}
+
+#epicGif8 {
+    position: fixed;
+    bottom: 48%;
+    right: 1%;
+    height: 8%;
+    width: auto;
+}
+
+#epicGif9 {
+    position: fixed;
+    top: 25%;
+    left: 17%;
+    height: 12%;
+    width: auto;
+}
+
+/* =============================================
+   Decor Popup
+============================================= */
+
+#decor {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.princess-container {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.princess-of-the-inside {
+    position: absolute;
+    bottom: 3%;
+    right: 10%;
+    width: auto;
+    height: clamp(160px, 40vh, 500px);
+    z-index: 0;
+}
+
+/* =============================================
+   Mobile (≤ 768px)
+============================================= */
+@media (max-width: 768px) {
+    .blinkies {
+        width: 150px;
+        left: 5%;
+        right: auto;
+        top: 5%;
+        bottom: auto;
+        gap: 3px;
+        position: absolute;
+    }
+
+    .blinkies img {
+        width: 60px;
+    }
+
+    #epicGif1 {
+        position: absolute;
+        top: 22%;
+        right: auto;
+        left: 10%;
+        height: 5%;
+        width: auto;
+    }
+
+    #epicGif2 {
+        position: absolute;
+        left: 23%;
+        bottom: 50px;
+        height: 15%;
+        width: auto;
+    }
+
+    #epicGif3 {
+        position: absolute;
+        top: 3%;
+        right: 5%;
+        left: auto;
+        height: 8%;
+        width: auto;
+    }
+
+    #epicGif4 {
+        position: absolute;
+        top: 20%;
+        right: 12%;
+        width: 10%;
+        height: auto;
+    }
+
+    #epicGif5 {
+        position: absolute;
+        bottom: 30%;
+        left: 28%;
+        right: auto;
+        height: 10%;
+        width: auto;
+    }
+
+    #epicGif6 {
+        position: absolute;
+        bottom: 30%;
+        left: 22%;
+        height: 5%;
+        width: auto;
+    }
+
+    #epicGif7 {
+        position: absolute;
+        bottom: 10%;
+        right: 2%;
+        left: auto;
+        height: 8%;
+        width: auto;
+    }
+
+    #epicGif8 {
+        position: absolute;
+        bottom: 32%;
+        top: auto;
+        right: 5%;
+        left: auto;
+        height: 5%;
+        width: auto;
+    }
+
+    #epicGif9 {
+        position: absolute;
+        top: 35%;
+        left: auto;
+        right: 7%;
+        height: 5%;
+        width: auto;
+    }
+
+    #decor {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 700px;
+    }
+
+    .princess-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: clamp(500px, 90vh, 700px);
+    }
+
+    .princess-of-the-inside {
+        position: absolute;
+        top: auto;
+        bottom: 20px;
+        right: 5%;
+        height: clamp(120px, 22vh, 260px);
+    }
+}

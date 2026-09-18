@@ -48,7 +48,7 @@ function initArrivalFadeIn() {
 ------------------------------------------ */
 function initBlinkies() {
     document.querySelectorAll('.blinkies img').forEach(img => {
-        const rotate = (Math.random() * 2 - 2);          // -10 to 10 degrees
+        const rotate = (Math.random() * 20 - 10);         // -10 to 10 degrees
         const translateX = (Math.random() * 20 - 10);    // -10 to 10px
         const translateY = (Math.random() * 20 - 10);    // -10 to 10px
         img.style.transform = `rotate(${rotate}deg) translate(${translateX}px, ${translateY}px)`;

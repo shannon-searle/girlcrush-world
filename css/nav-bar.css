@@ -1,10 +1,11 @@
-
-/* ── 11. Nav Bar ── */
+/* =============================================
+   Nav Bar
+============================================= */
 
 .nav-bar {
     width: auto;
     height: 50px;
-    margin: -15px -2vw 0; /* cancels body's top/left/right padding so this spans edge-to-edge, flush with the top */
+    margin: -15px -2vw 0;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -37,7 +38,7 @@
 
 .nav-bar a p {
     margin: 0;
-    pointer-events: none; /* prevents blocking clicks */
+    pointer-events: none;
     font-family: "Zen Dots", sans-serif;
     font-size: 12px;
     white-space: nowrap;
@@ -77,27 +78,11 @@
     }
 }
 
-/* ============================================================
+/* =============================================
    Mobile (≤ 768px)
-   ============================================================ */
+============================================= */
 @media (max-width: 768px) {
-    .nav-bar a {
-        width: 62px;
-        margin: 0;
+    body:has(.taskbar) .nav-bar {
+        display: none;
     }
-
-    .nav-bar a p {
-        font-size: 9px;
-    }
-
-    .nav-bar {
-        margin: -60px -10px 0;
-        justify-content: space-evenly;
-        gap: 0;
-    }
-
-    .nav-star-connector {
-        width: auto;
-    }
-
 }

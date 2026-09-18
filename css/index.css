@@ -1,6 +1,7 @@
-/* Reset and @keyframes shake live in shared.css */
+/* =============================================
+   Base
+============================================= */
 
-/* ── Base ── */
 html {
     background: #fce4ec;
     overflow: hidden;
@@ -13,8 +14,11 @@ body {
     overflow: hidden;
 }
 
-/* ── Background layer ── */
-#bg {
+/* =============================================
+   Background Layer
+============================================= */
+
+#page-backdrop {
     position: fixed;
     inset: 0;
     z-index: -3;
@@ -29,7 +33,7 @@ body {
     );
 }
 
-#bg-video {
+#page-backdrop-video {
     position: fixed;
     inset: 0;
     z-index: -3;
@@ -59,7 +63,10 @@ body {
     background: url("../media/index/intro/light-background.png") center / 100% auto no-repeat;
 }
 
-/* ── Stars canvas ── */
+/* =============================================
+   Stars Canvas
+============================================= */
+
 #stars {
     position: fixed;
     inset: 0;
@@ -69,7 +76,10 @@ body {
     pointer-events: none;
 }
 
-/* ── Page container ── */
+/* =============================================
+   Page Container
+============================================= */
+
 .page-container {
     display: flex;
     align-items: center;
@@ -81,7 +91,10 @@ body {
     position: relative;
 }
 
-/* ── Screens (sections) ── */
+/* =============================================
+   Screens (sections)
+============================================= */
+
 section {
     display: flex;
     flex-direction: column;
@@ -91,7 +104,10 @@ section {
     text-align: center;
 }
 
-/* ── Title screen ── */
+/* =============================================
+   Title Screen
+============================================= */
+
 #title-container {
     transition: transform 1s ease;
 }
@@ -110,7 +126,10 @@ section {
     animation: shake 5.5s infinite;
 }
 
-/* ── Typography ── */
+/* =============================================
+   Typography
+============================================= */
+
 p {
     color: #000000;
     font-family: "Zen Dots", sans-serif;
@@ -123,7 +142,10 @@ p {
 
 a { outline: none; }
 
-/* ── Buttons ── */
+/* =============================================
+   Buttons
+============================================= */
+
 .button {
     background: #8d8297;
     color: #ffffff;
@@ -159,7 +181,10 @@ a { outline: none; }
     gap: 80px;
 }
 
-/* ── Scene frame (shared by portal/enter/freefall/surrender) ── */
+/* =============================================
+   Scene Frame (shared by portal/enter/freefall/surrender)
+============================================= */
+
 .scene-frame {
     display: inline-flex;
     position: relative;
@@ -167,10 +192,8 @@ a { outline: none; }
     border-radius: 10%;
     margin-top: 0;
     justify-content: center;
-    /* box-shadow: 0 0 50px #ff78b3; */
 }
 
-/* Waiting room: fade the frame's edges into the page instead of a box-shadow glow */
 #screen-portal .scene-frame {
     mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 82%, transparent 100%),
                 linear-gradient(to right,  transparent 0%, black 15%, black 82%, transparent 100%);
@@ -180,7 +203,6 @@ a { outline: none; }
     -webkit-mask-composite: source-in;
 }
 
-/* Groups the media elements in markup; contributes no box of its own */
 .scene-media {
     display: contents;
 }
@@ -198,8 +220,6 @@ a { outline: none; }
     object-fit: contain;
 }
 
-/* Caption text + game options, no card background — text relies on a
-   heavy shadow to stay legible over the moving stars/scene behind it */
 .scene-info {
     display: flex;
     flex-direction: column;
@@ -221,7 +241,10 @@ a { outline: none; }
         1px 1px 2px rgba(0, 0, 0, 0.9);
 }
 
-/* ── Portal ── */
+/* =============================================
+   Portal
+============================================= */
+
 #portal {
     position: absolute;
     width: 40%;
@@ -237,7 +260,10 @@ a { outline: none; }
     50%       { transform: translateY(-15px); }
 }
 
-/* ── Arrival screen ── */
+/* =============================================
+   Arrival Screen
+============================================= */
+
 #screen-arrival {
     position: relative;
     width: 100vw;
@@ -273,8 +299,11 @@ a { outline: none; }
     box-shadow: none;
 }
 
-/* ── Dead screen ── */
-#screen-dead .dead-bg {
+/* =============================================
+   Dead Screen
+============================================= */
+
+#screen-dead .dead-screen-image {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -288,7 +317,10 @@ a { outline: none; }
     text-shadow: 2px 2px 4px #000000;
 }
 
-/* ── Backdoor ── */
+/* =============================================
+   Backdoor
+============================================= */
+
 .backdoor {
     position: fixed;
     right: 2%;
@@ -330,7 +362,9 @@ a { outline: none; }
     cursor: pointer;
 }
 
-/* ── Mobile (≤ 768px) ── */
+/* =============================================
+   Mobile (≤ 768px)
+============================================= */
 @media (max-width: 768px) {
     #angel-light {
         display: none;
@@ -365,7 +399,6 @@ a { outline: none; }
     .scene-info {
         padding: 20px 10px;
     }
-
 
     .scene-info p {
         line-height: 1.6;
@@ -403,7 +436,7 @@ a { outline: none; }
         max-width: 100%;
     }
 
-    #screen-dead .dead-bg {
+    #screen-dead .dead-screen-image {
         width: 200vw;
     }
 

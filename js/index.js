@@ -5,26 +5,24 @@ const transitionConfig = {
     fadeMs: 800,
 };
 
-// reset to screen title
 function resetToScreenTitle() {
-    // set bg
-    const bg = document.getElementById("bg");
-    bg.style.background = `radial-gradient(
+    const backdrop = document.getElementById("page-backdrop");
+    backdrop.style.background = `radial-gradient(
             circle at center,
             #ffffff 0%,
             #e0f7fa 35%,
             #f3e5f5 70%,
             #fce4ec 100%
         )`;
-    bg.style.opacity = "1";
-    const bgVideo = document.getElementById("bg-video");
-    bgVideo.style.opacity = "0";
-    bgVideo.pause();
-    // remove previous screen
+    backdrop.style.opacity = "1";
+
+    const backdropVideo = document.getElementById("page-backdrop-video");
+    backdropVideo.style.opacity = "0";
+    backdropVideo.pause();
+
     document.querySelectorAll("section").forEach(el => {
         el.style.display = "none";
     });
-    // show title screen
     document.getElementById('screen-title').style.display = "flex";
     document.querySelector('.page-container').style.opacity = "1";
 }
@@ -46,24 +44,24 @@ function fadeContent(out, callback) {
 }
 
 function setBackground(value) {
-    const bg = document.getElementById("bg");
-    const bgVideo = document.getElementById("bg-video");
+    const backdrop = document.getElementById("page-backdrop");
+    const backdropVideo = document.getElementById("page-backdrop-video");
 
     if (value === "spooky") {
-        bg.style.opacity = "0";
-        bgVideo.currentTime = 0;
-        bgVideo.play();
+        backdrop.style.opacity = "0";
+        backdropVideo.currentTime = 0;
+        backdropVideo.play();
         setTimeout(() => {
-            requestAnimationFrame(() => { bgVideo.style.opacity = "1"; });
+            requestAnimationFrame(() => { backdropVideo.style.opacity = "1"; });
         }, transitionConfig.fadeMs);
         return;
     }
 
-    bgVideo.style.opacity = "0";
-    bg.style.opacity = "0";
+    backdropVideo.style.opacity = "0";
+    backdrop.style.opacity = "0";
     setTimeout(() => {
-        bg.style.background = value;
-        requestAnimationFrame(() => { bg.style.opacity = "1"; });
+        backdrop.style.background = value;
+        requestAnimationFrame(() => { backdrop.style.opacity = "1"; });
     }, transitionConfig.fadeMs);
 }
 

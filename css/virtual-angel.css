@@ -1,4 +1,7 @@
-/* popup shell (positioning/background/close button) — moved from popups.css */
+/* =============================================
+   Virtual Angel
+============================================= */
+
 #virtual-angel-popup { bottom: 100px; left: 12vw; align-items: flex-start; }
 
 #virtual-angel-popup .popup-window {
@@ -80,7 +83,7 @@
 }
 
 .front-card {
-    -webkit-transform: translateZ(1px); /* nudge forward, keeps it in front */
+    -webkit-transform: translateZ(1px);
 }
 
 .back-card {
@@ -89,32 +92,30 @@
 }
 
 
-/* ============================================================
+/* =============================================
    Mobile (≤ 768px)
-   ============================================================ */
+============================================= */
 @media (max-width: 768px) {
     #virtual-angel-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none;
-
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: none;
-        margin-top: 20px;
-        margin-bottom: 40px;
+        bottom: var(--taskbar-visible-height, 40px) !important;
+        padding-bottom: var(--mobile-popup-gap);
     }
 
     #virtual-angel-popup .popup-window {
-        width: 100%;
+        height: 100% !important;
+        align-items: center;
+    }
+
+    #virtual-angel-popup .popup-close {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
     }
 
     .card {
-        width: 100%;
+        width: auto;
+        height: 100%;
+        max-width: 100%;
     }
 
 

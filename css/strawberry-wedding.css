@@ -1,4 +1,7 @@
-/* popup shell (titlebar/positioning/background) — moved from popups.css */
+/* =============================================
+   Strawberry Wedding
+============================================= */
+
 #strawberry-wedding-popup .popup-titlebar {
     background: rgb(39, 39, 39);
     color: #d80000;
@@ -37,6 +40,9 @@
 }
 
 #rsvp {
+    --pulse-peak: 1.1;
+    --pulse-step: 1.05;
+
     margin-bottom: 15%;
     position: absolute;
     z-index: 10;
@@ -66,14 +72,11 @@
     0%, 100% {
         transform: scale(1);
     }
-    25% {
-        transform: scale(1.05);
+    25%, 75% {
+        transform: scale(var(--pulse-step));
     }
     50% {
-        transform: scale(1.1);
-    }
-    75% {
-        transform: scale(1.05);
+        transform: scale(var(--pulse-peak));
     }
 }
 
@@ -96,42 +99,13 @@
     cursor: pointer;
 }
 
-/* ============================================================
+/* =============================================
    Mobile (≤ 768px)
-   ============================================================ */
+============================================= */
 @media (max-width: 768px) {
-    #strawberry-wedding-popup {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        transform: none;
-
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: none;
-        margin-top: 20px;
-        margin-bottom: 40px;
-    }
-
-   #rsvp {
-    animation: pulse 0.8s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% {
-            transform: scale(1);
-        }
-        25% {
-            transform: scale(1.03);
-        }
-        50% {
-            transform: scale(1.05);
-        }
-        75% {
-            transform: scale(1.03);
-        }
+    #rsvp {
+        --pulse-peak: 1.05;
+        --pulse-step: 1.03;
+        animation: pulse 0.8s ease-in-out infinite;
     }
 }

@@ -1,5 +1,8 @@
-/* ── 6. Icon Tray ── */
-.icon-tray {
+/* =============================================
+   Desktop Icons
+============================================= */
+
+.desktop-icons {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -9,18 +12,18 @@
 
     position: fixed;
     top: clamp(15px, 2vw, 25px);
-    left: 2vw; /* matches body's own left padding */
+    left: 2vw;
     bottom: 40px;
 
     border: none;
     box-shadow: none;
 }
 
-.icon:hover {
+.desktop-icon:hover {
     transform: scale(1.1);
 }
 
-.icon {
+.desktop-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +38,7 @@
     transition: transform 0.2s ease;
 }
 
-.icon button {
+.desktop-icon-button {
     all: unset;
     display: flex;
     flex-direction: column;
@@ -49,7 +52,7 @@
     text-align: inherit;
 }
 
-.icon button p {
+.desktop-icon-label {
     color: rgb(100, 80, 120);
     word-break: keep-all;
     line-height: 1.2;
@@ -69,12 +72,12 @@
     overflow: hidden;
 }
 
-.icon button:active p {
+.desktop-icon-button:active .desktop-icon-label {
     background: rgba(197, 49, 185, 0.85);
     color: #fff;
 }
 
-.icon button img {
+.desktop-icon-image {
     width: 100%;
     height: clamp(22px, 2.2vw, 48px);
     object-fit: contain;
@@ -85,32 +88,31 @@
     mask-composite: intersect;
 }
 
-.icon button:active img {
+.desktop-icon-button:active .desktop-icon-image {
     filter: brightness(0.75) saturate(1.5) hue-rotate(190deg);
     opacity: 0.85;
 }
 
-.icon span {
-    font-size: clamp(20px, 2vw, 40px);
-    cursor: pointer;
-}
-
-/* ============================================================
+/* =============================================
    Mobile (≤ 768px)
-   ============================================================ */
+============================================= */
 @media (max-width: 768px) {
-
-    .icon button p {
-        word-break: keep-all;
-        font-size: clamp(9px, 2vw, 11px);
-        padding: 10px 8px;
+    .decor-icon {
+        display: none;
     }
 
-    .icon-tray {
+    .desktop-icon-label {
+        word-break: keep-all;
+        font-size: 11px;
+        padding: 6px 6px;
+    }
+
+    .desktop-icons {
         position: relative;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        gap: 26px 12px;
 
         top: auto;
         left: auto;
@@ -121,20 +123,17 @@
         height: auto;
         max-width: 100%;
         max-height: none;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin: 0;
-        padding-bottom: 0;
+        padding: 16px 8px 0;
+        margin: 0 auto;
     }
 
-    .icon {
-        width: 60px;
+    .desktop-icon {
+        width: 100%;
     }
 
-    .icon button img{
-        padding: 0 0 2px 0;
+    .desktop-icon-image {
+        height: clamp(36px, 11vw, 52px);
         width: auto;
+        padding: 0 0 2px 0;
     }
-
-
 }

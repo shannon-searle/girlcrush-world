@@ -1,0 +1,85 @@
+/* =============================================
+   Guestbook
+============================================= */
+
+#guestbook {
+    position: fixed;
+    right: 5vw;
+    bottom: 45vh;
+    z-index: 5010;
+
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(-24px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#guestbook .popup-titlebar {
+    border-radius: 20px 20px 0 0;
+}
+
+.field-border {
+    border: 3px solid #ffdbf1;
+    border-radius: 0 0 20px 20px;
+    background: linear-gradient(
+        to bottom,
+        rgba(243, 249, 250, 0.5),
+        rgb(246, 247, 247)
+    );
+
+    width: clamp(280px, 26vw, 340px);
+    height: clamp(300px, 40vh, 600px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.18),
+        0 8px 16px rgba(0, 0, 0, 0.12),
+        0 0 0 2px rgba(255, 255, 255, 0.35) inset,
+        inset 0 -8px 16px rgba(0, 0, 0, 0.06);
+}
+
+#guestbook.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.desktop-icons .guestbook-mobile {
+    display: none;
+}
+
+/* =============================================
+   Mobile (≤ 768px)
+============================================= */
+@media (max-width: 768px) {
+    .desktop-icons .guestbook-mobile {
+        display: flex;
+    }
+
+    #guestbook {
+        position: fixed;
+        top: var(--mobile-popup-top, 72px);
+        bottom: var(--taskbar-visible-height, 40px);
+        left: 12px;
+        right: 12px;
+        z-index: 4998;
+        transform: translateY(24px);
+        padding-bottom: var(--mobile-popup-gap);
+    }
+
+    .field-border {
+        background: linear-gradient(
+            to bottom,
+            rgb(247, 246, 247),
+            #ffdbf1
+        );
+
+        width: 100%;
+        flex: 1;
+        display: block;
+        box-shadow: none;
+        border: 5px solid #ffdbf1;
+        border-radius: 0 0 20px 20px;
+    }
+}

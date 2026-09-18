@@ -20,7 +20,19 @@
     overflow: hidden;
 }
 
-/* ── vertical sidebar strip ── */
+.start-menu-titlebar {
+    display: none;
+}
+
+.start-menu-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+/* =============================================
+   Sidebar Strip
+============================================= */
 
 .start-menu-sidebar {
     display: flex;
@@ -30,7 +42,7 @@
     width: 26px;
     padding: 10px 0;
 
-    background: #d966a0;
+    background: var(--pink-accent, #d966a0);
 }
 
 .start-menu-sidebar span {
@@ -40,12 +52,14 @@
     font-family: "Zen Dots", sans-serif;
     letter-spacing: 2px;
     font-size: 13px;
-    color: #fcf6f9;
+    color: var(--offwhite, #fcf6f9);
 
     user-select: none;
 }
 
-/* ── menu items ── */
+/* =============================================
+   Menu Items
+============================================= */
 
 .start-menu-items {
     display: flex;
@@ -78,8 +92,12 @@
 
 .start-menu-item:hover,
 .start-menu-item:focus-visible {
-    background: #d966a0;
-    color: #fcf6f9;
+    background: var(--pink-accent, #d966a0);
+    color: var(--offwhite, #fcf6f9);
+}
+
+.start-menu-item.current {
+    background: rgba(217, 102, 160, 0.18);
 }
 
 .start-menu-item img {
@@ -96,12 +114,43 @@
     margin: 4px 6px;
 }
 
-/* ─────────────────────────────
+/* =============================================
    Mobile (≤ 768px)
-───────────────────────────── */
-
+============================================= */
 @media (max-width: 768px) {
+    #start-menu {
+        display: flex;
+        top: var(--mobile-popup-top, 72px);
+        bottom: var(--taskbar-visible-height, 40px);
+        right: 0;
+        z-index: 4999;
+
+        opacity: 0;
+        transform: translateY(24px);
+        pointer-events: none;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    #start-menu.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
     .start-menu-window {
-        width: 200px;
+        width: 100%;
+        max-height: 100%;
+        flex-direction: column;
+        border-radius: 0;
+        overflow-y: auto;
+    }
+
+    .start-menu-titlebar {
+        display: flex;
+    }
+
+    .start-menu-item {
+        font-size: 15px;
+        padding: 12px 10px;
     }
 }

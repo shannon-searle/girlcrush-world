@@ -14,22 +14,32 @@ starConnectors.forEach(star => {
     });
 });
 
-/* ------------------------------------------
-    Keep the icon tray below the site title
-    (the title's height is responsive, so this
-    is measured rather than hardcoded)
------------------------------------------- */
 const siteTitleEl = document.querySelector('.nav-bar');
-const iconTrayEl = document.querySelector('.icon-tray');
+const desktopIconsEl = document.querySelector('.desktop-icons');
 
-function positionIconTray() {
-    if (window.innerWidth <= MOBILE_BREAKPOINT) return; // mobile icon-tray flows normally, not fixed
-    if (!siteTitleEl || !iconTrayEl) return;
+function positionDesktopIcons() {
+    if (window.innerWidth <= MOBILE_BREAKPOINT) return;
+    if (!siteTitleEl || !desktopIconsEl) return;
 
     const gap = 50;
-    iconTrayEl.style.top = (siteTitleEl.getBoundingClientRect().bottom + gap) + 'px';
+    desktopIconsEl.style.top = (siteTitleEl.getBoundingClientRect().bottom + gap) + 'px';
 }
 
-positionIconTray();
-window.addEventListener('resize', positionIconTray);
-window.addEventListener('load', positionIconTray);
+positionDesktopIcons();
+window.addEventListener('resize', positionDesktopIcons);
+window.addEventListener('load', positionDesktopIcons);
+
+// measured rather than hardcoded since the title's height is responsive
+const siteTitleImgEl = document.querySelector('.site-title');
+
+function updateMobilePopupTop() {
+    if (window.innerWidth > MOBILE_BREAKPOINT || !siteTitleImgEl) return;
+    const rect = siteTitleImgEl.getBoundingClientRect();
+    const marginBottom = parseFloat(getComputedStyle(siteTitleImgEl).marginBottom) || 0;
+    const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--mobile-popup-gap')) || 12;
+    document.documentElement.style.setProperty('--mobile-popup-top', (rect.bottom + marginBottom + gap) + 'px');
+}
+
+updateMobilePopupTop();
+window.addEventListener('resize', updateMobilePopupTop);
+window.addEventListener('load', updateMobilePopupTop);

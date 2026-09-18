@@ -1,20 +1,26 @@
-/* ─────────────────────────────
-   11. Start Bar
-───────────────────────────── */
+/* =============================================
+   Start Bar
+============================================= */
+
+:root {
+    --taskbar-height: 80px;
+    --taskbar-padding-bottom: 50px;
+    --taskbar-visible-height: calc(var(--taskbar-height) - var(--taskbar-padding-bottom));
+}
 
 .taskbar {
     position: fixed;
-    bottom: -50px;
+    bottom: calc(-1 * var(--taskbar-padding-bottom));
     left: 0;
     z-index: 5000;
 
     width: 100vw;
-    height: 80px;
+    height: var(--taskbar-height);
 
     display: flex;
-    padding-bottom: 50px;
+    padding-bottom: var(--taskbar-padding-bottom);
 
-    background: #e0f7fa;
+    background: var(--teal-accent, #e0f7fa);
     border: none;
 
     box-shadow:
@@ -22,8 +28,19 @@
         0 -2px 6px rgba(0, 0, 0, 0.10);
 }
 
+.taskbar-subpage {
+    display: none;
+}
 
-/* ── Tabs ── */
+@media (max-width: 768px) {
+    .taskbar-subpage {
+        display: flex;
+    }
+}
+
+/* =============================================
+   Tabs
+============================================= */
 
 .taskbar-spacer {
     flex: 1;
@@ -64,8 +81,9 @@
     display: flex;
 }
 
-
-/* ── Start Button ── */
+/* =============================================
+   Start Button
+============================================= */
 
 .taskbar #start-button {
     display: flex;
@@ -74,14 +92,14 @@
 
     padding: 2px 15px;
 
-    background: #ffe0f0;
-    color: #d966a0;
+    background: var(--pink-titlebar, #ffe0f0);
+    color: var(--pink-accent, #d966a0);
 }
 
 #start-button:hover,
 #start-button.open {
-    background: #d966a0;
-    color: #fcf6f9;
+    background: var(--pink-accent, #d966a0);
+    color: var(--offwhite, #fcf6f9);
 }
 
 #start-button:hover,
@@ -89,9 +107,10 @@
     cursor: pointer;
 }
 
-/* ─────────────────────────────
+/* =============================================
    Tab Variants
-───────────────────────────── */
+============================================= */
+
 #strawberry-wedding-button {
     background: rgb(39, 39, 39);
     color: #d80000;
@@ -123,12 +142,14 @@
     color: #dbeefb;
 }
 
-/* ── Guestbook button ── */
+/* =============================================
+   Guestbook Button
+============================================= */
 
-#chatbox-button {
+#guestbook-button {
     position: absolute;
     right: 20px;
-    bottom: 60px; /* flush with the visible bar's bottom edge, not the box's (see .taskbar padding-bottom) */
+    bottom: 60px;
 
     display: block;
     background: none;
@@ -140,15 +161,15 @@
     transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.chatbox-tooltip {
+.guestbook-tooltip {
     position: absolute;
     bottom: 100%;
     right: 0;
     margin-bottom: 10px;
 
     padding: 6px 12px;
-    background: #ffe0f0;
-    color: #d966a0;
+    background: var(--pink-titlebar, #ffe0f0);
+    color: var(--pink-accent, #d966a0);
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 
@@ -162,7 +183,7 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.chatbox-tooltip::after {
+.guestbook-tooltip::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -170,10 +191,10 @@
     width: 0;
     height: 0;
     border: 6px solid transparent;
-    border-top-color: #ffe0f0;
+    border-top-color: var(--pink-titlebar, #ffe0f0);
 }
 
-#chatbox-button:hover .chatbox-tooltip {
+#guestbook-button:hover .guestbook-tooltip {
     opacity: 1;
     transform: translateY(0);
 }
@@ -182,30 +203,31 @@
     display: none;
 }
 
-#chatbox-button.open .tooltip-closed-label {
+#guestbook-button.open .tooltip-closed-label {
     display: none;
 }
 
-#chatbox-button.open .tooltip-open-label {
+#guestbook-button.open .tooltip-open-label {
     display: inline;
 }
 
-#chatbox-button img {
+#guestbook-button img {
     display: block;
     height: clamp(90px, 12vw, 150px);
     width: auto;
     pointer-events: none;
 }
 
-#chatbox-button:hover {
+#guestbook-button:hover {
     transform: scale(1.08);
     filter:
         drop-shadow(0 0 4px rgba(217, 102, 160, 0.9))
         drop-shadow(0 0 8px rgba(217, 102, 160, 0.5));
 }
 
-
-/* ── Tab Images ── */
+/* =============================================
+   Tab Images & Text
+============================================= */
 
 .taskbar-button img {
     width: auto;
@@ -213,33 +235,36 @@
     cursor: pointer;
 }
 
-/* ── Tab Text ── */
-
 .taskbar-button p {
     cursor: pointer;
 }
 
-/* ── scaleable width mode ── */
-.taskbar.scaleable .taskbar-button.open p:not(#start-button p) {
+/* =============================================
+   Scalable Width Mode
+============================================= */
+
+.taskbar.scalable .taskbar-button.open p:not(#start-button p) {
     overflow: hidden;
 }
 
-.taskbar.scaleable .taskbar-button.open:not(#start-button):not(.keep-full) {
+.taskbar.scalable .taskbar-button.open:not(#start-button):not(.keep-full) {
     flex: 1 1 auto;
     min-width: 0;
     padding: 2px 10px;
 }
 
-.taskbar.scaleable .taskbar-button:not(.keep-full) .popup-close {
+.taskbar.scalable .taskbar-button:not(.keep-full) .popup-close {
     display: none;
 }
 
-/* hide close button in taskbar */
+/* =============================================
+   Compact Mode
+============================================= */
+
 .taskbar.compact .taskbar-button .popup-close {
     display: none;
 }
 
-/* ── compact mode ── */
 .taskbar.compact .taskbar-button p:not(#start-button p) {
     display: none;
 }
@@ -253,25 +278,22 @@
     justify-content: center;
 }
 
-/* hide close button in taskbar */
-.taskbar.compact .taskbar-button .popup-close {
+.taskbar.compact #guestbook-button {
     display: none;
 }
 
-/* mobile already has its own guestbook tray icon */
-.taskbar.compact #chatbox-button {
-    display: none;
-}
+/* =============================================
+   Tina Peek
+============================================= */
 
 #tina-peek {
     --tina-height: clamp(110px, 13vw, 180px);
-    --tina-bar-top: 30px; /* visible height of the bar (see .taskbar bottom/padding-bottom) */
+    --tina-bar-top: var(--taskbar-visible-height);
 
     position: fixed;
     left: 30%;
-    /* sunk so only her top half clears the bar */
     bottom: calc(var(--tina-bar-top) - var(--tina-height) / 2);
-    z-index: 1; /* behind the taskbar (so it crops her) and behind any open popup */
+    z-index: 1;
 
     height: var(--tina-height);
     line-height: 0;
@@ -287,7 +309,6 @@
     pointer-events: none;
 }
 
-/* pop all the way out, feet just clear of the bar */
 #tina-peek:hover {
     transform: translateX(-50%) translateY(calc(var(--tina-height) / -2 - 6px));
 }
@@ -295,5 +316,18 @@
 @media (prefers-reduced-motion: reduce) {
     #tina-peek {
         transition: none;
+    }
+}
+
+/* =============================================
+   Mobile (≤ 768px)
+============================================= */
+@media (max-width: 768px) {
+    #decor-button {
+        display: none !important;
+    }
+
+    :root {
+        --taskbar-height: 90px;
     }
 }

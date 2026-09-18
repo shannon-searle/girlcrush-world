@@ -1,6 +1,8 @@
-/* ─────────────────────────────
-   Popups — Base (generic; per-popup styling lives in that feature's own CSS file)
-───────────────────────────── */
+/* =============================================
+   Popups — Base (per-popup styling lives in
+   that feature's own CSS file)
+============================================= */
+
 #popup-container {
     position: relative;
 }
@@ -15,10 +17,27 @@
     display: flex;
 }
 
+/* always laid out (not display:none) and shown/hidden purely via
+   opacity/translate/pointer-events, so opening animates in from below —
+   translate (not transform) so it never fights the drag code's own use
+   of transform for its offset */
+.popup {
+    display: flex;
+    opacity: 0;
+    translate: 0 24px;
+    pointer-events: none;
+    transition: opacity 0.35s ease, translate 0.35s ease;
+}
 
-/* ─────────────────────────────
+.popup.open {
+    opacity: 1;
+    translate: 0 0;
+    pointer-events: auto;
+}
+
+/* =============================================
    Popup Titlebar — Base
-───────────────────────────── */
+============================================= */
 
 .popup-titlebar {
     display: flex;
@@ -34,8 +53,8 @@
     font-size: 14px;
     line-height: 1.6;
 
-    background: #ffe0f0;
-    color: #d966a0;
+    background: var(--pink-titlebar, #ffe0f0);
+    color: var(--pink-accent, #d966a0);
 
     user-select: none;
 
@@ -52,10 +71,9 @@
     cursor: grabbing;
 }
 
-
-/* ─────────────────────────────
+/* =============================================
    Close Button — Base
-───────────────────────────── */
+============================================= */
 
 .popup-close {
     width: 25px;
@@ -89,7 +107,6 @@
     background: #ffc0de;
 }
 
-/* generic — applies to any taskbar tab's own close button */
 .taskbar-button .popup-close {
     position: absolute;
     top: 3px;
@@ -104,10 +121,9 @@
     box-shadow: none;
 }
 
-
-/* ─────────────────────────────
-   Popup Window Base
-───────────────────────────── */
+/* =============================================
+   Popup Window — Base
+============================================= */
 
 .popup-window {
     display: flex;
@@ -119,19 +135,42 @@
     border-radius: 5px;
 }
 
-
-/* ─────────────────────────────
+/* =============================================
    Mobile (≤ 768px)
-───────────────────────────── */
-
+============================================= */
 @media (max-width: 768px) {
-
     .panel.open {
         z-index: 1000;
     }
 
-    .popup-titlebar {
-        padding: 5px 10px;
+    :root {
+        --mobile-popup-gap: 12px;
     }
 
+    .popup {
+        position: fixed !important;
+        top: var(--mobile-popup-top, 72px) !important;
+        bottom: auto !important;
+        left: 6px !important;
+        right: 6px !important;
+
+        width: auto !important;
+        height: auto !important;
+        max-height: calc(100vh - var(--mobile-popup-top, 72px) - var(--taskbar-visible-height, 40px)) !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    .popup .popup-window {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 100% !important;
+        border-radius: 5px !important;
+        overflow-y: auto;
+    }
+
+    .popup-close {
+        width: 30px;
+        height: 30px;
+    }
 }
