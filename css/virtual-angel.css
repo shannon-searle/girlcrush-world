@@ -19,7 +19,7 @@
 
     background: rgb(230, 251, 255);
     color: rgb(106, 152, 171);
-
+ 
     border: none;
     border-radius: 0 7px 0 0;
 
@@ -96,13 +96,7 @@
    Mobile (≤ 768px)
 ============================================= */
 @media (max-width: 768px) {
-    #virtual-angel-popup {
-        bottom: var(--taskbar-visible-height, 40px) !important;
-        padding-bottom: var(--mobile-popup-gap);
-    }
-
     #virtual-angel-popup .popup-window {
-        height: 100% !important;
         align-items: center;
     }
 

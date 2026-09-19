@@ -12,8 +12,9 @@
 .start-menu-window {
     display: flex;
 
-    width: 240px;
+    width: 300px;
     max-width: 100vw;
+    height: 40vh;
 
     background: #ece9f5;
     border-radius: 0 4px 4px 0;
@@ -139,6 +140,7 @@
 
     .start-menu-window {
         width: 100%;
+        height: auto;
         max-height: 100%;
         flex-direction: column;
         border-radius: 0;

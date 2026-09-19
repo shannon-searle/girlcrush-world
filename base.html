@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/decor.css" />
     <link rel="stylesheet" href="css/guestbook.css" />
     <link rel="stylesheet" href="css/popups.css" />
-    <link rel="stylesheet" href="css/things-i-love.css" />
+    <link rel="stylesheet" href="css/whats-in-my-bag.css" />
     <link rel="stylesheet" href="css/webmaster.css" />
     <link rel="stylesheet" href="css/avatar.css" />
     <link rel="stylesheet" href="css/welcome.css" />
@@ -152,12 +152,12 @@
                     data-closemenu="virtual-angel-button">✕</button>
         </div>
 
-        <div class="taskbar-button window-classic" id="things-i-love-button">
-            <img src="./media/base/icons/chicken.png" alt="">
-            <p>things i love</p>
+        <div class="taskbar-button window-classic" id="whats-in-my-bag-button">
+            <img src="./media/base/icons/bag.png" alt="">
+            <p>what's in my bag</p>
             <button class="popup-close"
-                    data-close="things-i-love-popup"
-                    data-closemenu="things-i-love-button">✕</button>
+                    data-close="whats-in-my-bag-popup"
+                    data-closemenu="whats-in-my-bag-button">✕</button>
         </div>
 
         <!-- remaining space -->
@@ -221,7 +221,7 @@
         <div class="desktop-icon">
             <button class="desktop-icon-button" data-panel="welcome-popup" data-taskbar="welcome-button">
                 <img class="desktop-icon-image" src="media/base/icons/welcome.png" alt=""/>
-                <p class="desktop-icon-label">welcome message</p>
+                <p class="desktop-icon-label">welcome</p>
             </button>
         </div>
 
@@ -275,9 +275,9 @@
         </div>
 
         <div class="desktop-icon">
-            <button class="desktop-icon-button" data-panel="things-i-love-popup" data-taskbar="things-i-love-button">
-                <img class="desktop-icon-image" src="media/base/icons/chicken.png" alt="things i love" />
-                <p class="desktop-icon-label">things i love</p>
+            <button class="desktop-icon-button" data-panel="whats-in-my-bag-popup" data-taskbar="whats-in-my-bag-button">
+                <img class="desktop-icon-image" src="media/base/icons/bag.png" alt="what's in my bag" />
+                <p class="desktop-icon-label">what's in my bag</p>
             </button>
         </div>
 
@@ -626,22 +626,22 @@
             </div>
         </div>
 
-        <!-- things i love -->
-        <div id="things-i-love-popup" class="popup panel">
+        <!-- what's in my bag -->
+        <div id="whats-in-my-bag-popup" class="popup panel">
             <div class="popup-window window-classic">
                 <div class="popup-titlebar">
-                    <span>things i love</span>
-                    <button class="popup-close" data-close="things-i-love-popup" data-closemenu="things-i-love-button">✕</button>
+                    <span>what's in my bag</span>
+                    <button class="popup-close" data-close="whats-in-my-bag-popup" data-closemenu="whats-in-my-bag-button">✕</button>
                 </div>
-                <div class="things-i-love-container window-classic-indent">
+                <div class="whats-in-my-bag-container window-classic-indent">
                     <div class="bag-items">
-                        <img class="bag-base" src="./media/base/things-i-love/BAG.png" alt="things i love">
+                        <img class="bag-base" src="./media/base/things-i-love/BAG.png" alt="what's in my bag">
                         <img class="bag-item" src="./media/base/things-i-love/ipod.png" alt="ipod"
                              data-panel="ipod-carousel"
-                             style="left: 46.67%; top: 14.96%; width: 14.33%; height: 14.64%;">
+                             style="left: 43.51%; top: 12.46%; width: 19.65%; height: 16.17%;">
                         <img class="bag-item" src="./media/base/things-i-love/camera.png" alt="camera"
                              data-panel="camera-carousel"
-                             style="left: 63.93%; top: 35.68%; width: 15.73%; height: 15.92%;">
+                             style="left: 67.18%; top: 35.34%; width: 21.57%; height: 17.58%;">
                     </div>
 
                     <div id="ipod-carousel" class="panel item-carousel">
@@ -741,6 +741,7 @@
     <script src="js/piano.js"></script>
     <script src="js/strawberryWedding.js"></script>
     <script src="js/itemCarousel.js"></script>
+    <script src="js/whatsInMyBag.js"></script>
     <script src="js/navBar.js"></script>
     <script src="js/taskbar.js"></script>
     <script src="js/startMenu.js"></script>

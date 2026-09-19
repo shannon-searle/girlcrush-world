@@ -55,6 +55,14 @@
    Mobile (≤ 768px)
 ============================================= */
 @media (max-width: 768px) {
+    #welcome-popup {
+        bottom: auto !important;
+    }
+
+    #welcome-popup .popup-window {
+        height: auto !important;
+    }
+
     .welcome-content {
         font-size: 8px;
         padding: 10px;

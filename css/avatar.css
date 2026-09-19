@@ -178,15 +178,6 @@
    Mobile (≤ 768px)
 ============================================= */
 @media (max-width: 768px) {
-    #avatar-popup {
-        bottom: var(--taskbar-visible-height, 40px) !important;
-        padding-bottom: var(--mobile-popup-gap);
-    }
-
-    #avatar-popup .popup-window {
-        height: 100% !important;
-    }
-
     .avatar-editor {
         flex-direction: column;
         flex-wrap: nowrap;

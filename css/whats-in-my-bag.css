@@ -1,32 +1,34 @@
 /* =============================================
-   Things I Love
+   What's In My Bag
 ============================================= */
 
-#things-i-love-popup .popup-titlebar {
-    background: #e8dcc8;
+#whats-in-my-bag-popup .popup-titlebar {
+    background: #c8e7e8;
     color: #6b5642;
 }
 
-#things-i-love-popup {
-    --til-top: 8vh;
-    --til-bottom-guard: calc(var(--taskbar-visible-height, 30px) + 10px);
-    --til-free-height: calc(100vh - var(--til-top) - var(--til-bottom-guard));
-    --til-width: min(900px, 92%, calc((var(--til-free-height) - 41px) * 1.2));
+#whats-in-my-bag-popup {
+    --bag-top: 8vh;
+    --bag-bottom-guard: calc(var(--taskbar-visible-height, 40px) + 10px);
+    --bag-free-height: calc(100vh - var(--bag-top) - var(--bag-bottom-guard));
+    --bag-width: min(600px, 70%, calc((var(--bag-free-height) - 41px) * 1.2));
 
-    top: var(--til-top);
-    left: calc((100% - var(--til-width)) / 2);
-    width: var(--til-width);
+    top: var(--bag-top);
+    left: calc((100% - var(--bag-width)) / 2);
+    width: var(--bag-width);
 }
 
-#things-i-love-popup .popup-window {
-    background: #fdf3f7;
+#whats-in-my-bag-popup .popup-window {
+    background: #eff1e4;
     width: 100%;
 }
 
-#things-i-love-popup .things-i-love-container {
+#whats-in-my-bag-popup .whats-in-my-bag-container {
     position: relative;
+    display: flex;
+    align-items: center;
     overflow: hidden;
-    padding: 16px;
+    padding: 30px 50px;
 }
 
 /* =============================================
@@ -36,7 +38,7 @@
 .bag-items {
     position: relative;
     width: 100%;
-    aspect-ratio: 1500 / 1250;
+    aspect-ratio: 1094 / 1132;
 }
 
 .bag-base {
@@ -57,6 +59,17 @@
 .bag-item:hover {
     transform: scale(1.2);
     z-index: 10;
+}
+
+/* mobile "clickable" cue */
+@keyframes bag-item-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.bag-item.pulse {
+    z-index: 10;
+    animation: bag-item-pulse 1s ease-in-out infinite;
 }
 
 /* =============================================
@@ -90,7 +103,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 90%;
     height: 80%;
     padding: 14px;
     background: rgba(224, 246, 255, 0.75);
@@ -145,7 +158,7 @@
     position: absolute;
     top: 50%;
     z-index: 2;
-    width: clamp(30px, 3.6vw, 42px);
+    width: clamp(30px, 3vw, 35px);
     aspect-ratio: 1;
     border: 1px solid rgba(217, 102, 160, 0.35);
     border-radius: 50%;
@@ -155,7 +168,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(var(--arrow-scale, 1)) translateX(var(--arrow-shift, 0px));
     box-shadow:
         0 2px 4px rgba(0, 0, 0, 0.08),
         0 6px 14px rgba(217, 102, 160, 0.18);
@@ -187,6 +200,7 @@
 
 .item-carousel-prev:hover,
 .item-carousel-next:hover {
+    --arrow-scale: 1.1;
     background: linear-gradient(145deg, #ffffff, #ffd2e6);
     box-shadow:
         0 4px 8px rgba(0, 0, 0, 0.1),
@@ -194,9 +208,31 @@
 }
 
 .item-carousel-prev:hover {
-    transform: translateY(-50%) scale(1.1) translateX(-1.5px);
+    --arrow-shift: -1.5px;
 }
 
 .item-carousel-next:hover {
-    transform: translateY(-50%) scale(1.1) translateX(1.5px);
+    --arrow-shift: 1.5px;
+}
+
+/* =============================================
+   Mobile (≤ 768px)
+============================================= */
+@media (max-width: 768px) {
+    #whats-in-my-bag-popup .whats-in-my-bag-container {
+        padding: 6px;
+        height: 100%;
+    }
+
+    .item-carousel-window {
+        height: 70%;
+    }
+
+    .item-carousel-prev {
+        left: 1px;
+    }
+
+    .item-carousel-next {
+        right: 1px;
+    }
 }

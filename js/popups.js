@@ -48,6 +48,9 @@ function openPanel(id) {
     if (panel.classList.contains('item-carousel')) {
         window.resetItemCarousel(id);
     }
+    if (id === 'whats-in-my-bag-popup') {
+        window.startBagPulse();
+    }
 }
 
 function closePanel(id) {
@@ -75,6 +78,9 @@ function closePanel(id) {
     }
     if (id === 'strawberry-wedding-popup') {
         window.resetMedia();
+    }
+    if (id === 'whats-in-my-bag-popup') {
+        window.stopBagPulse();
     }
 }
 
@@ -132,6 +138,9 @@ function isMobile() {
 }
 
 function isBlockedByOpenPanel(targetId) {
+    const target = document.getElementById(targetId);
+    if (target?.classList.contains('item-carousel')) return false;
+
     const openPanelEl = document.querySelector('.popup.open, #guestbook.open, #start-menu.open');
     return !!openPanelEl && openPanelEl.id !== targetId;
 }
@@ -226,4 +235,4 @@ makeDraggable(document.getElementById('cloud-jumper-popup'));
 makeDraggable(document.getElementById('virtual-angel-popup'));
 makeDraggable(document.getElementById('webmaster-popup'));
 makeDraggable(document.getElementById('strawberry-wedding-popup'));
-makeDraggable(document.getElementById('things-i-love-popup'));
+makeDraggable(document.getElementById('whats-in-my-bag-popup'));

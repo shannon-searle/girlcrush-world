@@ -60,12 +60,11 @@
     #guestbook {
         position: fixed;
         top: var(--mobile-popup-top, 72px);
-        bottom: var(--taskbar-visible-height, 40px);
-        left: 12px;
-        right: 12px;
+        bottom: calc(var(--taskbar-visible-height, 40px) + var(--mobile-popup-gap, 6px));
+        left: var(--mobile-popup-gap, 6px);
+        right: var(--mobile-popup-gap, 6px);
         z-index: 4998;
         transform: translateY(24px);
-        padding-bottom: var(--mobile-popup-gap);
     }
 
     .field-border {

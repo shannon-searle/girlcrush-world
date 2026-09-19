@@ -7,7 +7,7 @@
     color: rgb(72, 106, 106);
 }
 
-#webmaster-popup { bottom: 10%; left: min(15%, 60vw); width: clamp(670px, 50vw, 770px); height: fit-content; max-height: 85vh; }
+#webmaster-popup { bottom: 10%; left: min(15%, 60vw); width: clamp(500px, 40vw, 600px); height: fit-content; max-height: 85vh; }
 
 #webmaster-popup .popup-window {
     background: url("../media/base/shan/background.webp") top center / cover no-repeat;
@@ -51,7 +51,7 @@
 
 .webmaster-container p {
     color: rgb(0, 0, 0);
-    font-size: clamp(8px, 1.5vh, 14px);
+    font-size: clamp(8px, 1.2vh, 12px);
     line-height: 1.6;
 }
 
@@ -96,6 +96,8 @@
 ============================================= */
 @media (max-width: 768px) {
     .webmaster-container {
+        align-content: center;
+        justify-content: center;
         gap: 6px;
         padding: 8px;
     }

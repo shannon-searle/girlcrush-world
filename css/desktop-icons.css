@@ -28,7 +28,7 @@
     flex-direction: column;
     align-items: center;
 
-    width: clamp(52px, 4.5vw, 64px);
+    width: clamp(70px, 4.5vw, 64px);
     font-family: "Quicksand", sans-serif;
     letter-spacing: 0.3px;
     font-size: clamp(10px, 0.9vw, 11px);
@@ -57,7 +57,7 @@
     word-break: keep-all;
     line-height: 1.2;
     background: rgba(238, 250, 255, 0.8);
-    padding: 10px 8px;
+    padding: 8px 8px;
     height: 3.6em;
     border-radius: 10px;
     mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%),
@@ -135,5 +135,9 @@
         height: clamp(36px, 11vw, 52px);
         width: auto;
         padding: 0 0 2px 0;
+    }
+
+    .desktop-icon-label {
+        padding: 10px;
     }
 }
