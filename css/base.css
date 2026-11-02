@@ -3,6 +3,29 @@ html {
 }
 
 /* =============================================
+   Page Transitions — cross-fade between pages instead of a hard reload flash
+============================================= */
+
+@view-transition {
+    navigation: auto;
+}
+
+/* nav + title stay put while the page content fades underneath */
+.nav-bar { view-transition-name: nav-bar; }
+.site-title { view-transition-name: site-title; }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.35s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @view-transition {
+        navigation: none;
+    }
+}
+
+/* =============================================
    Win98 UI Font
 ============================================= */
 
