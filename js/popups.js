@@ -138,7 +138,6 @@ function isBlockedByOpenPanel(targetId) {
 document.querySelectorAll('[data-panel]').forEach(button => {
     button.addEventListener('click', function() {
         const panelId = this.dataset.panel;
-        const taskbarId = this.dataset.taskbar;
 
         if (!panelId) return;
         if (isMobile() && isBlockedByOpenPanel(panelId)) return;
@@ -148,9 +147,11 @@ document.querySelectorAll('[data-panel]').forEach(button => {
             return;
         }
 
-        openPanel(panelId);
+        const taskbarId = this.dataset.taskbar;
+        const wasOpen = document.getElementById(panelId).classList.contains('open');
+        togglePanel(panelId);
         if (taskbarId) {
-            taskbarOpen(taskbarId);
+            wasOpen ? taskbarClose(taskbarId) : taskbarOpen(taskbarId);
         }
     });
 });
