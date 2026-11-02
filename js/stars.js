@@ -1,7 +1,5 @@
 /* ------------------------------------------
-    Twinkling star canvas background.
-    Shared by index.js and main.js — pass options
-    to control size, movement, and where stars spawn.
+    Twinkling star canvas background
 ------------------------------------------ */
 function createStarfield({ canvasId = 'stars', count = 150, maxSize = 5, drift = 0, minY = 0, maxY = 1 } = {}) {
     const canvas = document.getElementById(canvasId);

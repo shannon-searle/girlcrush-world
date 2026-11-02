@@ -14,20 +14,12 @@ const popupState = {
 
 /* ------------------------------------------
     Panel helpers
-    Works for every panel (popup or not).
-    Stacking behavior (z-index) only applies
-    when the panel also carries class="popup".
 ------------------------------------------ */
 
 function openPanel(id) {
     const panel = document.getElementById(id);
     if (panel.classList.contains('open')) return;
 
-    // nested panels (e.g. an item-carousel living inside another popup)
-    // stay put — only reparent top-level panels to bring them to the front.
-    // Skipped for .popup: stacking is z-index driven, not DOM-order driven,
-    // so the reparent is a no-op there anyway — and moving the node in the
-    // same tick as adding .open would cancel the fade-in transition.
     const skipReparent = panel.classList.contains('popup');
     if (!skipReparent && panel.parentElement === document.getElementById("popup-container")) {
         document.getElementById("popup-container").prepend(panel);
@@ -95,9 +87,6 @@ function togglePanel(id) {
 
 /* ------------------------------------------
     Stacking logic
-    Only ever touches elements with class="popup"
-    (guestbook/decor don't carry it, so they
-    never enter this code at all).
 ------------------------------------------ */
 function incrementZIndex(id) {
     const popup = document.getElementById(id);
@@ -185,7 +174,6 @@ document.querySelectorAll('[data-close]').forEach(button => {
 
 /* ------------------------------------------
     Bring a popup to the front when clicked
-    anywhere inside it (not just the titlebar)
 ------------------------------------------ */
 document.getElementById('popup-container').addEventListener('mousedown', (e) => {
     const popup = e.target.closest('.popup.open');

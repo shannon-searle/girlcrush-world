@@ -1,6 +1,3 @@
-// On mobile there's no hover, so nothing hints that the bag-items are
-// clickable. While the popup is open, take turns pulsing each item for a
-// couple seconds with a short pause in between to cue "tap me".
 const PULSE_DURATION = 2000;
 const PAUSE_DURATION = 1000;
 

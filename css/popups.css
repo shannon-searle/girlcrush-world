@@ -17,10 +17,6 @@
     display: flex;
 }
 
-/* always laid out (not display:none) and shown/hidden purely via
-   opacity/translate/pointer-events, so opening animates in from below —
-   translate (not transform) so it never fights the drag code's own use
-   of transform for its offset */
 .popup {
     display: flex;
     opacity: 0;

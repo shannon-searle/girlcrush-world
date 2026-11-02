@@ -80,10 +80,6 @@ function preloadImage(src) {
 // ============================================================
 class Player {
     constructor() {
-        // Two real <img> elements declared in the HTML — both styled by
-        // the shared .player-sprite CSS class, so sizing/position is
-        // consistent by construction. No cloning, no computed-style
-        // workarounds needed.
         this.idleEl = document.getElementById('cloud-jumper');
         this.jumpEl = document.getElementById('cloud-jumper-jump');
         this.y = config.startPlayerY;
@@ -94,27 +90,13 @@ class Player {
         this.onPlatform = false;
         this.activePlatform = null;
 
-        // fixed anchor — all movement happens via transform from here on,
-        // so these elements never trigger layout after initial placement.
-        // left/bottom/width/height come from the .player-sprite CSS class;
-        // only the mobile left-offset needs a JS override since it depends
-        // on layout.playerLeft computed at runtime.
         this.idleEl.style.left = layout.playerLeft + 'px';
         this.jumpEl.style.left = layout.playerLeft + 'px';
         this.idleEl.style.opacity = '1';
         this.jumpEl.style.opacity = '0';
 
-        // We toggle opacity between two pre-loaded, already-in-DOM images
-        // instead of swapping a single element's .src — reassigning .src
-        // mid-animation forces the browser to redo decode/layout for that
-        // element, which visibly hitched the player's motion right at the
-        // moment of the swap. Opacity toggling is compositor-only.
         this._pendingImageSwap = null;
 
-        // apply the initial transform now — render() otherwise isn't
-        // called until the game loop starts (i.e. after the first jump),
-        // which left the player sitting at the bottom:0 anchor (y=0)
-        // instead of config.startPlayerY until then
         this.render();
     }
 
@@ -209,13 +191,6 @@ class Player {
         }
     }
 
-    // GPU-composited move: translateY is negative because the anchor
-    // is bottom:0, so moving "up" (higher y) means translating up (negative Y).
-    // NOTE: tried rounding this to whole pixels to fix sub-pixel blur, but
-    // on small/slow movement that caused visible stair-step judder instead
-    // (several frames rounding to the same pixel, then jumping 1px) — worse
-    // than the blur. Left as float; sub-pixel blur is the lesser issue here.
-    // Both twin elements (el + jumpEl) move together — only opacity differs.
     render() {
         const t = `translate3d(0, ${-this.y}px, 0)`;
         this.idleEl.style.transform = t;
@@ -305,9 +280,6 @@ class Cloud {
         this.render();
     }
 
-    // GPU-composited move — translate along both axes from the
-    // fixed (0,0) anchor set in the constructor. Left as float — see note
-    // on Player.render() about rounding causing visible judder.
     render() {
         this.el.style.transform = `translate3d(${this.x}px, ${-this.y}px, 0)`;
     }
@@ -325,29 +297,14 @@ let lastTime = 0;
 // Game loop — update()
 // ============================================================
 function update(timestamp) {
-    // Always track elapsed time, even while idle/paused/game-over — this
-    // keeps lastTime fresh so dt never spikes huge the moment the game
-    // (re)starts after sitting idle. Previously lastTime was frozen while
-    // !gameStarted or gameOver, so resuming produced one giant dt (a visible
-    // "fast" jump), and on iOS — where rAF timing is more prone to gaps from
-    // address-bar/scroll/low-power throttling — this happened often enough
-    // to look like a constant fast/slow flicker.
     let dt = (timestamp - lastTime) / (1000 / 60);
     lastTime = timestamp;
 
-    // clamp on BOTH ends: upper bound guards against lag-spike teleports,
-    // lower bound (0) guards against a rare backwards/equal timestamp
-    // producing negative dt, which would flip gravity's sign for a frame
-    // and launch the player the wrong way — another source of "fast" glitches.
     dt = Math.min(Math.max(dt, 0), 3);
 
     if (state.gameStarted && !state.gameOver) {
         player.applyPhysics(dt);
 
-        // right edge of the furthest-right cloud — the anchor for new spawns.
-        // Plain loop instead of Math.max(...clouds.map()) to avoid allocating
-        // a new array + spreading it every single frame (GC pressure was
-        // contributing to the mobile stutter).
         let rightEdge = -Infinity;
         for (let i = 0; i < clouds.length; i++) {
             if (clouds[i].x > rightEdge) rightEdge = clouds[i].x;
@@ -489,11 +446,6 @@ function beginJump() {
     player.startJump();
     showGameInstructions();
 
-    // update() keeps calling requestAnimationFrame(update) on itself forever
-    // once started (see bottom of the function) — so the loop only ever
-    // needs to be kicked off ONCE. Calling it again here on every jump was
-    // stacking a brand new concurrent loop each time, so after a few jumps
-    // physics/movement were being applied 2x, 3x, 4x+ per real frame.
     if (!state.loopRunning) {
         state.loopRunning = true;
         requestAnimationFrame(update);
@@ -531,10 +483,6 @@ gameContainer.addEventListener('pointerup', (event) => {
     }
 }, { passive: false });
 
-// iOS Safari fires pointercancel (not pointerup) when it decides the touch
-// is actually a scroll/zoom gesture, or the finger slides off the element.
-// Without this, player.charging can get stuck true forever after a cancel,
-// since stopCharging() would never be called.
 gameContainer.addEventListener('pointercancel', (event) => {
     if (state.gameWindowOpen) {
         player.stopCharging();

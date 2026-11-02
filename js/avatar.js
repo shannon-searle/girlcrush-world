@@ -1,8 +1,5 @@
 /* ------------------------------------------
-    Avatar dress-up: each category cycles through its swatches with
-    prev/next arrows instead of picking directly from a grid of buttons.
-    The swatch buttons stay in the markup as the data source (and for
-    randomize/reset below) — only one is ever shown at a time.
+    Avatar dress-up
 ------------------------------------------ */
 const avatarLayerOptions = {};
 document.querySelectorAll('[data-layer]').forEach(button => {
