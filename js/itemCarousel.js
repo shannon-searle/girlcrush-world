@@ -1,7 +1,7 @@
 // Item image carousels — add new ones by keying an entry below to a panel id
 const itemCarousels = {
     'ipod-carousel': {
-        folder: "./media/base/things-i-love/ipod-pngs/",
+        folder: "./media/base/whats-in-my-bag/ipod-pngs/",
         images: [
             "beatopia.png",
             "colourmeinkindness.png",
@@ -23,7 +23,7 @@ const itemCarousels = {
         index: 0,
     },
     'camera-carousel': {
-        folder: "./media/base/things-i-love/camera-pngs/",
+        folder: "./media/base/whats-in-my-bag/camera-pngs/",
         images: [
             "alice.png",
             "cecelia-condit.png",
@@ -37,7 +37,7 @@ const itemCarousels = {
         index: 0,
     },
     'ds-carousel': {
-        folder: "./media/base/things-i-love/ds-pngs/",
+        folder: "./media/base/whats-in-my-bag/ds-pngs/",
         images: [
             "DS.png",
         ],
