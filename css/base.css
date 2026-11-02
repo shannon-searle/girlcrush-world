@@ -167,6 +167,45 @@ html, body {
     pointer-events: none;
 }
 
+
+/* =============================================
+   Tina Peek
+============================================= */
+
+#tina-peek {
+    --tina-height: clamp(300px, 45vw, 650px);
+    --tina-bar-top: var(--taskbar-visible-height);
+
+    position: fixed;
+    left: -20%;
+    bottom: 30%;
+    z-index: 1;
+
+    height: var(--tina-height);
+    line-height: 0;
+
+    transform: rotate(20deg) translateX(-55%);
+    transition: left 0.7s cubic-bezier(0.34, 1.6, 0.64, 1), transform 0.7s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+#tina-peek img {
+    display: block;
+    height: 100%;
+    width: auto;
+    pointer-events: none;
+}
+
+#tina-peek.peek-out {
+    left: -7%;
+    transform: rotate(30deg) translateX(-10%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #tina-peek {
+        transition: none;
+    }
+}
+
 /* =============================================
    Mobile (≤ 768px)
 ============================================= */
