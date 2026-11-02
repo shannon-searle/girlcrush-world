@@ -11,6 +11,7 @@ const angelConfig = {
         "./media/base/virtual-angel/SANTANA.mp4",
     ],
     flipDelayMs: 5000,
+    autoCloseMs: 15000,
 };
 
 const angelCard = document.getElementById('angel-card');
@@ -19,6 +20,7 @@ const audio = new Audio(angelConfig.sound);
 const card = document.querySelector(".card");
 
 let flipTimeout = 0;
+let autoCloseTimeout = 0;
 
 function showAngelCard() {
     angelCard.src = angelConfig.cards[Math.floor(Math.random() * angelConfig.cards.length)];
@@ -38,6 +40,7 @@ function showAngelCard() {
 
 function resetAngelCard() {
     clearTimeout(flipTimeout);
+    clearTimeout(autoCloseTimeout);
     card.classList.remove("flipped");
     divineMessage.style.display = "block";
     audio.pause();
@@ -48,6 +51,11 @@ function openVirtualAngel() {
     audio.currentTime = 0;
     audio.play();
     showAngelCard();
+
+    autoCloseTimeout = setTimeout(() => {
+        closePanel('virtual-angel-popup');
+        taskbarClose('virtual-angel-button');
+    }, angelConfig.autoCloseMs);
 }
 
 
