@@ -8,7 +8,7 @@
 }
 
 #avatar-popup { top: 15%; right: 5%; width: clamp(180px, 50vw, 660px); max-height: 90vh; }
-#avatar-popup .popup-window { background: #e8e8e8; }
+#avatar-popup .popup-window { background: #fbd0fe; }
 
 /* =============================================
    Avatar Editor
