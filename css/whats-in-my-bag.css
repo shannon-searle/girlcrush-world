@@ -11,7 +11,7 @@
     --bag-top: 8vh;
     --bag-bottom-guard: calc(var(--taskbar-visible-height, 40px) + 10px);
     --bag-free-height: calc(100vh - var(--bag-top) - var(--bag-bottom-guard));
-    --bag-width: min(690px, 80%, calc((var(--bag-free-height) - 41px) * 1.2));
+    --bag-width: min(750px, 80%, calc((var(--bag-free-height) - 41px) * 1.2));
 
     top: var(--bag-top);
     left: calc((100% - var(--bag-width)) / 2);
@@ -103,7 +103,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 80%;
     height: 80%;
     padding: 14px;
     background: rgba(224, 246, 255, 0.75);
