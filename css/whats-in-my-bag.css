@@ -149,6 +149,15 @@
     width: 222.48%;
 }
 
+#ds-carousel .item-carousel-media {
+    aspect-ratio: 1 / 1;
+}
+
+#ds-carousel .item-carousel-media img {
+    left: 0;
+    width: 100%;
+}
+
 /* =============================================
    Prev/Next Buttons
 ============================================= */

@@ -33,6 +33,13 @@ const itemCarousels = {
         ],
         index: 0,
     },
+    'ds-carousel': {
+        folder: "./media/base/things-i-love/ds-pngs/",
+        images: [
+            "DS.png",
+        ],
+        index: 0,
+    },
 };
 
 function showCarouselImage(panelId, index) {
