@@ -1,0 +1,16 @@
+/* =============================================
+   Music
+============================================= */
+
+.music-mic {
+    display: block;
+    height: min(45vh, 420px);
+    width: auto;
+}
+
+.page-content .music-coming-soon {
+    font-family: "Zen Dots", sans-serif;
+    font-size: clamp(16px, 2vw, 22px);
+    letter-spacing: 0.8px;
+    color: #7a4a68;
+}
