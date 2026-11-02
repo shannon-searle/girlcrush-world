@@ -1,0 +1,23 @@
+/* =============================================
+   Girlcrush World
+============================================= */
+
+.world-video-frame {
+    --world-video-size: min(60vh, 80vw, 600px);
+
+    border: 2px solid #add8e6;
+    line-height: 0;
+}
+
+.world-video {
+    display: block;
+    width: var(--world-video-size);
+    height: var(--world-video-size);
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .world-video-frame {
+        --world-video-size: min(55vh, 85vw);
+    }
+}
