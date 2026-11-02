@@ -43,6 +43,13 @@ const itemCarousels = {
         ],
         index: 0,
     },
+    'cards-carousel': {
+        folder: "./media/base/whats-in-my-bag/",
+        images: [
+            "hello-kitty.gif",
+        ],
+        index: 0,
+    },
 };
 
 function showCarouselImage(panelId, index) {

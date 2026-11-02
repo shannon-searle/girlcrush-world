@@ -149,11 +149,13 @@
     width: 222.48%;
 }
 
-#ds-carousel .item-carousel-media {
+#ds-carousel .item-carousel-media,
+#cards-carousel .item-carousel-media {
     aspect-ratio: 1 / 1;
 }
 
-#ds-carousel .item-carousel-media img {
+#ds-carousel .item-carousel-media img,
+#cards-carousel .item-carousel-media img {
     left: 0;
     width: 100%;
 }
