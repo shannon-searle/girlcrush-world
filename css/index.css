@@ -282,6 +282,10 @@ a { outline: none; }
     object-position: center 75%;
 }
 
+.arrival-mobile {
+    display: none;
+}
+
 #screen-arrival .scene-info {
     background: none;
     gap: 1vh;
@@ -446,6 +450,14 @@ a { outline: none; }
 
     #screen-arrival p{
         max-width: 80vw;
+    }
+
+    .arrival-desktop {
+        display: none;
+    }
+
+    .arrival-mobile {
+        display: block;
     }
 
     .game-options {
