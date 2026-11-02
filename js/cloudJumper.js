@@ -454,6 +454,7 @@ function beginJump() {
 
 document.addEventListener('keydown', (event) => {
     if (state.gameWindowOpen) {
+        if (event.code === 'Space') event.preventDefault(); // stop Space also clicking the focused desktop icon
         if (event.repeat) return;
         if (event.code === 'Space') {
             beginJump();
@@ -464,6 +465,7 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('keyup', (event) => {
     if (state.gameWindowOpen) {
         if (event.code === 'Space') {
+            event.preventDefault();
             player.stopCharging();
         }
     }
