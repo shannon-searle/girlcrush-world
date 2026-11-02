@@ -294,11 +294,3 @@
         --taskbar-height: 90px;
     }
 }
-
-/* =============================================
-   Taskbar hidden on all pages for now — delete this rule to bring it back
-============================================= */
-
-.taskbar {
-    display: none !important;
-}
