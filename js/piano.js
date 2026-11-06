@@ -2,7 +2,7 @@
     piano
 ------------------------------------------ */
 const BASE_URL = "https://tonejs.github.io/audio/salamander/";
-const audioctx = new (window.AudioContext || window.webkitAudioContext)();
+let audioctx = null;
 
 // only load samples close to your key range (C4–E5)
 const noteFiles = {
@@ -23,7 +23,16 @@ async function loadSamples() {
         buffers[note] = await audioctx.decodeAudioData(arrayBuffer);
     }));
 }
-loadSamples();
+
+function startPianoAudio() {
+    if (audioctx) return;
+    audioctx = new (window.AudioContext || window.webkitAudioContext)();
+    loadSamples();
+}
+
+document.querySelectorAll('[data-panel="piano-popup"]').forEach(pianoOpener => {
+    pianoOpener.addEventListener("click", startPianoAudio);
+});
 
 function noteToMidi(note) {
     const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
@@ -70,6 +79,7 @@ function playKey(key) {
     if (!key || key === activeKey) return;
     activeKey = key;
 
+    startPianoAudio();
     if (audioctx.state === "suspended") audioctx.resume();
 
     const note = key.dataset.note;
