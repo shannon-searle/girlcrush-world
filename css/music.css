@@ -2,6 +2,18 @@
    Music
 ============================================= */
 
+.music-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: min(60vh, 80vw, 600px);
+    aspect-ratio: 1 / 1;
+    box-sizing: content-box;
+    border: 2px solid transparent;
+}
+
 .music-mic {
     display: block;
     height: min(45vh, 420px);
@@ -13,4 +25,14 @@
     font-size: clamp(16px, 2vw, 22px);
     letter-spacing: 0.8px;
     color: #7a4a68;
+}
+
+@media (max-width: 768px) {
+    .music-container {
+        width: min(55vh, 85vw);
+    }
+
+    .music-mic {
+        height: min(45vh, 60vw);
+    }
 }
