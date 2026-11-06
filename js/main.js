@@ -4,7 +4,7 @@
 const mainConfig = {
     heartTrailEveryNMoves: 5,
     heartLifetimeMs: 1000,
-    arrivalFadeDelayMs: 50,
+    arrivalFadeMaxWaitMs: 1000,
 };
 
 /* ------------------------------------------
@@ -30,6 +30,22 @@ function initCursorHeartTrail() {
 /* ------------------------------------------
     Page fade-in (when navigating from index)
 ------------------------------------------ */
+function waitUntilPageIsShownAndLoaded() {
+    return new Promise(resolve => {
+        const waitForLoad = () => {
+            if (document.readyState === 'complete') return resolve();
+            window.addEventListener('load', resolve, { once: true });
+            setTimeout(resolve, mainConfig.arrivalFadeMaxWaitMs);
+        };
+
+        if (document.prerendering) {
+            document.addEventListener('prerenderingchange', waitForLoad, { once: true });
+        } else {
+            waitForLoad();
+        }
+    });
+}
+
 function initArrivalFadeIn() {
     if (window.location.search !== '?from=index') return;
 
@@ -37,10 +53,12 @@ function initArrivalFadeIn() {
     document.body.style.backgroundColor = '#ffffff';
     document.body.style.transition      = 'opacity 1.5s ease, background-color 1s ease';
 
-    setTimeout(() => {
-        document.body.style.opacity         = '1';
-        document.body.style.backgroundColor = '#fce4ec';
-    }, mainConfig.arrivalFadeDelayMs);
+    waitUntilPageIsShownAndLoaded().then(() => {
+        requestAnimationFrame(() => {
+            document.body.style.opacity         = '1';
+            document.body.style.backgroundColor = '#fce4ec';
+        });
+    });
 }
 
 /* ------------------------------------------
