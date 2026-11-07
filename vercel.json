@@ -1,7 +1,7 @@
 {
     "cleanUrls": true,
     "rewrites": [
-        { "source": "/home/:section(about-me|girlcrush-world|music)", "destination": "/home.html" }
+        { "source": "/home/:section(about-me|girlcrush-world|music)", "destination": "/home" }
     ],
     "redirects": [
         { "source": "/about-me(.html)?", "destination": "/home/about-me", "permanent": true },
