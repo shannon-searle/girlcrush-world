@@ -11,7 +11,7 @@
 #piano-popup { bottom: 25%; left: min(25%, 75vw); width: clamp(300px, 50vw, 800px); }
 
 #piano-popup .popup-window {
-    background: url("../media/base/piano/background2.png") center / cover no-repeat;
+    background: #d1d0dc url("../media/base/piano/background2.png") center / cover no-repeat;
     padding: 20% 18% 10%;
     align-items: center;
 }

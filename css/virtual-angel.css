@@ -5,8 +5,15 @@
 #virtual-angel-popup { bottom: 100px; left: 12vw; align-items: flex-start; }
 
 #virtual-angel-popup .popup-window {
+    position: static;
+    overflow: visible;
     background: none;
+    box-shadow: none;
     width: fit-content;
+}
+
+#virtual-angel-popup .popup-window::before {
+    content: none;
 }
 
 .card {

@@ -7,6 +7,16 @@
     color: #d80000;
 }
 
+#strawberry-wedding-popup .popup-close {
+    background-color: #d80000;
+    color: #fff;
+    border-color: #ff8a8a;
+}
+
+#strawberry-wedding-popup .popup-close:hover {
+    background-color: #ffc0de;
+}
+
 #strawberry-wedding-popup { top: 20vh; right: 8vw; width: clamp(500px, 30vw, 650px); aspect-ratio: 4 / 3; }
 
 #strawberry-wedding-popup .popup-window {

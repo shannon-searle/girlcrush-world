@@ -100,7 +100,6 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2vh;
     text-align: center;
 }
 
@@ -195,12 +194,13 @@ a { outline: none; }
 }
 
 #screen-portal .scene-frame {
-    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 82%, transparent 100%),
-                linear-gradient(to right,  transparent 0%, black 15%, black 82%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 82%, transparent 100%),
-                         linear-gradient(to right,  transparent 0%, black 15%, black 82%, transparent 100%);
-    mask-composite: intersect;
-    -webkit-mask-composite: source-in;
+    display: flex;
+    border-radius: 14px;
+    box-shadow: none;
+}
+
+.page-index .glass-panel {
+    background: rgb(191 176 215 / 26%);
 }
 
 .scene-media {

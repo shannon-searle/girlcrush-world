@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Rubik+Beastly&family=Rubik+Glitch&family=Press+Start+2P&family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
@@ -42,9 +43,26 @@
     <link rel="preload" as="image" href="./media/base/shan/background.webp">
     <link rel="preload" as="image" href="./media/base/piano/background2.png">
 
+
+    <script type="speculationrules">
+    {
+        "prerender": [{
+            "urls": ["base.html", "about-me.html", "girlcrush-world.html", "music.html"],
+            "eagerness": "moderate"
+        }]
+    }
+    </script>
 </head>
 
 <body>
+
+    <div class="background-bubbles" aria-hidden="true">
+        <span class="background-bubble"></span>
+        <span class="background-bubble"></span>
+        <span class="background-bubble"></span>
+        <span class="background-bubble"></span>
+        <span class="background-bubble"></span>
+    </div>
 
     <canvas id="stars"></canvas>
 
@@ -56,34 +74,35 @@
     </div>
 
     <!-- =============================================
+         SITE TITLE
+    ============================================== -->
+    <img class="site-title" src="media/titleFont2.png" alt="Site Title">
+
+    <!-- =============================================
          NAV BAR (top taskbar)
     ============================================== -->
     <nav class="nav-bar">
         <a href="base.html" class="current">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>home</p>
         </a>
-        <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
         <a href="about-me.html">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>about me</p>
         </a>
-        <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
         <a href="girlcrush-world.html">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>girlcrush world</p>
         </a>
-        <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
         <a href="music.html">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>music</p>
         </a>
-        <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
         <a href="https://girlcrush222.tumblr.com/" target="_blank">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>digital journal</p>
         </a>
     </nav>
-
-    <!-- =============================================
-         SITE TITLE
-    ============================================== -->
-    <img class="site-title" src="media/titleFont2.png" alt="Site Title">
 
     <div id="tina-peek">
         <img src="./media/base/tina-blink.gif" alt="tina" />
@@ -296,7 +315,7 @@
     <div id="guestbook" class="panel">
         <div class="popup-titlebar">
             <span>msg me</span>
-            <button class="popup-close" data-close="guestbook" data-closemenu="guestbook-button">✕</button>
+            <button class="popup-close" data-close="guestbook">✕</button>
         </div>
         <iframe class="field-border" src="https://www3.cbox.ws/box/?boxid=3555719&boxtag=M8wtC1"
             allowtransparency="yes"

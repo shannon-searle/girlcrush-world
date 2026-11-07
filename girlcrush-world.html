@@ -25,41 +25,59 @@
     <link rel="stylesheet" href="css/start-menu.css" />
     <link rel="stylesheet" href="css/girlcrush-world.css" />
 
+
+    <script type="speculationrules">
+    {
+        "prerender": [{
+            "urls": ["base.html", "about-me.html", "girlcrush-world.html", "music.html"],
+            "eagerness": "moderate"
+        }]
+    }
+    </script>
 </head>
 
 <body>
 
+    <div class="background-bubbles" aria-hidden="true">
+        <span class="background-bubble"></span>
+        <span class="background-bubble"></span>
+        <span class="background-bubble"></span>
+        <span class="background-bubble"></span>
+        <span class="background-bubble"></span>
+    </div>
+
     <canvas id="stars"></canvas>
+
+    <!-- =============================================
+         SITE TITLE
+    ============================================== -->
+    <img class="site-title" src="media/titleFont2.png" alt="Site Title">
 
     <!-- =============================================
          NAV BAR (top taskbar)
     ============================================== -->
     <nav class="nav-bar">
         <a href="base.html">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>home</p>
         </a>
-        <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
         <a href="about-me.html">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>about me</p>
         </a>
-        <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
         <a href="girlcrush-world.html" class="current">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>girlcrush world</p>
         </a>
-        <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
         <a href="music.html">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>music</p>
         </a>
-        <img class="nav-star-connector" src="media/base/star2.png" alt=""/>
         <a href="https://girlcrush222.tumblr.com/" target="_blank">
+            <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>digital journal</p>
         </a>
     </nav>
-
-    <!-- =============================================
-         SITE TITLE
-    ============================================== -->
-    <img class="site-title" src="media/titleFont2.png" alt="Site Title">
 
     <!-- =============================================
          Taskbar
@@ -115,16 +133,18 @@
          PAGE CONTENT
     ============================================== -->
     <main class="page-content">
-        <div class="world-video-frame">
-            <video
-                class="world-video"
-                src="media/girlcrush-world/girlcrush-world.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-            ></video>
+        <div class="glass-panel">
+            <div class="world-video-frame">
+                <video
+                    class="world-video"
+                    src="media/girlcrush-world/girlcrush-world.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                ></video>
+            </div>
         </div>
     </main>
 

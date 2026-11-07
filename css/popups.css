@@ -41,7 +41,7 @@
     justify-content: space-between;
 
     width: 100%;
-    padding: 5px 10px;
+    padding: 6px 8px 6px 18px;
 
     font-family: "Zen Dots", sans-serif;
     letter-spacing: 0.8px;
@@ -54,7 +54,7 @@
 
     user-select: none;
 
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .popup-titlebar span,
@@ -84,19 +84,20 @@
 
     font-family: "Zen Dots", sans-serif;
 
-    background: inherit;
+    background-color: inherit;
+    background-image: radial-gradient(
+        circle at 35% 30%,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0) 60%
+    );
     color: inherit;
 
-    border-top: 2px solid rgba(255, 255, 255, 0.8);
-    border-left: 2px solid rgba(255, 255, 255, 0.8);
-    border-right: 2px solid rgba(0, 0, 0, 0.35);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
 
     box-shadow:
-        inset 1px 1px 0 rgba(255, 255, 255, 0.4),
-        inset -1px -1px 0 rgba(0, 0, 0, 0.15);
-
-    border-radius: 5px;
+        inset 0 -2px 3px rgba(0, 0, 0, 0.12),
+        0 1px 3px rgba(90, 80, 150, 0.3);
 }
 
 .popup-close:hover {
@@ -122,13 +123,33 @@
 ============================================= */
 
 .popup-window {
+    position: relative;
+    isolation: isolate;
     display: flex;
     flex-direction: column;
 
     min-height: 0;
     overflow: hidden;
 
-    border-radius: 5px;
+    border: none;
+    border-radius: 22px;
+    box-shadow: 0 10px 40px rgba(90, 80, 150, 0.3);
+}
+
+.popup-window::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(120deg, #ffd1f0, #c9f0ff, #e1d1ff, #fff3c9, #ffd1f0);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
 }
 
 /* =============================================
@@ -161,7 +182,7 @@
         width: 100% !important;
         height: 100% !important;
         max-height: 100% !important;
-        border-radius: 5px !important;
+        border-radius: 18px !important;
         overflow-y: auto;
     }
 

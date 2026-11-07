@@ -1,48 +1,40 @@
-// ============================================================
-// Config — fixed values for the popup stacking system
-// ============================================================
-const popupConfig = {
-    baseZIndex: 2,
-};
-
-// ============================================================
-// State — the mutable z-index counter
-// ============================================================
-const popupState = {
-    tabCounter: 2,
-};
-
 /* ------------------------------------------
-    Panel helpers
+    Panels
 ------------------------------------------ */
+
+const PANEL_SIDE_EFFECTS = {
+    'guestbook': {
+        onOpen: () => document.getElementById('guestbook-button')?.classList.add('open'),
+        onClose: () => document.getElementById('guestbook-button')?.classList.remove('open'),
+    },
+    'virtual-angel-popup': {
+        onOpen: () => window.openVirtualAngel(),
+        onClose: () => window.resetAngelCard(),
+    },
+    'whats-in-my-bag-popup': {
+        onOpen: () => window.startBagPulse(),
+        onClose: () => window.stopBagPulse(),
+    },
+    'cloud-jumper-popup': {
+        onClose: () => window.closeCloudJumper(),
+    },
+    'strawberry-wedding-popup': {
+        onClose: () => window.resetMedia(),
+    },
+};
+
+function isPopup(panel) {
+    return panel.classList.contains('popup');
+}
 
 function openPanel(id) {
     const panel = document.getElementById(id);
     if (panel.classList.contains('open')) return;
 
-    const skipReparent = panel.classList.contains('popup');
-    if (!skipReparent && panel.parentElement === document.getElementById("popup-container")) {
-        document.getElementById("popup-container").prepend(panel);
-    }
     panel.classList.add('open');
-
-    if (panel.classList.contains('popup')) {
-        incrementZIndex(id);
-    }
-
-    // per-panel side effects
-    if (id === 'guestbook') {
-        document.getElementById('guestbook-button')?.classList.add('open');
-    }
-    if (id === 'virtual-angel-popup') {
-        window.openVirtualAngel();
-    }
-    if (panel.classList.contains('item-carousel')) {
-        window.resetItemCarousel(id);
-    }
-    if (id === 'whats-in-my-bag-popup') {
-        window.startBagPulse();
-    }
+    if (isPopup(panel)) bringToFront(panel);
+    if (panel.classList.contains('item-carousel')) window.resetItemCarousel(id);
+    PANEL_SIDE_EFFECTS[id]?.onOpen?.();
 }
 
 function closePanel(id) {
@@ -50,178 +42,95 @@ function closePanel(id) {
     if (!panel.classList.contains('open')) return;
 
     panel.classList.remove('open');
-    if (id !== 'guestbook') {
-        panel.style.transform = 'translate(0px, 0px)'; // reset drag position
-    }
-
-    if (panel.classList.contains('popup')) {
-        decrementPopups();
-    }
-
-    // per-panel side effects
-    if (id === 'guestbook') {
-        document.getElementById('guestbook-button')?.classList.remove('open');
-    }
-    if (id === 'virtual-angel-popup') {
-        window.resetAngelCard();
-    }
-    if (id === 'cloud-jumper-popup') {
-        window.closeCloudJumper();
-    }
-    if (id === 'strawberry-wedding-popup') {
-        window.resetMedia();
-    }
-    if (id === 'whats-in-my-bag-popup') {
-        window.stopBagPulse();
-    }
+    if (isPopup(panel)) resetDragPosition(panel);
+    PANEL_SIDE_EFFECTS[id]?.onClose?.();
 }
 
 function togglePanel(id) {
     const panel = document.getElementById(id);
-    if (panel.classList.contains('open')) {
-        closePanel(id);
-    } else {
-        openPanel(id);
-    }
+    if (panel.classList.contains('open')) closePanel(id);
+    else openPanel(id);
 }
 
 /* ------------------------------------------
-    Stacking logic
+    Popups only — stacking and dragging
 ------------------------------------------ */
-function incrementZIndex(id) {
-    const popup = document.getElementById(id);
-    popupState.tabCounter += 1;
-    popup.style.zIndex = popupState.tabCounter;
+
+let topPopupZIndex = 2;
+
+function bringToFront(popup) {
+    if (popup.style.zIndex === String(topPopupZIndex)) return;
+    topPopupZIndex += 1;
+    popup.style.zIndex = topPopupZIndex;
 }
 
-function getZ(el) {
-    const z = getComputedStyle(el).zIndex;
-    return z === 'auto' ? 0 : parseInt(z, 10);
+const dragOffsetByPopup = new Map();
+
+function resetDragPosition(popup) {
+    dragOffsetByPopup.set(popup, { x: 0, y: 0 });
+    popup.style.transform = '';
 }
 
-function decrementPopups() {
-    popupState.tabCounter -= 1;
-    const popups = [...document.querySelectorAll('.popup.open')];
+function makeDraggable(popup) {
+    let pointerStartX = 0;
+    let pointerStartY = 0;
 
-    popups.sort((a, b) => getZ(a) - getZ(b));
+    function onDrag(e) {
+        const offset = { x: e.clientX - pointerStartX, y: e.clientY - pointerStartY };
+        dragOffsetByPopup.set(popup, offset);
+        popup.style.transform = `translate(${offset.x}px, ${offset.y}px)`;
+    }
 
-    popups.forEach((popup, i) => {
-        popup.style.zIndex = popupConfig.baseZIndex + i;
+    function stopDrag() {
+        document.removeEventListener('mousemove', onDrag);
+        document.removeEventListener('mouseup', stopDrag);
+    }
+
+    popup.addEventListener('mousedown', (e) => {
+        bringToFront(popup);
+        if (!e.target.closest('.popup-titlebar')) return;
+
+        const offset = dragOffsetByPopup.get(popup) ?? { x: 0, y: 0 };
+        pointerStartX = e.clientX - offset.x;
+        pointerStartY = e.clientY - offset.y;
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('mouseup', stopDrag);
     });
 }
 
-function restackPopups(frontPopup) {
-    const popups = [...document.querySelectorAll('.popup.open')]
-        .filter(popup => popup !== frontPopup);
+document.querySelectorAll('.popup').forEach(makeDraggable);
 
-    popups.sort((a, b) => getZ(a) - getZ(b));
-
-    popups.forEach((popup, i) => {
-        popup.style.zIndex = popupConfig.baseZIndex + i;
-    });
-    frontPopup.style.zIndex = popupState.tabCounter;
-}
+/* ------------------------------------------
+    Buttons that open and close panels
+------------------------------------------ */
 
 function isMobile() {
     return window.innerWidth <= MOBILE_BREAKPOINT;
 }
 
 function isBlockedByOpenPanel(targetId) {
-    const target = document.getElementById(targetId);
-    if (target?.classList.contains('item-carousel')) return false;
-
+    if (document.getElementById(targetId)?.classList.contains('item-carousel')) return false;
     const openPanelEl = document.querySelector('.popup.open, #guestbook.open, #start-menu.open');
     return !!openPanelEl && openPanelEl.id !== targetId;
 }
 
-// add listener for panel buttons
 document.querySelectorAll('[data-panel]').forEach(button => {
-    button.addEventListener('click', function() {
-        const panelId = this.dataset.panel;
-
-        if (!panelId) return;
+    button.addEventListener('click', () => {
+        const panelId = button.dataset.panel;
         if (isMobile() && isBlockedByOpenPanel(panelId)) return;
 
-        if (panelId === 'guestbook') {
-            togglePanel('guestbook');
-            return;
-        }
-
-        const taskbarId = this.dataset.taskbar;
-        const wasOpen = document.getElementById(panelId).classList.contains('open');
         togglePanel(panelId);
-        if (taskbarId) {
-            wasOpen ? taskbarClose(taskbarId) : taskbarOpen(taskbarId);
-        }
+
+        const taskbarId = button.dataset.taskbar;
+        if (!taskbarId) return;
+        if (document.getElementById(panelId).classList.contains('open')) taskbarOpen(taskbarId);
+        else taskbarClose(taskbarId);
     });
 });
 
-// close panel
 document.querySelectorAll('[data-close]').forEach(button => {
-    button.addEventListener('click', function () {
-        const panelId   = this.dataset.close;
-        const menuId    = this.dataset.closemenu;
-        const closeAlso = this.dataset.closeAlso;
-
-        if (!panelId) return;
-
-        closePanel(panelId);
-        if (menuId)    taskbarClose(menuId);
-        if (closeAlso) closeAlso.split(',').forEach(id => closePanel(id.trim()));
+    button.addEventListener('click', () => {
+        closePanel(button.dataset.close);
+        if (button.dataset.closemenu) taskbarClose(button.dataset.closemenu);
     });
 });
-
-
-
-/* ------------------------------------------
-    Bring a popup to the front when clicked
------------------------------------------- */
-document.getElementById('popup-container').addEventListener('mousedown', (e) => {
-    const popup = e.target.closest('.popup.open');
-    if (!popup) return;
-    if (popup.style.zIndex !== popupState.tabCounter.toString()) {
-        restackPopups(popup);
-    }
-});
-
-/* ------------------------------------------
-    Draggable popups (drag by titlebar only)
------------------------------------------- */
-function makeDraggable(popup) {
-    let offsetX = 0, offsetY = 0;
-    let startX  = 0, startY  = 0;
-
-    popup.addEventListener('mousedown', function (e) {
-        if (!e.target.closest('.popup-titlebar')) return;
-
-        startX = e.clientX - offsetX;
-        startY = e.clientY - offsetY;
-        if (popup.style.zIndex !== popupState.tabCounter.toString()) {
-            restackPopups(popup);
-        }
-
-        document.addEventListener('mousemove', onDrag);
-        document.addEventListener('mouseup',   stopDrag);
-    });
-
-    function onDrag(e) {
-        offsetX = e.clientX - startX;
-        offsetY = e.clientY - startY;
-        popup.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    }
-
-    function stopDrag() {
-        document.removeEventListener('mousemove', onDrag);
-        document.removeEventListener('mouseup',   stopDrag);
-    }
-}
-
-// Apply draggable to specific popups
-makeDraggable(document.getElementById('welcome-popup'));
-makeDraggable(document.getElementById('avatar-popup'));
-makeDraggable(document.getElementById('piano-popup'));
-makeDraggable(document.getElementById('cloud-jumper-popup'));
-makeDraggable(document.getElementById('virtual-angel-popup'));
-makeDraggable(document.getElementById('webmaster-popup'));
-makeDraggable(document.getElementById('strawberry-wedding-popup'));
-makeDraggable(document.getElementById('whats-in-my-bag-popup'));

@@ -1,3 +1,12 @@
+:root {
+    --background-tint: linear-gradient(
+        160deg,
+        rgba(223, 244, 255, 0.28) 0%,
+        rgba(233, 221, 255, 0.2) 45%,
+        rgba(255, 217, 240, 0.3) 100%
+    );
+}
+
 html {
     background: #fce4ec;
 }
@@ -16,7 +25,8 @@ html {
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    animation-duration: 0.35s;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -80,11 +90,12 @@ body {
     min-height: 100vh;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 15px 2vw 70px;
+    padding: 15px 5px 70px;
     position: relative;
     isolation: isolate;
     overflow-y: auto;
     background:
+        var(--background-tint),
         url('../media/base/background/websiteBackground.jpg'),
         linear-gradient(
             160deg,
@@ -104,10 +115,43 @@ body::before {
     position: fixed;
     inset: 0;
     background: url('../media/base/background/scrib3.png') center / 90vw repeat;
-    opacity: 0.7;
+    opacity: 0.35;
     pointer-events: none;
     z-index: -1;
 }
+
+/* =============================================
+   Background Bubbles
+============================================= */
+
+.background-bubbles {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.background-bubble {
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 30% 30%,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.2) 25%,
+        rgba(190, 170, 255, 0.14) 60%,
+        rgba(140, 200, 255, 0.3) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: inset -6px -8px 18px rgba(150, 120, 255, 0.22);
+}
+
+.background-bubble:nth-child(1) { width: 16vw; left: -3vw;  top: 48vh; }
+.background-bubble:nth-child(2) { width: 8vw;  left: 15vw;  top: 12vh; }
+.background-bubble:nth-child(3) { width: 5vw;  left: 23vw;  top: 78vh; }
+.background-bubble:nth-child(4) { width: 18vw; right: -5vw; top: 8vh; }
+.background-bubble:nth-child(5) { width: 6vw;  right: 19vw; top: 71vh; }
 
 html, body {
     overflow: hidden;
@@ -149,10 +193,10 @@ html, body {
 
 .site-title {
     align-self: center;
-    margin-top: 40px;
+    margin-top: 5px;
     z-index: 1;
     text-align: center;
-    width: 25vw;
+    width: 20vw;
     height: auto;
     flex-shrink: 0;
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -241,6 +285,7 @@ html, body {
         box-sizing: border-box;
         padding: 40px 10px;
         background:
+            var(--background-tint),
             url('../media/base/background/mobile.png'),
             url('../media/base/background/websiteBackgroundMobile2.png'),
             linear-gradient(
@@ -251,10 +296,10 @@ html, body {
                 #f3e5f5 80%,
                 #fce4ec 100%
             );
-        background-repeat: repeat,  no-repeat, no-repeat;
-        background-size: 100vw, 120vw auto, cover;
-        background-position: center top, right top, center;
-        background-attachment: scroll, scroll;
+        background-repeat: no-repeat, repeat, no-repeat, no-repeat;
+        background-size: cover, 100vw, 120vw auto, cover;
+        background-position: center, center top, right top, center;
+        background-attachment: scroll, scroll, scroll;
         min-height: 100vh;
     }
 

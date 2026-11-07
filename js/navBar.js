@@ -1,11 +1,12 @@
-const starConnectors = document.querySelectorAll(".nav-star-connector");
+const navLinks = document.querySelectorAll(".nav-bar a");
 
-starConnectors.forEach(star => {
-    star.addEventListener("mouseenter", () => {
+navLinks.forEach(link => {
+    const star = link.querySelector(".nav-link-star");
+    if (!star) return;
+
+    link.addEventListener("mouseenter", () => {
         if (star.classList.contains("spin")) return;
 
-        star.classList.remove("spin");
-        void star.offsetWidth; // reset animation
         star.classList.add("spin");
 
         star.addEventListener("animationend", () => {
@@ -14,28 +15,13 @@ starConnectors.forEach(star => {
     });
 });
 
-const siteTitleEl = document.querySelector('.nav-bar');
-const desktopIconsEl = document.querySelector('.desktop-icons');
-
-function positionDesktopIcons() {
-    if (window.innerWidth <= MOBILE_BREAKPOINT) return;
-    if (!siteTitleEl || !desktopIconsEl) return;
-
-    const gap = 50;
-    desktopIconsEl.style.top = (siteTitleEl.getBoundingClientRect().bottom + gap) + 'px';
-}
-
-positionDesktopIcons();
-window.addEventListener('resize', positionDesktopIcons);
-window.addEventListener('load', positionDesktopIcons);
-
-// measured rather than hardcoded since the title's height is responsive
-const siteTitleImgEl = document.querySelector('.site-title');
+// measured rather than hardcoded since the title and nav heights are responsive
+const navBarEl = document.querySelector('.nav-bar');
 
 function updateMobilePopupTop() {
-    if (window.innerWidth > MOBILE_BREAKPOINT || !siteTitleImgEl) return;
-    const rect = siteTitleImgEl.getBoundingClientRect();
-    const marginBottom = parseFloat(getComputedStyle(siteTitleImgEl).marginBottom) || 0;
+    if (window.innerWidth > MOBILE_BREAKPOINT || !navBarEl) return;
+    const rect = navBarEl.getBoundingClientRect();
+    const marginBottom = parseFloat(getComputedStyle(navBarEl).marginBottom) || 0;
     const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--mobile-popup-gap')) || 12;
     document.documentElement.style.setProperty('--mobile-popup-top', (rect.bottom + marginBottom + gap) + 'px');
 }

@@ -70,7 +70,7 @@ document.querySelectorAll('.taskbar-button').forEach(taskbarButton => {
         const panel = document.getElementById(panelId);
 
         if (panel.classList.contains('popup')) {
-            restackPopups(panel);
+            bringToFront(panel);
         }
     });
 });

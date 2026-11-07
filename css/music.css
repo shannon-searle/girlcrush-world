@@ -7,11 +7,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 20px;
     width: min(60vh, 80vw, 600px);
     aspect-ratio: 1 / 1;
     box-sizing: content-box;
-    border: 2px solid transparent;
+    background: #bce3e5;
+    border-radius: 14px;
 }
 
 .music-mic {
@@ -24,7 +25,7 @@
     font-family: "Zen Dots", sans-serif;
     font-size: clamp(16px, 2vw, 22px);
     letter-spacing: 0.8px;
-    color: #7a4a68;
+    color: #4280bb;
 }
 
 @media (max-width: 768px) {

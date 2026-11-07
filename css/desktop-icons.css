@@ -11,7 +11,7 @@
     width: fit-content;
 
     position: fixed;
-    top: clamp(15px, 2vw, 25px);
+    top: 50px;
     left: 2vw;
     bottom: 40px;
 

@@ -7,7 +7,8 @@
     width: min(60vh, 80vw, 600px);
     aspect-ratio: 1 / 1;
     box-sizing: content-box;
-    border: 2px solid transparent;
+    border-radius: 14px;
+    overflow: hidden;
 }
 
 .about-me-base,
@@ -85,10 +86,111 @@
 }
 
 /* =============================================
+   Side panels — profile, likes, dislikes
+============================================= */
+
+.about-me-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 22px;
+}
+
+.about-me-side {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+.about-me-panel {
+    padding: 14px 16px;
+}
+
+.about-me-panel-toggle {
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 8px;
+    transition: opacity 0.2s ease-out, translate 0.2s ease-out, visibility 0s 0.2s;
+}
+
+.about-me-panel-toggle.is-visible {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+    transition: opacity 0.2s ease-out, translate 0.2s ease-out;
+}
+
+.about-me-panel-title {
+    margin-bottom: 8px;
+    font-family: "Zen Dots", sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    color: #7a5fc0;
+}
+
+.about-me-profile {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 10px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 13px;
+    color: #4a4f7a;
+}
+
+.about-me-profile dt {
+    font-weight: 700;
+    color: #7a5fc0;
+}
+
+.about-me-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 4px;
+    list-style: none;
+}
+
+.about-me-chip {
+    padding: 4px 10px;
+    border: 1px solid #c9bff0;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, #fff, #e6e0ff);
+    font-family: "Quicksand", sans-serif;
+    font-size: 11px;
+    color: #4a4f7a;
+}
+
+.about-me-panel-text {
+    font-family: "Quicksand", sans-serif;
+    font-size: 13px;
+    color: #4a4f7a;
+}
+
+/* =============================================
    Mobile (≤ 768px)
 ============================================= */
 @media (max-width: 768px) {
     .about-me-container {
         width: min(55vh, 85vw);
+    }
+
+    .about-me-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .about-me-layout > .glass-panel {
+        order: -1;
+    }
+
+    .about-me-side {
+        width: min(55vh, 85vw);
+        gap: 14px;
+    }
+
+    .about-me-panel-toggle:not(.is-visible) {
+        display: none;
     }
 }
