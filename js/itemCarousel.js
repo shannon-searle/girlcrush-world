@@ -79,15 +79,7 @@ function showCarouselImage(panelId, index) {
     carousel.index = (index + carousel.images.length) % carousel.images.length;
 
     const img = document.querySelector(`#${panelId} .item-carousel-img`);
-    const nextSrc = carousel.folder + encodeURIComponent(carousel.images[carousel.index]);
-
-    img.classList.remove('loaded');
-    if (img.getAttribute('src') === nextSrc && img.complete) {
-        img.classList.add('loaded');
-        return;
-    }
-    img.onload = () => img.classList.add('loaded');
-    img.src = nextSrc;
+    img.src = carousel.folder + encodeURIComponent(carousel.images[carousel.index]);
 }
 
 let firstImagesPreloaded = false;
@@ -104,7 +96,16 @@ function preloadFirstCarouselImages() {
 
 function resetItemCarousel(panelId) {
     if (!itemCarousels[panelId]) return;
+
+    const img = document.querySelector(`#${panelId} .item-carousel-img`);
+    img.classList.remove('loaded');
+    img.onload = () => img.classList.add('loaded');
     showCarouselImage(panelId, 0);
+
+    if (img.complete) {
+        void img.offsetWidth;
+        img.classList.add('loaded');
+    }
 }
 
 document.querySelectorAll('.item-carousel-next').forEach(button => {
