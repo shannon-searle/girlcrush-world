@@ -61,6 +61,16 @@
     z-index: 10;
 }
 
+.bag-item[data-panel="notebook-carousel"] {
+    clip-path: polygon(
+        0.3% 96%, 9.7% 73%, 13.5% 64.1%, 33.5% 16.4%, 40.1% 0.9%, 40.4% 0.3%,
+        41.7% 0.3%, 44.8% 1.1%, 51.4% 3.2%, 61.8% 6.6%, 76.2% 11.5%, 87.8% 15.5%,
+        89.3% 16.1%, 94.7% 18.4%, 99.4% 21%, 99.7% 21.3%, 97.8% 30.5%, 84% 70.7%,
+        83.7% 71.3%, 69.6% 96%, 67.7% 96.6%, 5.6% 99.7%, 4.4% 99.7%, 3.8% 99.4%,
+        1.6% 97.7%, 0.9% 97.1%, 0.3% 96.3%
+    );
+}
+
 /* mobile "clickable" cue */
 @keyframes bag-item-pulse {
     0%, 100% { transform: scale(1); }
@@ -103,11 +113,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     padding: 14px;
     background: rgba(224, 246, 255, 0.75);
-    border-radius: 10px;
     cursor: default;
     box-shadow:
         0 2px 6px rgba(0, 0, 0, 0.05),
@@ -116,7 +125,8 @@
 }
 
 .item-carousel-media {
-    position: relative;
+    display: flex;
+    align-items: center;
     height: 100%;
     width: auto;
     max-width: 100%;
@@ -125,28 +135,20 @@
 }
 
 .item-carousel-media img {
-    position: absolute;
-    top: 0;
+    width: 100%;
     height: auto;
-    display: block;
 }
 
 #ipod-carousel .item-carousel-media {
-    aspect-ratio: 1092 / 1080;
-}
-
-#ipod-carousel .item-carousel-media img {
-    left: -61.63%;
-    width: 175.824%;
+    aspect-ratio: 809 / 800;
 }
 
 #camera-carousel .item-carousel-media {
-    aspect-ratio: 863 / 1080;
+    aspect-ratio: 639 / 800;
 }
 
-#camera-carousel .item-carousel-media img {
-    left: -74.62%;
-    width: 222.48%;
+#notebook-carousel .item-carousel-media {
+    aspect-ratio: 1200 / 900;
 }
 
 #ds-carousel .item-carousel-media,
@@ -154,10 +156,21 @@
     aspect-ratio: 1 / 1;
 }
 
-#ds-carousel .item-carousel-media img,
+#book-carousel .item-carousel-media {
+    aspect-ratio: 1200 / 1600;
+}
+
+#cards-carousel .item-carousel-media,
+#ipod-carousel .item-carousel-media {
+    justify-content: center;
+}
+
 #cards-carousel .item-carousel-media img {
-    left: 0;
-    width: 100%;
+    width: 60%;
+}
+
+#ipod-carousel .item-carousel-media img {
+    width: 80%;
 }
 
 /* =============================================
@@ -224,6 +237,39 @@
 
 .item-carousel-next:hover {
     --arrow-shift: 1.5px;
+}
+
+/* =============================================
+   Close Button
+============================================= */
+
+.item-carousel-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    width: 26px;
+    aspect-ratio: 1;
+    border: 1px solid rgba(217, 102, 160, 0.35);
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ffffff, #ffe9f4);
+    color: var(--pink-accent, #d966a0);
+    font-size: 12px;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.08),
+        0 6px 14px rgba(217, 102, 160, 0.18);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.item-carousel-close:hover {
+    transform: scale(1.1);
+    background: linear-gradient(145deg, #ffffff, #ffd2e6);
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 8px 20px rgba(217, 102, 160, 0.3);
 }
 
 /* =============================================

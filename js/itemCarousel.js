@@ -3,43 +3,45 @@ const itemCarousels = {
     'ipod-carousel': {
         folder: "./media/base/whats-in-my-bag/ipod-pngs/",
         images: [
-            "beatopia.png",
-            "colourmeinkindness.png",
-            "crest.png",
-            "either_or.png",
-            "girl with fish.png",
-            "imaginal disk.png",
-            "love me.png",
-            "my love is cool.png",
-            "rocket.png",
-            "shed.png",
-            "so vanilla.png",
-            "softscars.png",
-            "swanlike.png",
-            "tender buttons.png",
-            "time n place.png",
-            "words from a wishing well.png",
+            "beatopia.webp",
+            "colourmeinkindness.webp",
+            "crest.webp",
+            "either_or.webp",
+            "girl-with-fish.webp",
+            "imaginal-disk.webp",
+            "love-me.webp",
+            "my-love-is-cool.webp",
+            "rocket.webp",
+            "shed.webp",
+            "so-vanilla.webp",
+            "softscars.webp",
+            "swanlike.webp",
+            "tender-buttons.webp",
+            "time-n-place.webp",
+            "words-from-a-wishing-well.webp",
         ],
         index: 0,
     },
     'camera-carousel': {
         folder: "./media/base/whats-in-my-bag/camera-pngs/",
         images: [
-            "alice.png",
-            "cecelia-condit.png",
-            "house.png",
-            "obsession.png",
-            "picnic.png",
-            "slayyyter.png",
-            "twin-peaks.png",
-            "yung-lean.png",
+            "alice.webp",
+            "cannibalism.webp",
+            "coraline.webp",
+            "house.webp",
+            "obsession.webp",
+            "picnic.webp",
+            "possibly-in-michigan.webp",
+            "storm.webp",
+            "twin-peaks.webp",
+            "wont-tell.webp",
         ],
         index: 0,
     },
     'ds-carousel': {
         folder: "./media/base/whats-in-my-bag/ds-pngs/",
         images: [
-            "DS.png",
+            "DS.webp",
         ],
         index: 0,
     },
@@ -47,6 +49,24 @@ const itemCarousels = {
         folder: "./media/base/whats-in-my-bag/",
         images: [
             "hello-kitty.gif",
+        ],
+        index: 0,
+    },
+    'notebook-carousel': {
+        folder: "./media/base/whats-in-my-bag/notebook/",
+        images: [
+            "page1.webp",
+            "page2.webp",
+            "page3.webp",
+            "page4.webp",
+            "page5.webp",
+        ],
+        index: 0,
+    },
+    'book-carousel': {
+        folder: "./media/base/whats-in-my-bag/",
+        images: [
+            "book-stack-final.webp",
         ],
         index: 0,
     },
@@ -85,7 +105,7 @@ document.querySelectorAll('.item-carousel-prev').forEach(button => {
     });
 });
 
-// clicking outside the enlarged image closes it (no close button)
+// clicking outside the enlarged image closes it
 document.querySelectorAll('.item-carousel').forEach(carousel => {
     carousel.addEventListener('click', (e) => {
         if (e.target === carousel) {

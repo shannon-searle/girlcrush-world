@@ -672,7 +672,10 @@
                 </div>
                 <div class="whats-in-my-bag-container window-classic-indent">
                     <div class="bag-items">
-                        <img class="bag-base" src="./media/base/whats-in-my-bag/BAG.png" alt="what's in my bag">
+                        <img class="bag-base" src="./media/base/whats-in-my-bag/BAG.webp" alt="what's in my bag">
+                        <img class="bag-item" src="./media/base/whats-in-my-bag/notebook.png" alt="notebook"
+                             data-panel="notebook-carousel"
+                             style="left: 53.84%; top: 9.81%; width: 29.16%; height: 30.74%;">
                         <img class="bag-item" src="./media/base/whats-in-my-bag/ipod.png" alt="ipod"
                              data-panel="ipod-carousel"
                              style="left: 43.51%; top: 12.46%; width: 19.65%; height: 16.17%;">
@@ -685,10 +688,14 @@
                         <img class="bag-item" src="./media/base/whats-in-my-bag/cards.png" alt="hello kitty cards"
                              data-panel="cards-carousel"
                              style="left: 46.28%; top: 34.79%; width: 10.18%; height: 12.84%;">
+                        <img class="bag-item" src="./media/base/whats-in-my-bag/last-unicorn.png" alt="the last unicorn"
+                             data-panel="book-carousel"
+                             style="left: 0%; top: 0%; width: 26.05%; height: 28.36%;">
                     </div>
 
                     <div id="ipod-carousel" class="panel item-carousel">
                         <div class="item-carousel-window">
+                            <button class="item-carousel-close" data-close="ipod-carousel" aria-label="close">✕</button>
                             <button class="item-carousel-prev" id="ipod-carousel-prev" aria-label="previous image"></button>
                             <div class="item-carousel-media">
                                 <img class="item-carousel-img" alt="album art">
@@ -699,6 +706,7 @@
 
                     <div id="camera-carousel" class="panel item-carousel">
                         <div class="item-carousel-window">
+                            <button class="item-carousel-close" data-close="camera-carousel" aria-label="close">✕</button>
                             <button class="item-carousel-prev" id="camera-carousel-prev" aria-label="previous image"></button>
                             <div class="item-carousel-media">
                                 <img class="item-carousel-img" alt="camera photo">
@@ -709,6 +717,7 @@
 
                     <div id="ds-carousel" class="panel item-carousel">
                         <div class="item-carousel-window">
+                            <button class="item-carousel-close" data-close="ds-carousel" aria-label="close">✕</button>
                             <div class="item-carousel-media">
                                 <img class="item-carousel-img" alt="games i love">
                             </div>
@@ -717,8 +726,29 @@
 
                     <div id="cards-carousel" class="panel item-carousel">
                         <div class="item-carousel-window">
+                            <button class="item-carousel-close" data-close="cards-carousel" aria-label="close">✕</button>
                             <div class="item-carousel-media">
                                 <img class="item-carousel-img" alt="hello kitty">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="notebook-carousel" class="panel item-carousel">
+                        <div class="item-carousel-window">
+                            <button class="item-carousel-close" data-close="notebook-carousel" aria-label="close">✕</button>
+                            <button class="item-carousel-prev" id="notebook-carousel-prev" aria-label="previous image"></button>
+                            <div class="item-carousel-media">
+                                <img class="item-carousel-img" alt="notebook page">
+                            </div>
+                            <button class="item-carousel-next" id="notebook-carousel-next" aria-label="next image"></button>
+                        </div>
+                    </div>
+
+                    <div id="book-carousel" class="panel item-carousel">
+                        <div class="item-carousel-window">
+                            <button class="item-carousel-close" data-close="book-carousel" aria-label="close">✕</button>
+                            <div class="item-carousel-media">
+                                <img class="item-carousel-img" alt="book stack">
                             </div>
                         </div>
                     </div>
