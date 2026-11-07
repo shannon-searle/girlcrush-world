@@ -137,6 +137,12 @@
 .item-carousel-media img {
     width: 100%;
     height: auto;
+    opacity: 0;
+}
+
+.item-carousel-media img.loaded {
+    opacity: 1;
+    transition: opacity 0.35s ease;
 }
 
 #ipod-carousel .item-carousel-media {

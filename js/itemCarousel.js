@@ -79,7 +79,27 @@ function showCarouselImage(panelId, index) {
     carousel.index = (index + carousel.images.length) % carousel.images.length;
 
     const img = document.querySelector(`#${panelId} .item-carousel-img`);
-    img.src = carousel.folder + encodeURIComponent(carousel.images[carousel.index]);
+    const nextSrc = carousel.folder + encodeURIComponent(carousel.images[carousel.index]);
+
+    img.classList.remove('loaded');
+    if (img.getAttribute('src') === nextSrc && img.complete) {
+        img.classList.add('loaded');
+        return;
+    }
+    img.onload = () => img.classList.add('loaded');
+    img.src = nextSrc;
+}
+
+let firstImagesPreloaded = false;
+
+function preloadFirstCarouselImages() {
+    if (firstImagesPreloaded) return;
+    firstImagesPreloaded = true;
+
+    Object.values(itemCarousels).forEach(carousel => {
+        const firstImage = new Image();
+        firstImage.src = carousel.folder + encodeURIComponent(carousel.images[0]);
+    });
 }
 
 function resetItemCarousel(panelId) {
@@ -115,3 +135,4 @@ document.querySelectorAll('.item-carousel').forEach(carousel => {
 });
 
 window.resetItemCarousel = resetItemCarousel;
+window.preloadFirstCarouselImages = preloadFirstCarouselImages;

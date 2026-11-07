@@ -12,7 +12,10 @@ const PANEL_SIDE_EFFECTS = {
         onClose: () => window.resetAngelCard(),
     },
     'whats-in-my-bag-popup': {
-        onOpen: () => window.startBagPulse(),
+        onOpen: () => {
+            window.preloadFirstCarouselImages();
+            window.startBagPulse();
+        },
         onClose: () => window.stopBagPulse(),
     },
     'cloud-jumper-popup': {
