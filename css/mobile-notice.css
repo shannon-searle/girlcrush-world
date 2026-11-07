@@ -1,0 +1,64 @@
+/* =============================================
+   Mobile Notice — covers the site on phone-sized screens while the mobile
+   layout is still being worked on. The mobile CSS underneath stays as it is.
+============================================= */
+
+.mobile-notice {
+    display: none;
+}
+
+/* keep in sync with MOBILE_BREAKPOINT in js/config.js */
+@media (max-width: 768px) {
+    .mobile-notice {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+
+        background: radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            #e0f7fa 35%,
+            #f3e5f5 70%,
+            #fce4ec 100%
+        );
+    }
+}
+
+.mobile-notice-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 340px;
+    padding: 28px 20px;
+    text-align: center;
+}
+
+.mobile-notice-title-image {
+    width: 85%;
+    height: auto;
+}
+
+.mobile-notice-heading {
+    font-family: "Zen Dots", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.8px;
+    color: #7a4a68;
+}
+
+.mobile-notice-text {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    color: #5c4a56;
+}
