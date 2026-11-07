@@ -78,7 +78,7 @@ function next(hideId, showId, newBg) {
 function goToBase() {
     setBackground("#fce4ec");
     fadeContent(true, () => {
-        window.location.href = "home.html?from=index";
+        window.location.href = "/home?from=index";
     });
 }
 

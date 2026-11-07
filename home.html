@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- this page is also served at /home/about-me etc., so relative paths must start from the site root -->
+    <base href="/">
+
     <!-- title -->
     <title>girlcrush</title>
 
@@ -48,10 +51,10 @@
     <link rel="preload" as="image" href="./media/base/piano/background2.png">
 
     <script>
-        // runs before the body renders, so opening a #music link never flashes the home section first
+        // runs before the body renders, so opening /home/music never flashes the home section first
         {
             const sectionNames = ['home', 'about-me', 'girlcrush-world', 'music'];
-            const requestedSection = location.hash.slice(1);
+            const requestedSection = location.pathname.match(/^\/home\/([^/]+)\/?$/)?.[1];
             document.documentElement.dataset.currentSection =
                 sectionNames.includes(requestedSection) ? requestedSection : 'home';
         }
@@ -79,19 +82,19 @@
          NAV BAR (top taskbar)
     ============================================== -->
     <nav class="nav-bar">
-        <a href="#home" class="current">
+        <a href="/home" class="current">
             <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>home</p>
         </a>
-        <a href="#about-me">
+        <a href="/home/about-me">
             <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>about me</p>
         </a>
-        <a href="#girlcrush-world">
+        <a href="/home/girlcrush-world">
             <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>girlcrush world</p>
         </a>
-        <a href="#music">
+        <a href="/home/music">
             <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>music</p>
         </a>
@@ -191,19 +194,19 @@
                     <span>girlcrush</span>
                 </div>
                 <div class="start-menu-items">
-                    <a class="start-menu-item current" href="#home">
+                    <a class="start-menu-item current" href="/home">
                         <img src="media/base/star2.png" alt="" />
                         home
                     </a>
-                    <a class="start-menu-item" href="#about-me">
+                    <a class="start-menu-item" href="/home/about-me">
                         <img src="media/base/star2.png" alt="" />
                         about me
                     </a>
-                    <a class="start-menu-item" href="#girlcrush-world">
+                    <a class="start-menu-item" href="/home/girlcrush-world">
                         <img src="media/base/star2.png" alt="" />
                         girlcrush world
                     </a>
-                    <a class="start-menu-item" href="#music">
+                    <a class="start-menu-item" href="/home/music">
                         <img src="media/base/star2.png" alt="" />
                         music
                     </a>

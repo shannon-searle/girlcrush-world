@@ -1,12 +1,12 @@
 /* ------------------------------------------
     Sections — home, about me, girlcrush world and music all live in home.html.
-    The URL hash (#music) names the current section, so links, refresh and the
-    back button work without a page load.
+    Each has its own path (/home/music) that vercel.json rewrites to home.html,
+    so links, refresh and the back button work without a page load.
 ------------------------------------------ */
 
 const sectionElements = [...document.querySelectorAll('[data-section]')];
 const sectionNames = sectionElements.map(section => section.dataset.section);
-const sectionLinks = document.querySelectorAll('.nav-bar a[href^="#"], .start-menu-item[href^="#"]');
+const sectionLinks = document.querySelectorAll('.nav-bar a[href^="/home"], .start-menu-item[href^="/home"]');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 // these keep running while hidden (space bar jumps, angel audio), so leaving home closes them
@@ -24,9 +24,13 @@ function getSectionElement(name) {
     return sectionElements.find(section => section.dataset.section === name);
 }
 
-function getSectionNameFromHash() {
-    const requestedSection = window.location.hash.slice(1);
+function getSectionNameFromPath(path) {
+    const requestedSection = path.match(/^\/home\/([^/]+)\/?$/)?.[1];
     return sectionNames.includes(requestedSection) ? requestedSection : 'home';
+}
+
+function getPathForSection(name) {
+    return name === 'home' ? '/home' : `/home/${name}`;
 }
 
 function pauseVideosIn(name) {
@@ -62,7 +66,7 @@ function applySection(name) {
     document.documentElement.dataset.currentSection = name;
     document.title = getSectionElement(name).dataset.title;
     sectionLinks.forEach(link => {
-        link.classList.toggle('current', link.getAttribute('href') === `#${name}`);
+        link.classList.toggle('current', link.getAttribute('href') === getPathForSection(name));
     });
 }
 
@@ -81,7 +85,23 @@ function showSection(name) {
     playVideosIn(name);
 }
 
-window.addEventListener('hashchange', () => showSection(getSectionNameFromHash()));
+function isPlainLeftClick(event) {
+    return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+}
+
+sectionLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        // let cmd/ctrl-click still open the section in a new tab
+        if (!isPlainLeftClick(event)) return;
+        event.preventDefault();
+
+        const name = getSectionNameFromPath(link.getAttribute('href'));
+        if (name !== currentSectionName) history.pushState(null, '', getPathForSection(name));
+        showSection(name);
+    });
+});
+
+window.addEventListener('popstate', () => showSection(getSectionNameFromPath(location.pathname)));
 
 applySection(currentSectionName);
 playVideosIn(currentSectionName);
