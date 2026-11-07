@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Rubik+Beastly&family=Rubik+Glitch&family=Press+Start+2P&family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
@@ -38,19 +38,23 @@
     <link rel="stylesheet" href="css/virtual-angel.css" />
     <link rel="stylesheet" href="css/nav-bar.css" />
     <link rel="stylesheet" href="css/strawberry-wedding.css" />
+    <link rel="stylesheet" href="css/page-content.css" />
+    <link rel="stylesheet" href="css/about-me.css" />
+    <link rel="stylesheet" href="css/girlcrush-world.css" />
+    <link rel="stylesheet" href="css/music.css" />
 
     <!-- preload images -->
     <link rel="preload" as="image" href="./media/base/shan/background.webp">
     <link rel="preload" as="image" href="./media/base/piano/background2.png">
 
-
-    <script type="speculationrules">
-    {
-        "prerender": [{
-            "urls": ["base.html", "about-me.html", "girlcrush-world.html", "music.html"],
-            "eagerness": "moderate"
-        }]
-    }
+    <script>
+        // runs before the body renders, so opening a #music link never flashes the home section first
+        {
+            const sectionNames = ['home', 'about-me', 'girlcrush-world', 'music'];
+            const requestedSection = location.hash.slice(1);
+            document.documentElement.dataset.currentSection =
+                sectionNames.includes(requestedSection) ? requestedSection : 'home';
+        }
     </script>
 </head>
 
@@ -67,13 +71,6 @@
     <canvas id="stars"></canvas>
 
     <!-- =============================================
-         princess of the inside
-    ============================================== -->
-    <div class="princess-container">
-        <img src="media/base/princess-of-the-inside.png" alt="princess of the inside" class="princess-of-the-inside"/>
-    </div>
-
-    <!-- =============================================
          SITE TITLE
     ============================================== -->
     <img class="site-title" src="media/titleFont2.png" alt="Site Title">
@@ -82,19 +79,19 @@
          NAV BAR (top taskbar)
     ============================================== -->
     <nav class="nav-bar">
-        <a href="base.html" class="current">
+        <a href="#home" class="current">
             <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>home</p>
         </a>
-        <a href="about-me.html">
+        <a href="#about-me">
             <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>about me</p>
         </a>
-        <a href="girlcrush-world.html">
+        <a href="#girlcrush-world">
             <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>girlcrush world</p>
         </a>
-        <a href="music.html">
+        <a href="#music">
             <img class="nav-link-star" src="media/base/star2.png" alt=""/>
             <p>music</p>
         </a>
@@ -103,10 +100,6 @@
             <p>digital journal</p>
         </a>
     </nav>
-
-    <div id="tina-peek">
-        <img src="./media/base/tina-blink.gif" alt="tina" />
-    </div>
 
     <!-- =============================================
          Taskbar
@@ -184,15 +177,6 @@
 
     </div>
 
-    <!-- guestbook -->
-    <button id="guestbook-button" data-panel="guestbook">
-        <span class="guestbook-tooltip">
-            <span class="tooltip-closed-label">msg me</span>
-            <span class="tooltip-open-label">ttyl</span>
-        </span>
-        <img src="media/base/guestbook.png" alt="guestbook"/>
-    </button>
-
     <!-- =============================================
          Start Menu
     ============================================== -->
@@ -207,19 +191,19 @@
                     <span>girlcrush</span>
                 </div>
                 <div class="start-menu-items">
-                    <a class="start-menu-item current" href="base.html">
+                    <a class="start-menu-item current" href="#home">
                         <img src="media/base/star2.png" alt="" />
                         home
                     </a>
-                    <a class="start-menu-item" href="about-me.html">
+                    <a class="start-menu-item" href="#about-me">
                         <img src="media/base/star2.png" alt="" />
                         about me
                     </a>
-                    <a class="start-menu-item" href="girlcrush-world.html">
+                    <a class="start-menu-item" href="#girlcrush-world">
                         <img src="media/base/star2.png" alt="" />
                         girlcrush world
                     </a>
-                    <a class="start-menu-item" href="music.html">
+                    <a class="start-menu-item" href="#music">
                         <img src="media/base/star2.png" alt="" />
                         music
                     </a>
@@ -231,6 +215,30 @@
             </div>
         </div>
     </div>
+
+    <!-- =============================================
+         HOME SECTION
+         Sections swap without a page load, see js/sections.js
+    ============================================== -->
+    <div class="site-section" data-section="home" data-title="girlcrush">
+
+    <!-- princess of the inside -->
+    <div class="princess-container">
+        <img src="media/base/princess-of-the-inside.png" alt="princess of the inside" class="princess-of-the-inside"/>
+    </div>
+
+    <div id="tina-peek">
+        <img src="./media/base/tina-blink.gif" alt="tina" />
+    </div>
+
+    <!-- guestbook -->
+    <button id="guestbook-button" data-panel="guestbook">
+        <span class="guestbook-tooltip">
+            <span class="tooltip-closed-label">msg me</span>
+            <span class="tooltip-open-label">ttyl</span>
+        </span>
+        <img src="media/base/guestbook.png" alt="guestbook"/>
+    </button>
 
     <!-- =============================================
          DESKTOP ICON TRAY
@@ -767,6 +775,115 @@
         </div>
     </div>
 
+    </div>
+    <!-- end of HOME SECTION -->
+
+    <!-- =============================================
+         ABOUT ME SECTION
+    ============================================== -->
+    <main class="page-content site-section" data-section="about-me" data-title="girlcrush — about me">
+
+        <div class="about-me-layout">
+            <aside class="about-me-side">
+                <section class="about-me-panel glass-panel">
+                    <h2 class="about-me-panel-title">✧ profile</h2>
+                    <dl class="about-me-profile">
+                        <dt>name</dt><dd>toni</dd>
+                        <dt>star sign</dt><dd>libra</dd>
+                        <dt>pronouns</dt><dd>she/her</dd>
+                        <dt>height</dt><dd>175cm</dd>
+                        <dt>lvl</dt><dd>222</dd>
+                    </dl>
+                </section>
+                <section class="about-me-panel about-me-panel-toggle glass-panel" id="likes-panel">
+                    <h2 class="about-me-panel-title">✧ likes</h2>
+                    <ul class="about-me-chips">
+                        <li class="about-me-chip">bugs and worms</li>
+                        <li class="about-me-chip">being outside in the sun</li>
+                        <li class="about-me-chip">making things</li>
+                        <li class="about-me-chip">hot chips</li>
+                        <li class="about-me-chip">spending time with my friends</li>
+                        <li class="about-me-chip">&lt;333</li>
+                    </ul>
+                </section>
+            </aside>
+
+            <div class="glass-panel">
+                <div class="about-me-container">
+                    <img class="about-me-base" src="media/about-me/sims-base.jpg" alt="" />
+                    <img class="about-me-toni" src="media/about-me/toni-default.png" alt="toni" />
+                    <button class="about-me-button" data-action="likes">
+                        <img src="media/about-me/button-likes.png" alt="discuss likes" />
+                    </button>
+                    <button class="about-me-button" data-action="dislikes">
+                        <img src="media/about-me/button-dislikes.png" alt="discuss dislikes" />
+                    </button>
+                    <button class="about-me-button" data-action="dance">
+                        <img src="media/about-me/button-dance.png" alt="dance" />
+                    </button>
+                    <button class="about-me-button" data-action="make-song">
+                        <img src="media/about-me/button-make-song.png" alt="make song" />
+                    </button>
+                    <button class="about-me-button" data-action="confess-love">
+                        <img src="media/about-me/button-confess-love.png" alt="confess love" />
+                    </button>
+                    <button class="about-me-button" data-action="explode">
+                        <img src="media/about-me/button-explode.png" alt="explode" />
+                    </button>
+                </div>
+            </div>
+
+            <aside class="about-me-side">
+                <section class="about-me-panel about-me-panel-toggle glass-panel" id="dislikes-panel">
+                    <h2 class="about-me-panel-title">✧ dislikes</h2>
+                    <ul class="about-me-chips">
+                        <li class="about-me-chip">capsicum</li>
+                        <li class="about-me-chip">forgetting to put my jewellery on</li>
+                        <li class="about-me-chip">cobbler’s pegs</li>
+                        <li class="about-me-chip">houses painted entirely white</li>
+                        <li class="about-me-chip">the dark</li>
+                    </ul>
+                </section>
+                <section class="about-me-panel about-me-panel-toggle glass-panel" id="make-song-panel">
+                    <h2 class="about-me-panel-title">✧ make song</h2>
+                    <p class="about-me-panel-text">music coming soon ♪</p>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <!-- =============================================
+         GIRLCRUSH WORLD SECTION
+    ============================================== -->
+    <main class="page-content site-section" data-section="girlcrush-world" data-title="girlcrush — girlcrush world">
+        <div class="glass-panel">
+            <div class="world-video-frame">
+                <!-- no autoplay: js/sections.js plays it when the section opens, so it doesn't download on every visit to home -->
+                <video
+                    class="world-video"
+                    src="media/girlcrush-world/girlcrush-world.mp4"
+                    data-play-on-enter
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                ></video>
+            </div>
+        </div>
+    </main>
+
+    <!-- =============================================
+         MUSIC SECTION
+    ============================================== -->
+    <main class="page-content site-section" data-section="music" data-title="girlcrush — music">
+        <div class="glass-panel">
+            <div class="music-container">
+                <img class="music-mic" src="media/music/mic.png" alt="microphone">
+                <p class="music-coming-soon">coming soon</p>
+            </div>
+        </div>
+    </main>
+
     <!-- =============================================
          JAVASCRIPT
     ============================================== -->
@@ -785,6 +902,8 @@
     <script src="js/taskbar.js"></script>
     <script src="js/startMenu.js"></script>
     <script src="js/tinaPeek.js"></script>
+    <script src="js/aboutMe.js"></script>
+    <script src="js/sections.js"></script>
 
 
 </body>

@@ -12,27 +12,31 @@ html {
 }
 
 /* =============================================
-   Page Transitions — cross-fade between pages instead of a hard reload flash
+   Sections — only the one named in html[data-current-section] shows.
+   js/sections.js swaps it and cross-fades with a view transition.
 ============================================= */
 
-@view-transition {
-    navigation: auto;
+/* home's children are mostly fixed-position, so it must not add a layout box of its own */
+[data-section="home"] {
+    display: contents;
 }
 
-/* nav + title stay put while the page content fades underneath */
+/* home is the fallback when no section is set yet */
+html[data-current-section]:not([data-current-section="home"]) [data-section="home"],
+html:not([data-current-section="about-me"]) [data-section="about-me"],
+html:not([data-current-section="girlcrush-world"]) [data-section="girlcrush-world"],
+html:not([data-current-section="music"]) [data-section="music"] {
+    display: none;
+}
+
+/* nav + title stay put while the section content fades underneath */
 .nav-bar { view-transition-name: nav-bar; }
 .site-title { view-transition-name: site-title; }
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    animation-duration: 0.2s;
+    animation-duration: 0.3s;
     animation-timing-function: ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    @view-transition {
-        navigation: none;
-    }
 }
 
 /* =============================================

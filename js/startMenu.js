@@ -31,7 +31,7 @@ menuButton.addEventListener('click', (e) => {
 document.getElementById('start-menu-close').addEventListener('click', closeStartMenu);
 
 // clicking a menu item closes the start menu behind it
-startMenu.querySelectorAll('[data-panel]').forEach(item => {
+startMenu.querySelectorAll('.start-menu-item').forEach(item => {
     item.addEventListener('click', closeStartMenu);
 });
 
