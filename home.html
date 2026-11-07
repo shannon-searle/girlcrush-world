@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- this page is also served at /home/about-me etc., so relative paths must start from the site root -->
     <base href="/">
 
     <!-- title -->
@@ -52,7 +51,6 @@
     <link rel="preload" as="image" href="./media/base/piano/background2.png">
 
     <script>
-        // runs before the body renders, so opening /home/music never flashes the home section first
         {
             const sectionNames = ['home', 'about-me', 'girlcrush-world', 'music'];
             const requestedSection = location.pathname.match(/^\/home\/([^/]+)\/?$/)?.[1];
@@ -65,7 +63,7 @@
 <body>
 
     <!-- =============================================
-         MOBILE NOTICE — phones only, see css/mobile-notice.css
+         MOBILE NOTICE
     ============================================== -->
     <div class="mobile-notice" role="dialog" aria-labelledby="mobile-notice-heading">
         <div class="mobile-notice-panel glass-panel">
@@ -233,7 +231,6 @@
 
     <!-- =============================================
          HOME SECTION
-         Sections swap without a page load, see js/sections.js
     ============================================== -->
     <div class="site-section" data-section="home" data-title="girlcrush">
 
@@ -873,7 +870,6 @@
     <main class="page-content site-section" data-section="girlcrush-world" data-title="girlcrush — girlcrush world">
         <div class="glass-panel">
             <div class="world-video-frame">
-                <!-- no autoplay: js/sections.js plays it when the section opens, so it doesn't download on every visit to home -->
                 <video
                     class="world-video"
                     src="media/girlcrush-world/girlcrush-world.mp4"

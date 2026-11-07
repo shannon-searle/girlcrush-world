@@ -1,7 +1,5 @@
 /* ------------------------------------------
-    Sections — home, about me, girlcrush world and music all live in home.html.
-    Each has its own path (/home/music) that vercel.json rewrites to home.html,
-    so links, refresh and the back button work without a page load.
+    Sections
 ------------------------------------------ */
 
 const sectionElements = [...document.querySelectorAll('[data-section]')];
@@ -9,7 +7,6 @@ const sectionNames = sectionElements.map(section => section.dataset.section);
 const sectionLinks = document.querySelectorAll('.nav-bar a[href^="/home"], .start-menu-item[href^="/home"]');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-// these keep running while hidden (space bar jumps, angel audio), so leaving home closes them
 const TASKBAR_BUTTON_BY_POPUP_TO_CLOSE_ON_LEAVE = {
     'cloud-jumper-popup': 'cloud-jumper-button',
     'virtual-angel-popup': 'virtual-angel-button',
@@ -17,7 +14,6 @@ const TASKBAR_BUTTON_BY_POPUP_TO_CLOSE_ON_LEAVE = {
 
 const videosPausedOnLeaveBySection = new Map();
 
-// set by the inline script in <head> before the body rendered
 let currentSectionName = document.documentElement.dataset.currentSection;
 
 function getSectionElement(name) {
@@ -45,7 +41,6 @@ function playVideosIn(name) {
         ...(videosPausedOnLeaveBySection.get(name) ?? []),
         ...section.querySelectorAll('video[autoplay], video[data-play-on-enter]'),
     ]);
-    // play() rejects if the browser blocks it; the video just stays paused
     videosToPlay.forEach(video => video.play().catch(() => {}));
 }
 
@@ -91,7 +86,6 @@ function isPlainLeftClick(event) {
 
 sectionLinks.forEach(link => {
     link.addEventListener('click', (event) => {
-        // let cmd/ctrl-click still open the section in a new tab
         if (!isPlainLeftClick(event)) return;
         event.preventDefault();
 
@@ -106,7 +100,6 @@ window.addEventListener('popstate', () => showSection(getSectionNameFromPath(loc
 applySection(currentSectionName);
 playVideosIn(currentSectionName);
 
-// once the current section has loaded, fetch the other sections' videos so they start straight away
 window.addEventListener('load', () => {
     document.querySelectorAll('video[data-play-on-enter]').forEach(video => {
         video.preload = 'auto';

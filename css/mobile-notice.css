@@ -1,13 +1,11 @@
 /* =============================================
-   Mobile Notice — covers the site on phone-sized screens while the mobile
-   layout is still being worked on. The mobile CSS underneath stays as it is.
+   Mobile Notice
 ============================================= */
 
 .mobile-notice {
     display: none;
 }
 
-/* keep in sync with MOBILE_BREAKPOINT in js/config.js */
 @media (max-width: 768px) {
     .mobile-notice {
         position: fixed;

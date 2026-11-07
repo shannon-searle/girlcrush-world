@@ -54,7 +54,6 @@ function initArrivalFadeIn() {
     document.body.style.transition      = 'opacity 1.5s ease, background-color 1s ease';
 
     waitUntilPageIsShownAndLoaded().then(() => {
-        // the query must be in the link so index.html's prerender matches, but visitors don't need to see it
         history.replaceState(history.state, '', location.pathname + location.hash);
 
         requestAnimationFrame(() => {

@@ -12,16 +12,13 @@ html {
 }
 
 /* =============================================
-   Sections — only the one named in html[data-current-section] shows.
-   js/sections.js swaps it and cross-fades with a view transition.
+   Sections
 ============================================= */
 
-/* home's children are mostly fixed-position, so it must not add a layout box of its own */
 [data-section="home"] {
     display: contents;
 }
 
-/* home is the fallback when no section is set yet */
 html[data-current-section]:not([data-current-section="home"]) [data-section="home"],
 html:not([data-current-section="about-me"]) [data-section="about-me"],
 html:not([data-current-section="girlcrush-world"]) [data-section="girlcrush-world"],
