@@ -3,37 +3,23 @@
 ============================================= */
 
 .music-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
     width: min(60vh, 80vw, 600px);
     aspect-ratio: 1 / 1;
     box-sizing: content-box;
     background: #bce3e5;
     border-radius: 14px;
+    overflow: hidden;
 }
 
-.music-mic {
+.music-loading {
     display: block;
-    height: min(45vh, 420px);
-    width: auto;
-}
-
-.page-content .music-coming-soon {
-    font-family: "Zen Dots", sans-serif;
-    font-size: clamp(16px, 2vw, 22px);
-    letter-spacing: 0.8px;
-    color: #4280bb;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @media (max-width: 768px) {
     .music-container {
         width: min(55vh, 85vw);
-    }
-
-    .music-mic {
-        height: min(45vh, 60vw);
     }
 }
