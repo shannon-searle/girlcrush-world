@@ -73,6 +73,7 @@ body {
 #title-link:hover {
     transform: translateY(-8px) scale(1.03);
 }
+
 .title {
     display: block;
     width: 60vw;
@@ -80,7 +81,14 @@ body {
     filter: drop-shadow(0 0 3px rgba(35, 35, 65, 0.7))
         drop-shadow(0 0 9px rgba(55, 52, 95, 0.55))
         drop-shadow(0 0 16px rgba(25, 25, 50, 0.5));
+    transition: filter 0.6s ease;
     animation: shake 5.5s infinite;
+}
+
+#title-link:hover .title {
+    filter: drop-shadow(0 0 4px rgba(240, 235, 255, 0.85))
+        drop-shadow(0 0 12px rgba(195, 175, 255, 0.7))
+        drop-shadow(0 0 26px rgba(165, 145, 235, 0.5));
 }
 
 /* =============================================
