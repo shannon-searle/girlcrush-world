@@ -126,13 +126,10 @@ document.querySelectorAll('.item-carousel-prev').forEach(button => {
     });
 });
 
-// clicking outside the enlarged image closes it
-document.querySelectorAll('.item-carousel').forEach(carousel => {
-    carousel.addEventListener('click', (e) => {
-        if (e.target === carousel) {
-            closePanel(carousel.id);
-        }
-    });
+// escape closes it
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.item-carousel.open').forEach(carousel => closePanel(carousel.id));
 });
 
 window.resetItemCarousel = resetItemCarousel;

@@ -94,7 +94,6 @@
     align-items: center;
     z-index: 20;
     border-radius: 5px;
-    cursor: pointer;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -117,7 +116,6 @@
     height: 100%;
     padding: 14px;
     background: rgba(224, 246, 255, 0.75);
-    cursor: default;
     box-shadow:
         0 2px 6px rgba(0, 0, 0, 0.05),
         0 8px 16px rgba(0, 0, 0, 0.05),
@@ -180,29 +178,54 @@
 }
 
 /* =============================================
-   Prev/Next Buttons
+   Carousel Buttons
 ============================================= */
 
 .item-carousel-prev,
-.item-carousel-next {
+.item-carousel-next,
+.item-carousel-close {
     position: absolute;
-    top: 50%;
     z-index: 2;
-    width: clamp(30px, 3vw, 35px);
     aspect-ratio: 1;
-    border: 1px solid rgba(217, 102, 160, 0.35);
-    border-radius: 50%;
-    background: linear-gradient(145deg, #ffffff, #ffe9f4);
     padding: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(-50%) scale(var(--arrow-scale, 1)) translateX(var(--arrow-shift, 0px));
+
+    font-family: "Zen Dots", sans-serif;
+
+    background-color: var(--pink-titlebar, #ffe0f0);
+    background-image: radial-gradient(
+        circle at 35% 30%,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0) 60%
+    );
+    color: var(--pink-accent, #d966a0);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+
     box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.08),
-        0 6px 14px rgba(217, 102, 160, 0.18);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+        inset 0 -2px 3px rgba(0, 0, 0, 0.12),
+        0 1px 3px rgba(90, 80, 150, 0.3);
+}
+
+.item-carousel-prev:hover,
+.item-carousel-next:hover,
+.item-carousel-close:hover {
+    background: #ffc0de;
+}
+
+/* =============================================
+   Prev/Next Buttons
+============================================= */
+
+.item-carousel-prev,
+.item-carousel-next {
+    top: 50%;
+    width: clamp(30px, 3vw, 35px);
+    transform: translateY(-50%);
 }
 
 .item-carousel-prev::before,
@@ -211,7 +234,7 @@
     box-sizing: border-box;
     width: 9px;
     height: 9px;
-    border: solid var(--pink-accent, #d966a0);
+    border: solid currentColor;
     border-width: 0 2px 2px 0;
     transform: rotate(-45deg) translate(-1.75px, -1.75px);
 }
@@ -228,54 +251,16 @@
     right: 2%;
 }
 
-.item-carousel-prev:hover,
-.item-carousel-next:hover {
-    --arrow-scale: 1.1;
-    background: linear-gradient(145deg, #ffffff, #ffd2e6);
-    box-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.1),
-        0 8px 20px rgba(217, 102, 160, 0.3);
-}
-
-.item-carousel-prev:hover {
-    --arrow-shift: -1.5px;
-}
-
-.item-carousel-next:hover {
-    --arrow-shift: 1.5px;
-}
-
 /* =============================================
    Close Button
 ============================================= */
 
 .item-carousel-close {
-    position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 2;
-    width: 26px;
-    aspect-ratio: 1;
-    border: 1px solid rgba(217, 102, 160, 0.35);
-    border-radius: 50%;
-    background: linear-gradient(145deg, #ffffff, #ffe9f4);
-    color: var(--pink-accent, #d966a0);
+    width: 30px;
     font-size: 12px;
     line-height: 1;
-    padding: 0;
-    cursor: pointer;
-    box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.08),
-        0 6px 14px rgba(217, 102, 160, 0.18);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
-}
-
-.item-carousel-close:hover {
-    transform: scale(1.1);
-    background: linear-gradient(145deg, #ffffff, #ffd2e6);
-    box-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.1),
-        0 8px 20px rgba(217, 102, 160, 0.3);
 }
 
 /* =============================================
