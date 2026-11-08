@@ -45,6 +45,10 @@
     pointer-events: auto;
 }
 
+#guestbook.dragging iframe {
+    pointer-events: none;
+}
+
 .desktop-icons .guestbook-mobile {
     display: none;
 }
@@ -89,7 +93,7 @@
 
 #guestbook-button {
     position: fixed;
-    right: 20px;
+    right: 50px;
     bottom: 10px;
     z-index: 5001;
 

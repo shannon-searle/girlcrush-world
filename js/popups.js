@@ -56,7 +56,7 @@ function togglePanel(id) {
 }
 
 /* ------------------------------------------
-    Popups only — stacking and dragging
+    Popups and guestbook — stacking and dragging
 ------------------------------------------ */
 
 let topPopupZIndex = 2;
@@ -71,7 +71,7 @@ const dragOffsetByPopup = new Map();
 
 function resetDragPosition(popup) {
     dragOffsetByPopup.set(popup, { x: 0, y: 0 });
-    popup.style.transform = '';
+    popup.style.translate = '';
 }
 
 function makeDraggable(popup) {
@@ -81,27 +81,29 @@ function makeDraggable(popup) {
     function onDrag(e) {
         const offset = { x: e.clientX - pointerStartX, y: e.clientY - pointerStartY };
         dragOffsetByPopup.set(popup, offset);
-        popup.style.transform = `translate(${offset.x}px, ${offset.y}px)`;
+        popup.style.translate = `${offset.x}px ${offset.y}px`;
     }
 
     function stopDrag() {
+        popup.classList.remove('dragging');
         document.removeEventListener('mousemove', onDrag);
         document.removeEventListener('mouseup', stopDrag);
     }
 
     popup.addEventListener('mousedown', (e) => {
-        bringToFront(popup);
+        if (isPopup(popup)) bringToFront(popup);
         if (!e.target.closest('.popup-titlebar')) return;
 
         const offset = dragOffsetByPopup.get(popup) ?? { x: 0, y: 0 };
         pointerStartX = e.clientX - offset.x;
         pointerStartY = e.clientY - offset.y;
+        popup.classList.add('dragging');
         document.addEventListener('mousemove', onDrag);
         document.addEventListener('mouseup', stopDrag);
     });
 }
 
-document.querySelectorAll('.popup').forEach(makeDraggable);
+document.querySelectorAll('.popup, #guestbook').forEach(makeDraggable);
 
 /* ------------------------------------------
     Buttons that open and close panels
