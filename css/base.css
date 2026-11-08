@@ -30,8 +30,9 @@ html:not([data-current-section="music"]) [data-section="music"] {
 .nav-bar { view-transition-name: nav-bar; }
 .site-title { view-transition-name: site-title; }
 
-::view-transition-old(root),
-::view-transition-new(root) {
+.section-transition::view-transition-group(*),
+.section-transition::view-transition-old(*),
+.section-transition::view-transition-new(*) {
     animation-duration: 0.3s;
     animation-timing-function: ease-out;
 }

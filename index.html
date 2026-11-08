@@ -9,12 +9,10 @@
 
     <!-- favicon -->
     <link rel="icon" href="media/favicon.png" type="image/png">
-    
+
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Rubik+Beastly&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
@@ -25,7 +23,7 @@
 
     <script type="speculationrules">
     {
-        "prerender": [{ "urls": ["/home?from=index"] }]
+        "prerender": [{ "urls": ["/home"] }]
     }
     </script>
 </head>
@@ -41,124 +39,22 @@
             <p class="mobile-notice-text">the mobile realm is still under construction ⋆˙⟡<br>come back on a computer for the full experience!</p>
         </div>
     </div>
-    <div id="page-backdrop"></div>
-    <video id="page-backdrop-video" autoplay muted loop playsinline preload="auto">
-        <source src="./media/index/intro/spooky_boomerang.mp4" type="video/mp4">
+
+    <video id="backdrop-video" autoplay muted loop playsinline preload="auto">
+        <source src="./media/index/spooky_boomerang.mp4" type="video/mp4">
     </video>
     <canvas id="stars"></canvas>
 
-    <div class="page-container">
-
-        <!-- Title screen -->
-        <section id="screen-title">
-            <div id="angel-light"></div>
-            <div id="wings"></div>
-            <div id="title-container">
-                <img class="title" data-hide="screen-title" data-show="screen-portal" data-bg="spooky" src="media/titleFont2.png" alt="girlcrush222">
-            </div>
-            <div class="backdoor">
-                <button class="skip" data-goto-base>
-                    <img class="img-default" src="media/index/intro/door.png" alt="door" />
-                    <img class="img-hover" src="media/index/intro/door-open.png" alt="open door" />
-                </button>
-                <p>back door</p>
-            </div>
-        </section>
-
-        <!-- Portal: waiting room -->
-        <section id="screen-portal" style="display:none;">
-            <div class="glass-panel">
-                <div class="scene-frame">
-                    <div class="scene-media">
-                        <img src="./media/index/intro/waiting_room1.png" alt="waiting room">
-                        <img id="portal" src="./media/index/intro/portal2.png" alt="portal">
-                    </div>
-                </div>
-            </div>
-            <div class="scene-info">
-                <p>you have made it to the waiting room!<br>
-                    you may now begin your journey into the girlcrush digital realm<br>
-                    enter through the portal, if you dare</p>
-                <div class="game-options">
-                    <button class="button" data-hide="screen-portal" data-show="screen-dead" data-bg="spooky">retreat</button>
-                    <button class="button" data-hide="screen-portal" data-show="screen-enter" data-bg="spooky">begin</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Enter: step inside the portal -->
-        <section id="screen-enter" style="display:none;">
-            <div class="scene-frame" style="box-shadow:none;">
-                <div class="scene-media">
-                    <img src="./media/index/intro/portal-intro.gif" alt="enter portal">
-                </div>
-            </div>
-            <div class="scene-info">
-                <p>as you step inside the portal, you hear a muffled voice cry out<br>
-                    it's the princess. she needs your help!<br>
-                    what will you do?</p>
-                <div class="game-options">
-                    <button class="button" data-hide="screen-enter" data-show="screen-dead" data-bg="spooky">retreat</button>
-                    <button class="button" data-hide="screen-enter" data-show="screen-freefall">venture further</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Freefall -->
-        <section id="screen-freefall" style="display:none;">
-            <div class="scene-info">
-                <p>the edges of your vision darken as you slip further and further away from reality<br>
-                you feel strange<br>
-                    are losing control... or gaining it?</p>
-                <div class="game-options">
-                    <button class="button" data-hide="screen-freefall" data-show="screen-dead" data-bg="spooky">retreat</button>
-                    <button class="button" data-hide="screen-freefall" data-show="screen-arrival">faint</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Arrival -->
-        <section id="screen-arrival" style="display:none;">
-            <video
-                class="arrival arrival-desktop"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-            >
-                <source src="./media/index/intro/final-step-correct-size-2.0.mp4" type="video/mp4">
-            </video>
-            <video
-                class="arrival arrival-mobile"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-            >
-                <source src="./media/index/intro/final-step-iphone.mp4" type="video/mp4">
-            </video>
-            <div class="scene-info">
-                <p>you wake up in a daze and feel yourself somewhere, otherworldly<br>
-                    could it be… the girlcrush digital realm?</p>
-                <button class="button" data-goto-base>explore!</button>
-            </div>
-        </section>
-
-        <!-- Dead -->
-        <section id="screen-dead" style="display:none;">
-            <img class="dead-screen-image" src="./media/index/intro/you-died2.jpg" alt="you died">
-            <p>you died!</p>
-            <p><b>score</b>: not good</p>
-            <p><em>unknown</em> user tried to run away from the girlcrush digital realm and was crushed by the queen of the darkland</p>
-            <div class="game-options">
-                <button class="button" data-hide="screen-dead" data-show="screen-portal">respawn</button>
-                <button class="button" data-hide="screen-dead" data-show="screen-title">title screen</button>
-            </div>
-        </section>
-
-    </div>
+    <main class="page-container">
+        <a id="title-link" class="home-link" href="/home">
+            <img class="title" src="media/titleFont2.png" alt="girlcrush222 — enter">
+        </a>
+        <a class="backdoor home-link" href="/home">
+            <img class="img-default" src="media/index/door.png" alt="door" />
+            <img class="img-hover" src="media/index/door-open.png" alt="open door" />
+            <p>back door</p>
+        </a>
+    </main>
 
     <script src="js/stars.js"></script>
     <script src="js/index.js"></script>

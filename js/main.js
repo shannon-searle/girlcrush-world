@@ -4,7 +4,6 @@
 const mainConfig = {
     heartTrailEveryNMoves: 5,
     heartLifetimeMs: 1000,
-    arrivalFadeMaxWaitMs: 1000,
 };
 
 /* ------------------------------------------
@@ -28,42 +27,6 @@ function initCursorHeartTrail() {
 }
 
 /* ------------------------------------------
-    Page fade-in (when navigating from index)
------------------------------------------- */
-function waitUntilPageIsShownAndLoaded() {
-    return new Promise(resolve => {
-        const waitForLoad = () => {
-            if (document.readyState === 'complete') return resolve();
-            window.addEventListener('load', resolve, { once: true });
-            setTimeout(resolve, mainConfig.arrivalFadeMaxWaitMs);
-        };
-
-        if (document.prerendering) {
-            document.addEventListener('prerenderingchange', waitForLoad, { once: true });
-        } else {
-            waitForLoad();
-        }
-    });
-}
-
-function initArrivalFadeIn() {
-    if (window.location.search !== '?from=index') return;
-
-    document.body.style.opacity         = '0';
-    document.body.style.backgroundColor = '#ffffff';
-    document.body.style.transition      = 'opacity 1.5s ease, background-color 1s ease';
-
-    waitUntilPageIsShownAndLoaded().then(() => {
-        history.replaceState(history.state, '', location.pathname + location.hash);
-
-        requestAnimationFrame(() => {
-            document.body.style.opacity         = '1';
-            document.body.style.backgroundColor = '#fce4ec';
-        });
-    });
-}
-
-/* ------------------------------------------
     Blinkies: scatter each one with a small random tilt/offset
 ------------------------------------------ */
 function initBlinkies() {
@@ -76,7 +39,6 @@ function initBlinkies() {
 }
 
 initCursorHeartTrail();
-initArrivalFadeIn();
 initBlinkies();
 
 /* ------------------------------------------

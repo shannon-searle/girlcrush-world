@@ -15,52 +15,17 @@ body {
 }
 
 /* =============================================
-   Background Layer
+   Background Video
 ============================================= */
 
-#page-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: -3;
-    opacity: 1;
-    transition: opacity 0.8s ease-in-out;
-    background: radial-gradient(
-        circle at center,
-        #ffffff 0%,
-        #e0f7fa 35%,
-        #f3e5f5 70%,
-        #fce4ec 100%
-    );
-}
-
-#page-backdrop-video {
-    position: fixed;
-    inset: 0;
-    z-index: -3;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.8s ease-in-out;
-}
-
-#wings {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    opacity: 1;
-    pointer-events: none;
-    background: url("../media/index/intro/wings-background.png") center / cover;
-}
-
-#angel-light {
+#backdrop-video {
     position: fixed;
     inset: 0;
     z-index: -1;
-    opacity: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     pointer-events: none;
-    background: url("../media/index/intro/light-background.png") center / 100% auto no-repeat;
 }
 
 /* =============================================
@@ -92,237 +57,30 @@ body {
 }
 
 /* =============================================
-   Screens (sections)
+   Title
 ============================================= */
 
-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.home-link,
+.home-link * {
+    cursor: pointer;
 }
 
-/* =============================================
-   Title Screen
-============================================= */
-
-#title-container {
+#title-link {
+    display: block;
     transition: transform 1s ease;
 }
 
-#title-container:hover {
+#title-link:hover {
     transform: translateY(-8px) scale(1.03);
 }
-
 .title {
+    display: block;
     width: 60vw;
     height: auto;
-    cursor: pointer;
-    filter: drop-shadow(0 0 5px rgba(165, 146, 222, 0.4))
-        drop-shadow(0 0 8px rgba(225, 102, 160, 0.4))
-        drop-shadow(0 0 10px rgba(225, 102, 160, 0.1));
+    filter: drop-shadow(0 0 3px rgba(35, 35, 65, 0.7))
+        drop-shadow(0 0 9px rgba(55, 52, 95, 0.55))
+        drop-shadow(0 0 16px rgba(25, 25, 50, 0.5));
     animation: shake 5.5s infinite;
-}
-
-/* =============================================
-   Typography
-============================================= */
-
-p {
-    color: #000000;
-    font-family: "Zen Dots", sans-serif;
-    font-weight: 200;
-    font-size: 14px;
-    line-height: 1.8;
-    letter-spacing: 1px;
-    text-align: center;
-}
-
-a { outline: none; }
-
-/* =============================================
-   Buttons
-============================================= */
-
-.button {
-    background: #8d8297;
-    color: #ffffff;
-    font-family: "Zen Dots", sans-serif;
-    font-weight: 200;
-    font-size: clamp(8px, 1.5vw, 12px);
-    line-height: 1.8;
-    letter-spacing: 1px;
-    padding: 10px 22px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.35),
-        0 0 16px rgba(74, 57, 96, 0.6);
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.button:hover {
-    background: #cba6f0;
-    color: #231111;
-    transform: translateY(-2px);
-    box-shadow:
-        0 6px 14px rgba(0, 0, 0, 0.35),
-        0 0 20px rgba(203, 166, 240, 0.7);
-}
-
-.game-options {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 80px;
-}
-
-/* =============================================
-   Scene Frame (shared by portal/enter/freefall)
-============================================= */
-
-.scene-frame {
-    display: inline-flex;
-    position: relative;
-    overflow: hidden;
-    border-radius: 10%;
-    margin-top: 0;
-    justify-content: center;
-}
-
-#screen-portal .scene-frame {
-    display: flex;
-    border-radius: 14px;
-    box-shadow: none;
-}
-
-.page-index .glass-panel {
-    background: rgb(191 176 215 / 26%);
-}
-
-.scene-media {
-    display: contents;
-}
-
-.scene-media img {
-    display: block;
-    width: clamp(320px, 54vw, 720px);
-    height: clamp(270px, 64vh, 610px);
-}
-
-.scene-media video {
-    display: block;
-    width: clamp(320px, 54vw, 720px);
-    height: clamp(270px, 64vh, 610px);
-    object-fit: contain;
-}
-
-.scene-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3vh;
-    width: clamp(300px, 50vw, 850px);
-    padding: clamp(8px, 2vh, 16px) clamp(12px, 3vw, 24px);
-    background: none;
-    border-radius: 20px;
-}
-
-.scene-info p {
-    color: #ffffff;
-    font-size: clamp(9px, 1.5vw, 12px);
-    line-height: 2.5;
-    text-shadow:
-        0 0 6px rgba(0, 0, 0, 0.9),
-        0 0 14px rgba(0, 0, 0, 0.7),
-        1px 1px 2px rgba(0, 0, 0, 0.9);
-}
-
-/* =============================================
-   Portal
-============================================= */
-
-#portal {
-    position: absolute;
-    width: 40%;
-    height: auto;
-    bottom: 15%;
-    right: 30%;
-    box-shadow: none;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-15px); }
-}
-
-/* =============================================
-   Arrival Screen
-============================================= */
-
-#screen-arrival {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    justify-content: flex-end;
-    padding-bottom: 4vh;
-}
-
-.arrival {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 75%;
-}
-
-.arrival-mobile {
-    display: none;
-}
-
-#screen-arrival .scene-info {
-    background: none;
-    gap: 1vh;
-}
-
-#screen-arrival .scene-info p {
-    color: #aa84d1;
-    text-shadow: none;
-}
-
-#screen-arrival p,
-#screen-arrival .button {
-    position: relative;
-    z-index: 1;
-    box-shadow: none;
-}
-
-/* =============================================
-   Dead Screen
-============================================= */
-
-#screen-dead .dead-screen-image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-#screen-dead p {
-    color: #ffffff;
-    font-size: 20px;
-    max-width: 80%;
-    text-shadow: 2px 2px 4px #000000;
-}
-
-#screen-dead .game-options {
-    margin-top: 3vh;
 }
 
 /* =============================================
@@ -333,10 +91,11 @@ a { outline: none; }
     position: fixed;
     right: 2%;
     bottom: 2%;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: 2px;
+    text-decoration: none;
 }
 
 .backdoor p {
@@ -348,82 +107,39 @@ a { outline: none; }
     color: rgb(100, 80, 120);
 }
 
-.skip {
-    background: none;
-    border: none;
-}
-
-.skip img {
+.backdoor img {
     width: 35px;
     height: 40px;
     transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.skip .img-hover          { display: none; }
-.skip:hover .img-default  { display: none; }
-.skip:hover .img-hover    { display: block; }
+.backdoor .img-hover          { display: none; }
+.backdoor:hover .img-default  { display: none; }
+.backdoor:hover .img-hover    { display: block; }
 
-.skip:hover img {
+.backdoor:hover img {
     transform: scale(1.05) translateY(-3px);
     filter:
         drop-shadow(0 0 6px #e166a0)
         drop-shadow(0 0 12px #e166a0)
         drop-shadow(0 0 24px #e166a0);
-    cursor: pointer;
+}
+
+/* =============================================
+   Mobile Notice Panel
+============================================= */
+
+.page-index .glass-panel {
+    background: rgb(191 176 215 / 26%);
 }
 
 /* =============================================
    Mobile (≤ 768px)
 ============================================= */
 @media (max-width: 768px) {
-    #angel-light {
-        display: none;
-    }
-
-    section {
-        width: 100%;
-        min-height: 100dvh;
-        font-size: 13px;
-    }
-
     .title {
         padding: 0 4vw;
         width: 90vw;
-    }
-
-    .scene-frame {
-        border-radius: 12%;
-        box-shadow: 0 0 20px #563d48;
-    }
-
-    .scene-media img,
-    .scene-media video {
-        width: 90vw;
-        height: 45vh;
-    }
-
-    #screen-enter .scene-media img {
-        height: 40vh;
-    }
-
-    .scene-info {
-        padding: 20px 10px;
-    }
-
-    .scene-info p {
-        line-height: 1.6;
-    }
-
-    #portal {
-        width: 55%;
-        bottom: 7%;
-        animation-duration: 4s;
-    }
-
-    .button {
-        font-size: 10px;
-        line-height: 1.5;
-        padding: 10px 14px;
     }
 
     .backdoor {
@@ -434,43 +150,10 @@ a { outline: none; }
 
     .backdoor p { font-size: 8px; }
 
-    .skip img {
+    .backdoor img {
         width: 28px;
         height: 34px;
     }
 
     #stars { opacity: 0.9; }
-
-    #screen-dead p {
-        font-size: 16px;
-        max-width: 100%;
-    }
-
-    #screen-dead .dead-screen-image {
-        width: 200vw;
-    }
-
-    #screen-arrival {
-        padding-bottom: 15vh;
-    }
-
-    #screen-arrival p{
-        max-width: 80vw;
-    }
-
-    .arrival-desktop {
-        display: none;
-    }
-
-    .arrival-mobile {
-        display: block;
-    }
-
-    .game-options {
-        gap: 35px;
-    }
-
-    #wings {
-        background: url("../media/index/intro/wings-background.png") center / 100% auto no-repeat;
-    }
 }

@@ -72,7 +72,11 @@ function showSection(name) {
     currentSectionName = name;
 
     if (document.startViewTransition && !prefersReducedMotion.matches) {
-        document.startViewTransition(() => applySection(name));
+        document.documentElement.classList.add('section-transition');
+        const sectionTransition = document.startViewTransition(() => applySection(name));
+        sectionTransition.finished.finally(() => {
+            document.documentElement.classList.remove('section-transition');
+        });
     } else {
         applySection(name);
     }
