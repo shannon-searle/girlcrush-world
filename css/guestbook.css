@@ -140,7 +140,8 @@
     border-top-color: var(--pink-titlebar, #ffe0f0);
 }
 
-#guestbook-button:hover .guestbook-tooltip {
+#guestbook-button:hover .guestbook-tooltip,
+#guestbook-button.nudge .guestbook-tooltip {
     opacity: 1;
     transform: translateY(0);
 }
@@ -164,7 +165,8 @@
     pointer-events: none;
 }
 
-#guestbook-button:hover {
+#guestbook-button:hover,
+#guestbook-button.nudge {
     transform: scale(1.08);
     filter:
         drop-shadow(0 0 4px rgba(217, 102, 160, 0.9))

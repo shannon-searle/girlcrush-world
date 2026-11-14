@@ -199,6 +199,7 @@ html, body {
     z-index: 1;
     text-align: center;
     width: 20vw;
+    min-width: 300px;
     height: auto;
     flex-shrink: 0;
     transition: transform 0.3s ease, filter 0.3s ease;
