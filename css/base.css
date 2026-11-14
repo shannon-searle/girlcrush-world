@@ -242,7 +242,7 @@ html, body {
 ============================================= */
 
 #tina-peek {
-    --tina-height: clamp(300px, 45vw, 650px);
+    --tina-height: clamp(400px, 60vw, 850px);
     --tina-bar-top: var(--taskbar-visible-height);
 
     position: fixed;
@@ -253,11 +253,11 @@ html, body {
     height: var(--tina-height);
     line-height: 0;
 
-    transform: rotate(20deg) translateX(-55%);
+    transform: translateY(0) rotate(20deg) translateX(-55%);
     transition: left 0.7s cubic-bezier(0.34, 1.6, 0.64, 1), transform 0.7s cubic-bezier(0.34, 1.6, 0.64, 1);
 }
 
-#tina-peek img {
+#tina-peek video {
     display: block;
     height: 100%;
     width: auto;
@@ -265,8 +265,8 @@ html, body {
 }
 
 #tina-peek.peek-out {
-    left: -7%;
-    transform: rotate(30deg) translateX(-10%);
+    left: -9%;
+    transform: translateY(12%) rotate(30deg) translateX(-15%);
 }
 
 @media (prefers-reduced-motion: reduce) {
