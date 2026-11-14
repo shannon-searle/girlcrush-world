@@ -128,6 +128,7 @@ document.querySelectorAll('[data-panel]').forEach(button => {
 
         const panelIsOpen = document.getElementById(panelId).classList.contains('open');
         if (!panelIsOpen) sounds.popupClose.play();
+        else if (panelId === 'guestbook') sounds.guestbookOpen.play();
         else if (button.classList.contains('desktop-icon-button')) sounds.popupOpen.play();
 
         const taskbarId = button.dataset.taskbar;

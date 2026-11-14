@@ -13,6 +13,20 @@ const PANEL_ID_BY_ACTION = {
     'make-song': 'make-song-panel',
 };
 
+const SOUND_BY_ACTION = {
+    'make-song': sounds.makeSong,
+    explode: sounds.explode,
+    dance: sounds.dance,
+    likes: sounds.likes,
+    dislikes: sounds.dislikes,
+    'confess-love': sounds.confessLove,
+};
+
+function playSoundFor(action) {
+    Object.values(SOUND_BY_ACTION).forEach(sound => sound.stop());
+    SOUND_BY_ACTION[action]?.play();
+}
+
 const toniImage = document.querySelector('.about-me-toni');
 const aboutMeButtons = document.querySelectorAll('.about-me-button');
 
@@ -31,5 +45,6 @@ aboutMeButtons.forEach((button) => {
         const toniImageForAction = TONI_IMAGE_BY_ACTION[action];
         if (toniImageForAction) toniImage.src = toniImageForAction;
         togglePanelFor(action);
+        playSoundFor(action);
     });
 });
