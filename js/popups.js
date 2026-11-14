@@ -127,7 +127,8 @@ document.querySelectorAll('[data-panel]').forEach(button => {
         togglePanel(panelId);
 
         const panelIsOpen = document.getElementById(panelId).classList.contains('open');
-        if (panelIsOpen && button.classList.contains('desktop-icon-button')) sounds.iconOpen.play();
+        if (!panelIsOpen) sounds.popupClose.play();
+        else if (button.classList.contains('desktop-icon-button')) sounds.iconOpen.play();
 
         const taskbarId = button.dataset.taskbar;
         if (!taskbarId) return;
@@ -138,7 +139,9 @@ document.querySelectorAll('[data-panel]').forEach(button => {
 
 document.querySelectorAll('[data-close]').forEach(button => {
     button.addEventListener('click', () => {
-        closePanel(button.dataset.close);
+        const panelId = button.dataset.close;
+        if (document.getElementById(panelId).classList.contains('open')) sounds.popupClose.play();
+        closePanel(panelId);
         if (button.dataset.closemenu) taskbarClose(button.dataset.closemenu);
     });
 });

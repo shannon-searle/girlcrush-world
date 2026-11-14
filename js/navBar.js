@@ -1,6 +1,8 @@
 const navLinks = document.querySelectorAll(".nav-bar a");
 
 navLinks.forEach(link => {
+    link.addEventListener("click", () => sounds.nav.play());
+
     const star = link.querySelector(".nav-link-star");
     if (!star) return;
 

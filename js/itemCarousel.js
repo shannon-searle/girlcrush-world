@@ -129,7 +129,9 @@ document.querySelectorAll('.item-carousel-prev').forEach(button => {
 // escape closes it
 document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    document.querySelectorAll('.item-carousel.open').forEach(carousel => closePanel(carousel.id));
+    const openCarousels = document.querySelectorAll('.item-carousel.open');
+    if (openCarousels.length) sounds.popupClose.play();
+    openCarousels.forEach(carousel => closePanel(carousel.id));
 });
 
 window.resetItemCarousel = resetItemCarousel;
