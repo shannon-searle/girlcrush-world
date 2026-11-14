@@ -126,9 +126,12 @@ document.querySelectorAll('[data-panel]').forEach(button => {
 
         togglePanel(panelId);
 
+        const panelIsOpen = document.getElementById(panelId).classList.contains('open');
+        if (panelIsOpen && button.classList.contains('desktop-icon-button')) sounds.iconOpen.play();
+
         const taskbarId = button.dataset.taskbar;
         if (!taskbarId) return;
-        if (document.getElementById(panelId).classList.contains('open')) taskbarOpen(taskbarId);
+        if (panelIsOpen) taskbarOpen(taskbarId);
         else taskbarClose(taskbarId);
     });
 });

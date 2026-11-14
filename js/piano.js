@@ -2,7 +2,7 @@
     piano
 ------------------------------------------ */
 const BASE_URL = "https://tonejs.github.io/audio/salamander/";
-let audioctx = null;
+const NOTE_LENGTH_MS = 500;
 
 // only load samples close to your key range (C4–E5)
 const noteFiles = {
@@ -14,24 +14,19 @@ const noteFiles = {
     "D#5": "Ds5.mp3",
 };
 
-const buffers = {};
+const pianoSamples = Object.fromEntries(Object.entries(noteFiles).map(([note, file]) => [
+    note,
+    new Howl({ src: [BASE_URL + file], preload: false }),
+]));
 
-async function loadSamples() {
-    await Promise.all(Object.entries(noteFiles).map(async ([note, file]) => {
-        const res = await fetch(BASE_URL + file);
-        const arrayBuffer = await res.arrayBuffer();
-        buffers[note] = await audioctx.decodeAudioData(arrayBuffer);
-    }));
-}
-
-function startPianoAudio() {
-    if (audioctx) return;
-    audioctx = new (window.AudioContext || window.webkitAudioContext)();
-    loadSamples();
+function loadPianoSamples() {
+    Object.values(pianoSamples).forEach(sample => {
+        if (sample.state() === "unloaded") sample.load();
+    });
 }
 
 document.querySelectorAll('[data-panel="piano-popup"]').forEach(pianoOpener => {
-    pianoOpener.addEventListener("click", startPianoAudio);
+    pianoOpener.addEventListener("click", loadPianoSamples);
 });
 
 function noteToMidi(note) {
@@ -46,7 +41,7 @@ function findClosestSample(note) {
     let closest = null;
     let smallestDiff = Infinity;
 
-    for (const sampleNote of Object.keys(buffers)) {
+    for (const sampleNote of Object.keys(pianoSamples)) {
         const diff = Math.abs(noteToMidi(sampleNote) - targetMidi);
         if (diff < smallestDiff) {
             smallestDiff = diff;
@@ -56,20 +51,14 @@ function findClosestSample(note) {
 
     const semitonesDiff = targetMidi - noteToMidi(closest);
     const playbackRate = Math.pow(2, semitonesDiff / 12);
-    return { buffer: buffers[closest], playbackRate };
+    return { sample: pianoSamples[closest], playbackRate };
 }
 
-function playBuffer(note) {
-    const { buffer, playbackRate } = findClosestSample(note);
-    if (!buffer) return;
-    const source = audioctx.createBufferSource();
-    source.buffer = buffer;
-    source.playbackRate.value = playbackRate;
-    source.connect(audioctx.destination);
-    source.start(0);
-    setTimeout(() => {
-        source.stop();
-    }, 500);
+function playNote(note) {
+    const { sample, playbackRate } = findClosestSample(note);
+    const soundId = sample.play();
+    sample.rate(playbackRate, soundId);
+    setTimeout(() => sample.stop(soundId), NOTE_LENGTH_MS);
 }
 
 let isPointerDown = false;
@@ -79,11 +68,8 @@ function playKey(key) {
     if (!key || key === activeKey) return;
     activeKey = key;
 
-    startPianoAudio();
-    if (audioctx.state === "suspended") audioctx.resume();
-
-    const note = key.dataset.note;
-    playBuffer(note);
+    loadPianoSamples();
+    playNote(key.dataset.note);
 
     key.classList.add("pressed");
     setTimeout(() => key.classList.remove("pressed"), 200);
