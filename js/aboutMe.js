@@ -22,8 +22,12 @@ const SOUND_BY_ACTION = {
     'confess-love': sounds.confessLove,
 };
 
-function playSoundFor(action) {
+function stopAboutMeSounds() {
     Object.values(SOUND_BY_ACTION).forEach(sound => sound.stop());
+}
+
+function playSoundFor(action) {
+    stopAboutMeSounds();
     SOUND_BY_ACTION[action]?.play();
 }
 

@@ -55,6 +55,7 @@ function closePopupsThatRunInBackground() {
 function leaveSection(name) {
     pauseVideosIn(name);
     if (name === 'home') closePopupsThatRunInBackground();
+    if (name === 'about-me') stopAboutMeSounds();
 }
 
 function applySection(name) {
